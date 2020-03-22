@@ -38,7 +38,7 @@ def main():
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
-    util.oai_harvest(out_path_raw, server=server, date_params=date_params)
+    util.oai_harvest2(out_path_raw, server=server, date_params=date_params)
 
     # Process through XSLT
     print("Processing file with XSLT...")
