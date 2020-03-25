@@ -1,6 +1,8 @@
 import subprocess
 from configparser import ConfigParser
 import os
+import pickle
+
 
 my_path = os.path.dirname(__file__)
 # harvester_path = os.path.join(my_path, "pyoaiharvester/pyoaiharvest.py")
@@ -25,41 +27,7 @@ def oai_harvest(
         oaiURL = config["PROD"]["baseOAIURL"]
 
     cmd = (
-        "/usr/bin/python "
-        + harvester_path
-        + " -l "
-        + oaiURL
-        + " -m "
-        + output_type
-        + " -s collection"
-        + " -o "
-        + out_path
-        + " "
-        + date_params
-    )
-    print(cmd)
-    # This will always work but is kludgy.
-    subprocess.call(cmd, shell=True)
-
-
-# TODO: Test different subprocess params...
-def oai_harvest2(
-    out_path,
-    output_type="oai_marc",
-    server="Prod",
-    date_params="",
-    harvester_path=os.path.join(my_path, "pyoaiharvester/pyoaiharvest.py"),
-):
-
-    if server == "Dev":
-        oaiURL = config["DEV"]["baseOAIURL"]
-    elif server == "Test":
-        oaiURL = config["TEST"]["baseOAIURL"]
-    else:
-        oaiURL = config["PROD"]["baseOAIURL"]
-
-    cmd = (
-        "/usr/bin/python "
+        "python "
         + harvester_path
         + " -l "
         + oaiURL
@@ -84,8 +52,6 @@ def oai_harvest2(
         return "PYOAIHARVEST ERROR: " + str(result[1].decode("utf-8"))
     else:
         return result[0].decode("utf-8")
-
-
 
 
 def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
@@ -113,9 +79,22 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
     )
     result = p.communicate()
     if result[1]:  # error
-        return "SAXON ERROR: " + str(result[1].decode("utf-8"))
+        return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
     else:
         return result[0].decode("utf-8")
+
+
+def pickle_it(obj, path):
+    print("Saving pickle to " + str(path) + "...")
+    with open(out_path, "wb") as f:
+        pickle.dump(obj, f)
+
+
+def unpickle_it(path):
+    print("Unpickling from " + str(path) + "...")
+    with open(path, "rb") as f:
+        output = pickle.load(f)
+    return output
 
 
 if __name__ == "__main__":

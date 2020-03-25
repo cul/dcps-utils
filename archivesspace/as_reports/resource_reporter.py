@@ -175,6 +175,7 @@ def main():
             except:
                 pass
 
+        # TODO: pull all scope notes into single string, count characters, and truncate. (Same for biog.)
         # print(len(the_scope_notes))
         if len(the_scope_notes) > 0:
             scope_note = truncate_str(
@@ -274,4 +275,3 @@ def truncate_str(string, length=400):
 
 if __name__ == "__main__":
     main()
-

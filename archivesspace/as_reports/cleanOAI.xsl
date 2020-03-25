@@ -6,9 +6,20 @@
     
  <xsl:output indent="yes"/>
  
+    <xsl:variable name="lf"><xsl:text>&#x0A;</xsl:text></xsl:variable>
+    
+ 
     <!--  The initial match kicks of a loop that ignores the OAI XML apparatus -->
     
     <xsl:template match="/">
+        <!-- Output record count to stdout -->
+        <xsl:message>
+            <xsl:value-of select="$lf"/>
+            <xsl:text>Count of records processed: </xsl:text>
+            <xsl:value-of select="count( repository/record[contains(header/identifier, '/resources/')])"></xsl:value-of>
+            <xsl:value-of select="$lf"/>
+        </xsl:message>
+        
         <collection>
             <xsl:for-each select="repository/record">
                 <xsl:apply-templates select="."/>
@@ -233,7 +244,13 @@
 
     <!--    reorder elements -->
     <!-- Grab the record, copy the leader and sort the control and data fields. -->
-    <xsl:template match="marc:record">        
+    <xsl:template match="marc:record">
+        <!-- output some info to saxon text stream -->
+        <xsl:message>
+            <xsl:value-of select="marc:datafield[@tag='099']/marc:subfield[@code='a']"/>
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="marc:datafield[@tag='245']/marc:subfield[@code='a']"/>
+        </xsl:message>        
         <record>
             <xsl:element name="leader">
                 <xsl:value-of select="marc:leader"/>
