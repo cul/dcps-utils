@@ -15,26 +15,27 @@ my_path = os.path.dirname(__file__)
 
 # sheet_id = "1pZk2tPMuZDOd1veOBSJNRk2fprA6p3Qb3WKZDtZay88"
 sheet_id = "1pZk2tPMuZDOd1veOBSJNRk2fprA6p3Qb3WKZDtZay88"  # test
-the_sheet = dataSheet(sheet_id, "subjects!A:Z")
+# the_sheet = dataSheet(sheet_id, "subjects!A:Z")
+the_sheet = dataSheet(sheet_id, "test!A:Z")
 
 now1 = datetime.datetime.now()
 start_time = str(now1)
 end_time = ""  # set later
 
 
-#### First get the subject records from API (this can take a long time!)
+# First get the subject records from API (this can take a long time!)
 
 asf.setServer("Prod")  # AS instance: Prod | Dev | Test
 
 
 out_path = os.path.join(my_path, "output/subjects.pickle")
 
-## uncomment to do the full download.
+# uncomment to do the full download.
 # the_subjects = asf.getSubjects()
 # util.pickle_it(the_subjects, out_path)
 
 
-### Report the saved data to Google Sheet
+# Report the saved data to Google Sheet
 
 # List of fields to extract, expressed as dpaths.
 the_fields = [
@@ -65,13 +66,19 @@ for s in the_subject_data:
             d = ""
         the_row.append(d)
     # print(the_row)
+
+    # Handle subclassifications
+    the_terms = s['terms']
+    for t in the_terms:
+        the_row.append(t['term'] + ' (' + t['term_type'] + ')')
+
     the_output.append(the_row)
 
 the_sheet.clear()
 save = the_sheet.appendData(the_output)
 print(save)
 
-### Generate log
+# Generate log
 
 now2 = datetime.datetime.now()
 end_time = str(now2)
@@ -110,4 +117,3 @@ print(
     + str(sheet_id)
     + "/edit?usp=sharing"
 )
-

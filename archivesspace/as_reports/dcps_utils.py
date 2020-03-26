@@ -86,7 +86,7 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
 
 def pickle_it(obj, path):
     print("Saving pickle to " + str(path) + "...")
-    with open(out_path, "wb") as f:
+    with open(path, "wb") as f:
         pickle.dump(obj, f)
 
 
@@ -95,7 +95,3 @@ def unpickle_it(path):
     with open(path, "rb") as f:
         output = pickle.load(f)
     return output
-
-
-if __name__ == "__main__":
-    main()
