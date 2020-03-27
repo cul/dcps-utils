@@ -6,6 +6,7 @@ import os
 import re
 import datetime
 from sheetFeeder import dataSheet
+import dcps_utils as util
 
 
 def main():
@@ -42,7 +43,7 @@ def main():
 
     myOptions = "--exclude 'clio*'"
 
-    x = rsync_process(keyPath, fromPath, toPath, myOptions)
+    x = util.rsync_process(keyPath, fromPath, toPath, myOptions)
     print(x)
 
     print(" ")
@@ -81,7 +82,8 @@ def main():
     )  # This is a dupe for other reporting
 
     # Set path to schema validator (Jing)
-    jing_path = os.path.join(my_path, "../resources/jing-20091111/bin/jing.jar")
+    jing_path = os.path.join(
+        my_path, "../../resources/jing-20091111/bin/jing.jar")
 
     schema_filename = "cul_as_ead.rng"
     schematron_filename = "cul_as_ead.sch"
@@ -130,12 +132,13 @@ def main():
         file_name = a_file.split("/")[-1]
         bibid = file_name.split("_")[-1].split(".")[0]
 
-        validation_result = jing_process(jing_path, a_file, schema_path)
+        validation_result = util.jing_process(jing_path=jing_path, a_file, schema_path)
 
         if "fatal:" in validation_result:
             # It's a parsing error.
             print(
-                icons["redx"] + " FATAL ERROR: " + file_name + " could not be parsed!"
+                icons["redx"] + " FATAL ERROR: " +
+                file_name + " could not be parsed!"
             )
             wf_status = False
             validation_status = False
@@ -168,13 +171,15 @@ def main():
 
         else:
 
-            schematron_result = jing_process(jing_path, a_file, schematron_path)
+            schematron_result = jing_process(
+                jing_path, a_file, schematron_path)
 
             if "error:" in schematron_result:
                 # It's a schematron violiation.
                 if report_level == "high":
                     # Only show if required by reporting level var (use to filter out large numbers of warnings).
-                    print("WARNING: " + file_name + " has Schematron rule violations.")
+                    print("WARNING: " + file_name +
+                          " has Schematron rule violations.")
                 sch_warnings += 1
 
             if schematron_result:
@@ -251,59 +256,6 @@ def main():
     print("Script done. Check report sheet for more details: " + the_data_sheet.url)
 
     quit()
-
-
-def rsync_process(keyPath, fromPath, toPath, options):
-    if keyPath:
-        cmd = (
-            '/usr/bin/rsync -zarvhe "ssh -i '
-            + keyPath
-            + '" '
-            + options
-            + " "
-            + fromPath
-            + " "
-            + toPath
-        )
-    else:
-        cmd = "/usr/bin/rsync -zavh " + options + " " + fromPath + " " + toPath
-
-    print("Running command: " + cmd + " ...")
-    print(" ")
-
-    result = subprocess.Popen(
-        [cmd],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        shell=True,
-    ).communicate()
-
-    if result[1]:  # error
-        return "RSYNC ERROR: " + str(result[1].decode("utf-8"))
-    else:
-        return result[0].decode("utf-8")
-
-
-def jing_process(jingPath, filePath, schemaPath):
-    # Process an xml file against a schema (rng or schematron) using Jing.
-    # Tested with jing-20091111.
-    # https://code.google.com/archive/p/jing-trang/downloads
-    # -d flag (undocumented!) = include diagnostics in output.
-    cmd = "java -jar " + jingPath + " -d " + schemaPath + " " + filePath
-    # print(cmd)
-    p = subprocess.Popen(
-        [cmd],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        shell=True,
-    )
-    result = p.communicate()
-    if result[1]:  # error
-        return "SAXON ERROR: " + str(result[1].decode("utf-8"))
-    else:
-        return result[0].decode("utf-8")
 
 
 def clean_output(in_str, incl_types=True):

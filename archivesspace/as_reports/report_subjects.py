@@ -13,10 +13,9 @@ my_name = __file__
 # This makes sure the script can be run from any working directory and still find related files.
 my_path = os.path.dirname(__file__)
 
-# sheet_id = "1pZk2tPMuZDOd1veOBSJNRk2fprA6p3Qb3WKZDtZay88"
-sheet_id = "1pZk2tPMuZDOd1veOBSJNRk2fprA6p3Qb3WKZDtZay88"  # test
-# the_sheet = dataSheet(sheet_id, "subjects!A:Z")
-the_sheet = dataSheet(sheet_id, "test!A:Z")
+sheet_id = "1pZk2tPMuZDOd1veOBSJNRk2fprA6p3Qb3WKZDtZay88"
+the_sheet = dataSheet(sheet_id, "subjects!A:Z")
+# the_sheet = dataSheet(sheet_id, "test!A:Z") # test
 
 now1 = datetime.datetime.now()
 start_time = str(now1)
@@ -70,7 +69,7 @@ for s in the_subject_data:
     # Handle subclassifications
     the_terms = s['terms']
     for t in the_terms:
-        the_row.append(t['term'] + ' (' + t['term_type'] + ')')
+        the_row.append(t['term'] + ' [' + t['term_type'] + ']')
 
     the_output.append(the_row)
 

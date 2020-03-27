@@ -84,6 +84,59 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
+def jing_process(jingPath='/opt/dcps/resources/jing-20091111/bin/jing.jar', filePath, schemaPath):
+    # Process an xml file against a schema (rng or schematron) using Jing.
+    # Tested with jing-20091111.
+    # https://code.google.com/archive/p/jing-trang/downloads
+    # -d flag (undocumented!) = include diagnostics in output.
+    cmd = "java -jar " + jingPath + " -d " + schemaPath + " " + filePath
+    # print(cmd)
+    p = subprocess.Popen(
+        [cmd],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        shell=True,
+    )
+    result = p.communicate()
+    if result[1]:  # error
+        return "SAXON ERROR: " + str(result[1].decode("utf-8"))
+    else:
+        return result[0].decode("utf-8")
+
+
+def rsync_process(keyPath, fromPath, toPath, options):
+    if keyPath:
+        cmd = (
+            '/usr/bin/rsync -zarvhe "ssh -i '
+            + keyPath
+            + '" '
+            + options
+            + " "
+            + fromPath
+            + " "
+            + toPath
+        )
+    else:
+        cmd = "/usr/bin/rsync -zavh " + options + " " + fromPath + " " + toPath
+
+    print("Running command: " + cmd + " ...")
+    print(" ")
+
+    result = subprocess.Popen(
+        [cmd],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        shell=True,
+    ).communicate()
+
+    if result[1]:  # error
+        return "RSYNC ERROR: " + str(result[1].decode("utf-8"))
+    else:
+        return result[0].decode("utf-8")
+
+
 def pickle_it(obj, path):
     print("Saving pickle to " + str(path) + "...")
     with open(path, "wb") as f:
