@@ -35,9 +35,10 @@ shift $((OPTIND -1))
     mail_to=asops@library.columbia.edu
     today=$(date +"%Y%m%d")
     # yesterday=$(date --date="yesterday" +"%Y%m%d")
-    source_dir=/cul/cul0/lito/libsys/voyager/prod/data/loads/AS_harvest
+    # source_dir=/cul/cul0/lito/libsys/voyager/prod/data/loads/AS_harvest
+    source_dir=/cul/cul0/ldpd/archivesspace/oai
     delta_output_dir=/cul/cul0/ldpd/archivesspace/updates
-    reports_dir=$SCRIPTPATH/../reports
+    reports_dir=/opt/dcps/resources/reports
 
 case "$myOpt" in 
 
@@ -50,8 +51,8 @@ case "$myOpt" in
                 delta_output_dir=$SCRIPTPATH/output
                 reports_dir=$SCRIPTPATH/../reports
                         ;;
-        productionMode) 
-                # Switch to production mode (don't send notifications to alias)
+        productionMode)  
+                # Switch to production mode
                 # Options already set by default; don't do anything.
                         ;;
         helpMe) 
@@ -68,10 +69,11 @@ subject="${SCRIPTNAME} is done."
 xsl_file1=$SCRIPTPATH/extract-bibids.xsl
 xsl_file2=$SCRIPTPATH/generateLookupTable.xsl
 
-saxon_jar=$SCRIPTPATH/../resources/saxon-9.8.0.12-he.jar
+saxon_jar=/opt/dcps/resources/saxon-9.8.0.12-he.jar
 
  
-delta_in_file=${today}.asDeltaRaw.xml
+# delta_in_file=${today}.asDeltaRaw.xml
+delta_in_file=${today}.asRaw.xml
 delta_out_file=${today}.asDeltaIDs.csv
 all_in_file=${today}.asAllRaw.xml
 all_out_file=id_lookup_prod.csv
@@ -93,12 +95,14 @@ echo Saving XML output to $delta_output_dir/$out_file. >> $log_file
 echo " " >> $log_file
 
 
-echo Generating new lookup table at $SCRIPTPATH/$all_out_file ... >> $log_file
-echo " " >> $log_file
+### NOTE: Commenting this out for now as there is no longer an "allRaw" file to read from.
 
-java -cp $saxon_jar net.sf.saxon.Transform -xsl:$xsl_file2 -o:$SCRIPTPATH/$all_out_file -s:$source_dir/$all_in_file &>> $log_file
+#echo Generating new lookup table at $SCRIPTPATH/$all_out_file ... >> $log_file
+#echo " " >> $log_file
 
-echo " " >> $log_file
+#java -cp $saxon_jar net.sf.saxon.Transform -xsl:$xsl_file2 -o:$SCRIPTPATH/$all_out_file -s:$source_dir/$all_in_file &>> $log_file
+
+#echo " " >> $log_file
 
 
 
