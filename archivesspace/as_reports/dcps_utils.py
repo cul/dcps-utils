@@ -84,7 +84,7 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
-def jing_process(jingPath='/opt/dcps/resources/jing-20091111/bin/jing.jar', filePath, schemaPath):
+def jing_process(jingPath, filePath, schemaPath):
     # Process an xml file against a schema (rng or schematron) using Jing.
     # Tested with jing-20091111.
     # https://code.google.com/archive/p/jing-trang/downloads

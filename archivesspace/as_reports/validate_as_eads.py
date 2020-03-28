@@ -132,7 +132,7 @@ def main():
         file_name = a_file.split("/")[-1]
         bibid = file_name.split("_")[-1].split(".")[0]
 
-        validation_result = util.jing_process(jing_path=jing_path, a_file, schema_path)
+        validation_result = util.jing_process(jing_path, a_file, schema_path)
 
         if "fatal:" in validation_result:
             # It's a parsing error.
@@ -171,7 +171,7 @@ def main():
 
         else:
 
-            schematron_result = jing_process(
+            schematron_result = util.jing_process(
                 jing_path, a_file, schematron_path)
 
             if "error:" in schematron_result:
