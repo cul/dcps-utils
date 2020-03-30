@@ -19,7 +19,8 @@ def main():
     destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
     # destination_folder = "./"  # test
     xslt_path = os.path.join(my_path, "cleanOAI2.xsl")
-    saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
+    saxon_path = os.path.join(
+        my_path, "/opt/dcps/resources/saxon-9.8.0.12-he.jar")
     # saxon_path = os.path.join(my_path, "../resources/saxon-9.8.0.12-he.jar")  # test
 
     out_path_raw = os.path.join(destination_folder, today + ".asRaw.xml")
@@ -28,15 +29,10 @@ def main():
     # Set server to Prod | Test | Dev
     server = "Prod"
 
-    # Set to True to harvest entire set of records; otherwise, will harvest deltas since yesterday's date.
-    process_all = True
-
     fromDate = yesterday
 
-    if process_all == True:
-        date_params = ""
-    else:
-        date_params = "-f " + fromDate  # + " -u " + toDate
+    # Not using date, get all records and then filter with the XSLT!
+    date_params = ""
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
