@@ -300,6 +300,9 @@
             <xsl:value-of select="marc:datafield[@tag='099']/marc:subfield[@code='a']"/>
             <xsl:text>: </xsl:text>
             <xsl:value-of select="marc:datafield[@tag='245']/marc:subfield[@code='a']"/>
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="ancestor::record/header/datestamp"/>
+            <xsl:text>) </xsl:text>
         </xsl:message>        
         <record>
             <xsl:element name="leader">
