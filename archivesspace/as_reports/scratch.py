@@ -2,9 +2,9 @@ import ASFunctions as asf
 import json
 from pprint import pprint
 
-asf.setServer('Prod')
+asf.setServer('Test')
 
-x = asf.getArchivalObjectByRef(2, 'a748bf2338f1983514ca0b1c72021c99')
+x = asf.getArchivalObjectByRef(2, 'e58b4ca4a5de9917fa457ab91472b02d')
 
 y = json.loads(x)
 
