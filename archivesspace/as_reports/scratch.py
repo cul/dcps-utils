@@ -17,7 +17,7 @@ z = asf.getResponse(tc)
 
 pprint(json.loads(z))
 
-x = asf.getResponse('/repositories/2/resources/5435/top_containers')
+x = asf.getResponse('/repositories/2/resources/5102/top_containers')
 
 pprint(json.loads(x))
 
