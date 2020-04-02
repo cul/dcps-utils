@@ -8,11 +8,12 @@ x = asf.getArchivalObjectByRef(2, 'a748bf2338f1983514ca0b1c72021c99')
 
 y = json.loads(x)
 
-tc = y['instances'][0]['sub_container']['top_container']
+tc = y['instances'][0]['sub_container']['top_container']['ref']
 
 print(type(tc))
 print(tc)
 
+z = asf.getResponse(tc)
 quit()
 
 pprint(json.loads(x))
