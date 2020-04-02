@@ -14,6 +14,8 @@ print(type(tc))
 print(tc)
 
 z = asf.getResponse(tc)
+
+pprint(json.loads(z))
 quit()
 
 pprint(json.loads(x))
