@@ -4,22 +4,32 @@ from pprint import pprint
 
 asf.setServer('Test')
 
-x = asf.getArchivalObjectByRef(2, 'e58b4ca4a5de9917fa457ab91472b02d')
+# x = asf.getArchivalObjectByRef(2, 'e58b4ca4a5de9917fa457ab91472b02d')
 
-y = json.loads(x)
+# y = json.loads(x)
 
-tc = y['instances'][0]['sub_container']['top_container']['ref']
+# tc = y['instances'][0]['sub_container']['top_container']['ref']
 
-print(type(tc))
-print(tc)
+# print(type(tc))
+# print(tc)
 
-z = asf.getResponse(tc)
+# z = asf.getResponse(tc)
 
-pprint(json.loads(z))
+# pprint(json.loads(z))
 
-x = asf.getResponse('/repositories/2/resources/5102/top_containers')
+repo = 2
+asid = 5102
 
-pprint(json.loads(x))
+the_query = '/repositories/' + \
+    str(repo) + '/resources/' + str(asid) + '/top_containers'
+
+# list of top containers
+the_refs = json.loads(asf.getResponse(the_query))
+
+for r in the_refs:
+    tc = asf.getResponse(r['ref'])
+    print(tc)
+
 
 quit()
 
