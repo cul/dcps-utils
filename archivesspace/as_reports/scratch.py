@@ -26,9 +26,31 @@ the_query = '/repositories/' + \
 # list of top containers
 the_refs = json.loads(asf.getResponse(the_query))
 
+
 for r in the_refs:
-    tc = asf.getResponse(r['ref'])
-    print(tc)
+    tc = json.loads(asf.getResponse(r['ref']))
+    # print(tc)
+
+    try:
+        bibid = tc['collections'][0]['identifier']
+    except:
+        bibid = ''
+    try:
+        uri = tc['uri']
+    except:
+        uri = ''
+    try:
+        type = tc['type']
+    except:
+        type = ''
+    try:
+        display_string = tc['display_string']
+    except:
+        display_string = ''
+
+    a_row = [bibid, uri, type, display_string]
+    print(a_row)
+
 
 
 quit()
