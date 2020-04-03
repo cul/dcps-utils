@@ -32,7 +32,7 @@ for r in the_refs:
     # print(tc)
 
     try:
-        bibid = tc['collections'][0]['identifier']
+        bibid = tc['collection'][0]['identifier']
     except:
         bibid = ''
     try:
@@ -50,7 +50,6 @@ for r in the_refs:
 
     a_row = [bibid, uri, type, display_string]
     print(a_row)
-
 
 
 quit()
