@@ -1,21 +1,15 @@
 import ASFunctions as asf
 import json
 from pprint import pprint
+from sheetFeeder import dataSheet
 
 asf.setServer('Test')
 
-# x = asf.getArchivalObjectByRef(2, 'e58b4ca4a5de9917fa457ab91472b02d')
 
-# y = json.loads(x)
+sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
 
-# tc = y['instances'][0]['sub_container']['top_container']['ref']
+the_sheet = dataSheet(sheet_id, 'test!A:Z')
 
-# print(type(tc))
-# print(tc)
-
-# z = asf.getResponse(tc)
-
-# pprint(json.loads(z))
 
 repo = 2
 asid = 5102
@@ -25,6 +19,8 @@ the_query = '/repositories/' + \
 
 # list of top containers
 the_refs = json.loads(asf.getResponse(the_query))
+
+the_rows = []
 
 
 for r in the_refs:
@@ -49,9 +45,14 @@ for r in the_refs:
         display_string = ''
 
     a_row = [bibid, uri, type, display_string]
-    print(a_row)
+    # print(a_row)
+    the_rows.append(a_row)
 
 
+the_sheet.clear()
+
+z = the_sheet.appendData(the_rows)
+print(z)
 quit()
 
 pprint(json.loads(x))
