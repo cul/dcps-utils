@@ -40,33 +40,36 @@ for record in the_records:
     the_refs = json.loads(asf.getResponse(the_query))
 
     for r in the_refs:
-        tc = json.loads(asf.getResponse(r['ref']))
-        # print(tc)
+        try:
+            tc = json.loads(asf.getResponse(r['ref']))
+            # print(tc)
 
-        try:
-            bibid = tc['collection'][0]['identifier']
-        except:
-            bibid = ''
-        try:
-            resource = tc['collection'][0]['ref']
-        except:
-            resource = ''
-        try:
-            uri = tc['uri']
-        except:
-            uri = ''
-        try:
-            type = tc['type']
-        except:
-            type = ''
-        try:
-            display_string = tc['display_string']
-        except:
-            display_string = ''
+            try:
+                bibid = tc['collection'][0]['identifier']
+            except:
+                bibid = ''
+            try:
+                resource = tc['collection'][0]['ref']
+            except:
+                resource = ''
+            try:
+                uri = tc['uri']
+            except:
+                uri = ''
+            try:
+                type = tc['type']
+            except:
+                type = ''
+            try:
+                display_string = tc['display_string']
+            except:
+                display_string = ''
 
-        a_row = [bibid, resource, uri, type, display_string]
-        # print(a_row)
-        the_rows.append(a_row)
+            a_row = [bibid, resource, uri, type, display_string]
+            # print(a_row)
+            the_rows.append(a_row)
+        except:
+            print(r)
 
 
 the_sheet.clear()
