@@ -38,13 +38,14 @@ def main():
 
     for id in the_ids:
         bibid = id[2]
+        print('Getting MARC for ' str(bibid))
 
         x = get_clio_marc(bibid)
 
+        marc_path = os.path.join(my_path, 'output/' + str(bibid) + '.marc')
+
         with open(marc_path, 'wb') as f:
             f.write(x)
-
-        marc_path = os.path.join(my_path, 'output/' + str(bibid) + '.marc')
 
         with open(marc_path, 'rb') as fh:
             reader = MARCReader(fh)
@@ -76,11 +77,14 @@ def main():
     ###
     #### TOP CONTAINERS ####
 
-    the_rows = []
+    the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
+    the_rows = [the_heads]
 
     for id in the_ids:
         repo = id[0]
         asid = id[1]
+
+        print('Getting top containers for ' + str(repo) + ':' + str(asid))
 
         the_query = '/repositories/' + \
             str(repo) + '/resources/' + str(asid) + '/top_containers'
