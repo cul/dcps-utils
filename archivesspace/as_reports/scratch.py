@@ -39,7 +39,10 @@ for record in the_records:
     # list of top containers
     the_refs = json.loads(asf.getResponse(the_query))
 
+    cnt = 0
     for r in the_refs:
+        cnt += 1
+        print(cnt)
         try:
             tc = json.loads(asf.getResponse(r['ref']))
             # print(tc)
