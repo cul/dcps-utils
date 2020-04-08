@@ -30,8 +30,8 @@ asf.setServer("Prod")  # AS instance: Prod | Dev | Test
 out_path = os.path.join(my_path, "output/subjects.pickle")
 
 # uncomment to do the full download.
-# the_subjects = asf.getSubjects()
-# util.pickle_it(the_subjects, out_path)
+the_subjects = asf.getSubjects()
+util.pickle_it(the_subjects, out_path)
 
 
 # Report the saved data to Google Sheet

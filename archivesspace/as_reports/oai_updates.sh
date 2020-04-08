@@ -73,9 +73,11 @@ saxon_jar=/opt/dcps/resources/saxon-9.8.0.12-he.jar
 
  
 # delta_in_file=${today}.asDeltaRaw.xml
-delta_in_file=${today}.asRaw.xml
+# delta_in_file=${today}.asRaw.xml
+delta_in_file=${today}.asClean.xml
 delta_out_file=${today}.asDeltaIDs.csv
-all_in_file=${today}.asAllRaw.xml
+# all_in_file=${today}.asAllRaw.xml
+all_in_file=${today}.asRaw.xml
 all_out_file=id_lookup_prod.csv
 
 log_file=$reports_dir/${SCRIPTNAME}_log.txt
