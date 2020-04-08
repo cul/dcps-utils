@@ -6,15 +6,15 @@ from sheetFeeder import dataSheet
 import requests
 
 
-def get_clio(bibid):
-    url = 'https://clio.columbia.edu/catalog/' + str(bibid) + '.marc'
-    response = requests.get(url)
-    return response.content
+# def get_clio(bibid):
+#     url = 'https://clio.columbia.edu/catalog/' + str(bibid) + '.marc'
+#     response = requests.get(url)
+#     return response.content
 
 
-print(get_clio('4079656'))
+# print(get_clio('4079656'))
 
-quit()
+# quit()
 
 
 asf.setServer('Prod')
@@ -22,12 +22,12 @@ asf.setServer('Prod')
 
 sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
 
-the_sheet = dataSheet(sheet_id, 'test!A:Z')
+the_sheet = dataSheet(sheet_id, 'containers!A:Z')
 
 the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
 the_rows = [the_heads]
 
-the_records = [[2, 5102]]
+the_records = [[2, 5787][2, 5337]]
 
 for record in the_records:
     repo = record[0]
