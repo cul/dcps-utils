@@ -38,7 +38,7 @@ def main():
 
     for id in the_ids:
         bibid = id[2]
-        print('Getting MARC for ' str(bibid))
+        print('Getting MARC for ' + str(bibid))
 
         x = get_clio_marc(bibid)
 
