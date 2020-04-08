@@ -27,7 +27,7 @@ the_sheet = dataSheet(sheet_id, 'containers!A:Z')
 the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
 the_rows = [the_heads]
 
-the_records = [[2, 5787][2, 5337]]
+the_records = [[2, 5787], [2, 5337]]
 
 for record in the_records:
     repo = record[0]
