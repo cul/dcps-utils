@@ -19,6 +19,17 @@ import requests
 
 asf.setServer('Prod')
 
+repo = 2
+asid = 5787
+
+the_query = '/repositories/' + \
+    str(repo) + '/resources/' + str(asid) + '/top_containers'
+
+# list of top containers
+the_refs = json.loads(asf.getResponse(the_query))
+
+print(the_refs)
+quit()
 
 sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
 
