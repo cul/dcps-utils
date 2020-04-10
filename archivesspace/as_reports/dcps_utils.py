@@ -55,6 +55,10 @@ def oai_harvest(
 
 
 def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
+    if outFile:
+        outStr = " > " + outFile
+    else:
+        outStr = " "
     cmd = (
         "java -jar "
         + saxonPath
@@ -66,10 +70,9 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
         + theParams
         + " "
         + "--suppressXsltNamespaceCheck:on"
-        + " > "
-        + outFile
+        + outStr
     )
-    print(cmd)
+    # print(cmd)
     p = subprocess.Popen(
         [cmd],
         stdin=subprocess.PIPE,
