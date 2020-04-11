@@ -184,7 +184,7 @@ def main():
             schematron_result = util.saxon_process(
                 saxon_path, a_file, xslt_path, None)
 
-            if "error:" in schematron_result:
+            if schematron_result:
                 # It's a schematron violiation.
                 if report_level == "high":
                     # Only show if required by reporting level var (use to filter out large numbers of warnings).

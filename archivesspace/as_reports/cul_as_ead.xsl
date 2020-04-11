@@ -28,7 +28,7 @@
     <xsl:template match="archdesc/did" mode="eval">
 <!--  Test the presence of required elements in <did>      -->
 
-        <xsl:if test="not(langmaterialz)">
+        <xsl:if test="not(langmaterial)">
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">archdesc</xsl:with-param>
                 <xsl:with-param name="errStr">did must contain langmaterial.</xsl:with-param>
