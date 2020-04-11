@@ -83,7 +83,7 @@ def main():
     # the_data_sheet2 = dataSheet("198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")  # This is a dupe for other reporting
 
     # Set path to saxon processor for evaluator xslt
-    saxon_path = '../../resources/saxon-9.8.0.12-he.jar'
+    saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
 
     # Set path to schema validator (Jing)
     jing_path = os.path.join(
