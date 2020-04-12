@@ -86,17 +86,7 @@
         
     </xsl:template>
   
-  
-    <xsl:template match="persname" mode="eval">
-        <!-- TODO: add here the regex test for authority URIs, per acfa-195.      -->
-        <xsl:if test="contains(@authfilenumber,'.html')">
-            <xsl:call-template name="errorMsg">
-                <xsl:with-param name="tag">authorities</xsl:with-param>
-                <xsl:with-param name="errStr">@authfilenumber <xsl:value-of select="@authfilenumber"/> is not correctly formed. </xsl:with-param>
-            </xsl:call-template> 
-        </xsl:if>
-    </xsl:template>
-    
+ 
     
   <!-- Model of c element -->  
     <xsl:template match="c" mode="eval">
