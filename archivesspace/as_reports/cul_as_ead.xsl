@@ -11,6 +11,7 @@
     
     <xsl:template match ='ead'>
         <!-- put here all the elements of which to check children... -->
+        <xsl:apply-templates select="archdesc" mode="eval"/>
         <xsl:apply-templates select="archdesc/did" mode="eval"/>
         <xsl:apply-templates select="//*/@authfilenumber" mode="eval"/>
         <xsl:apply-templates select="//c" mode="eval"/>
@@ -34,7 +35,26 @@
         </xsl:if>
     </xsl:template>
 
-  
+    <xsl:template match="archdesc" mode="eval">
+        <!--  Test the presence of required elements in <did>      -->
+        <xsl:if test="not(scopecontent)">
+            <xsl:call-template name="errorMsg">
+                <xsl:with-param name="tag">archdesc</xsl:with-param>
+                <xsl:with-param name="errStr">archdesc must have scope and content element.</xsl:with-param>
+            </xsl:call-template>
+        </xsl:if>
+        
+        <xsl:if test="not(accessrestrict)">
+            <xsl:call-template name="errorMsg">
+                <xsl:with-param name="tag">archdesc</xsl:with-param>
+                <xsl:with-param name="errStr">archdesc must have at least one accessrestrict child element.</xsl:with-param>
+            </xsl:call-template>
+        </xsl:if>
+        
+              
+    </xsl:template>
+    
+    
     <xsl:template match="archdesc/did" mode="eval">
 <!--  Test the presence of required elements in <did>      -->
 
@@ -43,7 +63,6 @@
                 <xsl:with-param name="tag">archdesc</xsl:with-param>
                 <xsl:with-param name="errStr">did must contain langmaterial.</xsl:with-param>
             </xsl:call-template>
-
         </xsl:if>
         
         <xsl:if test="not(origination)">
