@@ -285,7 +285,7 @@ def clean_output(in_str, incl_types=True):
     # out_str = re.sub(
     #     r": error: (assertion failed|report):\s+", r": ", out_str, flags=re.MULTILINE
     # )
-    # out_str = re.sub(r"\n$", r"", out_str)
+    out_str = re.sub(r"\n$", r"", out_str)
     # returns a list in format [<str>,<list>]
     return [out_str, err_types]
 
