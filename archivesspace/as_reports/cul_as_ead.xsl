@@ -75,7 +75,7 @@
             </xsl:call-template>
         </xsl:if>
         
-        <xsl:if test="not(origination/persname or orgination/corpname or origination/famname)">
+        <xsl:if test="not(origination/persname or origination/corpname or origination/famname)">
             
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">archdesc</xsl:with-param>

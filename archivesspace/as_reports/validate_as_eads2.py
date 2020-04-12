@@ -97,8 +97,8 @@ def main():
     xslt_path = os.path.join(my_path, xslt_filename)
     # xslt_path = "/Users/dwh2128/Documents/ACFA/TEST/ACFA-196-rewrite-schematron/cul_as_ead.xsl"  # test
 
-    # data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
-    data_folder = '/cul/cul0/ldpd/archivesspace/test/ead'  # for testing
+    data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
+    # data_folder = '/cul/cul0/ldpd/archivesspace/test/ead'  # for testing
 
     # data_folder = "/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_cache_20200319"  # local test
 
