@@ -99,12 +99,12 @@ echo " " >> $log_file
 
 ### NOTE: Commenting this out for now as there is no longer an "allRaw" file to read from.
 
-#echo Generating new lookup table at $SCRIPTPATH/$all_out_file ... >> $log_file
-#echo " " >> $log_file
+echo Generating new lookup table at $SCRIPTPATH/$all_out_file ... >> $log_file
+echo " " >> $log_file
 
-#java -cp $saxon_jar net.sf.saxon.Transform -xsl:$xsl_file2 -o:$SCRIPTPATH/$all_out_file -s:$source_dir/$all_in_file &>> $log_file
+java -cp $saxon_jar net.sf.saxon.Transform -xsl:$xsl_file2 -o:$SCRIPTPATH/$all_out_file -s:$source_dir/$all_in_file &>> $log_file
 
-#echo " " >> $log_file
+echo " " >> $log_file
 
 
 
