@@ -54,16 +54,31 @@ def main():
                 the_bibid = the_099[0].get_subfields('a')[0]
                 the_876s = record.get_fields('876')
 
+                print(len(the_876s))
                 for r in the_876s:
                     # Need to specify order of subfields explicitly
-                    the_row = [
-                        r.get_subfields('3')[0],
-                        r.get_subfields('0')[0],
-                        r.get_subfields('a')[0],
-                        r.get_subfields('p')[0]
+                    the_876_data = [
+                        r.get_subfields('3'),
+                        r.get_subfields('0'),
+                        r.get_subfields('a'),
+                        r.get_subfields('p')
                     ]
+                    the_row = []
+                    for d in the_876_data:
+                        try:
+                            dd = d[0]
+                        except:
+                            dd = ""
+                        the_row.append(dd)
 
-                    # print(the_row)
+                    # the_row = [
+                    #     r.get_subfields('3')[0],
+                    #     r.get_subfields('0')[0],
+                    #     r.get_subfields('a')[0],
+                    #     r.get_subfields('p')[0]
+                    # ]
+
+                    print(the_row)
 
                     the_row.insert(0, str(abib))
 
