@@ -1,6 +1,5 @@
 import ASFunctions as asf
 from pymarc import MARCReader
-# import requests
 import os
 import json
 from pprint import pprint
