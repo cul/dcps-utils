@@ -1,11 +1,12 @@
 import ASFunctions as asf
-# from pymarc import MARCReader
+from pymarc import MARCReader
 # import requests
 import os
 import json
 from pprint import pprint
 from sheetFeeder import dataSheet
 import dcps_utils as util
+import csv
 
 
 def main():
@@ -24,22 +25,67 @@ def main():
     marc_sheet = dataSheet(
         sheet_id, 'marc!A:Z')
 
-    # Get a list of bibids from the Marc tab.
-    the_bibids = marc_sheet.getDataColumns()[0]
-    the_bibids.pop(0)
-    the_bibids = list(set(the_bibids))
+    the_bibids = []
+    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv'
+
+    the_bibs = open(aCSV)
+    for row in csv.reader(the_bibs):
+        the_bibids.append(row[0])
+    the_bibs.close()
+
     # print(the_bibids)
 
+    ### MARC ###
+
+    # Read the MARC
+
+    the_heads = ['bibid', 'display_string', '876$0', '876$a', '876$p']
+    the_rows = [the_heads]
+
+    for abib in the_bibids:
+        print('Getting MARC for ' + str(abib))
+
+        marc_path = os.path.join(my_path, 'output/marc/' + str(abib) + '.marc')
+
+        with open(marc_path, 'rb') as fh:
+            reader = MARCReader(fh)
+            for record in reader:
+                the_099 = record.get_fields('099')
+                the_bibid = the_099[0].get_subfields('a')[0]
+                the_876s = record.get_fields('876')
+
+                for r in the_876s:
+                    # Need to specify order of subfields explicitly
+                    the_row = [
+                        r.get_subfields('3')[0],
+                        r.get_subfields('0')[0],
+                        r.get_subfields('a')[0],
+                        r.get_subfields('p')[0]
+                    ]
+
+                    # print(the_row)
+
+                    the_row.insert(0, str(abib))
+
+                    the_rows.append(the_row)
+
+    # Write results to google sheet
+    marc_sheet.clear()
+    x = marc_sheet.appendData(the_rows)
+    print(x)
+
+    quit()
+
+    ###
     #### TOP CONTAINERS ####
+    container_sheet.clear()
 
     the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
     the_rows = [the_heads]
 
-    lookup_csv = os.path.join(my_path, 'id_lookup_prod.csv')
-    for abib in bibids:
-
-        # Get repo and asid from bibid
-        repo, asid = asf.lookupByBibID(abib, lookup_csv)
+    for id in the_ids:
+        repo = id[0]
+        asid = id[1]
 
         print('Getting top containers for ' + str(repo) + ':' + str(asid))
 
@@ -88,6 +134,12 @@ def main():
     container_sheet.clear()
     z = container_sheet.appendData(the_rows)
     print(z)
+
+
+def get_clio_marc(bibid):
+    url = 'https://clio.columbia.edu/catalog/' + str(bibid) + '.marc'
+    response = requests.get(url)
+    return response.content
 
 
 if __name__ == "__main__":

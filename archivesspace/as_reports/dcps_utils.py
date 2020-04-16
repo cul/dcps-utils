@@ -2,6 +2,7 @@ import subprocess
 from configparser import ConfigParser
 import os
 import pickle
+import requests
 
 
 my_path = os.path.dirname(__file__)
@@ -151,3 +152,15 @@ def unpickle_it(path):
     with open(path, "rb") as f:
         output = pickle.load(f)
     return output
+
+
+def get_clio_marc(bibid):
+    url = 'https://clio.columbia.edu/catalog/' + str(bibid) + '.marc'
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except Exception as err:
+        print('*** get_clio_marc request error: ' + str(err))
+    else:
+        # If the response was successful, no exception will be raised
+        return response.content
