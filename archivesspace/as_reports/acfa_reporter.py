@@ -13,7 +13,6 @@ import subprocess
 
 def main():
 
-
     asf.setServer('Prod')  # AS instance: Prod | Dev | Test
 
     mode = 'Prod'  # Prod or Test
@@ -34,7 +33,7 @@ def main():
     ########################
 
     # Set path to Saxon processor
-    saxon_path = os.path.join(my_path, "../resources/saxon-9.8.0.12-he.jar")
+    saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
 
     # XSLT file to generate report
     marc_xslt_file = os.path.join(my_path, 'marcDataExtract.xsl')
@@ -150,7 +149,6 @@ def main():
 
         the_heads = ['repo', 'asid', 'title', 'identifier',
                      'create_time', 'system_mtime', 'last_modified_by', 'publish']
-
 
         the_modifieds = []
 
