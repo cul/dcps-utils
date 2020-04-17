@@ -9,6 +9,7 @@ from datetime import datetime, date, timedelta
 import re
 import os.path
 import subprocess
+import dcps_utils as util
 
 
 def main():
@@ -66,7 +67,7 @@ def main():
     the_sheets['oai_last'].clear()
     the_sheets['oai_last'].appendData(the_old_data)
     # Process OAI MARC and output to CSV
-    saxon_process(saxon_path, oai_file, marc_xslt_file, the_outpath)
+    util.saxon_process(saxon_path, oai_file, marc_xslt_file, the_outpath)
 
     # clear data from "new" sheet
     the_sheets['oai'].clear()
@@ -215,19 +216,6 @@ def get_repo(repo_id):
     else:
         repo = '-'
     return repo
-
-
-def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=' '):
-    cmd = 'java -jar ' + saxonPath + ' ' + inFile + ' ' + transformFile + ' ' + \
-        theParams + ' ' + '--suppressXsltNamespaceCheck:on' + ' > ' + outFile
-    print(cmd)
-    p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    result = p.communicate()
-    if result[1]:  # error
-        return 'SAXON ERROR: ' + str(result[1].decode('utf-8'))
-    else:
-        return result[0].decode('utf-8')
 
 
 def diff(first, second):

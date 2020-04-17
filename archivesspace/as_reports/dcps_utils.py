@@ -164,3 +164,9 @@ def get_clio_marc(bibid):
     else:
         # If the response was successful, no exception will be raised
         return response.content
+
+
+def diff(first, second):
+    # Return list of x - y (everything in x that is not in y). Reverse order to get inverse diff.
+    second = set(second)
+    return [item for item in first if item not in second]
