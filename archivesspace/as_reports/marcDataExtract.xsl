@@ -32,7 +32,7 @@
     <xsl:template match="record">
         <!-- BIBID       -->
         <xsl:value-of
-            select="metadata/marc:collection/marc:record/marc:datafield[@tag='099']/marc:subfield[@code='a']"/>
+            select="normalize-space(metadata/marc:collection/marc:record/marc:datafield[@tag='099']/marc:subfield[@code='a'])"/>
         
         <xsl:value-of select="$delim1"/>
         <!-- REPO       -->
@@ -43,13 +43,13 @@
 
         <!-- CALL NO       -->
         <xsl:value-of
-            select="metadata/marc:collection/marc:record/marc:datafield[@tag='852']/marc:subfield[@code='j']"/>
+            select="normalize-space(metadata/marc:collection/marc:record/marc:datafield[@tag='852']/marc:subfield[@code='j'])"/>
         
         <xsl:value-of select="$delim1"/>
         
         <!-- TITLE       -->
         <xsl:for-each select="metadata/marc:collection/marc:record/marc:datafield[@tag='245']/marc:subfield">
-            <xsl:value-of select="."/>
+            <xsl:value-of select="normalize-space(.)"/>
             <xsl:text> </xsl:text>
         </xsl:for-each>
         
@@ -58,11 +58,11 @@
 
 
         <!-- CREATOR       -->
-        <xsl:value-of select="metadata/marc:collection/marc:record/marc:datafield[@tag='100']/marc:subfield[@code='a']"/>
+        <xsl:value-of select="normalize-space(metadata/marc:collection/marc:record/marc:datafield[@tag='100']/marc:subfield[@code='a'])"/>
             <xsl:text> </xsl:text>
-        <xsl:value-of select="metadata/marc:collection/marc:record/marc:datafield[@tag='100']/marc:subfield[@code='q']"/>    
+        <xsl:value-of select="normalize-space(metadata/marc:collection/marc:record/marc:datafield[@tag='100']/marc:subfield[@code='q'])"/>    
         <xsl:text> </xsl:text>
-        <xsl:value-of select="metadata/marc:collection/marc:record/marc:datafield[@tag='100']/marc:subfield[@code='d']"/>
+        <xsl:value-of select="normalize-space(metadata/marc:collection/marc:record/marc:datafield[@tag='100']/marc:subfield[@code='d'])"/>
         
             
         <xsl:value-of select="$delim1"/>
@@ -96,7 +96,7 @@
         <!-- FA LINK       -->
         
         <xsl:value-of
-            select="metadata/marc:collection/marc:record/marc:datafield[@tag='856']/marc:subfield[@code='u']"/>
+            select="normalize-space(metadata/marc:collection/marc:record/marc:datafield[@tag='856']/marc:subfield[@code='u'])"/>
         
         
         <xsl:value-of select="$lf"/>
