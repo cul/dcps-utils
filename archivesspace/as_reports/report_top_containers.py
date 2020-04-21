@@ -28,7 +28,7 @@ def main():
     the_bibids = marc_sheet.getDataColumns()[0]
     the_bibids.pop(0)
     the_bibids = list(set(the_bibids))
-    # print(the_bibids)
+    print(the_bibids)
 
     #### TOP CONTAINERS ####
 
