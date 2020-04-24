@@ -31,15 +31,24 @@ def main():
 
     fromDate = yesterday
 
-    # Not using date, get all records and then filter with the XSLT!
-    date_params = ""
+    # # Not using date, get all records and then filter with the XSLT!
+    # date_params = ""
+
+    # Select date interval for harvest
+    # TODO: change this to be controlled by param file.
+    date_params = "-f " + yesterday
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
     util.oai_harvest(out_path_raw, server=server, date_params=date_params)
 
     # Process through XSLT
+
+    # TODO: change xsl to not require this param, if we are doing it in the harvest!
+    time_offset = 'P800DT30H'
+
     saxon_params = " time_offset=" + time_offset
+
     print("Processing file with XSLT...")
     x = util.saxon_process(saxon_path, out_path_raw,
                            xslt_path, out_path_clean, theParams=saxon_params)
