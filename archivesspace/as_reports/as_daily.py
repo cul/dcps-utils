@@ -24,6 +24,8 @@ def main():
     # saxon_path = os.path.join(my_path, "../resources/saxon-9.8.0.12-he.jar")  # test
 
     out_path_raw = os.path.join(destination_folder, today + ".asRaw.xml")
+    out_path_raw_all = os.path.join(
+        destination_folder, today + ".asAllRaw.xml")
     out_path_clean = os.path.join(destination_folder, today + ".asClean.xml")
 
     # Set server to Prod | Test | Dev
@@ -53,6 +55,10 @@ def main():
     x = util.saxon_process(saxon_path, out_path_raw,
                            xslt_path, out_path_clean, theParams=saxon_params)
     print(x)
+
+    print("Harvesting all records for reporting ...")
+    date_params = " "
+    util.oai_harvest(out_path_raw_all, server=server, date_params=date_params)
 
 
 if __name__ == "__main__":
