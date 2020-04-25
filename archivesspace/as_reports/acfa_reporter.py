@@ -44,7 +44,7 @@ def main():
         # source_dir='/cul/cul0/lito/libsys/voyager/prod/data/loads/AS_harvest'
         source_dir = '/cul/cul0/ldpd/archivesspace/oai'
         sheet_id = '198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY'
-        oai_file = source_dir + '/' + yest_str + '.asRaw.xml'
+        oai_file = source_dir + '/' + yest_str + '.asAllRaw.xml'
 
     else:  # TEST
         yest_str = "20190915"
