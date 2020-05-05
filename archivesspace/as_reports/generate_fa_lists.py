@@ -15,6 +15,8 @@ def main():
     storage_dir = "/cul/cul0/ldpd/archivesspace/"
 
     saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
+
+    # XSLT for transformation. Accepts a path in param in which to save the html snippet files.
     xsl_filename = 'generate_browse_list.xsl'
 
     xsl_path = os.path.join(my_path, xsl_filename)
@@ -26,7 +28,9 @@ def main():
 
     print("Input file: " + input_path)
 
+    # The location for the stylesheet to save output documents.
     output_path = storage_dir + "test"  # test
+    # output_path = storage_dir + "fa_lists"
 
     print("Output location: " + output_path)
 
