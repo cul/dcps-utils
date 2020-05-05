@@ -1,3 +1,5 @@
+# Script to generate html snippets of lists of published finding aids. Run daily on cron (ldpdapp). See ACFA-213.
+
 import dcps_utils as util
 import os
 from datetime import datetime, date, timedelta
@@ -17,15 +19,17 @@ def main():
 
     xsl_path = os.path.join(my_path, xsl_filename)
 
+    # Use the OAI file from previous day as source to generate lists.
     input_filename = yest_str + ".asAllRaw.xml"
 
     input_path = storage_dir + "oai/" + input_filename
 
-    # input_path = "/Users/dwh2128/Documents/ACFA/OAI_local/20200426/20200426.asAllRaw.xml"  # test
+    print("Input file: " + input_path)
 
     output_path = storage_dir + "test"  # test
 
-    print(output_path)
+    print("Output location: " + output_path)
+
     # output_path = os.path.join(my_path, 'output/fa_lists')  # test
 
     params = "output_dir=" + output_path
