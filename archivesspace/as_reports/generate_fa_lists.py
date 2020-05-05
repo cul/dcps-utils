@@ -29,8 +29,8 @@ def main():
     print("Input file: " + input_path)
 
     # The location for the stylesheet to save output documents.
-    output_path = storage_dir + "test"  # test
-    # output_path = storage_dir + "fa_lists"
+    output_path = storage_dir + "fa_lists"
+    # output_path = storage_dir + "test"  # test
 
     print("Output location: " + output_path)
 
