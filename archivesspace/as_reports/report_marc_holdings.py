@@ -25,7 +25,8 @@ def main():
         sheet_id, 'marc!A:Z')
 
     the_bibids = []
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
+    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_2.csv'
 
     the_bibs = open(aCSV)
     for row in csv.reader(the_bibs):
@@ -90,64 +91,64 @@ def main():
 
     quit()
 
-    ###
-    #### TOP CONTAINERS ####
-    container_sheet.clear()
+    # ###
+    # #### TOP CONTAINERS ####
+    # container_sheet.clear()
 
-    the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
-    the_rows = [the_heads]
+    # the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
+    # the_rows = [the_heads]
 
-    for id in the_ids:
-        repo = id[0]
-        asid = id[1]
+    # for id in the_ids:
+    #     repo = id[0]
+    #     asid = id[1]
 
-        print('Getting top containers for ' + str(repo) + ':' + str(asid))
+    #     print('Getting top containers for ' + str(repo) + ':' + str(asid))
 
-        the_query = '/repositories/' + \
-            str(repo) + '/resources/' + str(asid) + '/top_containers'
+    #     the_query = '/repositories/' + \
+    #         str(repo) + '/resources/' + str(asid) + '/top_containers'
 
-        # list of top containers
-        the_refs = json.loads(asf.getResponse(the_query))
+    #     # list of top containers
+    #     the_refs = json.loads(asf.getResponse(the_query))
 
-        cnt = 0
-        for r in the_refs:
-            cnt += 1
-            print(cnt)
-            try:
-                tc = json.loads(asf.getResponse(r['ref']))
-                # print(tc)
+    #     cnt = 0
+    #     for r in the_refs:
+    #         cnt += 1
+    #         print(cnt)
+    #         try:
+    #             tc = json.loads(asf.getResponse(r['ref']))
+    #             # print(tc)
 
-                try:
-                    bibid = tc['collection'][0]['identifier']
-                except:
-                    bibid = ''
-                try:
-                    resource = tc['collection'][0]['ref']
-                except:
-                    resource = ''
-                try:
-                    uri = tc['uri']
-                except:
-                    uri = ''
-                try:
-                    type = tc['type']
-                except:
-                    type = ''
-                try:
-                    display_string = tc['display_string']
-                except:
-                    display_string = ''
+    #             try:
+    #                 bibid = tc['collection'][0]['identifier']
+    #             except:
+    #                 bibid = ''
+    #             try:
+    #                 resource = tc['collection'][0]['ref']
+    #             except:
+    #                 resource = ''
+    #             try:
+    #                 uri = tc['uri']
+    #             except:
+    #                 uri = ''
+    #             try:
+    #                 type = tc['type']
+    #             except:
+    #                 type = ''
+    #             try:
+    #                 display_string = tc['display_string']
+    #             except:
+    #                 display_string = ''
 
-                a_row = [bibid, resource, uri, type, display_string]
-                # print(a_row)
-                the_rows.append(a_row)
-            except:
-                print(r)
+    #             a_row = [bibid, resource, uri, type, display_string]
+    #             # print(a_row)
+    #             the_rows.append(a_row)
+    #         except:
+    #             print(r)
 
-    # Write results to google sheet
-    container_sheet.clear()
-    z = container_sheet.appendData(the_rows)
-    print(z)
+    # # Write results to google sheet
+    # container_sheet.clear()
+    # z = container_sheet.appendData(the_rows)
+    # print(z)
 
 
 def get_clio_marc(bibid):

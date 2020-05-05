@@ -56,6 +56,7 @@ def oai_harvest(
 
 
 def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
+    # Process an XSLT transformation. Use None for outFile to send to stdout.
     if outFile:
         outStr = " > " + outFile
     else:
