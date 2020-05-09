@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to extract a list of records from the nightly OAI harvest "delta" file, and push the results to /cul/cul0/ldpd/archivesspace/updates/ for consumption by the finding aid Web application.
+# Script to extract a list of records from the nightly OAI harvest "delta" file, and push the results to /cul/cul0/ldpd/archivesspace/updates/ for consumption by the finding aid Web application. 
 
 
 SCRIPTNAME=`basename "$0"`
