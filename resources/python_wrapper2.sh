@@ -143,6 +143,6 @@ echo "" >> $log_file
 
 if [ $REP=true ]; then
     mail -r $mail_from -s "$subject" $mail_to < $log_file
-
+fi
 
 
