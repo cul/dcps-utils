@@ -142,7 +142,7 @@ echo Script execution complete at $(date +"%T"). >> $log_file
 
 echo "" >> $log_file
 
-if [ $REP=true ]; then
+if $REP ; then
     mail -r $mail_from -s "$subject" $mail_to < $log_file
 fi
 
