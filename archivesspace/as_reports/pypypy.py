@@ -22,12 +22,12 @@ logging.basicConfig(level=logging.ERROR)
 
 asf.setServer('Prod')
 
-print('THIS IS A TEST -- IGNORE!')
+# print('THIS IS A TEST -- IGNORE!')
 
-print(' ')
+# print(' ')
 
 
-print('testing google sheet api...)
+# print('testing google sheet api...')
 
 # The ID and range of a sample spreadsheet.
 the_sheet = dataSheet(
@@ -35,6 +35,7 @@ the_sheet = dataSheet(
 # the_sheet = dataSheet('1YzM1oTUirAoA2hHBfnhSM1PsPt8TkwTT9KlgQ','Sheet1!A:Z')
 
 
+quit()
 print(the_sheet.getData())
 
 print(' ')
@@ -60,4 +61,3 @@ x = asf.getResource(2, 5907)
 print("This is a test!")
 
 print("Yes it worked...")
-
