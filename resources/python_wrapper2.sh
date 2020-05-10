@@ -11,8 +11,11 @@
 
 # Generalizable option handler
 
-while getopts ":tph" opt; do
+while getopts ":stph" opt; do
   case ${opt} in
+    s ) # process option s
+    myOpt=silentMode
+      ;;
     t ) # process option t
     myOpt=testMode
       ;;
@@ -23,7 +26,7 @@ while getopts ":tph" opt; do
     myOpt=helpMe
     # echo "Help me!"
       ;;
-    \? ) echo "Usage: cmd [-t] [-h] [-p] <python script path>"
+    \? ) echo "Usage: cmd [-s] [-t] [-h] [-p] <python script path>"
     ;;
       
   esac
@@ -33,14 +36,24 @@ done
 shift $((OPTIND -1))
 
 # emails for production use -- may be overridden by -t flag
-mail_from=asops@library.columbia.edu
-mail_to=asops@library.columbia.edu
+# mail_from=asops@library.columbia.edu
+# mail_to=asops@library.columbia.edu
+mail_from=dwh2128@columbia.edu
+mail_to=dwh2128@columbia.edu
 
+REP=true
 
 case "$myOpt" in 
 
+        silentMode) 
+                # Only send notification in case of error
+                echo "(Silent Mode)"
+                $REP=false
+                        ;;
+
         testMode) 
                 # Switch to test mode (don't send notifications to alias)
+                echo "(Test Mode)"
                 mail_from=dwh2128@columbia.edu
                 mail_to=dwh2128@columbia.edu
                         ;;
@@ -53,6 +66,7 @@ case "$myOpt" in
                 echo "Usage: cmd [-t] [-h] <python script path>"
 
 esac
+
 
 
 function python_exec()
