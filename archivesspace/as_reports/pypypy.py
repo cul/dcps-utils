@@ -27,11 +27,11 @@ print('THIS IS A TEST -- IGNORE!')
 print(' ')
 
 
-
-print('testing google sheet api...')
+print('testing google sheet api...)
 
 # The ID and range of a sample spreadsheet.
-the_sheet = dataSheet('1YzM1dinagfoTUirAoA2hHBfnhSM1PsPt8TkwTT9KlgQ','Sheet1!A:Z')
+the_sheet = dataSheet(
+    '1YzM1dinagfoTUirAoA2hHBfnhSM1PsPt8TkwTT9KlgQ', 'Sheet1!A:Z')
 # the_sheet = dataSheet('1YzM1oTUirAoA2hHBfnhSM1PsPt8TkwTT9KlgQ','Sheet1!A:Z')
 
 
@@ -45,7 +45,7 @@ print(x)
 
 print(' ')
 
-x = the_sheet.lookup('4079432',0, 1)
+x = the_sheet.lookup('4079432', 0, 1)
 
 print(x)
 
@@ -53,13 +53,11 @@ print(' ')
 
 print('testing archivesspace api...')
 
-x = asf.getResource(2,5907)
+x = asf.getResource(2, 5907)
 
 # pprint(x)
 
 print("This is a test!")
 
 print("Yes it worked...")
-
-
 
