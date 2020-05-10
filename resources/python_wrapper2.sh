@@ -48,7 +48,7 @@ case "$myOpt" in
         silentMode) 
                 # Only send notification in case of error
                 echo "(Silent Mode)"
-                $REP=false
+                REP=false
                         ;;
 
         testMode) 
