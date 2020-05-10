@@ -121,7 +121,7 @@ if $PYTHON_ERROR; then
     REP=true
     subject="ERROR: ${py_script_name} encountered a problem!"
     echo "$STDERR" &>> $log_file
-elif $STDOUT; then
+elif [ -n "$STDOUT" ] ; then
     REP=true
     subject="${py_script_name} is done."
     echo "$STDOUT" &>> $log_file
