@@ -127,6 +127,7 @@ elif [ -n "$STDOUT" ] ; then
     echo "$STDOUT" &>> $log_file
 else
     REP=false
+    subject="${py_script_name} NO OUTPUT."
     echo "(No script output)"  &>> $log_file
 fi
 
