@@ -11,10 +11,26 @@
 
 # Generalizable option handler
 
-while getopts ":tph" opt; do
+NOTIFICATION=true # report will be sent in notificaiton email
+# emails for production use -- may be overridden by -t flag
+mail_from=asops@library.columbia.edu
+mail_to=asops@library.columbia.edu
+# mail_from=dwh2128@columbia.edu  # test
+# mail_to=dwh2128@columbia.edu # test
+
+
+while getopts ":stph" opt; do
   case ${opt} in
+    s ) # process option s
+    # Run in silent mode (no notifications unless error)
+    echo "(Silent Mode)"
+    NOTIFICATION=false
+      ;;
     t ) # process option t
-    myOpt=testMode
+    # Switch to test mode (don't send notifications to alias)
+    echo "(Test Mode)"
+    mail_from=dwh2128@columbia.edu
+    mail_to=dwh2128@columbia.edu
       ;;
     p ) # process option p
     myOpt=productionMode
@@ -22,8 +38,9 @@ while getopts ":tph" opt; do
     h ) # process option h
     myOpt=helpMe
     # echo "Help me!"
+    echo "Usage: cmd [-s] [-t] [-h] [-p] <python script path>"
       ;;
-    \? ) echo "Usage: cmd [-t] [-h] [-p] <python script path>"
+    \? ) echo "Usage: cmd [-s] [-t] [-h] [-p] <python script path>"
     ;;
       
   esac
@@ -32,27 +49,6 @@ done
 # Shift args so filename will be $1 with or without flags
 shift $((OPTIND -1))
 
-# emails for production use -- may be overridden by -t flag
-mail_from=asops@library.columbia.edu
-mail_to=asops@library.columbia.edu
-
-
-case "$myOpt" in 
-
-        testMode) 
-                # Switch to test mode (don't send notifications to alias)
-                mail_from=dwh2128@columbia.edu
-                mail_to=dwh2128@columbia.edu
-                        ;;
-        productionMode) 
-                # Switch to production mode (don't send notifications to alias)
-                # Options already set by default; don't do anything.
-                        ;;
-        helpMe) 
-                # process URL grep
-                echo "Usage: cmd [-t] [-h] <python script path>"
-
-esac
 
 
 function python_exec()
@@ -118,11 +114,15 @@ python_exec $py_script
 
 # Check if there were errors, and set the subject line accordingly
 if $PYTHON_ERROR; then
+    NOTIFICATION=true
     subject="ERROR: ${py_script_name} encountered a problem!"
     echo "$STDERR" &>> $log_file
-else
+elif [ -n "$STDOUT" ] ; then
     subject="${py_script_name} is done."
     echo "$STDOUT" &>> $log_file
+else
+    subject="${py_script_name} NO OUTPUT."
+    echo "(No script output)"  &>> $log_file
 fi
 
 echo "===================" >> $log_file
@@ -136,8 +136,8 @@ echo Script execution complete at $(date +"%T"). >> $log_file
 
 echo "" >> $log_file
 
-
-mail -r $mail_from -s "$subject" $mail_to < $log_file
-
+if [ "$NOTIFICATION" = true ] ; then
+    mail -r $mail_from -s "$subject" $mail_to < $log_file
+fi
 
 

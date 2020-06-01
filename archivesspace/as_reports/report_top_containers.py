@@ -37,7 +37,7 @@ def main():
 
     lookup_csv = os.path.join(my_path, 'id_lookup_prod.csv')
     for abib in the_bibids:
-
+        print(abib)
         # Get repo and asid from bibid
         repo, asid = asf.lookupByBibID(abib, lookup_csv)
 
