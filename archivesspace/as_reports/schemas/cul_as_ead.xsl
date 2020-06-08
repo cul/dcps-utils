@@ -7,6 +7,8 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
+    <!-- This stylesheet audits EAD files for DACS compliance and other issues and returns errors/warnings in the message output stream. It replicates the deprecated CUL schematron, making use of some XSLT abilities not available in Schematron. The stylesheet is called by the validate_as_eads.py script as part of daily reporting on finding aid data from ArchivesSpace. 2020-06-05 dwh2128.   -->
+    
     <xsl:output method="text" indent="no"/>
     
     <xsl:template match ='ead'>
@@ -30,7 +32,8 @@
         
   
             <xsl:if test="not(matches(.,'^https?://(vocab\.getty\.edu/page/aat/\S+\d+|id\.worldcat\.org/fast/\S+\d+|id\.loc\.gov/authorities/names/\S+\d+|id\.loc\.gov/authorities/subjects/\S+\d+|id\.loc\.gov/authorities/genreForms/\S+\d+|id\.loc\.gov/vocabulary/countries/\w+|id\.loc\.gov/entities/providers/[\da-z]+)$'))">
-
+                   
+   
                        <xsl:call-template name="errorMsg">
                            <xsl:with-param name="tag">authorities</xsl:with-param>
                            <xsl:with-param name="errStr">@authfilenumber '<xsl:value-of select="."/>' is not correctly formed. </xsl:with-param>
