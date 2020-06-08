@@ -32,12 +32,13 @@ def main():
 
     #### TOP CONTAINERS ####
 
-    the_heads = ['bibid', 'resource', 'uri', 'type', 'display_string']
+    the_heads = ['bibid', 'resource', 'uri',
+                 'type', 'display_string', 'concat']
     the_rows = [the_heads]
 
     lookup_csv = os.path.join(my_path, 'id_lookup_prod.csv')
     for abib in the_bibids:
-
+        print(abib)
         # Get repo and asid from bibid
         repo, asid = asf.lookupByBibID(abib, lookup_csv)
 
@@ -77,8 +78,15 @@ def main():
                     display_string = tc['display_string']
                 except:
                     display_string = ''
+                try:
+                    concat_str = str(
+                        uri.split('/')[4]) + ': ' + tc['display_string']
 
-                a_row = [bibid, resource, uri, type, display_string]
+                except:
+                    concat_str = 'x'
+
+                a_row = [bibid, resource, uri, type,
+                         display_string, concat_str]
                 # print(a_row)
                 the_rows.append(a_row)
             except:

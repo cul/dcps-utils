@@ -17,15 +17,13 @@ my_path = os.path.dirname(__file__)
 
 the_bibids = []
 
-aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/bibids_by_aeon_rank.csv'
+aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/bibids_by_aeon_rank_3.csv'
 
 the_bibs = open(aCSV)
 for row in csv.reader(the_bibs):
     the_bibids.append(row[0])
 the_bibs.close()
 
-
-quit()
 
 for abib in the_bibids:
     print(abib)
@@ -42,4 +40,3 @@ for abib in the_bibids:
             f.write(x)
 
         time.sleep(10)
-

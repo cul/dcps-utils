@@ -26,7 +26,9 @@ def main():
 
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_2.csv'
+    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_4.csv'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
 
     the_bibs = open(aCSV)
     for row in csv.reader(the_bibs):
@@ -50,41 +52,48 @@ def main():
         with open(marc_path, 'rb') as fh:
             reader = MARCReader(fh)
             for record in reader:
-                the_099 = record.get_fields('099')
-                the_bibid = the_099[0].get_subfields('a')[0]
-                the_876s = record.get_fields('876')
+                # Find out if there is more than one holding; if there is, we cannot use it to automatically match top containers by name and will skip.
+                the_852s = record.get_fields('852')
+                if len(the_852s) > 1:
+                    print("More than one holding record (" +
+                          str(len(the_852s)) + "). Skipping.")
+                else:
+                    the_099 = record.get_fields('099')
+                    the_bibid = the_099[0].get_subfields('a')[0]
+                    the_876s = record.get_fields('876')
 
-                print(len(the_876s))
-                for r in the_876s:
-                    # Need to specify order of subfields explicitly
-                    the_876_data = [
-                        r.get_subfields('3'),
-                        r.get_subfields('0'),
-                        r.get_subfields('a'),
-                        r.get_subfields('p')
-                    ]
-                    the_row = []
-                    for d in the_876_data:
-                        try:
-                            dd = d[0]
-                        except:
-                            dd = ""
-                        the_row.append(dd)
+                    print(len(the_876s))
+                    for r in the_876s:
+                        # Need to specify order of subfields explicitly
+                        the_876_data = [
+                            r.get_subfields('3'),
+                            r.get_subfields('0'),
+                            r.get_subfields('a'),
+                            r.get_subfields('p')
+                        ]
+                        the_row = []
+                        for d in the_876_data:
+                            try:
+                                dd = d[0]
+                            except:
+                                dd = ""
+                            the_row.append(dd)
 
-                    # the_row = [
-                    #     r.get_subfields('3')[0],
-                    #     r.get_subfields('0')[0],
-                    #     r.get_subfields('a')[0],
-                    #     r.get_subfields('p')[0]
-                    # ]
+                        # the_row = [
+                        #     r.get_subfields('3')[0],
+                        #     r.get_subfields('0')[0],
+                        #     r.get_subfields('a')[0],
+                        #     r.get_subfields('p')[0]
+                        # ]
 
-                    print(the_row)
+                        # print(the_row)
 
-                    the_row.insert(0, str(abib))
+                        the_row.insert(0, str(abib))
 
-                    the_rows.append(the_row)
+                        the_rows.append(the_row)
 
     # Write results to google sheet
+
     marc_sheet.clear()
     x = marc_sheet.appendData(the_rows)
     print(x)

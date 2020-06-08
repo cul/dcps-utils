@@ -89,6 +89,55 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
+def saxon_process2(saxonPath, inFile, transformFile, outFile, theParams=" "):
+    # TODO: Test error parsing.
+    # Process an XSLT transformation. Use None for outFile to send to stdout.
+    if outFile:
+        outStr = " > " + outFile
+    else:
+        outStr = " "
+    cmd = (
+        "java -jar "
+        + saxonPath
+        + " "
+        + inFile
+        + " "
+        + transformFile
+        + " "
+        + theParams
+        + " "
+        + "--suppressXsltNamespaceCheck:on"
+        + outStr
+    )
+    # print(cmd)
+    p = subprocess.Popen(
+        [cmd],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        shell=True,
+    )
+    result = p.communicate()
+    if result[1]:
+        if "error" in str(result[1].decode("utf-8")).lower():
+            # error
+            raise Exception("SAXON ERROR: " + str(result[1].decode("utf-8")))
+        elif "does not exist" in str(result[1].decode("utf-8")).lower():
+            # error
+            raise Exception("SAXON ERROR: " + str(result[1].decode("utf-8")))
+        elif "java.io" in str(result[1].decode("utf-8")).lower():
+            # error
+            raise Exception("SAXON ERROR: " + str(result[1].decode("utf-8")))
+        elif "permission denied" in str(result[1].decode("utf-8")).lower():
+            # error
+            raise Exception("SAXON ERROR: " + str(result[1].decode("utf-8")))
+        else:
+            # non-error output
+            return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
+    else:
+        return result[0].decode("utf-8")
+
+
 def jing_process(jingPath, filePath, schemaPath):
     # Process an xml file against a schema (rng or schematron) using Jing.
     # Tested with jing-20091111.

@@ -76,8 +76,8 @@ saxon_jar=/opt/dcps/resources/saxon-9.8.0.12-he.jar
 # delta_in_file=${today}.asRaw.xml
 delta_in_file=${today}.asClean.xml
 delta_out_file=${today}.asDeltaIDs.csv
-# all_in_file=${today}.asAllRaw.xml
-all_in_file=${today}.asRaw.xml
+all_in_file=${today}.asAllRaw.xml
+# all_in_file=${today}.asRaw.xml
 all_out_file=id_lookup_prod.csv
 
 log_file=$reports_dir/${SCRIPTNAME}_log.txt
@@ -97,7 +97,6 @@ echo Saving XML output to $delta_output_dir/$out_file. >> $log_file
 echo " " >> $log_file
 
 
-### NOTE: Commenting this out for now as there is no longer an "allRaw" file to read from.
 
 echo Generating new lookup table at $SCRIPTPATH/$all_out_file ... >> $log_file
 echo " " >> $log_file

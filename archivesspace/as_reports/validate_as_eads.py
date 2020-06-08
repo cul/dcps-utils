@@ -80,6 +80,7 @@ def main():
 
     # the_data_sheet = dataSheet(
     #     '1tQY9kR5YOh1e7i4dVRsl_GMxpNnUgCkb5X8qJQBAsG0', 'test!A:Z')  # Test
+
     # This is a dupe for other reporting
     the_data_sheet2 = dataSheet(
         "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
@@ -91,9 +92,9 @@ def main():
     jing_path = os.path.join(
         my_path, "../../resources/jing-20091111/bin/jing.jar")
 
-    schema_filename = "cul_as_ead.rng"
-    # schematron_filename = "cul_as_ead.sch"
-    xslt_filename = "cul_as_ead.xsl"
+    schema_filename = "schemas/cul_as_ead.rng"
+    # schematron_filename = "schemas/cul_as_ead.sch"
+    xslt_filename = "schemas/cul_as_ead.xsl"
     schema_path = os.path.join(my_path, schema_filename)
     xslt_path = os.path.join(my_path, xslt_filename)
 

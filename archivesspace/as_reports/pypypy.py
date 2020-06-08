@@ -9,6 +9,7 @@ import datetime
 import re
 import os
 import logging
+import dcps_utils as util
 
 
 logging.basicConfig(level=logging.ERROR)
@@ -19,6 +20,12 @@ logging.basicConfig(level=logging.ERROR)
 # logging.warning('¥¥¥¥¥¥ This is a warning message')
 # logging.error('¥¥¥¥¥¥ This is an error message')
 # logging.critical('¥¥¥¥¥¥ This is a critical message')
+
+
+my_name = __file__
+
+# This makes sure the script can be run from any working directory and still find related files.
+my_path = os.path.dirname(__file__)
 
 asf.setServer('Prod')
 
@@ -55,9 +62,20 @@ print('testing archivesspace api...')
 
 x = asf.getResource(2, 5907)
 
-# pprint(x)
+print(x)
+
+print(' ')
+
+print("testing saxon ...")
+
+saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
+source_dir = '/cul/cul0/ldpd/archivesspace/oai'
+in_file = os.path.join(source_dir, '20200510.asClean.xml')
+xsl_file = os.path.join(my_path, 'extract-bibids.xsl')
+params = 'filename=' + in_file
+x = util.saxon_process2(saxon_path, in_file, xsl_file, None, theParams=params)
+print(x)
 
 print("This is a test!")
 
 print("Yes it worked...")
-
