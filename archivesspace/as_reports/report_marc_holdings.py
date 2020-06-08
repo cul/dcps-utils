@@ -27,7 +27,10 @@ def main():
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
     aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_4.csv'
+<<<<<<< HEAD
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
+=======
+>>>>>>> 5f3961a2408ff4a256fda0e61b009b2f4d4491f3
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
 
     the_bibs = open(aCSV)
