@@ -80,7 +80,7 @@ def main():
                     display_string = ''
                 try:
                     concat_str = str(
-                        uri.split('/')[4]) + ': ' + tc['display_string']
+                        tc['display_string'] + ' (' + uri.split('/')[4]) + ')'
 
                 except:
                     concat_str = 'x'
