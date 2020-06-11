@@ -72,8 +72,8 @@ for a_row in the_data:
             # convert back to json for post
             z = json.dumps(y)
 
-            # post = asf.postTopContainer(repo, asid, z)
-            # print(post)
+            post = asf.postTopContainer(repo, asid, z)
+            print(post)
 
     else:
         print("Skipping " + str(a_row[0]) + "...")
