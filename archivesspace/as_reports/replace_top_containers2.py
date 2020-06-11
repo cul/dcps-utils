@@ -8,7 +8,7 @@ import csv
 import datetime
 
 
-asf.setServer('Test')
+asf.setServer('Prod')
 
 my_name = __file__
 
