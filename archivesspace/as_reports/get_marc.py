@@ -17,11 +17,8 @@ my_path = os.path.dirname(__file__)
 
 the_bibids = []
 
-<<<<<<< HEAD
-aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/bibids_by_aeon_rank_3.csv'
-=======
-aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/bibids_by_aeon_rank_2b.csv'
->>>>>>> 5f3961a2408ff4a256fda0e61b009b2f4d4491f3
+# aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/bibids_by_aeon_rank_4.csv'
+aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/test.csv'
 
 the_bibs = open(aCSV)
 for row in csv.reader(the_bibs):

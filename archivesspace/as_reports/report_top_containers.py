@@ -25,7 +25,8 @@ def main():
         sheet_id, 'marc!A:Z')
 
     # Get a list of bibids from the Marc tab.
-    the_bibids = marc_sheet.getDataColumns()[0]
+    # the_bibids = marc_sheet.getDataColumns()[0]
+    the_bibids = marc_sheet.getDataColumns()[1]
     the_bibids.pop(0)
     the_bibids = list(set(the_bibids))
     print(the_bibids)

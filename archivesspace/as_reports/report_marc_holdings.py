@@ -26,11 +26,8 @@ def main():
 
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_4.csv'
-<<<<<<< HEAD
+    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_5.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
-=======
->>>>>>> 5f3961a2408ff4a256fda0e61b009b2f4d4491f3
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
 
     the_bibs = open(aCSV)
@@ -44,8 +41,11 @@ def main():
 
     # Read the MARC
 
-    the_heads = ['bibid', 'display_string', '876$0', '876$a', '876$p']
+    the_heads = ['CONCAT', 'bibid',
+                 'display_string', '876$0', '876$a', '876$p']
     the_rows = [the_heads]
+
+    row_cnt = 2
 
     for abib in the_bibids:
         print('Getting MARC for ' + str(abib))
@@ -93,7 +93,13 @@ def main():
 
                         the_row.insert(0, str(abib))
 
+                        # concat_str = '=B' + \
+                        #     str(row_cnt) + ' & ": " & C' + str(row_cnt)
+                        concat_str = str(abib) + ": " + str(the_row[1])
+                        the_row.insert(0, concat_str)
+
                         the_rows.append(the_row)
+                        row_cnt += 1  # increment row num used in CONCAT
 
     # Write results to google sheet
 
