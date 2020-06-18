@@ -47,11 +47,10 @@ for a_row in the_data:
             tc = a_row[2]
             repo = tc.split('/')[2]
             asid = tc.split('/')[4]
-            if a_row[10]:
+            if a_row[11]:
                 # there is a manual insertion
-                ils_holding_id = a_row[11]
-                ils_item_id = a_row[12]
-                barcode = a_row[13]
+                ils_holding_id = a_row[12]
+                ils_item_id = a_row[13]
             else:
                 ils_holding_id = a_row[7]
                 ils_item_id = a_row[8]
