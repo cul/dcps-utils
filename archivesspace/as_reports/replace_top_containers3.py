@@ -51,6 +51,7 @@ for a_row in the_data:
                 # there is a manual insertion
                 ils_holding_id = a_row[12]
                 ils_item_id = a_row[13]
+                barcode = a_row[14]
             else:
                 ils_holding_id = a_row[7]
                 ils_item_id = a_row[8]
