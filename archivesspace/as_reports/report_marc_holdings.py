@@ -26,7 +26,7 @@ def main():
 
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_5.csv'
+    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_6.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
 
@@ -52,54 +52,58 @@ def main():
 
         marc_path = os.path.join(my_path, 'output/marc/' + str(abib) + '.marc')
 
-        with open(marc_path, 'rb') as fh:
-            reader = MARCReader(fh)
-            for record in reader:
-                # Find out if there is more than one holding; if there is, we cannot use it to automatically match top containers by name and will skip.
-                the_852s = record.get_fields('852')
-                if len(the_852s) > 1:
-                    print("More than one holding record (" +
-                          str(len(the_852s)) + "). Skipping.")
-                else:
-                    the_099 = record.get_fields('099')
-                    the_bibid = the_099[0].get_subfields('a')[0]
-                    the_876s = record.get_fields('876')
+        if os.path.exists(marc_path):
 
-                    print(len(the_876s))
-                    for r in the_876s:
-                        # Need to specify order of subfields explicitly
-                        the_876_data = [
-                            r.get_subfields('3'),
-                            r.get_subfields('0'),
-                            r.get_subfields('a'),
-                            r.get_subfields('p')
-                        ]
-                        the_row = []
-                        for d in the_876_data:
-                            try:
-                                dd = d[0]
-                            except:
-                                dd = ""
-                            the_row.append(dd)
+            with open(marc_path, 'rb') as fh:
+                reader = MARCReader(fh)
+                for record in reader:
+                    # Find out if there is more than one holding; if there is, we cannot use it to automatically match top containers by name and will skip.
+                    the_852s = record.get_fields('852')
+                    if len(the_852s) > 1:
+                        print("More than one holding record (" +
+                              str(len(the_852s)) + "). Skipping.")
+                    else:
+                        the_099 = record.get_fields('099')
+                        the_bibid = the_099[0].get_subfields('a')[0]
+                        the_876s = record.get_fields('876')
 
-                        # the_row = [
-                        #     r.get_subfields('3')[0],
-                        #     r.get_subfields('0')[0],
-                        #     r.get_subfields('a')[0],
-                        #     r.get_subfields('p')[0]
-                        # ]
+                        print(len(the_876s))
+                        for r in the_876s:
+                            # Need to specify order of subfields explicitly
+                            the_876_data = [
+                                r.get_subfields('3'),
+                                r.get_subfields('0'),
+                                r.get_subfields('a'),
+                                r.get_subfields('p')
+                            ]
+                            the_row = []
+                            for d in the_876_data:
+                                try:
+                                    dd = d[0]
+                                except:
+                                    dd = ""
+                                the_row.append(dd)
 
-                        # print(the_row)
+                            # the_row = [
+                            #     r.get_subfields('3')[0],
+                            #     r.get_subfields('0')[0],
+                            #     r.get_subfields('a')[0],
+                            #     r.get_subfields('p')[0]
+                            # ]
 
-                        the_row.insert(0, str(abib))
+                            # print(the_row)
 
-                        # concat_str = '=B' + \
-                        #     str(row_cnt) + ' & ": " & C' + str(row_cnt)
-                        concat_str = str(abib) + ": " + str(the_row[1])
-                        the_row.insert(0, concat_str)
+                            the_row.insert(0, str(abib))
 
-                        the_rows.append(the_row)
-                        row_cnt += 1  # increment row num used in CONCAT
+                            # concat_str = '=B' + \
+                            #     str(row_cnt) + ' & ": " & C' + str(row_cnt)
+                            concat_str = str(abib) + ": " + str(the_row[1])
+                            the_row.insert(0, concat_str)
+
+                            the_rows.append(the_row)
+                            row_cnt += 1  # increment row num used in CONCAT
+        else:
+            print("Could not find " + marc_path + "... skipping...")
 
     # Write results to google sheet
 

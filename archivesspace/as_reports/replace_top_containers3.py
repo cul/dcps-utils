@@ -36,12 +36,12 @@ container_location = {
     "ref": "/locations/2",
 }
 
-col_position = 10  # which column to look at for Y/N
+col_pos = 10  # which column to look at for Y/N
 
 
 for a_row in the_data:
-    if len(a_row) > col_position:
-        if a_row[col_position] == "Y":
+    if len(a_row) > col_pos:
+        if a_row[col_pos] == "Y":
             print("Yes")
             bibid = a_row[0]
             tc = a_row[2]
@@ -49,13 +49,13 @@ for a_row in the_data:
             asid = tc.split('/')[4]
             if a_row[11]:
                 # there is a manual insertion
-                ils_holding_id = a_row[12]
-                ils_item_id = a_row[13]
-                barcode = a_row[14]
+                ils_holding_id = a_row[col_pos + 2]
+                ils_item_id = a_row[col_pos + 3]
+                barcode = a_row[col_pos + 4]
             else:
-                ils_holding_id = a_row[7]
-                ils_item_id = a_row[8]
-                barcode = a_row[9]
+                ils_holding_id = a_row[col_pos - 3]
+                ils_item_id = a_row[col_pos - 2]
+                barcode = a_row[col_pos - 1]
 
             print(bibid)
             print(tc)
