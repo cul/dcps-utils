@@ -67,9 +67,10 @@ for s in the_subject_data:
     # print(the_row)
 
     # Handle subclassifications
-    the_terms = s['terms']
-    for t in the_terms:
-        the_row.append(t['term'] + ' [' + t['term_type'] + ']')
+    if 'terms' in s:
+        the_terms = s['terms']
+        for t in the_terms:
+            the_row.append(t['term'] + ' [' + t['term_type'] + ']')
 
     the_output.append(the_row)
 
