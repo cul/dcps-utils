@@ -68,8 +68,8 @@ the_fields = [
     ["authority_id", "names/0/authority_id"],
     ["is_linked_to_published_record", "is_linked_to_published_record"],
     ["publish", "publish"],
-    ["system_mtime", "last_modified"],
     ["last_modified_by", "last_modified_by"],
+    ["last_modified", "system_mtime"],
 ]
 
 
