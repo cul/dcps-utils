@@ -20,15 +20,15 @@ start_time = str(now1)
 end_time = ""  # set later
 
 
-#### First get the agent records from API (this can take a long time!)
+# First get the agent records from API (this can take a long time!)
 
 asf.setServer("Prod")  # AS instance: Prod | Dev | Test
 
 
 the_info = [
-    {"name": "families", "endpoint": "/agents/families",},
-    {"name": "corporate", "endpoint": "/agents/corporate_entities",},
-    {"name": "persons", "endpoint": "/agents/people",},
+    {"name": "families", "endpoint": "/agents/families", },
+    {"name": "corporate", "endpoint": "/agents/corporate_entities", },
+    {"name": "persons", "endpoint": "/agents/people", },
 ]
 
 for i in the_info:
@@ -58,7 +58,7 @@ for i in the_info:
     print(" ")
 
 
-### Report the saved data to Google Sheet
+# Report the saved data to Google Sheet
 
 # List of fields to extract, expressed as dpaths.
 the_fields = [
@@ -68,6 +68,8 @@ the_fields = [
     ["authority_id", "names/0/authority_id"],
     ["is_linked_to_published_record", "is_linked_to_published_record"],
     ["publish", "publish"],
+    ["system_mtime", "last_modified"],
+    ["last_modified_by", "last_modified_by"],
 ]
 
 
@@ -126,7 +128,7 @@ for i in the_stuff:
     print(save)
 
 
-### Generate log
+# Generate log
 
 print(the_record_cnts)
 print(" ".join(the_record_cnts))
@@ -175,4 +177,3 @@ print(
     + str(sheet_id)
     + "/edit?usp=sharing"
 )
-
