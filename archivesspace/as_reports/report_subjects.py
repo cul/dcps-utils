@@ -45,6 +45,8 @@ the_fields = [
     # ["vocabulary", "terms/0/vocabulary"],
     ["is_linked_to_published_record", "is_linked_to_published_record"],
     ["publish", "publish"],
+    ["last_modified_by", "last_modified_by"],
+    ["last_modified", "system_mtime"],
 ]
 
 # Read from the pickle into list.
