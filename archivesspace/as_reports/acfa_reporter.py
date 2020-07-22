@@ -10,6 +10,7 @@ import re
 import os.path
 import subprocess
 import dcps_utils as util
+import digester
 
 
 def main():
@@ -121,7 +122,10 @@ def main():
             the_unpublished.append(row)
         print('Repo ' + str(r) + ': ' + str(len(x)))
 
-    print('Total unpublished: ' + str(len(the_unpublished)))
+    # print('Total unpublished: ' + str(len(the_unpublished)))
+    msg = 'Total unpublished: ' + str(len(the_unpublished))
+    print(msg)
+    digester.post_digest(my_name, msg)  # Test
 
     unpubs_sheet.clear()
     unpubs_sheet.appendData([the_heads])
@@ -175,6 +179,9 @@ def main():
             print('Repo ' + str(r) + ': ' + str(len(x)))
 
         print('Total ' + d['filter'] + ': ' + str(len(the_modifieds)))
+
+        digester.post_digest(my_name, 'Total ' +
+                             d['filter'] + ': ' + str(len(the_modifieds)))  # Test
         # the_sheet.clear()
 
         # the_sheet.appendData([the_fields])
@@ -197,6 +204,8 @@ def main():
     print(' ')
 
     print(the_log)
+
+    digester.post_digest(my_name, the_log)  # Test
 
     print(' ')
 
