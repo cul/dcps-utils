@@ -9,6 +9,7 @@ from sheetFeeder import dataSheet
 import os.path
 from datetime import datetime, date, timedelta
 from shutil import make_archive, move, rmtree
+import digester  # for generating composite digest of report info.
 
 
 def main():
@@ -20,6 +21,7 @@ def main():
     asf.setServer("Prod")
 
     my_name = __file__
+    script_name = os.path.basename(my_name)
 
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
@@ -247,9 +249,13 @@ def main():
 
     the_sheets["cm"].clear()
     the_sheets["cm"].appendData(the_cms)
+    digester.post_digest(
+        script_name, "Total collection management records: " + str(len(the_cms) - 1))
 
     the_sheets["resources"].clear()
     the_sheets["resources"].appendData(the_output)
+    digester.post_digest(
+        script_name, "Total number of resource records: " + str(len(the_output) - 1))
 
     ########################
     ### FINISH UP ###
@@ -280,8 +286,10 @@ def main():
 
     print(" ")
 
-    print("Script done. Updated data is available at " +
-          the_sheets["resources"].url)
+    exit_msg = "Script done. Updated data is available at " + \
+        the_sheets["resources"].url
+    print(exit_msg)
+    digester.post_digest(script_name, exit_msg)
 
 
 # Functions go here.

@@ -18,6 +18,7 @@ def main():
     # 'low' = only parse/schema errors; 'high' = include schematron warnings
 
     my_name = __file__
+    script_name = os.path.basename(my_name)
 
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
@@ -148,7 +149,7 @@ def main():
             err_msg = icons["redx"] + " FATAL ERROR: " + \
                 file_name + " could not be parsed!"
             print(err_msg)
-            digester.post_digest(my_name, err_msg)
+            digester.post_digest(script_name, err_msg)
             wf_status = False
             validation_status = False
             parse_errors += 1
@@ -160,7 +161,7 @@ def main():
                 err_msg = icons["warning"] + " ERROR: " + \
                     file_name + " contains validation errors."
                 print(err_msg)
-                digester.post_digest(my_name, err_msg)
+                digester.post_digest(script_name, err_msg)
                 validation_errors += 1
             else:
                 validation_status = True
@@ -189,7 +190,7 @@ def main():
                     # Only show if required by reporting level var (use to filter out large numbers of warnings).
                     err_msg = "WARNING: " + file_name + " has Schematron rule violations."
                     print(err_msg)
-                    digester.post_digest(my_name, err_msg)
+                    digester.post_digest(script_name, err_msg)
                 sch_warnings += 1
 
             if schematron_result:
@@ -258,17 +259,19 @@ def main():
     # print(the_log)
 
     print("Parse errors: " + str(parse_errors))
-    digester.post_digest(my_name, "Parse errors: " + str(parse_errors))
+    digester.post_digest(script_name, "Parse errors: " + str(parse_errors))
     print("Schema errors: " + str(validation_errors))
-    digester.post_digest(my_name, "Schema errors: " + str(validation_errors))
+    digester.post_digest(script_name, "Schema errors: " +
+                         str(validation_errors))
     print("Schematron warnings: " + str(sch_warnings))
-    digester.post_digest(my_name, "Schematron warnings: " + str(sch_warnings))
+    digester.post_digest(
+        script_name, "Schematron warnings: " + str(sch_warnings))
 
     print(" ")
 
     exit_msg = "Script done. Check report sheet for more details: " + the_data_sheet.url
     print(exit_msg)
-    digester.post_digest(my_name, exit_msg)
+    digester.post_digest(script_name, exit_msg)
 
     quit()
 
