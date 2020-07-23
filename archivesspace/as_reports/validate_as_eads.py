@@ -9,6 +9,7 @@ import re
 import datetime
 from sheetFeeder import dataSheet
 import dcps_utils as util
+import digester  # for generating composite digest of report info.
 
 
 def main():
@@ -144,10 +145,10 @@ def main():
 
         if "fatal:" in validation_result:
             # It's a parsing error.
-            print(
-                icons["redx"] + " FATAL ERROR: " +
+            err_msg = icons["redx"] + " FATAL ERROR: " + \
                 file_name + " could not be parsed!"
-            )
+            print(err_msg)
+            digester.post_digest(my_name, err_msg)
             wf_status = False
             validation_status = False
             parse_errors += 1
@@ -156,12 +157,10 @@ def main():
             if "error:" in validation_result:
                 # It's a validation error.
                 validation_status = False
-                print(
-                    icons["warning"]
-                    + " ERROR: "
-                    + file_name
-                    + " contains validation errors."
-                )
+                err_msg = icons["warning"] + " ERROR: " + \
+                    file_name + " contains validation errors."
+                print(err_msg)
+                digester.post_digest(my_name, err_msg)
                 validation_errors += 1
             else:
                 validation_status = True
@@ -188,8 +187,9 @@ def main():
                 # It's a schematron violiation.
                 if report_level == "high":
                     # Only show if required by reporting level var (use to filter out large numbers of warnings).
-                    print("WARNING: " + file_name +
-                          " has Schematron rule violations.")
+                    err_msg = "WARNING: " + file_name + " has Schematron rule violations."
+                    print(err_msg)
+                    digester.post_digest(my_name, err_msg)
                 sch_warnings += 1
 
             if schematron_result:
@@ -258,12 +258,17 @@ def main():
     # print(the_log)
 
     print("Parse errors: " + str(parse_errors))
+    digester.post_digest(my_name, "Parse errors: " + str(parse_errors))
     print("Schema errors: " + str(validation_errors))
+    digester.post_digest(my_name, "Schema errors: " + str(validation_errors))
     print("Schematron warnings: " + str(sch_warnings))
+    digester.post_digest(my_name, "Schematron warnings: " + str(sch_warnings))
 
     print(" ")
 
-    print("Script done. Check report sheet for more details: " + the_data_sheet.url)
+    exit_msg = "Script done. Check report sheet for more details: " + the_data_sheet.url
+    print(exit_msg)
+    digester.post_digest(my_name, exit_msg)
 
     quit()
 

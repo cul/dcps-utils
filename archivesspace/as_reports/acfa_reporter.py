@@ -10,7 +10,7 @@ import re
 import os.path
 import subprocess
 import dcps_utils as util
-import digester
+import digester  # for generating composite digest of report info.
 
 
 def main():
@@ -20,6 +20,7 @@ def main():
     mode = 'Prod'  # Prod or Test
 
     my_name = __file__
+    script_name = os.path.basename(my_name)
 
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
@@ -125,7 +126,7 @@ def main():
     # print('Total unpublished: ' + str(len(the_unpublished)))
     msg = 'Total unpublished: ' + str(len(the_unpublished))
     print(msg)
-    digester.post_digest(my_name, msg)  # Test
+    digester.post_digest(script_name, msg)  # Test
 
     unpubs_sheet.clear()
     unpubs_sheet.appendData([the_heads])
@@ -180,7 +181,7 @@ def main():
 
         print('Total ' + d['filter'] + ': ' + str(len(the_modifieds)))
 
-        digester.post_digest(my_name, 'Total ' +
+        digester.post_digest(script_name, 'New ' +
                              d['filter'] + ': ' + str(len(the_modifieds)))  # Test
         # the_sheet.clear()
 
@@ -205,7 +206,7 @@ def main():
 
     print(the_log)
 
-    digester.post_digest(my_name, the_log)  # Test
+    digester.post_digest(script_name, the_log)  # Test
 
     print(' ')
 
