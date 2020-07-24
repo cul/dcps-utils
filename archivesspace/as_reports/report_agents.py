@@ -5,9 +5,11 @@ from sheetFeeder import dataSheet
 import dpath.util
 import datetime
 import dcps_utils as util
+import digester  # for generating composite digest of report info.
 
 
 my_name = __file__
+script_name = os.path.basename(my_name)
 
 # This makes sure the script can be run from any working directory and still find related files.
 my_path = os.path.dirname(__file__)
@@ -38,7 +40,10 @@ for i in the_info:
     # Get a list of agent ids from API
     agents_list = json.loads(asf.getResponse(i["endpoint"] + "?all_ids=true"))
 
-    print("Number of agents: " + str(len(agents_list)))
+    agent_cnt_str = "Number of agents (" + \
+        i['name'] + "): " + str(len(agents_list))
+    print(agent_cnt_str)
+    digester.post_digest(script_name, agent_cnt_str)
 
     cnt = 0
 
@@ -168,12 +173,13 @@ log_sheet.appendData([[the_log]])
 print(" ")
 
 print(the_log)
+digester.post_digest(script_name, the_log)
 
 print(" ")
 
-print(
-    "Script done. Updated data is available at "
-    + "https://docs.google.com/spreadsheets/d/"
-    + str(sheet_id)
-    + "/edit?usp=sharing"
-)
+exit_msg = "Script done. Updated data is available at " + \
+    "https://docs.google.com/spreadsheets/d/" + \
+    str(sheet_id) + "/edit?usp=sharing"
+
+print(exit_msg)
+digester.post_digest(script_name, exit_msg)

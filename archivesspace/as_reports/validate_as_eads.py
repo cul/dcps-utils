@@ -1,4 +1,3 @@
-# TEST VERSION; NOT IN PRODUCTION.
 # Script to copy the latest EAD files and validate them against schema and schematron. Output is piped to a google sheet report using sheetFeeder.
 
 

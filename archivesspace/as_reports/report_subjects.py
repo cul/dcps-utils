@@ -6,9 +6,12 @@ from sheetFeeder import dataSheet
 import dpath.util
 import datetime
 import dcps_utils as util
+import digester  # for generating composite digest of report info.
 
 
 my_name = __file__
+script_name = os.path.basename(my_name)
+
 
 # This makes sure the script can be run from any working directory and still find related files.
 my_path = os.path.dirname(__file__)
@@ -79,6 +82,9 @@ for s in the_subject_data:
 the_sheet.clear()
 save = the_sheet.appendData(the_output)
 print(save)
+digester.post_digest(
+    script_name, "Total subject records: " + str(len(the_output)-1))
+
 
 # Generate log
 
@@ -111,11 +117,11 @@ print(" ")
 
 print(the_log)
 
+
 print(" ")
 
-print(
-    "Script done. Updated data is available at "
-    + "https://docs.google.com/spreadsheets/d/"
-    + str(sheet_id)
-    + "/edit?usp=sharing"
-)
+exit_msg = "Script done. Updated data is available at " + \
+    "https://docs.google.com/spreadsheets/d/" + \
+    str(sheet_id) + "/edit?usp=sharing"
+print(exit_msg)
+digester.post_digest(script_name, exit_msg)
