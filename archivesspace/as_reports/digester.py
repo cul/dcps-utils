@@ -62,7 +62,7 @@ def digest_clear(sheet=digest_sheet):
 
 
 def post_digest(script_name, log, sheet=digest_sheet):
-    date = str(datetime.today())
+    date = str(datetime.datetime.today())
     data = [[script_name, date, log]]
     post = sheet.appendData(data)
     return post
