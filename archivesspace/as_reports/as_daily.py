@@ -4,19 +4,21 @@ import os
 import datetime
 import dcps_utils as util
 from as_reports_param import time_offset
+import digester  # for generating composite digest of report info.
 
 
 def main():
 
     my_path = os.path.dirname(__file__)
+    script_name = os.path.basename(my_name)
 
     # calculate dates in format yyyymmdd
     today = datetime.date.today().strftime("%Y%m%d")
     yesterday = (datetime.date.today() -
                  datetime.timedelta(days=1)).strftime("%Y%m%d")
 
-    destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
-    # destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
+    # destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
+    destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
     # destination_folder = "./"  # test
     xslt_path = os.path.join(my_path, "cleanOAI.xsl")
     saxon_path = os.path.join(
@@ -55,6 +57,7 @@ def main():
     x = util.saxon_process(saxon_path, out_path_raw,
                            xslt_path, out_path_clean, theParams=saxon_params)
     print(x)
+    digester.post_digest(script_name, x)
 
     print("Harvesting all records for reporting ...")
     date_params = " "
