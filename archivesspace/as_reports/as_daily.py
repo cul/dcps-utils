@@ -9,6 +9,7 @@ import digester  # for generating composite digest of report info.
 
 def main():
 
+    my_name = __file__
     my_path = os.path.dirname(__file__)
     script_name = os.path.basename(my_name)
 
