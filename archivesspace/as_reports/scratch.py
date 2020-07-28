@@ -23,6 +23,7 @@ def main():
         str(repo) + '/resources/' + str(asid) + '/top_containers'
 
     the_refs = json.loads(asf.getResponse(the_query))
+    print(the_refs)
 
     for r in the_refs:
         print('Getting data for ' + str(r['ref']))
