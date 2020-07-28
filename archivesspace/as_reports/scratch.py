@@ -15,6 +15,8 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
 
+    asf.setServer('Dev')
+
     repo = 2
     asid = 4851
     # asid = 4923
