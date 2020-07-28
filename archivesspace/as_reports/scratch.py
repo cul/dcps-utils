@@ -21,9 +21,9 @@ def main():
     the_query = '/repositories/' + \
         str(repo) + '/resources/' + str(asid) + '/top_containers'
 
-    x = asf.getResponse(the_query)
+    the_refs = json.loads(asf.getResponse(the_query))
 
-    for r in x:
+    for r in the_refs:
         print('Getting data for ' + str(r['ref']))
         x = asf.getResponse(r['ref'])
         pprint(x)
