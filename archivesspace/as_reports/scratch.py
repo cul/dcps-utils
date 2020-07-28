@@ -24,7 +24,7 @@ def main():
     x = asf.getResponse(the_query)
 
     for r in x:
-        print('Getting data for ' + r['ref'])
+        print('Getting data for ' + str(r['ref']))
         x = asf.getResponse(r['ref'])
         pprint(x)
 
