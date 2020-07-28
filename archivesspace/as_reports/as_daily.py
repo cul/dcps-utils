@@ -18,8 +18,8 @@ def main():
     yesterday = (datetime.date.today() -
                  datetime.timedelta(days=1)).strftime("%Y%m%d")
 
-    destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
-    # destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
+    # destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
+    destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
     # destination_folder = "./"  # test
     xslt_path = os.path.join(my_path, "cleanOAI.xsl")
     saxon_path = os.path.join(
@@ -63,6 +63,8 @@ def main():
     print("Harvesting all records for reporting ...")
     date_params = " "
     util.oai_harvest(out_path_raw_all, server=server, date_params=date_params)
+
+    digester.post_digest(script_name, script_name + ' completed at '  str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
 
 
 if __name__ == "__main__":

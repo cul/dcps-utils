@@ -15,11 +15,14 @@ def main():
     script_name = os.path.basename(my_name)
     # This makes sure the script can be run from any working directory and still find related files.
 
+    print('24-hour digest composed at ' +
+          str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
+
     x = get_digest()
 
     # Format the digest content.
     for s in x:
-        print('Output from ' + s['script'] + ': ')
+        print('*** Output from ' + s['script'] + ': ')
         for m in s['msg']:
             print(m)
         print(" ")
@@ -49,7 +52,8 @@ def get_digest(sheet=digest_sheet):
     # use itertools.groupby to compose results into lists of messages grouped by script name.
     the_result = []
     for key, group in groupby(sorted(the_msg_data), lambda x: x[0]):
-        r = {'script': key, 'msg': [str(m[1]) + ': ' + m[2] for m in group]}
+        # r = {'script': key, 'msg': [str(m[1]) + ': ' + m[2] for m in group]}
+        r = {'script': key, 'msg': [m[2] for m in group]}
         # TODO: remove date in string once verified working.
         the_result.append(r)
 
