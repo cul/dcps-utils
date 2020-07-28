@@ -64,7 +64,8 @@ def main():
     date_params = " "
     util.oai_harvest(out_path_raw_all, server=server, date_params=date_params)
 
-    digester.post_digest(script_name, script_name + ' completed at '  str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
+    digester.post_digest(script_name, script_name + ' completed at ' +
+                         str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
 
 
 if __name__ == "__main__":
