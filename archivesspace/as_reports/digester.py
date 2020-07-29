@@ -44,7 +44,7 @@ def date_is_recent(_date, _offset=1):
 
 def get_digest(sheet=digest_sheet):
     data = sheet.getData()
-    heads = data.pop(0)
+    # heads = data.pop(0)
     the_msg_data = []
     for a_row in data:
         name = a_row[0]
