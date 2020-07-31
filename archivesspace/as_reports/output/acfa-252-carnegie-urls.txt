@@ -1,0 +1,1061 @@
+bibid|container_id|href|title|text
+4079753||http://www.columbia.edu/cu/lweb/indiv/rbml/index.html|http://www.columbia.edu/cu/lweb/indiv/rbml/index.html|
+4079753||https://library.columbia.edu/locations/rbml/units/carnegie.html||https://library.columbia.edu/locations/rbml/units/carnegie.html
+4079753||https://findingaids.library.columbia.edu/ead/nnc-rb/ldpd_4078981||Frederick P. Keppel Papers
+4079753||http://www.columbia.edu/cu/lweb/digital/collections/oral_hist/carnegie/||Carnegie Corporation of New York Project: Oral History project
+4079753||https://www.loc.gov/item/mm79015107/||Andrew Carnegie Papers
+4079753||dlc.library.columbia.edu/carnegie/||dlc.library.columbia.edu/carnegie/
+4079753|aspace_f414bc6bd3a12b1934a4abb77daa04a1|https://archive.org/details/ldpd_12584117_000|Journals, 1/1872 - 10/1878|
+4079753|aspace_651e388a2e454c7908c552cbd8a91f86|https://archive.org/details/ldpd_12584119_000|Journals, 1885 - 1897|
+4079753|aspace_c6df3226d1f0fc6598eada3da955ba21|https://archive.org/details/ldpd_12584120_000|Journals, 1897 - 1907|
+4079753|aspace_638bb3fa4ddd6a17f81ae3888c618d45|https://archive.org/details/ldpd_12584121_000|Journals, 1908 - 1917|
+4079753|aspace_19fabb306f135b60b90f280dd219e1c2|https://archive.org/details/ldpd_12584122_000|Journals, 1917 - 1919|
+4079753|aspace_ca4447a6aefa3487572304ba2d09b6e1|https://archive.org/details/ldpd_12584123_000|Cash Book|
+4079753|aspace_47e085e88f667fa0bae8e3ea78d96e7a|https://archive.org/details/ldpd_12584124_000|Cash records|
+4079753|aspace_ff1ff5f829b89c9389c0a51616a313f2|https://archive.org/details/ldpd_12584125_000|Cash records, 1912-1919|
+4079753|aspace_8bf9db1fdc39636c7b7b300e2cdef128|https://archive.org/details/ldpd_12584126_000|Cash records, 1916-1919|
+4079753|aspace_044ec9376c9990dc19e60cedebe0aca8|https://archive.org/details/ldpd_12584127_000|Miscellaneous Accounts, 1881-1906|
+4079753|aspace_a62edd180f4a1cf3bae92b18927c293e|https://archive.org/details/ldpd_12584128_000|Miscellaneous Accounts, 1885-1917|
+4079753|aspace_cb1bf91596c2c8b74669a663481a6612|https://dlc-staging.library.columbia.edu/carnegie/cul:2547d7wnpb|Bonds|
+4079753|aspace_cb1bf91596c2c8b74669a663481a6612|https://dlc-staging.library.columbia.edu/carnegie/cul:2547d7wnpb||Link to item
+4079753|aspace_f13e134569ec8ab91400c300935cc4f7|https://archive.org/details/ldpd_12584130_000|Carnegie Corporation Completed Accounts, 1902-1912|
+4079753|aspace_96091f9a84a7be8bb94e7fabe43341b4|https://archive.org/details/ldpd_12584131_000|Trust &amp; Loan Accounts, 1912-1918|
+4079753|aspace_fcc59ee716ffcda031f36b1109a30564|https://archive.org/details/ldpd_12584132_000|Stocks &amp; Bonds, 1916|
+4079753|aspace_8af9dbb2029cfe15e1231a1b7038c5b7|https://archive.org/details/ldpd_12584133_000|Register of Donations, Libraries, 1898-1919|
+4079753|aspace_e54416b22a4cbc5f4200d3d6b3c6b935|https://archive.org/details/ldpd_12584134_000|Library Building, 1912-1922|
+4079753|aspace_573169696dcbafefd64164a1048277bc|https://archive.org/details/ldpd_12584136_000|Libraries Registered Geographically|
+4079753|aspace_d2ac414b92e849497d34c991515d5092|https://archive.org/details/ldpd_12584137_000|Junior College Libraries Ledger, 1938-1940|
+4079753|aspace_6c3df551424a9aceafb51ef67afac216|https://archive.org/details/ldpd_12584138_000|Register of Donations, Church Organs No. 1, 1901-1908|
+4079753|aspace_cffe0a682437827b805289e2a1595487|https://archive.org/details/ldpd_12584139_000|Register of Donations, Church Organs No. 2, 1908-1914|
+4079753|aspace_dacebbbdfcb9e8ac0b3f1b4db7663c2c|https://archive.org/details/ldpd_12584140_000|Register of Donations, Church Organs No. 3, 1913-1919|
+4079753|aspace_db4cf13eeb1860fff0ef4b7b2dcd9d68|https://archive.org/details/ldpd_12584141_000|Daily Register of Donations - Andrew Carnegie, 1903-1908|
+4079753|aspace_66a56773f04cd5bfb787abb12f1c438f|https://archive.org/details/ldpd_12584142_000|Daily Register of Donations - Andrew Carnegie, 1908-1913|
+4079753|aspace_5310f40854efc8c981db227ac5f8cebc|https://archive.org/details/ldpd_12584143_000|Daily Register of Donations - Andrew Carnegie, 1913-1915|
+4079753|aspace_ff719de44717dc49a7203ef46d6add70|https://archive.org/details/ldpd_12584145_000|Personal Ledger, Charity &amp; Gifts, 1900-1918|
+4079753|aspace_0b9bf1dae15531c063a7faf9d20a0c8a|https://archive.org/details/ldpd_12584146_000|College Donations, 1901-1930|
+4079753|aspace_b1180328cd5a5a53e53dc45ab0c8be65|https://dx.doi.org/10.7916/d8-nfd2-zc36|Applications No. 1, Carnegie Corporation|
+4079753|aspace_1a02a32d9d53883d2ee776dd66b88d7c|https://archive.org/details/ldpd_12584149_000|Donations, Andrew Carnegie, 1924-1929|
+4079753|aspace_d1c63c1baa3857fa6a3b14e388272f11|https://archive.org/details/ldpd_12584150_000|Journals A, 1911-1929|
+4079753|aspace_f30b19967068fdaf9b9c87d717a24548|https://archive.org/details/ldpd_12584152_000|Cash book, 1919-1923|
+4079753|aspace_579bd79142d81c5e14df2b4d968a2948|https://archive.org/details/ldpd_12584158_000|Trial Balance Book No. 1|
+4079753|aspace_7c323d9eb4c4f91c726825b51c0aae51|https://archive.org/details/ldpd_12584159_000|Trial Balance Book No. 2|
+4079753|aspace_bee9bfbf0be8453447ffeaf8f51e07a6|indextoreportsof00carn_0|Index to reports of officers|
+4079753|aspace_9ab65394b550a0be861abb0ae95ea83c|https://dlc.library.columbia.edu/carnegie||https://dlc.library.columbia.edu/carnegie
+4079753|aspace_b7ceba63935f3c875aa65ea2fcfe6bdb|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+1%22|Reel 1|
+4079753|aspace_f3542cbbfe5b258fef7d7bc556779591|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+2%22|Reel 2|
+4079753|aspace_54e61b932c1bfc5913356968c4fb740e|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+3%22|Reel 3|
+4079753|aspace_e3fd7afcf6c6faa08752312a7cf088e5|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+4%22|Reel 4|
+4079753|aspace_482bb96347ec7bf827026c7cb3303b4b|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+5%22|Reel 5|
+4079753|aspace_1cc608238463bb4ebd0924a54ea8ad83|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+6%22|Reel 6|
+4079753|aspace_50a5dd53a5614ef2c712f5d5c81b9d91|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+7%22|Reel 7|
+4079753|aspace_bf58ed435d85b61e2feccd21b3d9067a|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+8%22|Reel 8|
+4079753|aspace_ba9f2c75d24f787089c4bad508bf259c|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+9%22|Reel 9|
+4079753|aspace_4a00d0a2d36520760b0fd202d024a0a0|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+10%22|Reel 10|
+4079753|aspace_2a91d393e1a7a925034a516fbf1a5f4d|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+11%22|Reel 11|
+4079753|aspace_955184cf599ee0fceb56c8a050d3e0f2|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+12%22|Reel 12|
+4079753|aspace_59c7bf12bd53bb7848bf1d039da97047|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+13%22|Reel 13|
+4079753|aspace_34594ba42e29cf3b2ae02debbd846df7|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+14%22|Reel 14|
+4079753|aspace_a3b2292b761c943d10fe4598145c4d72|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+15%22|Reel 15|
+4079753|aspace_5a680d21d6951df04a60fecb251f3ae8|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+16%22|Reel 16|
+4079753|aspace_0d02199578506406e7e23d6c0a63ad89|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+17%22|Reel 17|
+4079753|aspace_7fc3368f3ea3a0b5674a4b6b2488a11e|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+18%22|Reel 18|
+4079753|aspace_6d381347f78c2d88ddc8c49a0af3d988|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+19%22|Reel 19|
+4079753|aspace_8a035c6feff95a8426014d1eb1a68b9f|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+20%22|Reel 20|
+4079753|aspace_b065b98c97ff90a583d3b20c0ea86e8a|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+21%22|Reel 21|
+4079753|aspace_d0d937656c7a46a92afffe4d1d7652ec|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+22%22|Reel 22|
+4079753|aspace_d646596b970f2c837e8da87cc3ec0838|https://dx.doi.org/10.7916/d8-mhx5-je62|Carnegie Public Libraries, New York, NY|
+4079753|aspace_e4e71549b8c2ff0eb66bd9fd4a3ac1bf|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+23%22|Reel 23|
+4079753|aspace_4064edf3b37eb7ccf492a077d9ca7139|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+24%22|Reel 24|
+4079753|aspace_b2fda11419866620f6292f1d29cf22a2|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+25%22|Reel 25|
+4079753|aspace_dfbf80ca42ba12aeb9ea8e9a5c710ac9|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+26%22|Reel 26|
+4079753|aspace_43e65a29a8e918701813a613f497f098|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+27%22|Reel 27|
+4079753|aspace_352b6514127f6ee45feb2e23e5d6cf72|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+28%22|Reel 28|
+4079753|aspace_29eff78f0471c3ec4cd9e0f7b8f2d91f|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+29%22|Reel 29|
+4079753|aspace_1e120fae9dcc820cb5ca257f2464419e|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+30%22|Reel 30|
+4079753|aspace_1b4443d031359fc753fa3f8270fa9c6f|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+31%22|Reel 31|
+4079753|aspace_d85ee6306f758108999bf458617dc8f1|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+32%22|Reel 32|
+4079753|aspace_890863f45340a69140f2e1be8ec9987a|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+33%22|Reel 33|
+4079753|aspace_71e7f4f93e5d23ce2931be87a2cc69cd|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+34%22|Reel 34|
+4079753|aspace_22ab60d4ba37d7fbb4da97843f6dc33e|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+35%22|Reel 35|
+4079753|aspace_11cbc56d80a7df284572e6885ac9cc08|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+36%22|Reel 36|
+4079753|aspace_40c608a2a1e5f075cb9e52afc3efcdc3|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+37%22|Reel 37|
+4079753|aspace_f166f58631220803efbfd7e993333212|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+38%22|Reel 38|
+4079753|aspace_1061d0c464018e7b175ca931f7475e1f|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+39%22|Reel 39|
+4079753|aspace_78e9f36ae3c41096dff09b2ea9c35323|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+66E%22|Reel 66E|
+4079753|aspace_7c47f6b5178a85d4ad6f7b1c046053e4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+67%22|Reel 67|
+4079753|aspace_9ec1cea5d61d31e02bb730258d902dcf|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+68%22|Reel 68|
+4079753|aspace_57a44c2c1bdf0638853e810028122d03|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+44%22|Reel 44|
+4079753|aspace_7e4276fa17b4df6a494a3a3538ad77d1|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+45%22|Reel 45|
+4079753|aspace_eb753ef97deb74b77e5e3bae3d7be3c4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+46%22|Reel 46|
+4079753|aspace_be6b74800697c9f7235ac6a31c007d9d|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+47%22|Reel 47|
+4079753|aspace_2f62a9366c651fa38fe35054243845d3|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+48%22|Reel 48|
+4079753|aspace_08902afbb908e8c1e1e02036f94b002b|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+49%22|Reel 49|
+4079753|aspace_716250882a0aeeb0b41112242f0441f4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+50%22|Reel 50|
+4079753|aspace_ef1b00facfb8ff20bc833cebb08e3db5|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+51%22|Reel 51|
+4079753|aspace_8c6647076c122b456a2c5b9de5982ddd|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+52%22|Reel 52|
+4079753|aspace_d51afdb6eb08b2ad741a6505fec5f1c4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+53%22|Reel 53|
+4079753|aspace_6064e824001ac73b821cf18c37c94c9c|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+54%22|Reel 54|
+4079753|aspace_d288e022479d3e7d8ea8156320ceb9ab|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+55%22|Reel 55|
+4079753|aspace_1c9dad1cc6607a775f9991b1788bb1e8|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+56%22|Reel 56|
+4079753|aspace_4cd025b8c7e4d932135c937a23c42a19|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+57%22|Reel 57|
+4079753|aspace_eb2778583cdbbd3f4d173bf0a32d6e36|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+58%22|Reel 58|
+4079753|aspace_d0ad39352eddde657469bba7928e78ad|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+59%22|Reel 59|
+4079753|aspace_52fc9f129ecef1852af9e8d8a5016f26|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+60%22|Reel 60|
+4079753|aspace_962d033130566add1649cdd362fb5869|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+61%22|Reel 61|
+4079753|aspace_9fb91b3ea7b3a259f4c4dc88a187eeea|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+62%22|Reel 62|
+4079753|aspace_1163a3ebec2e58b9e5a55d71dc57476e|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+63%22|Reel 63|
+4079753|aspace_15af04edfb97c78cb1f60de7611cfb43|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+64%22|Reel 64|
+4079753|aspace_18c237abd50b0984b7b814cbb587db52|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+65%22|Reel 65|
+4079753|aspace_21f36dea862b10b83d19a2e0f28ed67f|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+66%22|Reel 66|
+4079753|aspace_99ee50af19e098fbc11744a3153585b2|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+66A%22|Reel 66A|
+4079753|aspace_f4764486db6447f9096fe842ed0c4760|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+66B%22|Reel 66B|
+4079753|aspace_1d420b6679c3a8d1d23385fc82eddee6|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+66C%22|Reel 66C|
+4079753|aspace_2cbdeb04b4a242b44b8d70df7dc0eb75|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+66D%22|Reel 66D|
+4079753|aspace_a15b811ed147b15151c6a3a9c6360aac|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+69%22|Reel 69|
+4079753|aspace_1c1e346c6d2737dfa9ecd940bfa7a8a4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+70%22|Reel 70|
+4079753|aspace_b24b897d4df7bb21bfed34d25c1279f9|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+71%22|Reel 71|
+4079753|aspace_ea3b578c4c2080c0da3cf52b2b434c1d|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+72%22|Reel 72|
+4079753|aspace_205f1ea8d549a6845ff7680b2211ee87|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+73%22|Reel 73|
+4079753|aspace_73024fb6e2007aae9d9dfc523f841f7c|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+74%22|Reel 74|
+4079753|aspace_709ee1f4d57bbdd580e4990d365b90fe|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+75%22|Reel 75|
+4079753|aspace_59eba15df3f6106fdd4abae2973c01a9|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+76%22|Reel 76|
+4079753|aspace_80c2bb1f13a22d2cd4761d67579ea081|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+77%22|Reel 77|
+4079753|aspace_ce0ac4ef343b7aea953cc15cba63cc6b|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+77%22|Reel 77|
+4079753|aspace_7a1c192f24b584c193049d28ebebfc74|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+78%22|Reel 78|
+4079753|aspace_c966309eace25dfcd9ab851120011eec|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+78%22|Reel 78|
+4079753|aspace_6308cc49094f956e7a52c652ad6c3564|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+79%22|Reel 79|
+4079753|aspace_570ee0e085dcd7093d87d4468fffb2a1|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+80%22|Reel 80|
+4079753|aspace_59cc8c1e592e2e2f8ad26bafec698e45|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+81%22|Reel 81|
+4079753|aspace_eef3a48d8340c63b6c9a776da27a76da|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+82%22|Reel 82|
+4079753|aspace_24012556bc850e8b0c119a81bcbc76fc|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+83%22|Reel 83|
+4079753|aspace_e5765328d65abd8e4db7311bc7a85fb8|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+84%22|Reel 84|
+4079753|aspace_2d7eddb876efbcc80d75da839de667fe|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+85%22|Reel 85|
+4079753|aspace_e852e1caddc37010bc5dfb6ed07d57df|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+43%22|Reel 43|
+4079753|aspace_9554bc76ca72d5de98460c84d341c3b0|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+89%22|Reel 89|
+4079753|aspace_7cac907e29435ad17817c7cf6893a8af|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+86%22|Reel 86|
+4079753|aspace_80bae2678ed264213b216f9cab7de59b|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+40%22|Reel 40|
+4079753|aspace_e3a2a565bc93cd3508afe68a60ae4cf7|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+86%22|Reel 86|
+4079753|aspace_d86a0d7009d495db1c5ab8f103fb1b2f|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+87%22|Reel 87|
+4079753|aspace_c94bbfab548047890994f2f813f58ab5|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+88%22|Reel 88|
+4079753|aspace_2c1b458a222fc30166013815fdc87100|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+87%22|Reel 87|
+4079753|aspace_8ee18ab1cc56be5d0d33380a69aaf61e|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+92%22|Reel 92|
+4079753|aspace_1a5557fa9a313f715bb0a1b7af1e71f4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+93%22|Reel 93|
+4079753|aspace_b4935efec321734689ff58be6309d75d|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+94%22|Reel 94|
+4079753|aspace_53fde900dddee6931159fbb33ae98582|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+95%22|Reel 95|
+4079753|aspace_1936e4604655f72ac3a3041e210c45d1|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+96%22|Reel 96|
+4079753|aspace_0a5d01db0ed309b4389e5423bdd178a7|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+97%22|Reel 97|
+4079753|aspace_4c412562991f1891bec87f8af22bf161|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+98%22|Reel 98|
+4079753|aspace_07d10da18729c81d59065153f284ac32|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+99%22|Reel 99|
+4079753|aspace_4b7268b3566dc8931f9c1df69a73aeb1|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+100%22|Reel 100|
+4079753|aspace_ffdaae64df8fb0b98a75409fea38e128|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+101%22|Reel 101|
+4079753|aspace_7fb95fa46adf886d6d56bb748a3ce056|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+102%22|Reel 102|
+4079753|aspace_85039e553e3c28146bdc5c209a10ac84|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+103%22|Reel 103|
+4079753|aspace_8126fcedb74a0e0e4ce8e6a5ff65e0fd|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+104%22|Reel 104|
+4079753|aspace_87c0e29619d9b30ec738a3ae209ffa5c|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+105%22|Reel 105|
+4079753|aspace_86e38a62c48ac14310a6e6d1db0db9d7|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+106%22|Reel 106|
+4079753|aspace_69f8b70cba38e13777426efffa8e677b|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+41%22|Reel 41|
+4079753|aspace_34f68cbaa9d1d8f87dfdfb8b13055f99|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+42%22|Reel 42|
+4079753|aspace_647ddc18530e309830bc852ec38d039c|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+90%22|Reel 90|
+4079753|aspace_2e136fa2e9a0ebeffa3fb97f2a5d9008|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+90%22|Reel 90|
+4079753|aspace_59b463f10c71592db251503e1cb6a417|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+90%22|Reel 90|
+4079753|aspace_5d45a13388223587c188b59b6d92eed2|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_4cb4aacaf36fa4f1ac078d5059da1585|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_6c35902cf95be4f69017449d388f36ca|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_174b127e78c2562d2f75dc8d40960514|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_bf60c8f1bd4608a813564c22c13b8a85|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_65f60cae74ebee2a9865cfe801d4d0e1|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_503bffc6d8c2ffbf4b5fcebdb12874c4|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_f6ce5006e61b934581503088841ba924|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_d0e9ef9f1a785219d5631765dc16ce30|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_78134d037db445cc076ed42e7ee7f2ee|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+91%22|Reel 91|
+4079753|aspace_ed792148f58608de1d2e021bf7450712|https://dlc.library.columbia.edu/carnegie?utf8=%E2%9C%93&search_field=all_text_teim&q=%22reel+107%22|Reel 107|
+4079753|aspace_dcec5211f0efa37cf7bb36cbf8117e19|https://archive.org/details/listofappropriat00carn|List of appropriations|
+4079753|aspace_4e022e99cbb2300f23742d85993261b6|https://archive.org/details/ldpd_12584160_000|1915, 1915|
+4079753|aspace_4fbc3eb062c58c2565f66c530a34ca85|https://archive.org/details/ldpd_12584161_000|Re Carnegie's Death, 1919|
+4079753|aspace_c2b3299482e4ea9ca14e09796e7af6d3|https://archive.org/details/ldpd_12584163_000/page/n23|Carnegie Corporation Scrapbook, Andrew Carnegie Centenary|
+4079753|aspace_684f02ce38f8e959ce1211101ce1cb36|https://www.carnegie.org/publications/?t=18&q=&per_page=25&per_page=25||https://www.carnegie.org
+4079753|aspace_76567eeac07403fc4fb1ac3afdc30d30|https://archive.org/details/reportoftreasure00carn|Report of the Treasurer, 1912|
+4079753|aspace_498620aff8bae0c413d8e304b0cadd00|https://archive.org/details/reportoftreasure00carn_0|Report of the Treasurer, 1913|
+4079753|aspace_30ca42f142d7773887d8ab97e41c6fd6|https://archive.org/details/reportoftreasure00carn_1|Report of the Treasurer, 1914|
+4079753|aspace_db89457e9c69527cd55fb44fd4b26b9d|https://archive.org/details/reportoftreasure00carn_2|Report of the Treasurer, 1915|
+4079753|aspace_e0b9153e30ae83f31bbbf459bf2f8d2f|https://archive.org/details/reportoftreasure00carn_3|Report of the Treasurer, 1916|
+4079753|aspace_96f50efa660a03c5d687b9d7d1ea84cc|https://archive.org/details/reportoftreasure00carn_4|Report of the Treasurer, 1917|
+4079753|aspace_be28f563a6a740af36f692a6ebc665c9|https://archive.org/details/reportoftreasure00carn_5|Report of the Treasurer, 1918|
+4079753|aspace_4628e89e38974d2a56fc98d974e20da3|https://archive.org/details/reportoftreasure00carn_6|Report of the Treasurer, 1919|
+4079753|aspace_20a27a889d40b6ec980de40e63a36581|https://archive.org/details/reportoftreasure00carn_7|Report of the Treasurer, 1920|
+4079753|aspace_1fb7c2436012fa455f2f268f7cbdcafa|https://archive.org/details/reportoftreasure00carn_8|Report of the Treasurer, 1921|
+4079753|aspace_404a3a5cdf2210265b3b63a5d457fee2|https://archive.org/details/reportofpresiden00carn/page/n4|Report of the President/Annual Report, 1921|
+4079753|aspace_37b7d38f1438fc4bfa17023237f7046f|https://archive.org/details/reportoftreasure00carn_9|Report of the Treasurer, 1922|
+4079753|aspace_96f273fcd8d6bb5fe4db248ba1183029|https://archive.org/details/reportofactingpr00carn/page/n6|Report of the President/Annual Report, 1922|
+4079753|aspace_1073e5abbfa557bed2d6e4f909ae0bc5|https://archive.org/details/reportoftreasure00carn_10|Report of the Treasurer, 1923|
+4079753|aspace_7f4e68eb2320e5e4140d7740361c0599|https://archive.org/details/ldpd_12992133_002/page/n5|Report of the President/Annual Report, 1923|
+4079753|aspace_8fe81a4e7254939d7aad3d5e85b4c33a|https://archive.org/details/ldpd_12992207_001/page/n4|Report of the President/Annual Report, 1924|
+4079753|aspace_22a7a2927e1b29a502c8819edd6d6e6c|https://archive.org/details/ldpd_12992207_002/page/n4|Report of the President/Annual Report, 1925|
+4079753|aspace_626fba49c6b9852cf4732bf3be01513f|https://archive.org/details/ldpd_12992207_003/page/n6|Report of the President/Annual Report, 1926|
+4079753|aspace_399a95eed743c6e1248a40b4f4d72a8a|https://archive.org/details/ldpd_12992207_004/page/n4|Report of the President/Annual Report, 1927|
+4079753|aspace_3055318c1f6595e3d7a80533f72a6790|https://archive.org/details/ldpd_12992207_005/page/n3|Report of the President/Annual Report, 1928|
+4079753|aspace_fa13ea6bcdda1c27a792ec5e4dc70c81|https://archive.org/details/ldpd_12992207_006/page/n3|Report of the President/Annual Report, 1929|
+4079753|aspace_3c32e781336602fada68746a7c52429a|https://archive.org/details/ldpd_12992207_007/page/n3|Report of the President/Annual Report, 1930|
+4079753|aspace_657536c5dd85210fbdc66d19d13953fa|https://archive.org/details/reportofpresiden00carn_0|Report of the President/Annual Report, 1931|
+4079753|aspace_34b88a18b4508d1bb3ab070bf6562a2e|https://archive.org/details/reportofpresiden00carn_1|Report of the president & of the treasurer, 1932|
+4079753|aspace_f58e656f36c47d6dc1a30d2b0d88a141|https://archive.org/details/reportofpresiden00carn_2|Report of the president & of the treasurer, 1933|
+4079753|aspace_0c5d45c683615e8899b0420defd40bd9|https://archive.org/details/reportofpresiden00carn_3|Report of the president & of the treasurer, 1934|
+4079753|aspace_dbdc63266c8b356e122575325025faf6|https://archive.org/details/reportofpresiden00carn_4|Report of the President/Annual Report, 1935|
+4079753|aspace_2835e9cdd47e3efd5217e57cf4ac41c0|https://archive.org/details/reportofpresiden00carn_5|Report of the President/Annual Report, 1936|
+4079753|aspace_eb6fa87e6c110761c07ea269f6d0ef64|https://archive.org/details/reportofpresiden00carn_6|Report of the President/Annual Report, 1937|
+4079753|aspace_ec6879aaf9409601fae4152e9dc56983|https://archive.org/details/reportofpresiden00carn_7|Report of the President/Annual Report, 1938|
+4079753|aspace_fc07faf1492bde026ba8fb00bb251247|https://archive.org/details/ldpd_12992207_016/page/n1/mode/2up|Report of the President/Annual Report, 1939|
+4079753|aspace_13d95496b3a15234755a301d4cff9411|https://archive.org/details/reportofpresiden00carn_8|Report of the President/Annual Report, 1940|
+4079753|aspace_6c6b5efbb889f490a62dbd58493d7f16|https://archive.org/details/reportofpresiden00carn_9|Report of the President/Annual Report, 1941|
+4079753|aspace_6be8f5455b128e25cac67372fbe90151|https://archive.org/details/reportofpresiden00carn_10|Annual Report, 1942|
+4079753|aspace_0cc1f66e29daed51884a877676cb96b3|https://archive.org/details/reportofpresiden00carn_11|Annual Report, 1943|
+4079753|aspace_3aeca9c40b5e06b74dec289c14e14fb5|https://archive.org/details/reportofpresiden00carn_12|Annual Report, 1944|
+4079753|aspace_9db16ea27a7e88c204ab70fce83cf5eb|https://archive.org/details/reportofpresiden00carn_13|Report of the President/Annual Report, 1945|
+4079753|aspace_f24da82059521e4177704dcc645fd265|https://archive.org/details/reportsofofficer00carn|Annual Report, 1946|
+4079753|aspace_d55cdf92d9dc41d98e3f97ea1cf9a560|https://archive.org/details/reportsofofficer00carn_0|Report of the President/Annual Report, 1947|
+4079753|aspace_4071dd00c2231fc7532e78afc321db78|https://archive.org/details/reportsofofficer00carn_1|Report of the President/Annual Report, 1948|
+4079753|aspace_0f109b5c63aa8a999bbf919e2e92b2f0|https://archive.org/details/reportsofofficer00carn_2|Report of the President/Annual Report, 1949|
+4079753|aspace_c782a3cfe584193d2de8a1e261b2ff7f|https://archive.org/details/reportsofofficer00carn_3|Report of the President/Annual Report, 1950|
+4079753|aspace_2838480c9a16c3c16798f1377d5d0a5a|https://archive.org/details/reportsofofficer00carn_4|Report of the President/Annual Report, 1951|
+4079753|aspace_c60edced3c3ee509bc0189b871b2e681|https://archive.org/details/reportsofofficer00carn_5|Report of the President/Annual Report, 1952|
+4079753|aspace_38d2268c6f11b1631ef3d531980e2e6d|https://archive.org/details/reportsofofficer00carn_6|Report of the President/Annual Report, 1953|
+4079753|aspace_c9127e032150ebfe2cb65c3768270a44|https://archive.org/details/annualreport00carn|Report of the President/Annual Report, 1954|
+4079753|aspace_61fcedbcd1a23e2b430a68ce6d4d9e4a|https://archive.org/details/annualreport00carn_0|Report of the President/Annual Report, 1955|
+4079753|aspace_fde9f3ec1390a4f79978d7c441eb7a00|https://archive.org/details/annualreport00carn_1|Report of the President/Annual Report, 1956|
+4079753|aspace_caa5e2f7400b78e2037f2735cd786609|https://archive.org/details/annualreport00carn_2|Report of the President/Annual Report, 1957|
+4079753|aspace_64cafbb06bb5e8f0a50587e3b5b7d668|https://archive.org/details/annualreport00carn_3|Report of the President/Annual Report, 1958|
+4079753|aspace_1db86257bcdbef4cfda4f2d44482b9cd|https://archive.org/details/annualreport00carn_4|Report of the President/Annual Report, 1959|
+4079753|aspace_91bb40a4355c0e77fcb3fd1fd1125f14|https://archive.org/details/annualreport00carn_5|Report of the President/Annual Report, 1960|
+4079753|aspace_5f6a8ac0223fb14493a64113016d2253|https://archive.org/details/annualreport00carn_6|Report of the President/Annual Report, 1961|
+4079753|aspace_bd98ad0207b94c05b3941877af6e37ac|https://archive.org/details/annualreport00carn_7|Report of the President/Annual Report, 1962|
+4079753|aspace_573978951c549971aeb3b4e511f1502f|https://archive.org/details/annualreport00carn_8|Report of the President/Annual Report, 1963|
+4079753|aspace_794f428e314d507eb94b1c5a76d4ce6a|https://archive.org/details/annualreport00carn_9|Report of the President/Annual Report, 1964|
+4079753|aspace_aad2953e91cd9a720b8057adb6ff4e8b|https://archive.org/details/annualreport00carn_10|Report of the President/Annual Report, 1965|
+4079753|aspace_e3e40334022a1f834e2f582fbb4a8e07|https://archive.org/details/annualreport00carn_11|Report of the President/Annual Report, 1966|
+4079753|aspace_e2958502f7a9a7fa8c857455a763853d|https://archive.org/details/annualreport00carn_12|Report of the President/Annual Report, 1967|
+4079753|aspace_1bd76142b574fa64f3fd10314d671e90|https://archive.org/details/annualreport00carn_13|Annual Report, 1968|
+4079753|aspace_bb8eecdb78aa7796084c7e5361b391cd|https://archive.org/details/annualreport00carn_14|Report of the President/Annual Report, 1969|
+4079753|aspace_fd77ed1a2a2a778f8bdac07007610886|https://archive.org/details/annualreport00carn_15|Report of the President/Annual Report, 1970|
+4079753|aspace_652f2a5803ac5c9a39785f4b6ebdbc1b|https://archive.org/details/annualreport00carn_16|Report of the President/Annual Report, 1971|
+4079753|aspace_f1173966f48346f35d80f9f1b9b71661|https://archive.org/details/annualreport00carn_17|Report of the President/Annual Report, 1972|
+4079753|aspace_65c96919070f10ea0cb04823f0111c05|https://archive.org/details/annualreport00carn_18|Report of the President/Annual Report, 1973|
+4079753|aspace_8b490470661c6be88ee3b2137f8d5576|https://archive.org/details/annualreport00carn_19|Report of the President/Annual Report, 1974|
+4079753|aspace_f9525032c6fa19e3315419f9907bf985|https://archive.org/details/annualreport00carn_20|Report of the President/Annual Report, 1975|
+4079753|aspace_64419bd4861a16c8589cf7385f9021d0|https://archive.org/details/annualreport00carn_21|Report of the President/Annual Report, 1976|
+4079753|aspace_861f1c07453bc2306fbc9237e8cdfe96|https://archive.org/details/annualreport00carn_22|Report of the President/Annual Report, 1977|
+4079753|aspace_e81e6d72bafa57754e447f08108566d5|https://archive.org/details/annualreport00carn_23|Report of the President/Annual Report, 1978|
+4079753|aspace_20bb139ce54bf07d546a4a75df90fa28|https://archive.org/details/annualreport00carn_24|Report of the President/Annual Report, 1979|
+4079753|aspace_da6659bee5790f747bf3fe579a461f91|https://archive.org/details/annualreport00carn_25|Report of the President/Annual Report, 1980|
+4079753|aspace_3869da45807cdfd6dd9c970f30763f76|https://archive.org/details/annualreport00carn_26|Report of the President/Annual Report, 1981|
+4079753|aspace_b7f124b6c0a8c3caf4aba11a5c42eb88|https://archive.org/details/annualreport00carn_27|Report of the President/Annual Report, 1982|
+4079753|aspace_433d7cd5ae5bea55ac3876567e980178|https://archive.org/details/annualreport00carn_28|Report of the President/Annual Report, 1983|
+4079753|aspace_e0e172e74eab5a8b802dc13986f7983b|https://archive.org/details/annualreport00carn_29|Report of the President/Annual Report, 1984|
+4079753|aspace_f95d40dffed9dad0ed5a65571e90b933|https://archive.org/details/annualreport00carn_30|Report of the President/Annual Report, 1985|
+4079753|aspace_118e11b5f331a7b6b710bcf7e98414dc|https://archive.org/details/annualreport00carn_31|Report of the President/Annual Report, 1986|
+4079753|aspace_d55c6b0b2b16475271aa711aa407619a|https://archive.org/details/annualreport00carn_32|Report of the President/Annual Report, 1987|
+4079753|aspace_6381f0133d9a470471844bc5bd044a19|https://archive.org/details/annualreport00carn_33|Report of the President/Annual Report, 1988|
+4079753|aspace_30e7f0fc4e7415c7685fe05b22b52004|https://archive.org/details/annualreport00carn_34|Report of the President/Annual Report, 1989|
+4079753|aspace_ec0142b13b01cef85427bb8030d3f5e8|https://archive.org/details/annualreport00carn_35|Report of the President/Annual Report, 1990|
+4079753|aspace_d00722057cb296ae1e6fe932051346b6|https://archive.org/details/annualreport00carn_36|Report of the President/Annual Report, 1991|
+4079753|aspace_e752dcbc62acdb7c340103a9fab5c7c7|https://archive.org/details/annualreport00carn_37|Report of the President/Annual Report, 1992|
+4079753|aspace_5400cb2cc4ae37189c7823630c24449f|https://archive.org/details/annualreport00carn_38|Report of the President/Annual Report, 1993|
+4079753|aspace_d03ce8fac5819c3c6f98adecdb86bf33|https://archive.org/details/annualreport00carn_39|Annual Report, 1994|
+4079753|aspace_d0dd07f219c6285537cebaf52f9b62db|https://archive.org/details/annualreport00carn_40|Annual Report, 1995|
+4079753|aspace_7f821008e7e4fc45e04d2c63be21a428|https://archive.org/details/annualreport00carn_41|Annual Report, 1996|
+4079753|aspace_044c3d06c5f8aa3bbcd10379816eed2d|https://archive.org/details/annualreport00carn_42|Annual Report, 1997|
+4079753|aspace_25520621fa7721244e057534d7f3fa47|https://archive.org/details/annualreport00carn_43|Annual Report, 1998|
+4079753|aspace_a87421d3eb0e98c7bf128c80ecf58092|https://archive.org/details/annualreport00carn_44|Annual Report, 1999|
+4079753|aspace_1c302093893e814ece94a5feeac86281|https://archive.org/details/annualreport00carn_45|Annual Report, 2000|
+4079753|aspace_f31c2922a87ec641bad1c30d14efaf0e|https://archive.org/details/annualreport00carn_46|Report of the president. Reprinted from the Annual Report, 2001|
+4079753|aspace_6d4aea2f6dfc35cb4208d9d9f50b7be0|https://archive.org/details/annualreport00carn_47|Annual Report, 2002-2003|
+4079753|aspace_cb1c92c04f2a3424e61ce9cdb511d8a3|https://archive.org/details/annualreport00carn_48|Annual Report, 2004-2005|
+4079753|aspace_8586fc254185874abceded056cefc2e0|https://archive.org/details/ldpd_12998568_051/mode/2up|Annual Report, 2006|
+4079753|aspace_a4f70df625981a6ea4ada04adc23fc79|https://archive.org/details/ldpd_12998568_052/mode/2up|Annual Report, 2007|
+4079753|aspace_1dd891bed588922588e8bff7521061e5|https://archive.org/details/ldpd_12584122_000|Andrew Carnegie Journals, 1917-1919|
+4079753|aspace_ad4653c09c95901f1265fc7afc70add9|https://archive.org/details/ldpd_12584130_000|Carnegie Corporation Completed Accounts, 1902-1912|
+4079753|aspace_f729fd731b435eb7165f0c1c6d5e4c13|https://archive.org/details/ldpd_12584131_000|Andrew Carnegie Trust & Loan Accounts, 1912-1918|
+4079753|aspace_e672841417b8c584f43a511ea72cbb1b|https://archive.org/details/ldpd_12584132_000|Andrew Carnegie Stocks & Bonds, 1916|
+4079753|aspace_69810af7b2e1a50639c3699b7bee6e50|https://archive.org/details/ldpd_12584134_000|Andrew and Carnegie Corporation Donations: Library Bilding [sic], 1912-1922|
+4079753|aspace_17abd81b856f50f54c035a6f2dbb6d1f|https://archive.org/details/ldpd_12584135_000|Andrew and Carnegie Corporation Donations: Libraries, 1905-1918|
+4079753|aspace_cd04ccb421ed994ad9cfa74206e84aee|https://archive.org/details/ldpd_12584147_000|Andrew and Carnegie Corporation Donations: Register of Applications from Educational Institutions, 1911-1920|
+4079753|aspace_0e20b72dc1e9a5b17ac0a712d865755e|https://archive.org/details/ldpd_12584144_000|Donations Ledgers - Carnegie Corporation ( British Dominions andColonies), 1920-1940|
+4079753|aspace_096560933e373fbbfe8bf7b5c1bfa2fa|https://archive.org/details/ldpd_12584151_000|Carnegie Corporation General Ledger A, 1912-1923|
+4079753|aspace_e74ac00034254aa12baf88b90fae59a7|https://archive.org/details/ldpd_12584153_000|Estate of Andrew Carnegie: Subsidiary Ledger, 1919-1920|
+4079753|aspace_e03beecbb666a9933422c2175aa1a479|https://archive.org/details/ldpd_12584154_000|Estate of Andrew Carnegie: General Ledger, 1919-1928|
+4079753|aspace_8daaf1226753a204685da5c8703b6a57|https://archive.org/details/ldpd_12584155_000|Estate of Andrew Carnegie: Journal, 1919-1931|
+4079753|aspace_c320ae6596761946d725dae72c9ceb96|https://archive.org/details/ldpd_12584156_000|Estate of Andrew Carnegie: Creditors Ledger, Financial Rates, 1913-1922|
+4079753|aspace_a79bf960fa1b2d1b3f10d422c125e7d3|https://archive.org/details/ldpd_12584157_000|Estate of Andrew Carnegie: Creditors Ledger, Accounts Held, 1919-1921|
+4079753|aspace_c0fd586f8cada058182041eb2246abfb|https://doi.org/10.7916/d8-3tyk-ew60|Cartoon "Les rois des trusts", by Fornaro, Le rire N°043,, 28 nov. 1903|
+4079753|aspace_bf40e88345683be132e19fb4cd859366|https://doi.org/10.7916/d8-xyag-a018|Flag of Peace, presented by National Society of the Daughters of American Revolution, April 16, 1907|
+4079753|aspace_8353e30b0432046d3d132a5bf8b64515|https://doi.org/10.7916/d8-98jv-6p38|Photographs - At desk|
+4079753|aspace_32bbd8132451849d16368f52e83a4f07|https://doi.org/10.7916/d8-5s95-5x48|Photographs - Quarter Century Celebration, Aberdeen University, Sept 1906|
+4079753|aspace_4dc90002af2fe55d0fc2fb3833ee3d05|https://doi.org/10.7916/d8-tk2m-h580|Photographs - Family convention, Pittsburgh, April 1910|
+4079753|aspace_02829acfff8138cf85f60d7dc2a71985|https://doi.org/10.7916/d8-1zmj-p254|Invitation, Dinner for AC, Lotos Club, (Matted with Hero medal), 1909 March 7|
+4079753|aspace_8d753582a682273e2d1a1081833f7fcb|https://doi.org/10.7916/d8-fx0m-va12|Concert at Carnegie Hall (Photograph), 1935 Nov 24|
+4079753|aspace_4fac8b26ba5c32e93c6455d0b6c64016|https://doi.org/10.7916/d8-e33a-a717|Best Fields for Philanthropy Poster , 1935|
+4079753|aspace_fe4c86e1e3dc09bf69ff1c2c98b2fedc|https://doi.org/10.7916/d8-mvz8-n228|Bertram, James|
+4079753|aspace_fdf5ffabb255b34b1ad7220f83b74d0e|https://doi.org/10.7916/d8-zrvh-f705|Butler, Nicholas Murray, 1925-45|
+4079753|aspace_3924570ee515a3485a51b1b9483a7a47|https://doi.org/10.7916/d8-xq13-1397|Franks, Robert A.|
+4079753|aspace_d37e8b78adadec7e940b5c6a81f82ddb|https://doi.org/10.7916/d8-anst-am69|Merriam, John C., Dec. 28, 1938; 1921-38|
+4079753|aspace_072cafd7f5cff8c80aa07b42273c78fc|https://doi.org/10.7916/d8-1xmx-8v62|Pritchett, Henry S., 1928; 1911-30|
+4079753|aspace_67964909727f4a0d8c51d573666fc578|https://doi.org/10.7916/d8-41h3-z664|Root, Elihu|
+4079753|aspace_ff4e67fb1518e69b2624bee5139ce585|https://doi.org/10.7916/d8-h8ee-mr44|Woodward, Robert S., 1911-20|
+4079753|aspace_384dc0bbc6e674f49e3571eda81ed391|https://doi.org/10.7916/d8-hxa6-0n56|Inter-University Council for Higher Education - Overseas meeting of colonial and dominion principals|
+4079753|aspace_509d298038e2ce97af2a114b1485a8e4|https://doi.org/10.7916/d8-n74k-5636|Lagos University of|
+4079753|aspace_daab307f9b50589dc73bd596ac30a9f5|https://doi.org/10.7916/d8-xm3q-xr88|Carnegie House (2 East 91st Street)|
+4079753|aspace_eb03802a5bac605d4b3ed0c2ceaef954|https://doi.org/10.7916/d8-aavq-ys90|Monochrome guache on paper, "Andrew Carnegie ain't going to work no more" , 1901|
+4079753|aspace_3da7d394a0c2b46dd859c8f5679a3a62|https://doi.org/10.7916/d8-j8pz-cq51|[Anderson Cooper 360, 2006], 2006|
+4079753|aspace_7c19d2fa7dc1b0e6bcf531bd295830ea|https://doi.org/10.7916/d8-mag3-k726|[F. W.] de Klerk, April 5, 2004, 4/5/2004|
+4079753|aspace_c6b38617ba83a41d6a60be2cb91b710c|https://doi.org/10.7916/d8-jcts-c848|[Florence Martin-Kessler] Interview with Vartan Gregorian, January 11, 2000, 1/11/2000|
+4079753|aspace_1e449746d64ea657f0d690f5f6c0d2f6|https://doi.org/10.7916/d8-k1bj-he78|100Kin10 Messaging Seminar - Keynote Address: Bill Clinton, 4/19/2012|
+4079753|aspace_f78c06137940421554780742817b2ac1|https://doi.org/10.7916/d8-g2d7-0j60|100Kin10 Messaging Seminar - Session One: The Intersection of Perspective, 4/19/2012|
+4079753|aspace_a84220213d142939f540be160d504cdf|https://doi.org/10.7916/D8N31DVH|20/20, 1988|
+4079753|aspace_1e4c264f888af7e02dfcdd716786f6ae|https://doi.org/10.7916/d8-nb4x-9597|ABC June 22, 2010 - Carnegie Fellows, 6/22/2010|
+4079753|aspace_64098c90f54e233d11bad8e2c45168bc|https://doi.org/10.7916/d8-9cae-tn14|ABC News - Brian Ross Investigates: The Blueberry Children, Carnegie Fellows 2009, 2009|
+4079753|aspace_2b8393c894dbd93dc3cb33688a99df39|https://doi.org/10.7916/d8-p93e-5780|ABC World News Tonight - Nuclear Smuggling Investigation, 9/11/2002|
+4079753|aspace_dc4ee7e3140e41ea37ecd47af24904ed|https://doi.org/10.7916/d8-g5w9-4g17|America Abroad Media - Cardinal Points - The Presidential Elections, 10/1/2004|
+4079753|aspace_407cb6138b9c35d42513a1dfa7309dbf|https://doi.org/10.7916/d8-yhh3-y531|American Experience - Andrew Carnegie: The Richest Man in the World, 1/20/1997|
+4079753|aspace_ceb40106edf31738a9bde5e51cc97687|https://doi.org/10.7916/d8-cfya-fv28|American Public Media presents Public Insight Journalism, 2006|
+4079753|aspace_e487b2bab7e60caad7eb7a5126a9874e|https://doi.org/10.7916/d8-4aak-dx46|American Ruling Class (Trailer), 2001|
+4079753|aspace_589496bc276e8a2c2c31d45ad97b3d26|https://doi.org/10.7916/d8-rpdh-5d88|American Ruling Class Sample Tracks; Nickel And Dimed: The American Revolution No. 2, 2001|
+4079753|aspace_5130fcfa166cca1a1422edbb4071538a|https://doi.org/10.7916/d8-byrn-g541|Andre Korbanov 1 (remaining illegible) [Andre? Kolesnikov], 2000|
+4079753|aspace_a8bf84e2a58fe915aab5f019c2ff98b3|https://doi.org/10.7916/d8-hq5b-ff87|Andrew Carnegie - 2005 Medal of Philanthropy & International Philanthropy Symposium, 2005|
+4079753|aspace_985a4bcc4dc35dcbc69872ccf03d1573|https://doi.org/10.7916/d8-xjja-3h28|Anniversary Dinner, 1961|
+4079753|aspace_7e1e4eef6cf2e6946a0591461f8b4da7|https://doi.org/10.7916/d8-9pry-0266|BBC Post-Production - Coming Soon Cambodia, 11/17/2004|
+4079753|aspace_594dc5e8f86848fb60f0393a4d8b67be|https://doi.org/10.7916/d8-5kjp-bd76|BBC Post-Production - India AIDS Show Reel (Cut Down Version), 11/17/2004|
+4079753|aspace_992018eef47eb9034d8cdf705490468b|https://doi.org/10.7916/d8-c7as-gz46|BDF's Dinner, 11/6/1996|
+4079753|aspace_33c44492c663be805e78564c6629a7e2|https://doi.org/10.7916/d8-9cf3-1j13|Between The Lions, 2/28/2001|
+4079753|aspace_bf168d091dbb215748d7c5bdf9ee2926|https://doi.org/10.7916/d8-nb8v-8651|Between The Lions: A Sampling of Songs from Between The Lions, 1997|
+4079753|aspace_7ccdf677b7ae35bff6692b1669004723|https://doi.org/10.7916/d8-b7mk-ax97|Bishop Desmond Tutu Meeting, 1/10/1992|
+4079753|aspace_7e2e5eaacf269ad35d681770cceff73f|https://doi.org/10.7916/d8-ztms-dx70|Bishop Desmond Tutu: Museum of Natural History, 1/9/1992|
+4079753|aspace_dafd7e11c63d5439c672a4c23e75da2f|https://doi.org/10.7916/d8-y9py-z258|Black Writers In America, 6/27/2003|
+4079753|aspace_138bd936f5725f40c36408d58ab75ccb|https://doi.org/10.7916/d8-cvt1-zm24|Black Writers In America, 6/27/2003|
+4079753|aspace_5623f70d4f2b7686e6df5e576f68809f|https://doi.org/10.7916/d8-5ffx-h934|Black/White & Brown: Brown v.The Board of Education of Topeka, 2009|
+4079753|aspace_8ea9741929dda2037cfd8c7e7dece8c6|https://doi.org/10.7916/d8-a8nw-9889|Board Meeting, 2/2/1999|
+4079753|aspace_6c5405947d2b9bb2d471a6a2a54d5846|https://doi.org/10.7916/d8-5fav-rx35|Board Meeting, 6/13/2002|
+4079753|aspace_8dfbd2fac0217287a74092973d9356dd|https://doi.org/10.7916/d8-kra8-9876|Board Meeting, 10/11/2001|
+4079753|aspace_54e7d910d3d9cc7fb02e3c147a140c16|https://doi.org/10.7916/d8-7p8n-6v94|Board Meeting, 2/1/2001|
+4079753|aspace_4a4f539a8b2251b8b991118b0d01b6f1|https://doi.org/10.7916/d8-ag7y-a733|Board Meeting, 6/12/1997|
+4079753|aspace_335b0942fac0a1024c7fd64d2f9d2331|https://doi.org/10.7916/d8-1nbs-1248|Board Meeting, 4/11/1991|
+4079753|aspace_0ebb739d6d8e78babbabbcc624848838|https://doi.org/10.7916/d8-z0qe-wd23|Board Meeting, 4/14/1995|
+4079753|aspace_acb6fc07a06fa70b20fb91520642f11d|https://doi.org/10.7916/d8-jdjz-s506|Board Meeting, 6/8/2000|
+4079753|aspace_277ffa6d51b517515bfb46b0d37bd15d|https://doi.org/10.7916/d8-zax2-rz16|Board Meeting, 10/8/1998|
+4079753|aspace_b68fc1c3097b26bb37835bea2f209656|https://doi.org/10.7916/d8-6hnz-0r39|Board Meeting, 4/12/2001|
+4079753|aspace_d2a293a9c3ccfbc01af0af91b311e09d|https://doi.org/10.7916/d8-cwkq-xa69|Board Meeting, 1/8/1998|
+4079753|aspace_62b0b4f1db21745dfaf90444f0e59b5e|https://doi.org/10.7916/d8-m2yb-kf91|Board Meeting, 10/10/2002|
+4079753|aspace_868288a794e961535e7c11d44c16fb4d|https://doi.org/10.7916/d8-mw29-p908|Board Meeting, 6/14/2001|
+4079753|aspace_2d1ac840983b0f8e7cb8b645e891101a|https://doi.org/10.7916/d8-k20f-ec52|Board Meeting, 6/28/1990|
+4079753|aspace_6b792e354b8ed7b6389e7aa4f6b271fc|https://doi.org/10.7916/d8-mm6m-ek03|Board Meeting, 6/13/1996|
+4079753|aspace_4de811bc8e884bb2b5ccac9812bb1429|https://doi.org/10.7916/d8-jqzw-9q71|Board Meeting, 1/9/1997|
+4079753|aspace_5ab2b83c3416d70f233ab40a15cc2b7d|https://doi.org/10.7916/d8-qbvn-h827|Board Meeting, 1/11/1996|
+4079753|aspace_5228ca5746c728af496ae53bfcf13511|https://doi.org/10.7916/d8-7x53-jy09|Board Meeting, 1/12/1995|
+4079753|aspace_25055ff1a521fd50d8d00664371e79cd|https://doi.org/10.7916/d8-jdjp-7k46|Board Meeting, 10/14/1999|
+4079753|aspace_b9cb62d5b78ac0a7b593b27176390270|https://doi.org/10.7916/d8-kch9-th13|Board Meeting, 4/8/1999|
+4079753|aspace_3f32da29dc95a4de7629f81febfd58a3|https://doi.org/10.7916/d8-8ntx-6166|Board Meeting, 6/10/1993|
+4079753|aspace_15c7197e7af2be952605cd59fc4adf74|https://doi.org/10.7916/d8-qf9b-m145|Board Meeting, 4/11/2002|
+4079753|aspace_f0b5de16795b1320cfc37c4417fc3065|https://doi.org/10.7916/d8-dhtg-g638|Board Meeting, 1/13/1994|
+4079753|aspace_0b68936552e3ad58f2b2630ace963ee3|https://doi.org/10.7916/d8-f9p6-yg30|Board Meeting, 10/12/1995|
+4079753|aspace_06547f1687fd8d1f50dd9a7f010e45c5|https://doi.org/10.7916/d8-t7ce-r375|Board Meeting, 2/7/2002|
+4079753|aspace_e25e8ab72eb38e174d203a0a5baedbb8|https://doi.org/10.7916/d8-r7nd-8316|Board Meeting, 4/10/1997|
+4079753|aspace_47f47c22c2a09ef8db32afb06dddf205|https://doi.org/10.7916/d8-2j1s-ad29|Board Meeting, 4/8/1993|
+4079753|aspace_ed8e1c1ac66ab1602069f53088a7825f|https://doi.org/10.7916/d8-9e6p-2833|Board Meeting, 1/14/1993|
+4079753|aspace_90181a15f6711adcd17b36c3041242b7|https://doi.org/10.7916/d8-9xfb-2t37|Board Meeting, 4/11/1996|
+4079753|aspace_a99b9c0de3cd86cc42e53baa54a1560d|https://doi.org/10.7916/d8-s6k1-tk03|Board Meeting, 1/9/1991|
+4079753|aspace_3f10073ac7d9b6bb230a3ed6b6caef3f|https://doi.org/10.7916/d8-56qm-ay76|Board Meeting, 10/8/1992|
+4079753|aspace_a5e6cebfa53beb748822ceee025c5bfd|https://doi.org/10.7916/d8-4hsx-3c24|Board Meeting, 6/9/1994|
+4079753|aspace_d3c2cfd0bb6410e7f92239d9f862afc8|https://doi.org/10.7916/d8-5vv0-7c04|Board Meeting, 10/12/2000|
+4079753|aspace_31b82be3a0d68fe3dd1594a8624f5a30|https://doi.org/10.7916/d8-5f8y-qe67|Board Meeting, 10/10/1991|
+4079753|aspace_921b6fc9f5daa76e91540e39c74d3abe|https://doi.org/10.7916/d8-yx8h-7351|Board Meeting, 6/13/1991|
+4079753|aspace_15fd3ed8adaef744d1726a368eafe236|https://doi.org/10.7916/d8-an9b-a725|Board Meeting: Afternoon Briefing, 10/11/2000|
+4079753|aspace_bd95251a8c867b2b701a677065fad461|https://doi.org/10.7916/d8-6frz-b417|Bureau for International Reporting|
+4079753|aspace_09b6af1ea02e54f6a71d529ae7cdd0fe|https://doi.org/10.7916/d8-ar5j-x795|Carnegie Centennial Celebration - Inaugural Ceremony for Andrew Carnegie Medal of Philanthropy, 12/10/2001|
+4079753|aspace_583789b89648136083034d8f9c5fe041|https://doi.org/10.7916/d8-acp3-2549|Carnegie Commission on Reducing Nuclear Danger Board Meeting, 1/9/1992|
+4079753|aspace_159e971b749049c43d77e0e2c6836dbc|https://doi.org/10.7916/d8-ejqe-ah52|Carnegie Corporation - African Grantees, July 2002, 2002-07|
+4079753|aspace_f8e45d64b1cde0519ba0e08c326dd91b|https://doi.org/10.7916/d8-65qs-8n91|Carnegie Corporation - American Museum of Natural History, 1/13/1994|
+4079753|aspace_60e4985875597943e87ef9141b5678d7|https://doi.org/10.7916/d8-tjvw-5931|Carnegie Corporation Communications Workshop - July 17-23, 2004, 7/17/2004|
+4079753|aspace_0e2fdadf15a647e7d2ac6d7691b698c8|https://doi.org/10.7916/d8-xhj1-bb75|Carnegie Corporation Conference - Nairobi, Kenya|
+4079753|aspace_cb636b8b933491c5b232fe7b5c8be903|https://doi.org/10.7916/d8-zdzz-4x14|Carnegie Corporation Meeting Social Cohesion at Lambardi, 4/28/2000|
+4079753|aspace_31bc83f1675078a44141150a01fb2934|https://doi.org/10.7916/d8-m1d7-bj16|Carnegie Corporation of New York|
+4079753|aspace_94362d6d929b4976e8e551e0a1fd1c4e|https://doi.org/10.7916/d8-x663-f211|Carnegie Corporation of New York - Meeting of the Board of Directors, December 10, 2001, 12/10/2001|
+4079753|aspace_45fe8d35fc2df2934909d401ebbb99b7|https://doi.org/10.7916/d8-z7xc-gw03|Carnegie Corporation Of New York (MASTER)|
+4079753|aspace_7418fd17e6f05c397bac883743776692|https://doi.org/10.7916/d8-57xe-ha63|Carnegie Corporation of New York Board Meeting - June 12, 2003, 6/12/2003|
+4079753|aspace_d0e9f0788a9a0ec3ccc28c89fcc941bd|https://doi.org/10.7916/d8-e27a-cd41|Carnegie Corporation of New York Centennial - Interview: Vartan Gregorian, Tom Kean, Helene Kaplan, 2011|
+4079753|aspace_78f2b48637ae26f7408239a608ec416c|https://doi.org/10.7916/d8-4hd8-9p38|Carnegie Corporation of New York Centennial Film - A Focus On The Future, 2011, 3/29/2011|
+4079753|aspace_d8448e7eb62be951a7221292a13b2811|https://doi.org/10.7916/d8-dknr-zp52|Carnegie Corporation of New York Centennial Film - Fireplace Footage, 2011|
+4079753|aspace_5d2361b5f773710a52f90d14208959fe|https://doi.org/10.7916/d8-naxr-9h08|Carnegie Corporation of New York Centennial Film - Interview: Candido de Leon, Joan Ganz Cooney, 2011|
+4079753|aspace_a435bafc8700f97060a17663229601ec|https://doi.org/10.7916/d8-5e8n-9g68|Carnegie Corporation of New York Centennial Film - Interview: Helene Kaplan, 2011|
+4079753|aspace_3b094a6b7bffaa8836d667beaa4a5f4e|https://doi.org/10.7916/d8-pbrk-qt38|Carnegie Corporation of New York Centennial Film - Washington DC Footage, 11/19/2010|
+4079753|aspace_ea7a3913402e7f339c4b996104f6399a|https://doi.org/10.7916/d8-3x5z-qe61|Carnegie Corporation of New York Centennial Lunch Celebration, 12/10/2001|
+4079753|aspace_7652514e27467f964ff30e73a77a9458|https://doi.org/10.7916/d8-p78z-vc64|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 5/31/2000|
+4079753|aspace_ac30687cd122b8cf3427cea2c208f64b|https://doi.org/10.7916/d8-aqhp-sr58|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 5/31/2000|
+4079753|aspace_4e4f176bc19bf9cf84708660bf679e55|https://doi.org/10.7916/d8-9tkk-zv07|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 5/31/2000|
+4079753|aspace_52de7adad3667cbe5d56b1e254f6c805|https://doi.org/10.7916/d8-88z2-8487|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 6/1/2000|
+4079753|aspace_03609480b2f0954bdd5925d59730bc54|https://doi.org/10.7916/d8-svx2-4329|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 5/31/2000|
+4079753|aspace_ee0fe89f9740f9148a99f39d75cd3c34|https://doi.org/10.7916/d8-xxv4-0754|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 5/31/2000|
+4079753|aspace_3229bbaedc10bff9993eec499a4aa552|https://doi.org/10.7916/d8-ntwf-ca81|Carnegie Corporation of New York Panel Interviews, May 31-June 1, 2000, 5/31/2000|
+4079753|aspace_709aab67f6393abc1c56f08777ee36cb|https://doi.org/10.7916/d8-rsmq-5t80|Carnegie Corporation of New York Staff Meeting, October 27, 1997, 10/27/1997|
+4079753|aspace_0edd0bc174c52296f222164fb9e050fc|https://doi.org/10.7916/d8-91kf-9485|Carnegie Corporation of NY: "Crossroads", 4/26/1985|
+4079753|aspace_b6a05a8384f3911c00d97a6e444d5fec|https://doi.org/10.7916/d8-z0k5-v139|Carnegie Corporation Oral History Project (Excerpt), 1999|
+4079753|aspace_e8dcaaffc792037cfcc55319f9b905fa|https://doi.org/10.7916/d8-ggkw-xw27|Carnegie Corporation Retreat, 1981|
+4079753|aspace_f62a163dc2a7cc7e0baeabd0bd81d429|https://doi.org/10.7916/d8-20qn-r981|Carnegie Corporation Retreat- Trustees Talk about Themselves, 3/19/1980|
+4079753|aspace_4e7c3f57aabf8c098653cb7b6b2d80ec|https://doi.org/10.7916/d8-qcjw-nf21|Carnegie Endowment For International Peace, The Morgan Library, 6/7/2011|
+4079753|aspace_a113a6c727a8fb70b39f139b9a7c2134|https://doi.org/10.7916/d8-styw-ka54|Carnegie Oral History Project - Columbia University Oral History Research Office, Interview with Vartan Gregorian, 1999|
+4079753|aspace_04b57cb2b5e4c998a2c963c644550275|https://doi.org/10.7916/d8-t5p8-ne35|Carnegie Project, 1961|
+4079753|aspace_d8588971c6686cd64bac4cc39874084a|https://doi.org/10.7916/d8-1hm7-2v53|Carnegie Selects: Barbara Finberg, Gloria Pimm Brown, Fritz Mosher, 4/2/1998|
+4079753|aspace_58124e8d3eaa8784d4e2f501df93896c|https://doi.org/10.7916/d8-bb4c-x013|Carnegie Staff Meeting - Ellen Lagemann, 7/10/1991|
+4079753|aspace_6de86e15b7d1f15e439412ee38259e2e|https://doi.org/10.7916/d8-jhyf-qd44|Carnegie Task Force (LAR), 1988|
+4079753|aspace_73a7211be31d318c01f4e8d938ab0ef8|https://doi.org/10.7916/d8-2jbp-7f76|Case - English Version, 7/6/2005|
+4079753|aspace_78d78e085ac507ed136d054f82232219|https://doi.org/10.7916/d8-2w0m-tp12|Case - English Version (Rough Cut - July 4th, 2005), 7/4/2005|
+4079753|aspace_27e1c2d16268b334919d43952cfcc31a|https://doi.org/10.7916/d8-g9b8-ta05|Case - Russian Version, 2005|
+4079753|aspace_8a0aeab81033b4023491a4bde481a3fb|https://doi.org/10.7916/d8-1hx6-3n41|Case - Trailer, 2005|
+4079753|aspace_5431e326654d787416eb720adccd4fb1|https://doi.org/10.7916/d8-nsg7-ab63|CCNY Board Meeting- Michael Scriven on Bay Area Writing Project;, 2/9/1998|
+4079753|aspace_cc5b37e62683f37a4ece577ecb8ff523|https://doi.org/10.7916/d8-43fe-1r91|Celebration of Andrew Carnegie - The Hunter Foundation|
+4079753|aspace_65c923fa703af8e38cbda6cbf62e5cfc|https://doi.org/10.7916/d8-t3bf-9w35|Centennial Lunch Celebration, 12/10/2001|
+4079753|aspace_c9d5ad01d0868be5b7efcf9a84829eac|https://doi.org/10.7916/d8-h0hh-mj76|Charlie Rose Show Episode #10444, July 17, 2003, Vartan Gregorian, 7/17/2003|
+4079753|aspace_2d2272e87bbc9713b8d4418e24a74168|https://doi.org/10.7916/d8-5cjg-rv78|China In The Red, 2003|
+4079753|aspace_63297194d6052ad6c3d4d0a7e4d6546d|https://doi.org/10.7916/d8-nqvf-x516|Clean Money Clean Elections Public Campaign - Clean Elections: Changing The Face of America, 2006|
+4079753|aspace_609a17bf32a59e86f298da10c9fd9c05|https://doi.org/10.7916/d8-0ek6-k986|ClearStream Films - 4 Foundation Promos, 2007|
+4079753|aspace_8f8cd7b3204ce7df926a0a6b6a3227fb|https://doi.org/10.7916/d8-frqs-a062|CNN - Anderson Cooper Promos, 2001|
+4079753|aspace_485f8f3d951e63d426019ab4fe80e845|https://doi.org/10.7916/d8-vp71-r880|Connection, Monday, May 12, 2003: Vartan Gregorian, A Life in the Libraries, Hour Two, 5/12/2003|
+4079753|aspace_8e18441fc457b2ee9f8858123bc142f2|https://doi.org/10.7916/d8-2g9z-vn03|Critical Condition: America's Nursing Shortage|
+4079753|aspace_7e05646c148b4e28d15c54f8e7cd34f7|https://doi.org/10.7916/d8-4wrv-de03|DAH's Address at Annual Dinner at AMNH, 1/9/1997|
+4079753|aspace_ab54764ddead232b64ee691000efcd52|https://doi.org/10.7916/d8-smej-yh35|Daily Show with Jon Stewart|
+4079753|aspace_69058c8de5e23b2d5a93fea03c44443f|https://doi.org/10.7916/d8-8yq5-pj06|Daily Show with Jon Stewart (MASTER)|
+4079753|aspace_abaf7f85a2466d7ee706ee274f1d9da9|https://doi.org/10.7916/d8-d5v5-ez73|Daily Show with Jon Stewart, Season 11, Episode 105 - Thomas Kean, 8/16/2006|
+4079753|aspace_e330df6a1c1053c9de988b3901508ca9|https://doi.org/10.7916/d8-pyyt-ev38|David Z. Robinson Retirement, 9/25/1996|
+4079753|aspace_b905e38c5065c16be82c12b72ead2634|https://doi.org/10.7916/d8-mw9d-3328|Democracy On Deadline: The Global Struggle for an Independent Press|
+4079753|aspace_e54b549f4aacb469d747a098869582ff|https://doi.org/10.7916/d8-v8pd-nq23|Democracy On Deadline: The Global Struggle for an Independent Press, 8/31/2006|
+4079753|aspace_465c93b7e2be8f6189c9588d5ef3ef9b|https://doi.org/10.7916/d8-yyt9-8g32|Digital Promise Project Forum, July 15, 2001, SK Meeting, Tape #1, 7/15/2001|
+4079753|aspace_3e76a9942bb7d0029a5ee8e0e95ebbc9|https://doi.org/10.7916/d8-0vp4-qr06|Digital Trails (Short Version), 2006|
+4079753|aspace_d69a570039315507367a3dc195104646|https://doi.org/10.7916/d8-4acz-gs68|Dr. James Yamazaki and the Children of the Atomic Bomb (Demo Tape), 2005-01|
+4079753|aspace_528b04d7de044608bbd965f0ec653f0c|https://doi.org/10.7916/d8-k265-ym48|Education Week/Carnegie Corporation Forum, March 21, 2006, 3/21/2006|
+4079753|aspace_9ab512941b34bfbb33f2fd86a2b3de1a|https://doi.org/10.7916/d8-179w-5p38|Eleanor Roosevelt, 2000|
+4079753|aspace_4144fbb69189b5185fbf26590e2b9b56|https://doi.org/10.7916/d8-hcyn-fd21|Ellen J. Bloom Interview, 2000, 2000|
+4079753|aspace_282db47cf06819700d4e3b1473f7d10c|https://doi.org/10.7916/d8-054m-be57|Ewing Marion Kauffman Foundation: Conversations with John W. Gardner, 2000|
+4079753|aspace_3bdf6304a7906ba8f594e0c587ba1c58|https://doi.org/10.7916/d8-ernm-6e33|Ewing Marion Kauffman Foundation: Conversations with John W. Gardner, 2000|
+4079753|aspace_f2a527bbcf5b4d73f8b4ffd8eafebe83|https://doi.org/10.7916/d8-xwk4-1q78|Excerpts from Carnegie Interviews - First Assembly, 11/30/1998|
+4079753|aspace_eadff4384290dc6f45546c771778273e|https://doi.org/10.7916/d8-19hm-9927|Eyes Wide Open|
+4079753|aspace_ad4833a945a59c0df56cc540e3e38f19|https://doi.org/10.7916/d8-47b1-gg08|February 22, 2001, Cassette 2, 2/22/2001|
+4079753|aspace_260ec4ab186f0155384b4fb5d722d81f|https://doi.org/10.7916/d8-08sc-hd17|For Neda, 2010|
+4079753|aspace_c3142e76511264f20f315dc71f037f66|https://doi.org/10.7916/d8-fv0a-g135|For Your Ears Only - Interview with Vartan Gregorian, 2011|
+4079753|aspace_3b5c76ff6b6a6865205fb7965d7aeb7c|https://doi.org/10.7916/d8-j4d1-w896|Ford Foundation - Perspectives On Philanthropy|
+4079753|aspace_9cda69a79e53b6e20692a2d9efadc633|https://doi.org/10.7916/d8-4gmk-e566|Foreign Exchange with Fareed Zakaria, Episode 115, 7/8/2005|
+4079753|aspace_b34a16a7cb1ae0458563b25bcc9380ef|https://doi.org/10.7916/d8-mt77-6940|Foreign Exchange with Fareed Zakaria, Episode 215, 4/16/2006|
+4079753|aspace_8fd58c541187a041d97a712906fdb3c5|https://doi.org/10.7916/d8-1p48-sb75|Foreign Exchange with Fareed Zakaria, Episode 341, 10/12/2007|
+4079753|aspace_47a3f9c70c6bff52a24c18d6222585cb|https://doi.org/10.7916/d8-cpvz-8s23|Foreign Exchange with Fareed Zakaria, Episode 347, 11/23/2007|
+4079753|aspace_d1fe119d138e2ead6deb51649c9d6179|https://doi.org/10.7916/d8-rbzt-fm80|Fred Friendly Seminars - Ethics in America II, 5/5/2006|
+4079753|aspace_a78f307576d580dcd8c5f8ea7ec91fd6|https://doi.org/10.7916/d8-dsmd-6g16|Friday, March 19th, [2010] - AUB Conference, 3/19/2010|
+4079753|aspace_b125442d3678502fc8b86cf57c218338|https://doi.org/10.7916/d8-gvf4-nr13|From Peril To Promise, 2004|
+4079753|aspace_ce368c007beaafbb20d46098f7e85c69|https://doi.org/10.7916/d8-9wfy-nm21|Frontline - The Battle Over School Choice, 2000|
+4079753|aspace_b574f0acf9d1c208273fa71e92285f17|https://doi.org/10.7916/d8-7gwx-hy85|Frontline promos|
+4079753|aspace_35bec941b72df103ee95b2d7ca87454f|https://doi.org/10.7916/d8-hvz7-n178|Frontline promos|
+4079753|aspace_01271dbb4e6d26e2893b40be513c3b96|https://doi.org/10.7916/d8-85dh-m837|Frontline promos|
+4079753|aspace_4d2ddc8979533ed15a5f53418ae3473f|https://doi.org/10.7916/d8-fe3y-m690|Frontline World - Burma, Uganda, Libya, 10/31/2006|
+4079753|aspace_be5b9323710f852a11690b002c2c127e|https://doi.org/10.7916/d8-1a92-s887|Frontline World - Peru, Ukraine, 10/25/2005|
+4079753|aspace_f7a059c523dcb3a5bd3245c37a53053c|https://doi.org/10.7916/d8-yaha-3n15|Future of Journalism Panel, November 16, 2005, 11/16/2005|
+4079753|aspace_c14ce02b1c4171c6eba57f00d0937143|https://doi.org/10.7916/d8-wmyg-yk71|Ghana - 2003, Delegates To Strategic Communication Office, 2003|
+4079753|aspace_03082040388e695924bb4f500d4d1e86|https://doi.org/10.7916/d8-vnvj-a374|Herskovits at the Heart of Blackness (Sample Media), 2009|
+4079753|aspace_5724f75b2f05db389cd0acb26e49f4f3|https://doi.org/10.7916/d8-d3ge-mq27|Holiday Party, 12/18/1996|
+4079753|aspace_9b46478e90149e4b1ea17d600ed006b6|https://doi.org/10.7916/d8-dsvn-et46|Hollywood Librarian (Rough Cut), 7/12/2006|
+4079753|aspace_e61b7c11af421498feb32101e422eb17|https://doi.org/10.7916/d8-3a9m-4096|HRDC #2, 1988|
+4079753|aspace_1c12583ddefa2ec997a323195332509a|https://doi.org/10.7916/d8-yfev-yd67|Human Capital|
+4079753|aspace_68e35311c1dea9b32cdf3f89e45709ff|https://doi.org/10.7916/d8-f0vr-6480|Immigration - Arizona and New Bedford|
+4079753|aspace_9ebb3fb71e06f26092ee6c5cdd2fef08|https://doi.org/10.7916/d8-qa2t-g624|In The Balance: City Under Siege, 2005|
+4079753|aspace_969b3bc3582bfde285cc069e1df11f9c|https://doi.org/10.7916/d8-myvv-s376|Inside Politics - Unlabeled Judy Woodruff segment on Russia, 2000|
+4079753|aspace_51dc707ec96fa768a88127285ac52970|https://doi.org/10.7916/d8-w4jp-8t54|International Center for Journalists Breakfast - September 19, 2006, 9/19/2006|
+4079753|aspace_44c433a2d08a3ff4c19ebd2ceb4bac6a|https://doi.org/10.7916/d8-77d5-0682|International Reporting Project Gatekeeper Editors' Trip 2004: Lebanon and Syria, 5/8/2004|
+4079753|aspace_a1698bcbc4280366cd9608c5eb09bf99|https://doi.org/10.7916/d8-25q5-8g24|Interview with [Matthew L.] Luhanga, July 11, 2002, 7/11/2002|
+4079753|aspace_65bd44735fa4d1385fba7c8db1ebfa5e|https://doi.org/10.7916/d8-z5c3-n280|Interview with Vartan Gregorian, January 5, 2010, 1/5/2010|
+4079753|aspace_2ed4a323e90b35e888e903635b737490|https://doi.org/10.7916/d8-2s1m-z676|Interviews on literacy, 2000|
+4079753|aspace_145acbbad86d49df874e5bc4e9290524|https://doi.org/10.7916/d8-vrv2-gr33|J. Whitehead Speech/Carnegie Inst. Remarks, 1/14/1993|
+4079753|aspace_0e8a5ad596a8b3f1e3258ef8f9721e22|https://doi.org/10.7916/d8-pmf2-6265|James Billington - Role of Libraries, 1/24/1990|
+4079753|aspace_f6305fb0aa7d1cbce20e234cba40f471|https://doi.org/10.7916/d8-qjz8-hv32|Jimmy Carter, 1/10/1991|
+4079753|aspace_9067353a5bdc540db2b442f183e84be3|https://doi.org/10.7916/d8-e136-2y42|John Gardner: Uncommon American, 10/25/2000|
+4079753|aspace_f183bf604062439cfa07a2f825f357d4|https://doi.org/10.7916/d8-ef2y-qy40|Joseph A. Califano's Presentation, 1/12/1995|
+4079753|aspace_913febd9be6d00e31c11623071b0e871|https://doi.org/10.7916/d8-c7yf-f219|Katinia, Irina, Valentina, 2000|
+4079753|aspace_80024e030d3f74db91688575fac4c380|https://doi.org/10.7916/d8-x7ng-2y55|Last Best Chance (Final Proof), 2005|
+4079753|aspace_631e158b53990cae7d7ad0b6e66085a6|https://doi.org/10.7916/d8-8nc8-4r22|Last Best Chance (Promo), 2005|
+4079753|aspace_9c66278a9c575b2bc6211760007e7ca4|https://doi.org/10.7916/d8-vrqe-6x79|Lobby Wall|
+4079753|aspace_a8eb767bd00fe2a63a27db6957505901|https://doi.org/10.7916/d8-vkvp-a053|Louise [Richardson] (remaining illegible), 2000|
+4079753|aspace_caf4f7ad670da5848229aa6afce866eb|https://doi.org/10.7916/d8-gqz9-eq38|Maggie Vargas, Carnegie Corporation of New York Public Affairs Assistant - Carnegie Forum, October 7, 2002, with Schools Chancellor Joel Klein, 12:00-2:00PM, 10/7/2002|
+4079753|aspace_22c7b2ae3f813c2a2026ab1ff329e93b|https://doi.org/10.7916/d8-wdnj-rr45|Making Schools Work With Hedrick Smith - Discussion Guide, 2005|
+4079753|aspace_900e751838b90cd1624ec5b0a96f3466|https://doi.org/10.7916/d8-qxn9-2h20|Manhattan Charity, 2001|
+4079753|aspace_041a8fcad538257fb2b1c5abe8f4a8eb|https://doi.org/10.7916/d8-z45z-yk89|Margarita - Rosln - Donna, 2000|
+4079753|aspace_7dfb474a4c2f5a61dbaf2d0f281bbad5|https://doi.org/10.7916/d8-8q1r-mt11|Mary Pickford, 2005|
+4079753|aspace_e0c0134719eeb6e6326688cd979d6dd6|https://doi.org/10.7916/d8-0smd-ht16|MCW (Miracle Corners of the World)|
+4079753|aspace_7e45369f916680988b878dc58c85c42e|https://doi.org/10.7916/d8-r435-0007|MDH Interview, October 5, 2000, 10/5/2000|
+4079753|aspace_636e7211bc3c4bc456d9e4f17e9b7e24|https://doi.org/10.7916/d8-3tvk-wt15|Meet the Press, May 29, 2005 - Nuclear Terrorism Panel, 5/29/2005|
+4079753|aspace_740ed6694c0da890cca3512045c532d9|https://doi.org/10.7916/d8-jfz5-qd08|Myrdal, Gunnar, 1981|
+4079753|aspace_75f5ef80cd8393360a957a8e3ef12bf8|https://doi.org/10.7916/d8-nv9f-ks66|Nation at Risk: Reflecting on Two Decades of Reform, Gracie Mansion, October 23, 2003, 10/23/2003|
+4079753|aspace_cc1b144df9f3935dd788ce3ea1718a3a|https://doi.org/10.7916/d8-vh30-qx52|Nation at Risk: Reflecting on Two Decades of Reform, Gracie Mansion, October 23, 2003, 10/23/2003|
+4079753|aspace_50962432dbcbaa983ec35061f087542f|https://doi.org/10.7916/d8-1pga-kn72|NewsHour With Jim Lehrer - A Time For Giving: Philanthropy, 12/25/2001|
+4079753|aspace_a050c55284be46898caacb759205c4c8|https://doi.org/10.7916/d8-zttr-x174|NewsHour With Jim Lehrer - Abkhazia: Breaking Away|
+4079753|aspace_454a8100565ca1ba71349779906af997|https://doi.org/10.7916/d8-96rf-c959|NewsHour With Jim Lehrer - Challenging Course|
+4079753|aspace_e16790bc4b52d71a8dac0bb784484d61|https://doi.org/10.7916/d8-dzew-2h57|NewsHour with Jim Lehrer - Change in Chattanooga|
+4079753|aspace_788ef163d8e139d48d4a5aea505fdf0d|https://doi.org/10.7916/d8-y7nk-he26|NewsHour With Jim Lehrer - International Overview|
+4079753|aspace_9567299f11521d8d9647df87e9995912|https://doi.org/10.7916/d8-7gqv-3d79|NewsHour With Jim Lehrer - Iran, E. Farnsworth w/Jim Lehrer's Intro and Tag, 2/18/2005|
+4079753|aspace_c6b4a5d3d83d3c70ed48f80ec3df1784|https://doi.org/10.7916/d8-q4wj-7a95|NewsHour with Jim Lehrer - Is Excellence Enough? (Making The Grade)|
+4079753|aspace_1b56f162b8856b7d1202838c8886db54|https://doi.org/10.7916/d8-xdph-c424|NewsHour With Jim Lehrer - Margaret Warner reports from Afghanistan and webshot of blog, 3/16/2009|
+4079753|aspace_ff6bda21a21539a99e8fb7bd28832045|https://doi.org/10.7916/d8-pvyp-g241|NewsHour With Jim Lehrer - Pakistan: A Nation Divided|
+4079753|aspace_3cdf0c9be4906b3a8879c5f834f0e1bd|https://doi.org/10.7916/d8-jyxb-yx72|NewsHour With Jim Lehrer - Palestinian Elections|
+4079753|aspace_2e590ea73023e63f061c63a9e2ed5082|https://doi.org/10.7916/d8-asj1-1q62|NewsHour With Jim Lehrer - Prototype Segments February 2007, 2007-02|
+4079753|aspace_73d3b8f27f133109aec003e5f16c67c9|https://doi.org/10.7916/d8-63gn-t090|NewsHour With Jim Lehrer - Strife In Sudan|
+4079753|aspace_b2c408c7d2e0a108df8bce7cb2c185fb|https://doi.org/10.7916/d8-cr42-0d76|NewsHour with Jim Lehrer - The Turnaround Specialist|
+4079753|aspace_e14924eb32b424563ed8b3255332f369|https://doi.org/10.7916/d8-bm93-py27|NewsHour With Jim Lehrer - Turkey In Transition|
+4079753|aspace_7cbd3efbeddeff9bba858371016e829d|https://doi.org/10.7916/d8-37x8-v966|NewsHour with Jim Lehrer, August 21, 2008, 2008|
+4079753|aspace_69612373f247273d5051e6593d286336|https://doi.org/10.7916/d8-rbj2-3j59|Newton Minow's Address, Annual Dinner, 1/11/1996|
+4079753|aspace_6e72f00297c19310189644831b736fa8|https://doi.org/10.7916/d8-maev-w522|Nightly Business Report - South Africa Coverage, 4/5/2004|
+4079753|aspace_4a59ed0256d798905c5e2077e45a72ec|https://doi.org/10.7916/d8-fp30-b838|Nightly Business Report, Episode #24016 - South Africa: Ten Years After, 4/12/2004|
+4079753|aspace_cfd8f52c700187343a915b907a8cfa66|https://doi.org/10.7916/d8-tq0g-mv97|Nightly Business Report, Episodes #25061-25064 - Nigeria: Building Its Future, 6/13/2005|
+4079753|aspace_38190f3d6ab7d3c8a8489781cd2e9d5a|https://doi.org/10.7916/d8-y1gh-zc14|NOW with Bill Moyers, Episode #219 - Bill Gates, 5/9/2003|
+4079753|aspace_d0e6cddffa92eaa281086efc96036910|https://doi.org/10.7916/d8-6p03-pa20|Nuclear Threat Initiative - Much Worse; Nunn/Rudman; 1.9 Million|
+4079753|aspace_78371af5dcf40598532d9613a31523aa|https://doi.org/10.7916/d8-73mx-7355|NYPL Trustee Dinner - Vartan Gregorian, 12/11/1985|
+4079753|aspace_d6a7c1deea0cc25a84ad3883ea5842f9|https://doi.org/10.7916/d8-fer3-q866|Open Mind - Reflections on Economics With Three Cultures, 2007|
+4079753|aspace_01b7a0c2fa18e9c699b5bd0e64efe614|https://doi.org/10.7916/d8-mvvp-6w70|Open Mind - The Idea and the Uses of a Foundation, 11/3/2011|
+4079753|aspace_1a897840340ca2ad91ff4443fa84e76f|https://doi.org/10.7916/d8-jq5g-m303|Open Mind, April 22, 2004 - A Man for All Seasons, Part II - Dr. Vartan Gregorian, 4/22/2004|
+4079753|aspace_c2a419c440b49a363b285b5237427213|https://doi.org/10.7916/d8-10hw-9k27|PBS KIDS Raising Readers|
+4079753|aspace_89fc40044b1a12a00de91c690861208e|https://doi.org/10.7916/d8-e82g-e381|PIR, January 25, 2002, 1/25/2002|
+4079753|aspace_7264844c630f8c31577fa2dac7765a10|https://doi.org/10.7916/d8-tsnf-8y75|Power Implications of the 21st Century Economy, 6/7/2011|
+4079753|aspace_d066d6fd0a9b210b1b6fda4aaf9563d1|https://doi.org/10.7916/d8-7fff-4f52|Power Implications of the 21st Century Economy, 6/7/2011|
+4079753|aspace_b5d5d3bb7733fd65189db209690253af|https://doi.org/10.7916/d8-8kva-9815|Presidential Medal Of Freedom, Dr. Vartan Gregorian, 4-6 Minutes, Music Out, 7/6/2004|
+4079753|aspace_21197457d40a32d13999fe938d50cca7|https://doi.org/10.7916/d8-b3em-xt02|Primetime - Nuclear Smuggling Project, September 11, 2003, 9/11/2003|
+4079753|aspace_f9b47c57e40f5813c6d43c65b174376f|https://doi.org/10.7916/d8-p98d-t651|Primetime - Radioactive Road Trip, 10/13/2005|
+4079753|aspace_187920a855bab451f4d8fd6b797b99b4|https://doi.org/10.7916/d8-6qa4-wv44|Primetime - Radioactive Road Trip, 10/13/2005|
+4079753|aspace_bd7ef23ef48c44a2188d109bea982c5b|https://doi.org/10.7916/d8-8hde-bf83|Program Officers Meeting (BDF), 2/19/1997|
+4079753|aspace_139e75a7f99371103631db7d4d2e421f|https://doi.org/10.7916/d8-r8kd-ga71|Public Broadcasting - The Digital Challenge, The Local Content, 2000|
+4079753|aspace_35051657a24edc009e7dab8488c8d564|https://doi.org/10.7916/d8-9xep-kw55|Ralph Bunche, The Odyssey Continues... - Crisis In The Congo Pt. 1 (Long version), 10/6/2003|
+4079753|aspace_b8ea60c3ee789756b3d570196de642c3|https://doi.org/10.7916/d8-s197-eh30|Ralph Bunche, The Odyssey Continues... - Crisis In The Congo Pt. 2 (Long version), 10/6/2003|
+4079753|aspace_49dc61e3193c98cbc85a131341f84793|https://doi.org/10.7916/d8-2cfk-gs89|Ralph Bunche, The Odyssey Continues... - Insider/Activist (Long version), 10/6/2003|
+4079753|aspace_f9dbae2a8f4f5f1d19cd13728c025a93|https://doi.org/10.7916/d8-w8wd-8v37|Ralph Bunche, The Odyssey Continues... - International Troubleshooter, 10/6/2003|
+4079753|aspace_25a171ea968ee2446ff4bee625acdf81|https://doi.org/10.7916/d8-0g6e-9397|Ralph Bunche, The Odyssey Continues... - Mr. U.N, 10/6/2003|
+4079753|aspace_e75e25fb152a965364dc927d5dc808fe|https://doi.org/10.7916/d8-fje1-z198|Ralph Bunche, The Odyssey Continues... - Peacemaker in Palestine (Long version), 10/6/2003|
+4079753|aspace_6433db7afcfca617111ee3dced0cdd3a|https://doi.org/10.7916/d8-mcag-ba65|Ralph Bunche, The Odyssey Continues... - Race: An American Dilemma Continues (Long version), 10/6/2003|
+4079753|aspace_c5bc74afc6e270e86544683046cc704b|https://doi.org/10.7916/d8-a68z-ak69|Ralph Bunche, The Odyssey Continues... - The Architect Of Peacekeeping, 10/6/2003|
+4079753|aspace_3b5f81c6ca369b23db38afe9036ce1b7|https://doi.org/10.7916/d8-r26n-6917|Ralph Bunche, The Odyssey Continues... - The Man Behind the Myth, 10/6/2003|
+4079753|aspace_931e677a13db66434a9dc9fbe1d22f25|https://doi.org/10.7916/d8-egtd-3844|Retirement for Barbara Finberg, 11/18/1996|
+4079753|aspace_6d80a1236c9d5f1e45df2f06595270af|https://doi.org/10.7916/d8-5ynb-wd93|Road to Home: My Life and Times, C-SPAN Videotape 176702, 2003|
+4079753|aspace_77c6bf4c173e2e68e388fb93090c396d|https://doi.org/10.7916/d8-ffm8-wd79|Running Dry (Market Trailer), 2005|
+4079753|aspace_58f526fb4446f1e4b3e61986cba3bf03|https://doi.org/10.7916/d8-8e20-dy22|Russia Initiative - Interviews, 6/23/2000|
+4079753|aspace_ad320b4deec76f1c869f8787273028c4|https://doi.org/10.7916/d8-dcpz-2v24|Russia Initiative - Interviews, 6/23/2000|
+4079753|aspace_409c770cbd111e6c3ce6a2933f0b8c63|https://doi.org/10.7916/d8-rqb6-3y42|Russia Initiative - Political Democratization and Economic Reform in Russia - Interviews, 6/8/2000|
+4079753|aspace_06d7548b9b6d3b65f27e767b229d8764|https://doi.org/10.7916/d8-199w-gk22|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises, 5/19/2000|
+4079753|aspace_0191c5792eebcf497ef020c49b204ce0|https://doi.org/10.7916/d8-35y6-3z02|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises, 5/19/2000|
+4079753|aspace_4f9a6c35041d1e487cf27d139b61808a|https://doi.org/10.7916/d8-0jyq-ap37|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises, 5/20/2000|
+4079753|aspace_c9ac4fcc473b4127621cc4529ad89931|https://doi.org/10.7916/d8-vk5t-fb32|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises, 5/19/2000|
+4079753|aspace_d3d107ee15b01fe8b85522d24ba2d577|https://doi.org/10.7916/d8-0bpb-9p25|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises - Inteviews, 6/20/2000|
+4079753|aspace_6357dfa6fe5f95c50a57d6cceeee4734|https://doi.org/10.7916/d8-r4y9-av67|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises - Inteviews, 6/20/2000|
+4079753|aspace_c312a3a28e3ac49c3bbe17fc1220e082|https://doi.org/10.7916/d8-k8vn-ya64|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises - Inteviews, 6/19/2000|
+4079753|aspace_5e6e059be5dbb784e55e7a5f102e3233|https://doi.org/10.7916/d8-yr6b-cc13|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises - Inteviews, 6/20/2000|
+4079753|aspace_882f8a2377eebe32736af6bacb5b3326|https://doi.org/10.7916/d8-hddy-yx19|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises - Inteviews, 6/20/2000|
+4079753|aspace_674c78122f81d6d3d1f89d7fa5546842|https://doi.org/10.7916/d8-e4z8-c306|Russia Initiative - Problems of Engagement: Russia's Security, Economic and Banking Crises - Inteviews, 6/19/2000|
+4079753|aspace_d98cd7dd30dd4000ac52261b1a0873a1|https://doi.org/10.7916/d8-sgjp-dh46|Russia Initiative - Program Study Group on Social Cohesion - Interviews, 6/21/2000|
+4079753|aspace_701ca5a60fb28067cb0069dd655050e0|https://doi.org/10.7916/d8-0fcx-hk06|Russia Initiative - Program Study Group on Social Cohesion - Interviews, 6/21/2000|
+4079753|aspace_5e0972a8c5a4c3a3d6612168a054fab5|https://doi.org/10.7916/d8-aq5g-c344|Russia Initiative - Program Study Group on Social Cohesion - Interviews, 6/21/2000|
+4079753|aspace_373e3272b6962fccf735d5df81121698|https://doi.org/10.7916/d8-wvbq-7d11|Russia Initiative - Program Study Group on Social Cohesion - Interviews, 6/21/2000|
+4079753|aspace_aa098a5b8c516ade7013643f788f3465|https://doi.org/10.7916/d8-vmkm-r232|Russia Initiative - Study Group Participant Interviews, 6/22/2000|
+4079753|aspace_5d7c7c6046eaed1246d01329c38a8b2e|https://doi.org/10.7916/d8-p7h1-ty20|Russia Initiative - Study Group Participant Interviews, 6/22/2000|
+4079753|aspace_55394f9eae9beb8ba1f17eb1538b0554|https://doi.org/10.7916/d8-00r6-qb24|Russia Initiative Conference, 5/12/2000|
+4079753|aspace_8007ad631c0a2ac2ce83018e8a7e12cf|https://doi.org/10.7916/d8-ms9a-kq39|Russia Initiative Conference, 5/11/2000|
+4079753|aspace_88cfd746fab36129ffe757a6c8668619|https://doi.org/10.7916/d8-t7e0-n711|Russia Initiative Conference, 5/12/2000|
+4079753|aspace_94d29e9a976de0eb8ae3dfdb0e3ed779|https://doi.org/10.7916/d8-3vb0-2m69|Russia Initiative Conference, 5/11/2000|
+4079753|aspace_a6d7a4ec45ba8b33427efc0dadc2314b|https://doi.org/10.7916/d8-w25d-pq93|Russia Initiative Conference, 5/12/2000|
+4079753|aspace_01781131ffe5c8fa77b65fdf49222115|https://doi.org/10.7916/d8-zst3-6t98|Russia Initiative Conference, 5/12/2000|
+4079753|aspace_404c8fd06bac5a254eb04af7d454a700|https://doi.org/10.7916/d8-t09j-m463|Russia Initiative Conference, 5/11/2000|
+4079753|aspace_7bee7614620c15113c0b849a80f4e379|https://doi.org/10.7916/d8-txwa-eh72|Russia: Facing The Future|
+4079753|aspace_46978e638bf71adb82f795c339e4b1cf|https://doi.org/10.7916/d8-yhbs-nm66|Russia: Facing The Future, 2001|
+4079753|aspace_49b50cf258bb176e974649b2fbf90d02|https://doi.org/10.7916/d8-b3j8-t006|Russia: Facing The Future|
+4079753|aspace_6097df1027d9ac3fb9d34fe05a3aeba5|https://doi.org/10.7916/d8-3k7n-2k90|Russia: Facing The Future|
+4079753|aspace_2732504f59bb9d09607adb05dd451536|https://doi.org/10.7916/d8-mgmf-0z39|Russia: Facing the Future, 2001|
+4079753|aspace_0b42d40ee4f47f01f2aef8411866a080|https://doi.org/10.7916/d8-jev0-de25|Russia: Facing the Future, 2001|
+4079753|aspace_ca64d9b6403f6b2f8ce2c5f54524b304|https://doi.org/10.7916/d8-hy9n-sx77|Russia: Facing The Future (Excerpted Short Version), 4/23/2001|
+4079753|aspace_ccfd6b09297310d021ab760b728cd8f0|https://doi.org/10.7916/d8-vrww-8s35|Russia: Facing the Future (Master)|
+4079753|aspace_cc0ac327617a412d88681e471dede797|https://doi.org/10.7916/d8-pxdg-j455|Salzburg Global Seminar, 2008|
+4079753|aspace_cfd47faaad245b3ca637fea2e9aced03|https://doi.org/10.7916/d8-rpfy-cj22|Sam Nunn, June 14, 2001, 6/14/2001|
+4079753|aspace_31ae7acca6b29c72ee3801c85a3662ef|https://doi.org/10.7916/d8-bsbn-7y24|School Works - The Total Package; The Committed Teacher; The Motivating Principal|
+4079753|aspace_41ca3991ebcd454d0e3b214e49894ccd|https://doi.org/10.7916/d8-sqv8-zv43|Schools for a New Society - Carnegie Corporation of New York|
+4079753|aspace_8bae64991e3b8397f2718ab60cce4bc5|https://doi.org/10.7916/d8-b084-tm11|Schools for a New Society - Carnegie Corporation of New York|
+4079753|aspace_b5571d4dc7feb2711fbaeed1448fdb22|https://doi.org/10.7916/d8-ryjp-0z24|Scott Simon Interview with Vartan Gregorian, NPR, January 1, 2000, 1/1/2000|
+4079753|aspace_cf307fb1af83a1a8358bb999dbb93fbe|https://doi.org/10.7916/d8-g0k8-tb14|Sec. Christopher Reception, 12/16/1996|
+4079753|aspace_950618759fcb9c78ae0162e85ea27f1d|https://doi.org/10.7916/d8-4g9m-ae55|September 26, 2000, N.B Carnegie, 9/26/2000|
+4079753|aspace_03c2be243e432e71016e4c772a924fb9|https://doi.org/10.7916/d8-jm6g-7d68|Seven Nations, Six Foundations, One Mission: Africa's Future - The Partnership For Higher Education In Africa (PHEA), 2000|
+4079753|aspace_8e69eac39ac1074f5f6731c79ca37534|https://doi.org/10.7916/d8-vqz5-aj84|Siyaphambili: Young Women on the Move, 2011|
+4079753|aspace_b7618120458fd8ee87c8a8501568c5cc|https://doi.org/10.7916/d8-3e3k-g262|Small World/Big Divides: Building Bridges in an Age of Extremes, 10/16/2006|
+4079753|aspace_4c561f8cd3d11f5388d11a2f0df778ff|https://doi.org/10.7916/d8-fvvx-ne30|Staff Luncheon, 5/20/1996|
+4079753|aspace_7d76b3a273fe73f98a764916ba31dbc6|https://doi.org/10.7916/d8-pb6d-x510|Staff Luncheon, 3/27/1996|
+4079753|aspace_05aba01ff2a96b03ffbbc101ab06bcbe|https://doi.org/10.7916/d8-t0by-bp07|Staff Luncheon Speaker- Daniel C. Matuszewski, 6/25/1992|
+4079753|aspace_954a0a75772e7980b41e70e7f6d7b4d0|https://doi.org/10.7916/d8-32h7-tp18|Staff Meeting - John Edie, 2/25/1997|
+4079753|aspace_a23855430444f7c9ed97ce0fbd9ae1a2|https://doi.org/10.7916/d8-km36-gd86|Staff Meeting- Gospel of Wealth, 10/17/1990|
+4079753|aspace_0e0610501384baace8a1c947abcce908|https://doi.org/10.7916/d8-7132-kk19|Stephen J. Del Rosso, January 18, 2001, 1/18/2001|
+4079753|aspace_4183fc4577d197f2499b1df5ef0c2587|https://doi.org/10.7916/d8-xzj8-gw98|Stonewalled at Fort Bragg, 11/29/2007|
+4079753|aspace_3a1ffd165b31f55ad92eef1769a71657|https://doi.org/10.7916/d8-hf4w-dp19|Stricken Schools Part 2 - Back To School In New Orleans|
+4079753|aspace_40c6af6601ecde93ef044816cfb8e695|https://doi.org/10.7916/d8-7xr8-9888|Stride Towards Gender Equality at Makerere University|
+4079753|aspace_54537a00cb99997a48c9802436ba5b53|https://doi.org/10.7916/d8-yk9r-vx63|Talent Strategy Challenge|
+4079753|aspace_2220f76c3875d304aea47753b41a7d35|https://doi.org/10.7916/d8-g0d5-1960|Tape #1, 2/1/2000|
+4079753|aspace_995915c2f04e8a0c379a76af73d051a1|https://doi.org/10.7916/d8-xj2q-v819|THIRTEEN WNET New York - Running: The Campaign for City Council, 2/24/2002|
+4079753|aspace_a25d6d7cf47f7ca26109db6f5e62929a|https://doi.org/10.7916/d8-4c63-ek89|Tribute to Newton Minow - Northwestern University 50th Anniversary Event, 4/29/2011|
+4079753|aspace_5ea703d0805666735edeee3537cb5009|https://doi.org/10.7916/d8-m53q-gw85|Trustees Retreat Lecture Room, 6/7/1995|
+4079753|aspace_7ed0f8c1b97ea05279f8f5340abc610d|https://doi.org/10.7916/d8-kq96-q693|Turkey In Transition - 2008 International Reporting Project Gatekeeper Editors Trip, 2008|
+4079753|aspace_f5e40ff50a3aeac387f9e61fec349768|https://doi.org/10.7916/d8-sw2c-v069|United Nations Development Programme - TV Productions, 1997|
+4079753|aspace_ad002bd53abe26842bc6b923b4b043b6|https://doi.org/10.7916/d8-mcz2-ce61|University of Ghana - Carnegie Corporation of New York Joint Workshop on Strategic Communications, 8/15/2011|
+4079753|aspace_c8d8aec06767b7c8b2ce77b1d3fdbdd1|https://doi.org/10.7916/d8-jb5z-yf91|University of Ghana - Carnegie Corporation of New York Joint Workshop on Strategic Communications, 8/15/2011|
+4079753|aspace_27f34350fbd026cada85408bc2c5bad2|https://doi.org/10.7916/d8-pg5d-mt85|University of Ghana - Carnegie Corporation of New York Joint Workshop on Strategic Communications, 8/15/2011|
+4079753|aspace_cb9d5d5c097e629cf8782469fa180216|https://doi.org/10.7916/d8-0vaj-m748|University of Ghana - Carnegie Corporation of New York Joint Workshop on Strategic Communications, 8/15/2011|
+4079753|aspace_8ea3e7901de96b0a516bf6a376845bcf|https://doi.org/10.7916/d8-b04s-sh87|Unlabeled audio cassettes, 2000|
+4079753|aspace_c1e18e60b5fe9d22134be27f87dc56dc|https://doi.org/10.7916/d8-87aw-ab75|Unlabeled audio cassettes, 2000|
+4079753|aspace_e05f2abe62a5b92c81fdcc7cfdd04c49|https://doi.org/10.7916/d8-006p-xh37|Unlabeled audio cassettes, 2000|
+4079753|aspace_015be4f0789c8cc7e10cfcd534ead348|https://doi.org/10.7916/d8-zha1-kr12|Unlabeled audio cassettes, 2000|
+4079753|aspace_e3ed73147ef1c8eea8b254da1bcea033|https://doi.org/10.7916/d8-rysp-6x26|Unlabeled audio cassettes, 2000|
+4079753|aspace_fbf17391b1d86b7116c173a74dfe7ad6|https://doi.org/10.7916/d8-tnzs-9g80|Unlabeled audio cassettes, 2000|
+4079753|aspace_1488b6d3f05ce70c1b97b6726d72959a|https://doi.org/10.7916/d8-hsbm-hg80|Unlabeled DVCAM tape|
+4079753|aspace_dc4b5c8d8772912104cacbd8d47e71c9|https://doi.org/10.7916/d8-vg2n-8m21|Untitled, 1988|
+4079753|aspace_956546274c800ab3fce00438da2cb4b6|https://doi.org/10.7916/d8-j1am-qw46|Untitled, 1988|
+4079753|aspace_735995e9f9477625262782898e5cbe20|https://doi.org/10.7916/d8-k0qc-ag54|Vartan Gregorian - Stephanie Strom Interview, 2002|
+4079753|aspace_313af7fd4e4ff88e89a3f01e85a2f148|https://doi.org/10.7916/d8-hwfk-tr98|Vartan Gregorian 2012 Interview - B-Roll, 2012|
+4079753|aspace_5276ad1d5873de83ab2ba8822468874c|https://doi.org/10.7916/d8-gh89-4d88|Vartan Gregorian at the Library and Information Association of South Africa (LIASA), 2000|
+4079753|aspace_d324059cba1faf6f955c5f230875d518|https://doi.org/10.7916/d8-90mn-4d26|Vartan Gregorian interview, 2000|
+4079753|aspace_0d3db553368685f1285cb27859b83c5d|https://doi.org/10.7916/d8-dd1e-dc33|Vartan Gregorian Interview, Carnegie Corporation of New York, June 16, 2004, 6/16/2004|
+4079753|aspace_57dfcea0b618634b3896180859174166|https://doi.org/10.7916/d8-m30b-pk93|Vartan Gregorian Movie, 1997|
+4079753|aspace_b955780987d2a6e16b964808d71897f6|https://doi.org/10.7916/d8-px15-z244|Vartan Gregorian On Managing For Results, 7/20, 7/20/2000|
+4079753|aspace_04b4d525abd896edd168353ea3b40eca|https://doi.org/10.7916/d8-5ncv-b109|Vartan Gregorian On NY1, 11/6/2003|
+4079753|aspace_85bbe06c226348b501cf39f579ee0606|https://doi.org/10.7916/d8-kaw4-dd94|Voices From South Africa - Carnegie Oral History Project|
+4079753|aspace_8122664b605277e0be6cb2564a2a31e9|https://doi.org/10.7916/d8-0ep3-d173|White House Fellows Program - 2009 Video (Fine Cut), 10/1/2009|
+4079753|aspace_e25f2fe41a594f0dc52dec0af3240f21|https://doi.org/10.7916/d8-v2gr-z238|White House presentation of Medal Of Honor to Vartan Gregorian, President of the Carnegie Corporation of New York, 6/23/2004|
+4079753|aspace_20dc18ca3110b15614ed655cedf6712b|https://doi.org/10.7916/d8-8d3p-a109|Wide Angle: 1-800-India, 9/13/2005|
+4079753|aspace_dacfd6fad86ce240479ec663f3a8f53d|https://doi.org/10.7916/d8-cwmx-1n60|Wide Angle: Back To School, 2006|
+4079753|aspace_017ee816120a0c709fed9eb667d40333|https://doi.org/10.7916/d8-1v09-ac74|Wide Angle: Border Jumpers, 7/26/2005|
+4079753|aspace_f640c11b8344a3d84a707bf91ad92c54|https://doi.org/10.7916/d8-4pg6-mx36|Witness to the 20th Century - Vartan Gregorian Interview|
+4079753|aspace_ab8bad8e699abac38b8d907aaba8775e|https://doi.org/10.7916/d8-k9cc-p813|World Talk Show #4, 5/15/2003|
+4079753|aspace_f8e23cc1e7a6771d4ddf646ce57f95e2|https://doi.org/10.7916/d8-1f9t-7r20|World We Want to Live In: 14th Annual Forum 2000 Conference - Vartan Gregorian Interview, 10/10/2010|
+4079753|aspace_e921fdfac73c21ae27155e55e2e59535|https://doi.org/10.7916/d8-ej3b-sj52|Carnegie Corporation interview with Margaret Carnegie Miller, 1981|
+4079753|aspace_5bc6744c8b86b9453a73bb235a1d83d3|https://doi.org/10.7916/d8-ny1e-a002|Carnegie: The Global Foundations, 1961|
+4079753|aspace_8102e0e13e0236e788ac8f9dd16ccda7|https://doi.org/10.7916/d8-zkky-2m27|Celebration of Andrew Carnegie, 1961|
+4079753|aspace_dde7b3c7872c054f084b3512d1d7076e|https://doi.org/10.7916/d8-mhh3-aj09|Foundations: The People and The Money. A Behind the Scenes Look at The People who Give Money, 1988|
+4079753|aspace_8e66b6b77042497e4745b957ee97c62d|https://doi.org/10.7916/d8-f66q-rb64|Foundations: The People and The Money. A Behind the Scenes Look at The People who Give Money, 1961|
+4079753|aspace_0a631ff8b326c7ffab840d9c2f6e7267|https://doi.org/10.7916/d8-6j3v-3063|Interview with Margaret Carnegie Miller, 1980|
+4079753|aspace_b8ceeffb88a831ad0c93981f6305d89e|https://doi.org/10.7916/d8-j081-5z97|Legacy of Andrew Carnegie, 1988|
+4079753|aspace_823e4933f1e270594a81355deb1fc25b|https://doi.org/10.7916/d8-hbx1-tx84|Maverick Millionaire: Documentary on Andrew Carnegie, 11/18/1985|
+4079753|aspace_786facf6bbef48fd8d2e2aec3892cab6|https://doi.org/10.7916/d8-djhj-nv25|Scottish Television - Andrew Carnegie : Maverick Millionaire, 12/3/1986|
+4079753|aspace_fb171e8be298710598b4f3a80ea7f819|https://doi.org/10.7916/d8-hqyt-h218|Side A: Interview with Margaret Carnegie Miller, 4/22/1985|
+4079753|aspace_f108e5eacc2021499704996c6d554ac0|https://doi.org/10.7916/d8-0kre-x365|1994 Nancy Susan Reynolds Awards: Winners (clip reel), 9/27/1994|
+4079753|aspace_1db45609a9de4b29b64896a8f408a708|https://doi.org/10.7916/d8-qdk8-qa16|1997 National Urban League Conference: Keynote Session (Speaker: Hugh B. Price), 8/3/1997|
+4079753|aspace_6e61cdb3468d5e1d1a1332fab4d77cc9|https://doi.org/10.7916/d8-yfzq-k788|22nd Congressional Black Caucus, Foreign Affairs Workshop, 9/25/1992|
+4079753|aspace_34018e017f9a5fadace0d95df7f5ebd9|https://doi.org/10.7916/d8-hm6j-b557|¡Hagase Contar! Make Yourself Count!, 2000|
+4079753|aspace_37aab5fc10ce99277ae206825ed10cb9|https://doi.org/10.7916/d8-pgvy-fg96|Above Prejudice and Beyond Tolerance, 4/15/1999|
+4079753|aspace_4bf743234bead1e1266cb6dac7bfd815|https://doi.org/10.7916/d8-f3am-7m97|Accidental Hero: Room 408, 2002|
+4079753|aspace_19be0d24138761de148fadfa175837bb|https://doi.org/10.7916/d8-jk7a-6083|Accidental Hero: Room 408 Edit Master, 2002|
+4079753|aspace_3aea2be3e5c41fecb82d092dab75c75f|https://doi.org/10.7916/d8-bszf-fz44|ACF Newsource: Democracy & Education, 2001|
+4079753|aspace_f04d79bade20120cedc17fe57e753c65|https://doi.org/10.7916/d8-yz04-xm11|Adam Smith Show #1316: "Giving away Millions", 2/28/1997|
+4079753|aspace_fad2ebd8f1d9f17578a56ccc5415f6b5|https://doi.org/10.7916/d8-1rdz-4303|Advertising Council Vote '88, 1988|
+4079753|aspace_63820d5397c8935881b86d2a75901bcc|https://doi.org/10.7916/d8-1tz6-9e14|Advertising Council Vote '88, 1988|
+4079753|aspace_019e7e7e8773961fee7848688a403510|https://doi.org/10.7916/d8-3b0q-v487|African American Children: Images & Realities (Dreaming, Achieving, Prospering), 1995|
+4079753|aspace_6cc23e9c8816d594e8cfd813790003a6|https://doi.org/10.7916/d8-1k3c-3m57|African American Children: Images & Realities (Dreaming, Achieving, Prospering), 1995|
+4079753|aspace_7052fcd7767662692ffe158d1276494d|https://doi.org/10.7916/d8-nfe0-pj96|African American Male Immersion Schools: Segregation? Separation? or Innovation?, 1993|
+4079753|aspace_b56ac6d4d8833e6eb4294223b1d02859|https://doi.org/10.7916/d8-4j6a-hn08|Aging Society, 1984|
+4079753|aspace_26d468888023bc6765da16e971fe40f4|https://doi.org/10.7916/d8-b2v0-kp84|Aging Society, 1984|
+4079753|aspace_15f7c58200f8c467844c36874e70dde4|https://doi.org/10.7916/d8-n29q-dc29|Alternative Approaches to Arms Control AAAS, 2/16/1987|
+4079753|aspace_67cbc8b853fb6e0f2eacac4a2aaaf3d6|https://doi.org/10.7916/d8-dh5x-7h54|American Citizenship Education Project Voter Registration Campaign, 1988|
+4079753|aspace_a937c558084def5a941e12a07a92f0f5|https://doi.org/10.7916/d8-btg6-mf48|American Citizenship Education Project Voter Registration Campaign, 9/16/1988|
+4079753|aspace_e5c70be92e641df403e5383db9f6a7a2|https://doi.org/10.7916/d8-k7zr-jh70|American Playhouse, Fires in the Mirror, 1993|
+4079753|aspace_afb2e80a9422222da8729af8075dcbe7|https://doi.org/10.7916/d8-53mv-yp42|American Playhouse, Fires in the Mirror, 1993|
+4079753|aspace_eb37283abb77a19756e8fbed4aff437d|https://doi.org/10.7916/d8-p3sv-qs10|America's Defense Monitor, Episode #621: Cutting the Military Price Tag, 1993|
+4079753|aspace_21fb257d88d66924a36bce041d1886f2|https://doi.org/10.7916/d8-b4ef-kg38|Annenberg Learner/CPB Project- Langston Hughes/Planet Earth #104, 1988|
+4079753|aspace_7d48d0300aa41a75266895589aa6def3|https://doi.org/10.7916/d8-h846-z204|Annual Dinner Honoring David A. Hamburg, 1/9/1997|
+4079753|aspace_18b0bdb8d11c601ae9bab8bbe5c6e3e5|https://doi.org/10.7916/d8-xhfn-7f52|Anti-Discrimination Campaign: Life's Too Short Hate, 1992|
+4079753|aspace_b0c3d721cf4d0fe0620624dff8ee3685|https://doi.org/10.7916/d8-ah4m-0708|Avance - USAA Video - Without Henry Cisneros, 9/9/1994|
+4079753|aspace_2b7c2458896a16c65a2c58dc0b42af5a|https://doi.org/10.7916/d8-ct3e-b226|Battle over School Choice, 2000|
+4079753|aspace_e72f5bfa129315da9744fb9a6942ee91|https://doi.org/10.7916/d8-b5pf-we79|Battle over School Choice, 2000|
+4079753|aspace_da2c2d3e6cb81d79eb7f26799542f9b1|https://doi.org/10.7916/d8-w0s9-ea45|Black Community Crusade for Children: signature PSA series, 1993-03|
+4079753|aspace_f8af7b86d6a207d8289a12c40232c7e5|https://doi.org/10.7916/d8-artc-cs93|Black Entertainment Television Community Alert PSA Campaign, 6/20/1989|
+4079753|aspace_9cb0c4dafef72550ae3ad87a9cf7e035|https://doi.org/10.7916/d8-1f8g-kt40|Boston, MA News Footage from April 1991; Durham, NC WDTV "Reflections" Public Affairs Program, January 1991, 1991|
+4079753|aspace_ba97e54e932e320c166311714474b31a|https://doi.org/10.7916/d8-8fzf-md71|Boy Scouts of America - Scouting in Welfare Hotels, 1988|
+4079753|aspace_d2fe8ce8ea4e9dc96066a53104408013|https://doi.org/10.7916/d8-hgj4-m838|Breakthrough in Soviet Thinking by Andrei Melville, 1/20/1988|
+4079753|aspace_a92c84f6e255de7c47e7bc5ddacd467d|https://doi.org/10.7916/d8-3p3d-fh68|Bright Beginnings in Colorado, 1995|
+4079753|aspace_3533541ec92de97c2c493edd41dbb7e5|https://doi.org/10.7916/d8-sy06-vf76|Bringing Campaign Finance Reform to Albany: A Call for Statewide Action, 2/27/2001|
+4079753|aspace_ef619bd8a5fe059f2af246fea2c159a6|https://doi.org/10.7916/d8-kgbp-6g16|Campaign Finance: Abuses and Reforms, 1997|
+4079753|aspace_d8c977fd220063ba4d65896634a2f76c|https://doi.org/10.7916/d8-k585-r544|Campaign$ for $ale: A Video Story Reel on Political Advertising, 2001|
+4079753|aspace_cbb8daf44645d0519853116c4f315d0c|https://doi.org/10.7916/d8-x0yc-gs83|Campaigns for Sale: A Video Story Reel on Political Advertising, 2/28/2001|
+4079753|aspace_eb36db879e13a89c89b743e79e435a49|https://doi.org/10.7916/d8-f6k9-w937|Car Fix Rough Cut, 3/20/1992|
+4079753|aspace_bf3c9b0e4c1879d1f949a073dae384ca|https://doi.org/10.7916/d8-zrvz-tz04|Carnegie Council on Adolescent Development - Adolescent Health (C-Span: Washington, DC), 4/14/1992|
+4079753|aspace_7d6d3d85c869e5d4e1ccaa79878478ac|https://doi.org/10.7916/d8-f1t8-ef53|Carnegie Council on Adolescent Development - Adolescent Health (Washington, DC Coverage), 1992|
+4079753|aspace_7a1f793c5e81afc0e0b8cc589dfd193e|https://doi.org/10.7916/d8-hsbz-xt26|Carnegie Council on Adolescent Development - Great Transitions: Press Coverage Highlights, 1995|
+4079753|aspace_690cbb2e2bf49476468a7983dc05a93e|https://doi.org/10.7916/d8-fmkt-d826|Carnegie Inquiry: Uprooting Poverty - the South African Challenge, 1989|
+4079753|aspace_2f78eed69bb63bd920cb0239553639ae|https://doi.org/10.7916/d8-y74x-k830|Carnegie Mellon University: Intelligent Tutoring Systems; The ACT Project, 8/7/1986|
+4079753|aspace_118ed5cba4aebdc9f36fef39a30a3dc5|https://doi.org/10.7916/d8-3jwt-hp50|Carter Center Briefing: Crisis in the Gulf, 9/16/1990|
+4079753|aspace_ea9d5afae2d706b9115eba055c2ea600|https://doi.org/10.7916/d8-v3d1-d565|CBS Evening News: Asian American Hate Crimes/Karen Narasaki, NAPALC, 8/4/1996|
+4079753|aspace_974e45459a38acbf1dee1ed9a63beb98|https://doi.org/10.7916/d8-y9h8-v735|Cease Fire! Campaign: Protest PSA, 1988|
+4079753|aspace_43604cc3cebfcec03e87a3df1beadc07|https://doi.org/10.7916/d8-awsn-2b93|CED CNN Moneyline, 2/13/2002|
+4079753|aspace_abe9552442540f03b7af7b40d941f321|https://doi.org/10.7916/d8-2q3k-5665|CEE Seminar, 1994|
+4079753|aspace_c7e07bcc9c3997576cbf1a1d4e5f8964|https://doi.org/10.7916/d8-mvb3-yg16|Census 2000: A Guide for Asian Pacific Americans, 1999|
+4079753|aspace_f34303c0681f8bdbdfd194a5eb69fff4|https://doi.org/10.7916/d8-dcgf-7244|Center for Community Change: 1988 Voter Registration Campaign, 10/21/1988|
+4079753|aspace_255d650234baf9c58d49c83fa8c82820|https://doi.org/10.7916/d8-n8gd-w515|Center for Population Options: School Based Clinics "Keeping the Promise", 12/10/1987|
+4079753|aspace_0588897c684a54223280061f032935e9|https://doi.org/10.7916/d8-0aw8-j249|Challenge to America with Hendrick Smith, 1998|
+4079753|aspace_fd56eba2ba3a56834672129907a76ae6|https://doi.org/10.7916/d8-hqsj-n666|Changing Black Family: A Discussion at Wingspread, 5/29/1991|
+4079753|aspace_d608517714c1f3613ada31051ae302c9|https://doi.org/10.7916/d8-429z-ss59|Changing US-USSR Relationship by Thomas Shelling, 4/26/1989|
+4079753|aspace_7cb889a67e344fb7da5e7438d6c5b6ad|https://doi.org/10.7916/d8-a0jf-xj33|Channel 7 News "First Vote", 1/24/1994|
+4079753|aspace_867f6123d77c211538496c092037c4fc|https://doi.org/10.7916/d8-zxgj-7r70|Checkpoints of the Mind (Appendix 4), Thomas Goltz, 1997|
+4079753|aspace_23d5f8117a75a15be90ac24903543906|https://doi.org/10.7916/d8-5kmh-ry83|Chicano!, 1996|
+4079753|aspace_410524fe97e9d535916742bf60470c7b|https://doi.org/10.7916/d8-545e-5v19|Chicano!, 1996|
+4079753|aspace_9af843dd3b2821018785b3e21183c456|https://doi.org/10.7916/d8-syda-ws04|Child Care Video Magazine, "First Moves, Welcoming a Child to a New Caregiving Setting", 1988|
+4079753|aspace_62e115640a7508d46fb7297d21e91b11|https://doi.org/10.7916/d8-54b6-6k15|Child Care Video Magazine, "First Moves, Welcoming a Child to a New Caregiving Setting", 6/22/1988|
+4079753|aspace_1b62f24715ae9637a8ef7189de761a00|https://doi.org/10.7916/d8-w6ew-0f19|Child Care Video Magazine, "It's Not Just Routine", 6/22/1988|
+4079753|aspace_32e172df54465a8d8dceaa95d57ba943|https://doi.org/10.7916/d8-e2sd-xs23|Child Care Video Magazine, "First Moves" Chinese Version, 1987-01|
+4079753|aspace_ebcc10366695b292dc633ed2b535ca40|https://doi.org/10.7916/d8-2vtk-sk52|Child Care Video Magazine, "The Ages of Infancy: Young, Mobile, and Older Infants", 6/22/1988|
+4079753|aspace_a1be884cfa1c257aab55b0a38d0b2e3e|https://doi.org/10.7916/d8-z0gm-hk02|Childcare Video Magazine, "Together in Care", 6/22/1988|
+4079753|aspace_60629a5749ac30c9d73ea603cc2977fd|https://doi.org/10.7916/d8-qj4v-4511|Children In Poverty, 8/28/1987|
+4079753|aspace_3b49f2600cda654ba3b470e420d7da86|https://doi.org/10.7916/d8-fsp4-xk56|Children's Defense Fund: LNCB PSA Series: Marian's Dubs. SPECIAL MIX.|
+4079753|aspace_1b40eebc51ec391ef7cffcf3521e33f2|https://doi.org/10.7916/d8-yb81-bs92|Children's Defense Fund: LNCB PSA Series: Marian's Dubs. SPECIAL MIX., 1992-02|
+4079753|aspace_566c93d6532a790f1cc9a334600089b7|https://doi.org/10.7916/d8-gtef-dn39|City Vote, 1961|
+4079753|aspace_efd5a2f452db81ada5d890dbdf68b7e3|https://doi.org/10.7916/d8-ecvy-zp21|City Vote '95: Anthology, 1995|
+4079753|aspace_8091a16aff000450ded8c0f36ade022d|https://doi.org/10.7916/d8-apzn-2073|City Youth Coast to Coast (National Linkage Project), 1996|
+4079753|aspace_7d2d634f2e782a541700df5916ebeed4|https://doi.org/10.7916/d8-kjbb-xy94|Co/motion Video, 1961|
+4079753|aspace_5f5b6a8844fda7027fda887fe84410ee|https://doi.org/10.7916/d8-j4bh-7j61|Committee for Economic Development: Campaign Finance Reform, CSPAN 3, 2/11/2002|
+4079753|aspace_5f59e60b7e8c2807935f2348f86a64cb|https://doi.org/10.7916/d8-kfr3-sw14|Communications Consortium: 1. Penelope Leach VNR; 2. Child Care Cutbacks, 11/1/1995|
+4079753|aspace_a6a94c90df7ce1d64403fd48fbbd1b5f|https://doi.org/10.7916/d8-wq80-0z94|Communicative Math and Science Teaching, 9/20/1990|
+4079753|aspace_b7f4460ed7e2261e63e1f4d3902943a6|https://doi.org/10.7916/d8-x2rc-vc64|Communicative Math and Science Teaching, 1990|
+4079753|aspace_957afdceafa83429145c4499dda77ca7|https://doi.org/10.7916/d8-1p2t-fz85|Companeros en la Educacion, 1989|
+4079753|aspace_097b3ecbdbacb7d5944e3250f74d9ddd|https://doi.org/10.7916/d8-qmx6-zv32|Confronting the Crisis: Childcare in America, 1999|
+4079753|aspace_ef8a9503fea91c18c349ae89255ebfe4|https://doi.org/10.7916/d8-7g5f-gs58|Coverage of Carnegie Report, 4/12/1994|
+4079753|aspace_1576acc10ea3948b9f3abe58c6aab654|https://doi.org/10.7916/d8-87xy-3s49|Covering the Environment Rough Cut, 1/18/1990|
+4079753|aspace_5c8f788b60a71816a85e982e4b2c5339|https://doi.org/10.7916/d8-1dqd-wg53|Covering the Environment: Front Page or Yesterday's News?, 1989|
+4079753|aspace_40c1fee36ecc3ae50277c7b63e654437|https://doi.org/10.7916/d8-a0s6-0827|Covering the Environment: Front Page or Yesterday's News?, 12/18/1989|
+4079753|aspace_1b21cdcb07c97b5e39f81eff99064c8a|https://doi.org/10.7916/d8-zt6c-k737|CPEP: Connecticut Pre-Engineering Program, 8/24/1988|
+4079753|aspace_46fcccb9c6a040b91c62d804e1e9dff8|https://doi.org/10.7916/d8-rsdg-r642|Crayon Box That Talked, 1996|
+4079753|aspace_57ca2aef930c4345a6aa1237bfc115a6|https://doi.org/10.7916/d8-mrt7-7b30|Crayon Box That Talked, 1996|
+4079753|aspace_a7c0c5bc3b75b78f26847a23f040c436|https://doi.org/10.7916/d8-szhv-a027|Decade of Success: Women in International Security Celebrates Its Tenth Anniversary, 1/12/1999|
+4079753|aspace_bc5cc9ae6b768f77f150dc662ccc1e56|https://doi.org/10.7916/d8-m1tp-sa72|Democracy Network: Eye on the Presidency, 1996|
+4079753|aspace_7ac95e5d98486036f7512fad7c1dde81|https://doi.org/10.7916/d8-fmm2-jz24|Democracy Now! Segments - Money and Politics; Project Vote Smart; Latino Voter Drive, 1992|
+4079753|aspace_68ba5ad7cfcaaa36eb01f496af653a61|https://doi.org/10.7916/d8-1b20-9023|Democracy Now! Side 1: Church Burnings; Side 2: Unlabeled, 6/11/1996|
+4079753|aspace_b860572bd69ef0a72a730d880e3ea5c2|https://doi.org/10.7916/d8-w0ev-7j93|Democracy Now! Side 1: Environmental Justice; Side 2: Unlabeled, 3/21/1996|
+4079753|aspace_df656098bd842eb834575c64e7b15fd0|https://doi.org/10.7916/d8-xpzf-9h48|Don't Shoot the Millionaires, 10/14/1987|
+4079753|aspace_71e9cf5e14ca0520ff7d7f2a9f3d8183|https://doi.org/10.7916/d8-abmh-px64|Dr. Strangelove's Children: The Global Spread of Nuclear Weapons, 9/26/1989|
+4079753|aspace_d663994579e588a536eeb6f263f41554|https://doi.org/10.7916/d8-jdhf-v136|Early Messages, Facilitating Language Development and Communication, 1998|
+4079753|aspace_917943ef002361407609d4b463f79ebb|https://doi.org/10.7916/d8-3yrn-x797|Early Messages: Facilitating Language Development and Communication, 1998|
+4079753|aspace_9ec8f30cea987ec464c6709a17f5e551|https://doi.org/10.7916/d8-98c1-y718|Echoes from the White House: A Celebration of the Bicentennial of America's Mansion, 2001|
+4079753|aspace_c8323121f55068400a9b9aba1730a0f2|https://doi.org/10.7916/d8-p36y-k606|Echoes from the White House: A Celebration ot the Bicentennial of America's Mansion, 2001|
+4079753|aspace_c3be46a1a2a343f0959ff56faa5b74f4|https://doi.org/10.7916/d8-trnt-d637|Education is important --- THE GIRLS KNOW IT, 1961|
+4079753|aspace_c8cf690b292b0868177c05b3a40142e4|https://doi.org/10.7916/d8-syxh-sp31|Education to Prevent Nuclear War by Martin Sherwin, 2/22/1989|
+4079753|aspace_3bcadbe82fba897c310a7ffd30898878|https://doi.org/10.7916/d8-txkm-mb27|Essential Connections, "Ten Keys to Culturally Sensitive Child Care," Spanish Version, 1993|
+4079753|aspace_8345e34ba02d8e154ed7d5a757993cb5|https://doi.org/10.7916/d8-47s9-km41|Essential Connections, "Ten Keys to Culturally Sensitive Child Care," Spanish Version, 10/20/1993|
+4079753|aspace_3db63420b7661df44c5712a464aa4d79|https://doi.org/10.7916/d8-9et1-m192|Essential Connections, "Ten Keys to Culturally Sensitive Child Care", 11/16/1992|
+4079753|aspace_a4d589a7363cbedcca4177ae948c64a4|https://doi.org/10.7916/d8-s2q8-0k04|Ethnicity, Equity and Environment: Dilemmas of Development in Amazonia, 1991|
+4079753|aspace_e1ba1d5157b5a3352469f246e3aaa9fa|https://doi.org/10.7916/d8-0nsy-bw17|Ethnicity, Equity and Environment: Dilemmas of Development in Amazonia, 1991|
+4079753|aspace_c7c234066b82c1ba19f29582ef2416c6|https://doi.org/10.7916/d8-s9x3-rq54|Ethnicity, Equity and Environment: Ethnicity and Environment in the Soviet Union, 1991|
+4079753|aspace_e0c96269d5ebf7826680355e5d12f6b4|https://doi.org/10.7916/d8-fyfc-5e29|Ethnicity, Equity and Environment: Ethnicity and Environment in the Soviet Union, 1991|
+4079753|aspace_ce23f36de24af96083fa23340ea0530d|https://doi.org/10.7916/d8-t2rx-z048|Ethnicity, Equity and Environment: Keynote Address, Cultural Survival as a Human Right / Maybury-Lewis, 1991|
+4079753|aspace_381fe65e11b474796b89524e9b717f0d|https://doi.org/10.7916/d8-y5dv-9t36|Ethnicity, Equity and Environment: Keynote Address, Cultural Survival as a Human Right / Maybury-Lewis, 1991|
+4079753|aspace_7f8657ec02c43303f6d54a098e51fca8|https://doi.org/10.7916/d8-7fns-zn26|Ethnicity, Equity and Environment: Land Use Issues in East Africa / Parkipuny, Abernethy, Rocheleau, Samoff, Charnley, Little, 1991|
+4079753|aspace_fff0ec7bff9a3e60f922a0f01c2e46b3|https://doi.org/10.7916/d8-kge7-7232|Ethnicity, Equity and Environment: Land Use Issues in East Africa / Parkipuny, Abernethy, Rocheleau, Samoff, Charnley, Little, 1991|
+4079753|aspace_dd1468724caac04de8dd5e443c6d24df|https://doi.org/10.7916/d8-secb-k627|Ethnicity, Equity and Environment: The "Rurbanization" of California / Walters, Blakely, 1991|
+4079753|aspace_69407449fd5623af02cba0873cbb3a6f|https://doi.org/10.7916/d8-cnty-tk88|Ethnicity, Equity and Environment: The "Rurbanization" of California / Walters, Blakely, 1991|
+4079753|aspace_2ca58f3f7c58c3e18d35514e2eeb2ede|https://doi.org/10.7916/d8-v5kz-4s80|Ethnicity, Equity and Environment: Welcome; The Native American Communities, 1991|
+4079753|aspace_ee3051c5c7cef6b3e108c806bc45d35d|https://doi.org/10.7916/d8-jnwa-jv45|Ethnicity, Equity and Environment: Welcome; The Native American Communities, 1991|
+4079753|aspace_e25c775d3d53740ee09764965a8d5600|https://doi.org/10.7916/d8-6n2z-9865|Experiment in Learning, 4/9/1987|
+4079753|aspace_3113f3d5ea7d292221b1a16723971c68|https://doi.org/10.7916/d8-d0f9-gx39|Fannie Lou Hamer Project: Juneteenth; Austin, Texas, 9/9/2001|
+4079753|aspace_05fd9a026c744387a7497c53cc67cf20|https://doi.org/10.7916/d8-dfa2-wr78|Favorite Poem Project, 2000|
+4079753|aspace_9c2190b3fe46a7f8904be65ba77a4809|https://doi.org/10.7916/d8-c0mt-b638|Favorite Poem Project: Strengthening Communities through the Art of Poetry, 2000|
+4079753|aspace_303ad4de04495f307547e4ed88bf6704|https://doi.org/10.7916/d8-5eqn-xe31|Fear of Cheating, Fear of Spying: Nuclear Arms Control Verification and Compliance, 1986|
+4079753|aspace_de518367f85c3dec7d68d64bf7eb43d6|https://doi.org/10.7916/d8-kpa8-0s52|Feminism Without Illusions, 1990|
+4079753|aspace_4b45ee4fd04fdd88437496353bccb072|https://doi.org/10.7916/d8-3far-hj50|First Lady Hillary Rodham Clinton: Remarks to CCAD, 1993|
+4079753|aspace_d1e8e311759e8f43d1d4944705caf6ed|https://doi.org/10.7916/d8-bv35-tv42|First Vote, 1990|
+4079753|aspace_fa28507b38eefef901c0aa1ec1284ccf|https://doi.org/10.7916/d8-47e4-0104|First Vote: A Video on Citizenship and Voting, 1996|
+4079753|aspace_543180a4eb97c699836622ddaddbb079|https://doi.org/10.7916/d8-zg31-pv34|First Vote: A Video on Citizenship and Voting, 6/8/1995|
+4079753|aspace_5d986093332fa00bdf095fe4764a6a72|https://doi.org/10.7916/d8-pzj5-z738|First Vote: A Video on Citizenship and Voting, 1996|
+4079753|aspace_883e245aef95ae8eeab74ca32a37e4ed|https://doi.org/10.7916/d8-thfy-6q06|First Vote: CBS Evening News June 30th, 1991., 6/30/1991|
+4079753|aspace_b913c3f14e841bfcb582fd33f8bb5b06|https://doi.org/10.7916/d8-6azm-5v58|Florida's Multi-Agency Middle School Network Teleconference, "Turning Points for Young Adolescents", 6/28/1990|
+4079753|aspace_667bf68330282363ee9ae4daa6f61fd9|https://doi.org/10.7916/d8-8bqj-5510|From Horizon to Gorizont, 9/20/1990|
+4079753|aspace_09adb620535bd6bdbb57d205c9cb8ba3|https://doi.org/10.7916/d8-c0yt-9y19|From Protest to Power, 1989|
+4079753|aspace_bd5c723f60069773f2b0c20fa77f0861|https://doi.org/10.7916/d8-ta44-0127|Frontline: Muslims, 2002|
+4079753|aspace_c7dbaec94ada0daebf02c4277f734f56|https://doi.org/10.7916/d8-5vv2-j212|Future Stakes Part 3: Classroom Laboratories; Part 4: American Memory, 1988|
+4079753|aspace_141ab19a88f07d67dab375e59f41a52f|https://doi.org/10.7916/d8-c1td-pf09|Future Teacher Institute Video, 1992|
+4079753|aspace_af8438c1c506c666bbf166e08837a2e1|https://doi.org/10.7916/d8-9fpq-j951|Futures with Jaime Escalante - Episodes 101 and 102, "Agriculture" and "Aircraft Design", 1990|
+4079753|aspace_42f6a2df458dbcfba67a15484fd9ab0b|https://doi.org/10.7916/d8-gjqp-sk38|Futures with Jaime Escalante, Episodes 101 and 102, "Agriculture" and "Aircraft Design", 1/25/1990|
+4079753|aspace_3c3f2b5c08ed982a679801a49544696b|https://doi.org/10.7916/d8-2d3h-ta93|Futures with Jaime Escalante, Episodes 103 and 104, "Architecture and Structural Engineering" and "Automotive Design", 1/25/1990|
+4079753|aspace_8fe234b433e9532f112217f18701e1f1|https://doi.org/10.7916/d8-cn7t-xy68|Futures with Jaime Escalante, Episodes 103 and 104, "Architecture and Structural Engineering" and "Automotive Design", 1990|
+4079753|aspace_92574b32d30b8b33382e90edf8a654b3|https://doi.org/10.7916/d8-007k-sd03|Futures with Jaime Escalante, Episodes 105 and 106, "Cartography" and "Fashion", 1990|
+4079753|aspace_bd190e57b52e4b4c6392e22d73c9f9f1|https://doi.org/10.7916/d8-tz04-gh80|Futures with Jaime Escalante, Episodes 105 and 106, "Cartography" and "Fashion", 1/25/1990|
+4079753|aspace_80e6e4d70ab32925dc74d87249b67240|https://doi.org/10.7916/d8-t231-q144|Futures with Jaime Escalante, Episodes 107 and 108, "Water Engineering" and "Optics", 1990|
+4079753|aspace_beea91211faef7efb13b5574c07ecf70|https://doi.org/10.7916/d8-rw4g-7q16|Futures with Jaime Escalante, Episodes 107 and 108, "Water Engineering" and "Optics", 1/25/1990|
+4079753|aspace_a03bfd6b3f72208222e29618267e09bd|https://doi.org/10.7916/d8-khwk-ky15|Futures with Jaime Escalante, Episodes 109 and 110, "Putting Man in Space" and "Sound Engineering", 1/25/1990|
+4079753|aspace_7063126584a02ab898f7bfb45cc1aa8e|https://doi.org/10.7916/d8-34mz-k486|Futures with Jaime Escalante, Episodes 109 and 110, "Putting Man in Space" and "Sound Engineering", 1990|
+4079753|aspace_3c1e6e1ac04addff508d8226d7c39ba6|https://doi.org/10.7916/d8-rrfm-8298|Futures with Jaime Escalante, Episodes 111 and 112, "Statistics" and "Sports Medicine", 1/25/1990|
+4079753|aspace_78aa106fe9984491dbc2835769fa8798|https://doi.org/10.7916/d8-fze0-zk69|Futures with Jaime Escalante, Episodes 111 and 112, "Statistics" and "Sports Medicine", 1990|
+4079753|aspace_a41303a5a221c8df031865301ff2c4e3|https://doi.org/10.7916/d8-cmnb-bh92|Galaxy Classroom "Mystery Matinee", Teacher Enhancement Video, 4/6/1995|
+4079753|aspace_d254bcfcbd90ecba0089a209f8377369|https://doi.org/10.7916/d8-97k8-1f03|Galaxy Classroom News Coverage Excerpts, 1994|
+4079753|aspace_b43a15a53adc431b003608d15fcc68d3|https://doi.org/10.7916/d8-zrsb-nx33|Galaxy Classroom, "As a Matter of Fax" (3X), 10/7/1994|
+4079753|aspace_6c23e0cc23451d01d391fcd973e0b6a8|https://doi.org/10.7916/d8-96xn-ve36|Hagase Contar! Make Yourself Count!, 2000|
+4079753|aspace_c13b86e8e7283777d1dc1f07eaff93b9|https://doi.org/10.7916/d8-k3cm-6j40|Healthy Steps for Young Children, 2003-12|
+4079753|aspace_f886c84075adfce16ce5a8def0116bc1|https://doi.org/10.7916/d8-rbvr-bc14|High Scope (Weikart) Press Conference, 12/12/1980|
+4079753|aspace_3e0ef76101757322c459b3af60f8ad2c|https://doi.org/10.7916/d8-wgj5-mj09|How Scientists Know About Human Evolution, 1/19/1989|
+4079753|aspace_01e222b3db1c107b9eb02485549924a3|https://doi.org/10.7916/d8-c8hw-4v17|HRDC Meeting, 8/21/1997|
+4079753|aspace_f3e331e91e60e3cd0b7beca2b3d06079|https://doi.org/10.7916/d8-8p04-1m13|HRDC Meeting, 5/20/1997|
+4079753|aspace_313f3ac327cc32e46e6da6fd1c373c72|https://doi.org/10.7916/d8-vks2-0e29|Human Biology Middle School Project, Summer Institute, Team Presentations Annual Report, 1/7/1994|
+4079753|aspace_d0bf691324fb0f4b7b1ea8c78311dc4b|https://doi.org/10.7916/d8-nbn2-d267|I Am Your Child: Discipline: Teaching Limits with Love, 2001|
+4079753|aspace_2a4aa1392494f6227d614486291d2e24|https://doi.org/10.7916/d8-f3ye-j959|I Am Your Child: Discipline: Teaching Limits with Love, 2001|
+4079753|aspace_70b203a9f581e45b3650d221d41cab22|https://doi.org/10.7916/d8-k9wt-ak19|I Am Your Child: Discipline: Teaching Limits with Love, Spanish Version, 2001|
+4079753|aspace_8ede13b8036a99a4b53d58eda1558408|https://doi.org/10.7916/d8-h8yy-zd09|I Am Your Child: Discipline: Teaching Limits with Love, Spanish Version, 2001|
+4079753|aspace_a4dc3c2908360f7a27805deda8f1b833|https://doi.org/10.7916/d8-rpq7-5056|I Am Your Child: Quality Child Care: Making the Right Choice for You & Your Child, 2001|
+4079753|aspace_df4687767e7a6e17052fa23e8c8f28fc|https://doi.org/10.7916/d8-p7w9-4y72|I Am Your Child: Quality Child Care: Making the Right Choice for You & Your Child, 2001|
+4079753|aspace_030667aeb6e289faf181b4f405e89c44|https://doi.org/10.7916/d8-f0x4-7725|I Am Your Child: Quality Child Care: Making the Right Choice for You & Your Child, Spanish Version, 2001|
+4079753|aspace_04b19b32dbfcd0f6c54afa8cc1990853|https://doi.org/10.7916/d8-j8f8-ph32|I Am Your Child: Quality Child Care: Making the Right Choice for You & Your Child, Spanish Version, 2001|
+4079753|aspace_6609ca430daaf882d88373e7c557e836|https://doi.org/10.7916/d8-sefj-3s49|I Am Your Child: Ready to Learn, 2001|
+4079753|aspace_5bc8675e64536b9d45ae017ebad7098c|https://doi.org/10.7916/d8-8dz3-pw68|I Am Your Child: Ready to Learn, 2001|
+4079753|aspace_ba2209c7eea4eb166ec41f600be037bc|https://doi.org/10.7916/d8-mpq0-nd76|I Am Your Child: Ready to Learn, Spanish Version, 2001|
+4079753|aspace_2800ac5b286da2c1a1d3337e57ef6bdc|https://doi.org/10.7916/d8-qmff-bj56|I Am Your Child: Ready to Learn, Spanish Version, 2001|
+4079753|aspace_dd2474dbf5c3b1dd346a2f89642593db|https://doi.org/10.7916/d8-e2z2-5a16|I Am Your Child: Safe from the Start, 2001|
+4079753|aspace_a887a833efbaa7ea64982331883140e8|https://doi.org/10.7916/d8-wmgw-fm69|I Am Your Child: Safe from the Start, 2001|
+4079753|aspace_ec7fea0fb2aa5c1e4c09465606768e68|https://doi.org/10.7916/d8-mp5y-4z90|I Am Your Child: Safe from the Start, Spanish Version, 2001|
+4079753|aspace_9c19c959cb020078ae7bdd59ec825f83|https://doi.org/10.7916/d8-k65s-9b83|I Am Your Child: Safe from the Start, Spanish Version, 2001|
+4079753|aspace_b72929681ff5459fd655a3aea8bde293|https://doi.org/10.7916/d8-s7qa-cd08|I Am Your Child: The First Years Last Forever, 2001|
+4079753|aspace_7bfff1f787e6b0fc036456982e9fb897|https://doi.org/10.7916/d8-4g9k-4w72|I Am Your Child: The First Years Last Forever, 2001|
+4079753|aspace_13bfb1f24bdb7ebcfa896c907fd71667|https://doi.org/10.7916/d8-4ez4-5t47|I Am Your Child: The First Years Last Forever, Spanish Version, 2001|
+4079753|aspace_7601ae5cb54cb99539d8c5ac7b881956|https://doi.org/10.7916/d8-axgv-se86|I Am Your Child: The First Years Last Forever, Spanish Version, 2001|
+4079753|aspace_83c69dbb84dbdee0c69856f46e10fda9|https://doi.org/10.7916/d8-kby6-q103|I Am Your Child: Your Healthy Baby, 2001|
+4079753|aspace_a21d4cf00280519d68fe07278c3cbc0f|https://doi.org/10.7916/d8-9mn3-rv92|I Am Your Child: Your Healthy Baby, 2001|
+4079753|aspace_64eafbc1c775b8a67d52d3d70fdd8d69|https://doi.org/10.7916/d8-hyqt-3h37|I Am Your Child: Your Healthy Baby, Spanish Version, 2001|
+4079753|aspace_016fdc64746b64d3e75e50756d1045f5|https://doi.org/10.7916/d8-rgev-j816|I Am Your Child: Your Healthy Baby, Spanish Version, 2001|
+4079753|aspace_019d97698d87dbf2fe1257e0bc95f660|https://doi.org/10.7916/d8-6712-3226|In the Best Society, 10/22/1987|
+4079753|aspace_285cf197ecbe01bffccd357766f4b0a3|https://doi.org/10.7916/d8-6mmx-pd19|In the Mix, Dealing With Differences, 2002|
+4079753|aspace_773764d754219a5b0d6e7791e292f809|https://doi.org/10.7916/d8-c0q5-1x31|In the Mix, Dealing With Differences, 2002|
+4079753|aspace_0bb3a09804cf188b3c4e7f99ef07abdd|https://doi.org/10.7916/d8-0ev9-k835|In the Mix, Self-Image: The Fantasy, The Reality, 1998|
+4079753|aspace_50e104a6baa6b5e8c401c94e563a7187|https://doi.org/10.7916/d8-pbqk-8338|In the Mix, Self-Image: The Fantasy, The Reality, 4/15/1998|
+4079753|aspace_dd2ebae4e1d8d9ee6d827aa6d7579f7a|https://doi.org/10.7916/d8-d7n8-1277|In the Mix, Sports: Get in the Game, 4/15/1998|
+4079753|aspace_563243b32f01cf914a1ca5db99d8b2b7|https://doi.org/10.7916/d8-804a-5j51|In the Mix: Sample Reel No. III, 1997|
+4079753|aspace_2c852daac0eda3ea20f1ac1fe90356a5|https://doi.org/10.7916/d8-qebb-gy80|Inclusion in New York: an Inside View, 1995|
+4079753|aspace_610e5ec33f04a7186936a9a1f0af5adb|https://doi.org/10.7916/d8-g4ds-zg55|Inclusion in New York: an Inside View, 1995|
+4079753|aspace_e356a3804f05873017cb7ea214cda2d3|https://doi.org/10.7916/d8-fq25-rk09|Inside Albany: "Bringing Campaign Finance Reform to Albany", 3/1/2001|
+4079753|aspace_45c3dd8570ba8ffe3555fdef48d083e8|https://doi.org/10.7916/d8-4xn1-gd64|Inside Story Special Edition - Africa: The Untold Story, 1961|
+4079753|aspace_ccae98af2a2c02b1eb0d1178a27b4820|https://doi.org/10.7916/d8-j4ec-mg82|Inside Story: The Washington Money Go-Round, 1985|
+4079753|aspace_708e9929f3a1316ecc5ff7bcaf3e1932|https://doi.org/10.7916/d8-xckk-4k85|Institute for Southern Studies - Money in Politics, 1994|
+4079753|aspace_64cb9ca724ee93599e27f25b966c53a5|https://doi.org/10.7916/d8-kk8n-sx39|Introduction to Conflict Resolution/Both Sides Win: Russia and Ukraine, 11/16/1992|
+4079753|aspace_4b69cc9c32ab9b4c60cc459eeb87e98c|https://doi.org/10.7916/d8-dw66-gs32|Is Nuclear Weapons Testing Necessary? By Jack Ruina, 12/2/1987|
+4079753|aspace_2d86fbf31cfb35f11d36e18c5b69988e|https://doi.org/10.7916/d8-1v5q-sd28|Is the USSR Really Changing by Marshall Shulman, 5/18/1987|
+4079753|aspace_10bc1fad0324650a1b147d501e97f57f|https://doi.org/10.7916/d8-zxny-q327|Islam Project (Malaysia Segment): ABC News Nightline, 2001|
+4079753|aspace_4375481098ac922dbf5588d0033d4a7d|https://doi.org/10.7916/d8-4kzp-rv64|Islam Project (Malaysia Segment): ABC News Nightline, 9/25/2001|
+4079753|aspace_68cdeb56b588a707d9597ed98fc64a62|https://doi.org/10.7916/d8-q7e1-x830|Islam Project: Muslims [information reel], 2001|
+4079753|aspace_7f2e67800b02aca7d881b18eae781d25|https://doi.org/10.7916/d8-d3x0-b535|Islam Project: Muslims [information reel], 2001-09|
+4079753|aspace_402b3664d373acc4a59bd5a4535c4751|https://doi.org/10.7916/d8-xky4-7j79|John Gardner, Uncommon American, 1/25/2001|
+4079753|aspace_aa4dfac1c38d707ffc8501c1c8985a99|https://doi.org/10.7916/d8-ja9f-vg98|John Gardner, Uncommon American, 2001|
+4079753|aspace_957abebe7f114d3bf2b8a369e93b5820|https://doi.org/10.7916/d8-7g61-gy37|Journey to Kanafeesh [10 min. synopsis], 1996|
+4079753|aspace_ed98d30d2fa22aaf0a8982030063de82|https://doi.org/10.7916/d8-z1gm-jy49|Justice for Sale, 1999|
+4079753|aspace_6406d66d8bef5a98cf0a6563ccfcd0f3|https://doi.org/10.7916/d8-kz01-6d41|Justice for Sale, 1999|
+4079753|aspace_3bfeb16206556bf739fbce06a730ae98|https://doi.org/10.7916/d8-a1z6-ft03|Kathleen Hall Jamieson on Charlie Rose, 6/18/1991|
+4079753|aspace_e0a8540d0019225f706f7c6c84cee972|https://doi.org/10.7916/d8-r17a-nr95|Kathleen Hall Jamieson on NOW with Bill Moyers, 11/19/2002|
+4079753|aspace_a9b6d6a258573875e5728f03d20dc8c4|https://doi.org/10.7916/d8-mrsf-s574|Kids Voting USA: NBC Nightly News (NH Primary), 2/20/1996|
+4079753|aspace_460bdab1d346d4960adbf1ae2728d215|https://doi.org/10.7916/d8-dk9c-qq76|Kosovo Commission Channel 6: Mohonk Mountain House, 12/7/2000|
+4079753|aspace_63504d4029658cf217f679571e5621ae|https://doi.org/10.7916/d8-j1a8-9411|Ky Comments, WBKO-13, 8/23/1992|
+4079753|aspace_1eae70173fc0f3247f3fb484c3be99f5|https://doi.org/10.7916/d8-9sst-4x55|Last Seen: Continuing "Disappearances" in Chechnya, 5/31/2002|
+4079753|aspace_da8595f9cb36ec72b7ecc9251cf3980c|https://doi.org/10.7916/d8-0qrd-8531|Legal Resources Centre, 1988|
+4079753|aspace_d15feafef0c6bbd36fb01fc3c8da5033|https://doi.org/10.7916/d8-93j5-nm27|Lessons that Last: What Makes a Good Early Childhood Program, 1961|
+4079753|aspace_bd4de01ead1c0a1e18c089c2273fd04a|https://doi.org/10.7916/d8-5ggt-0m21|Letter from Wayne J. Pond to Avery Russell, October 28, 1988, 10/28/1988|
+4079753|aspace_f117a6d938bb748382d873eccc61a9b2|https://doi.org/10.7916/d8-d7mb-cy46|Linkages for the Future, 1992|
+4079753|aspace_1905634a9210f2f6a8a60984b9db1301|https://doi.org/10.7916/d8-t948-0176|Live from Afghanistan: CNN, January 24, 2002, 1/24/2002|
+4079753|aspace_3fcae217a70228839072cc3197f14652|https://doi.org/10.7916/d8-hf42-yb13|Living in the Nuclear Age by Zvi Dor-Ner, 5/3/1989|
+4079753|aspace_5d5870a82b7de476ffc229c8f5407995|https://doi.org/10.7916/d8-k9h5-rq16|Long Walk of Nelson Mandela, 1999|
+4079753|aspace_fabf30e7934c947eb79140063a960889|https://doi.org/10.7916/d8-g9e3-ty44|Long Walk of Nelson Mandela, 1999|
+4079753|aspace_cb777eb64cd00c10d1f4762ea73a1279|https://doi.org/10.7916/d8-6cm9-2t46|Long Walk of Nelson Mandela: Promos, 1999|
+4079753|aspace_675745e700def9d21ec986e7affe9895|https://doi.org/10.7916/d8-nc9b-fw98|MacNeil Lehrer Newshour: Reducing Teen Violence, 1994|
+4079753|aspace_737be85879dead164686a178ea4d9ff6|https://doi.org/10.7916/d8-7vv3-6g02|MacNeil Lehrer Show: Bundy, Crowe, et al., 12/9/1991|
+4079753|aspace_d45235126e25573719eaab0fc6e5743d|https://doi.org/10.7916/d8-kwag-z209|Magic School Bus "Gets Planted" (Topic: Photosynthesis), 11/15/1996|
+4079753|aspace_8e4a6abf749872b6ee02e9ca719ad6c5|https://doi.org/10.7916/d8-em7r-t315|Magic School Bus Gets Lost in Space, 7/14/1994|
+4079753|aspace_0cc869c29e91db0f0300c0ffdca44ef9|https://doi.org/10.7916/d8-pkk1-2560|Magic School Bus, "Blows Its Top," "Flexes Its Muscles," "The Busasaurus", 6/18/1996|
+4079753|aspace_559cb5bb55ba59f3e60cf3460b59b3cd|https://doi.org/10.7916/d8-0zt7-2006|Magic School Bus, "Going Batty," "Wet All Over," "Taking Flight", 6/18/1996|
+4079753|aspace_620c4a529593ace6140e61b8f40630a1|https://doi.org/10.7916/d8-m5q4-yb40|Magic School Bus, "In a Pickle" (Topic: Microbes), 12/8/1995|
+4079753|aspace_c7a230714df82d2616a8ae861bcbea10|https://doi.org/10.7916/d8-7h1h-dk97|Magic School Bus, "The Butterfly And the Bog Beast," "In a Pickle," "Revving Up.", 6/18/1996|
+4079753|aspace_1bf0c31b7a8eb655cac880eb4e27b113|https://doi.org/10.7916/d8-t42j-k594|Magic School Bus, "Ups and Downs", 6/18/1996|
+4079753|aspace_54263c5372a59b88fb2a3600d78b9213|https://doi.org/10.7916/d8-a1yg-dz58|Magic School Bus, Inside Ralphie (Germs), 8/4/1994|
+4079753|aspace_1185c6375eb9d3e4cf9ce89693ffe963|https://doi.org/10.7916/d8-jhpz-zx84|Magic School Bus, Series II. "Getting Energized," "Out of the This World," "Cold Feet", 6/18/1996|
+4079753|aspace_1fee9e031b9e428daef420e40f303b69|https://doi.org/10.7916/d8-kv1j-g857|Making Peace: Series Trailer, 11/18/1996|
+4079753|aspace_88bddb07bda65cd12f8b2542b055d605|https://doi.org/10.7916/d8-esjh-cc60|Making the Case for Public-Private Child Care Partnerships, 2000|
+4079753|aspace_7308465d2a09bf75d4e6ffb602cbb2f3|https://doi.org/10.7916/d8-dxh6-k007|Mandela Preview, 4/1/1999|
+4079753|aspace_1918c552ab704dd218e1b4a3d27d5869|https://doi.org/10.7916/d8-e86s-1678|Manmade Death by Richard Rhodes, 1/18/1989|
+4079753|aspace_30bc235c00241d2bfc4781198140d87b|https://doi.org/10.7916/d8-43zc-m303|Maternal Death, 1988|
+4079753|aspace_a6b37ca8650ee1bb036713cfb3cd8141|https://doi.org/10.7916/d8-qnj0-v275|Mathline #104, 1995|
+4079753|aspace_a8cf0343459dfd6f71019f635c15b4af|https://doi.org/10.7916/d8-jh7e-vg26|Mathline: Live Kick-Off, 1995|
+4079753|aspace_76fcaa695959409540fa5a115c6c3b27|https://doi.org/10.7916/d8-8tdd-m428|Mathline: Senate Demo, 4/4/1995|
+4079753|aspace_7d324c10217ec19605361ca3c72866ae|https://doi.org/10.7916/d8-cp20-n776|Mathline: White House Presentation, 1995|
+4079753|aspace_ed99ab33676bd2c234acd8798c0011ce|https://doi.org/10.7916/d8-aykg-es28|McGeorge Bundy: Deterrence and Detente, 1989-08|
+4079753|aspace_3150eb33854706af8f89af365671cfaf|https://doi.org/10.7916/d8-4maj-n220|Media Literacy: The New Basic, 2/4/1999|
+4079753|aspace_fd3c925fb783df3673894098ac9ce980|https://doi.org/10.7916/d8-zqhr-js44|Merrow Report, "The Fifty Million Dollar Gamble", 9/8/1994|
+4079753|aspace_4fdefd247d2b13fd2f12ef56d6fa03f2|https://doi.org/10.7916/d8-cn19-8045|Merrow Report: Early Learning, 1996|
+4079753|aspace_c215181a13ab0c83d18e502ac9ffce5b|https://doi.org/10.7916/d8-v3te-4x35|Merrow Report: Searching for Heroes, 8/2/1996|
+4079753|aspace_900995c3daf19f5499272e408daea1fb|https://doi.org/10.7916/d8-z5eq-v743|Merrow Report: Searching for Heroes, 1996|
+4079753|aspace_27f12d4fe4424783b7e228f3e1dbac89|https://doi.org/10.7916/d8-909w-8k30|Middle School Math Project, Magnifying Math Power, "How Many Noses Are In Your Arm?," "The Factor Game," "Something Fishy", 1994|
+4079753|aspace_1234bf73c0d59391d511b310aac3bdf1|https://doi.org/10.7916/d8-ydwk-ap71|Middle School Math Project, Magnifying Math Power, "In a Heartbeat," "Fantasy Baseball-Pt1," "Fantasy Baseball-Pt2", 1994|
+4079753|aspace_220f6f7fb2699e46b3d3ec88d374d721|https://doi.org/10.7916/d8-mwrb-h409|Middle School Math Project, Magnifying Math Power, "Is it Really News?," "Rock Around the Clock," "Let's Face It", 1994|
+4079753|aspace_91139c0be21aa7fb23fe2e37c4641bec|https://doi.org/10.7916/d8-vddn-2p75|Middle School Math Project, Magnifying Math Power, "Middle School Math Teleconference.", 9/29/1994|
+4079753|aspace_02cd1e3230ccbbd6a2dac32bf683ee4d|https://doi.org/10.7916/d8-ab21-qy33|Middle School Math Project, Magnifying Math Power, "MSMP Videoconference." Video Diaries: M. Friedman, D. Singleton, J. Specht., 1994|
+4079753|aspace_c73e32390a6cdf183cf041bed87af7dd|https://doi.org/10.7916/d8-jsxs-a677|Middle School Math Project, Magnifying Math Power, "Overview," "Remove One," "We're All Tuned In," "Fill'er Up.", 1994|
+4079753|aspace_0fbe5b38d7488451badf2d500a1493d9|https://doi.org/10.7916/d8-jj7d-cz13|Middle School Math Project, Magnifying Math Power, "Roll Out the Barrel," "Smithville Families," "The Great Race", 1994|
+4079753|aspace_04531f64bf86b4bdead283ea34191a95|https://doi.org/10.7916/d8-0b1a-y207|Middle School Math Project, Magnifying Math Power, "Rumors," "Tiling the Plaza," "Alphabits", 1994|
+4079753|aspace_01b2d6f11b3bd2a78ade3f66f5db7925|https://doi.org/10.7916/d8-73ac-n643|Middle School Math Project, Magnifying Math Power, "Steppin' Out," "The Million Dollar Give-away," "Once in a Blue Moon.", 1994|
+4079753|aspace_d927a496bcbe6f1241b5badff4ee5680|https://doi.org/10.7916/d8-pf8t-8c32|Middle School Math Project, Magnifying Math Power, "Teleconference II", 2/16/1995|
+4079753|aspace_f3b8c308ecb5a8a8d6c32032eb83aa58|https://doi.org/10.7916/d8-vvyr-j628|Middle School Math Project, Magnifying Math Power, "What's Your Angle?" "Aw, Chute!" "Wetheads", 1994|
+4079753|aspace_6105eef0e4fd6e8295937890b7524f40|https://doi.org/10.7916/d8-1dec-rg16|Miscellaneous Promos, 1988|
+4079753|aspace_ed351ace7bdc865f9b8ed11731a6d7e4|https://doi.org/10.7916/d8-8731-1r46|Missile Wars, 2002|
+4079753|aspace_e20df8ccaeb6d97a97b19ab063703606|https://doi.org/10.7916/d8-69zy-7d52|Missile Wars, 2002|
+4079753|aspace_0c8feb7367b4447a53fb33bf2600ffc3|https://doi.org/10.7916/d8-wggf-1450|MIT Science and Engineering Program for High School Teachers, 1989|
+4079753|aspace_72e0adc74e24344a7e3fca2d15e19950|https://doi.org/10.7916/d8-mhs8-2d26|Money & Influence in Politics, 2000|
+4079753|aspace_7eb9f0b077aaf78dd86b22f3caceebb4|https://doi.org/10.7916/d8-jnst-fz89|Money Chase, 11/3/1992|
+4079753|aspace_3d5429fe6f2d5eca92b40caddf7da263|https://doi.org/10.7916/d8-gzym-ra47|Mozart Effect: Music for Newborns, 1998|
+4079753|aspace_2f07a697e6a61a5b0d93a80c67e62ece|https://doi.org/10.7916/d8-yd5d-8c23|Mozart Effect: Music for Newborns, 1998|
+4079753|aspace_d55a13fbed673f1754ab82da067089c0|https://doi.org/10.7916/d8-8qz9-q359|Muhammad: In the Footsteps of a Prophet [trailer], 1988|
+4079753|aspace_b6ce200ab5f64447a46df09f7eb14698|https://doi.org/10.7916/d8-x330-zj66|Nancy Susan Reynolds Award, 1986|
+4079753|aspace_660222e65b9db17227d79c83ecc99f6e|https://doi.org/10.7916/d8-w4wb-5996|Natal Women's Resource Centre, 1994|
+4079753|aspace_917651226297e5f5c6b5bdb49c27fd9a|https://doi.org/10.7916/d8-xzvg-nk96|National Committee for Responsive Philanthropy, 5/27/1987|
+4079753|aspace_6d7299678f0c29c987e697aae6f3897e|https://doi.org/10.7916/d8-r3ty-qg05|National Congress of Parents and Teachers materials, 1988|
+4079753|aspace_79b032b4ac0086000765511ab972e05e|https://doi.org/10.7916/d8-qba2-v572|National Council of Women of Kenya Seminar: Pre-Process Planning, 1961|
+4079753|aspace_a20d85e83cd8287bd1eda1ce26fccc8e|https://doi.org/10.7916/d8-xhke-z113|National Council of Women of Kenya Seminar: Pre-Process Planning, Edited Copy, 1988|
+4079753|aspace_a747bf0106554faf7e92258ab43a26b9|https://doi.org/10.7916/d8-jsbx-x143|National Observance of Children's Sabbaths: Raising Voices, Linking Hands for Children, 1998|
+4079753|aspace_b622d3bbb3c9270561ce19fa7461a822|https://doi.org/10.7916/d8-6254-ey32|National Observance of Children's Sabbaths: Raising Voices, Linking Hands for Children, 7/1/1998|
+4079753|aspace_002dbfe777e496e7f2086255895b2955|https://doi.org/10.7916/d8-aa3b-8h61|National Summit on Africa's Roundtable Discussion: a Comprehensive Review of Current Domestic and International Issues Presented on Television, 2000|
+4079753|aspace_ff5cb0c44b7ed8dd1555effaf1d14b8f|https://doi.org/10.7916/d8-1t4q-7k53|National Summit on Africa's Roundtable Discussion: a Comprehensive Review of Current Domestic and International Issues Presented on Television, 2000|
+4079753|aspace_9f3e01633cbb0adecae3a83c82db8196|https://doi.org/10.7916/d8-z40a-7b21|Negotiating Good US/Soviet Relations by Roger Fisher, 9/21/1988|
+4079753|aspace_cb93054eed0872349c562d109bc9a303|https://doi.org/10.7916/d8-c5ba-kw56|Neither Mad Nor Starstruck by George Rathjens, 9/30/1987|
+4079753|aspace_8e012302c3df27bf91bfae76b91086bc|https://doi.org/10.7916/d8-10g1-8814|New Screen Concepts, the Child Care Partnership Project, 4/17/2000|
+4079753|aspace_a63540ddff780a8d14635bbec2552089|https://doi.org/10.7916/d8-j4r4-az20|News coverage of Children Now survey, "A Different World: Children's Perception of Race and Class in the Media", 1998-05|
+4079753|aspace_b6fc3e80e0cd1d7df57ee136653fdcb2|https://doi.org/10.7916/d8-26aw-d481|Newshour with Jim Lehrer, "Surviving the Revolution", 11/22/1996|
+4079753|aspace_f7db0e7548da56928cb869055b32fe3e|https://doi.org/10.7916/d8-vacz-y004|Nigerian National Task Force on Safe Motherhood, 1998|
+4079753|aspace_71d73a2d4dcbb831122b77d55e454377|https://doi.org/10.7916/d8-n4de-c635|Nonprovocative Defenses to Avoid War by Randall Forsberg, 11/9/1988|
+4079753|aspace_9bfe47fcfe7ff25fcded0a4fcad2fcca|https://doi.org/10.7916/d8-eqrv-d292|North Carolina Center for Voter Education: Campaign Finance Reform Commercials and PSAs, 2002|
+4079753|aspace_32b18cfbde627505bc8308fba6c3506a|https://doi.org/10.7916/d8-65r4-md91|North Carolina Center for Voter Education: NCSPAN: Stories of Money and Politics, 2002|
+4079753|aspace_fba6e8c9d265ecfde3ec378b296087eb|https://doi.org/10.7916/d8-40x0-s258|NPR Education Reporting by Robert Smith and others, 2002-05|
+4079753|aspace_abb0a6aa4054a30fb5d564a2ecc09703|https://doi.org/10.7916/d8-q7zd-1k10|NPR Education Reporting by Robert Smith and others, 2002-03|
+4079753|aspace_4e95d16d540b9bdf9a1286cde1cf057a|https://doi.org/10.7916/d8-n41f-w035|NPR Education Reporting: Newsmagazines, 2001|
+4079753|aspace_b4e4277ba167387fb2551a71db20f2d0|https://doi.org/10.7916/d8-hpqw-qf77|NPR Stories on Education by Reporter Robert Smith, 2000-12|
+4079753|aspace_7859fdeba9f84b1737c16ed18ca0b787|https://doi.org/10.7916/d8-qmbc-qf56|NPR: Education Coverage, 2001|
+4079753|aspace_57871af86fabde92cd08feef863e0999|https://doi.org/10.7916/d8-q5p8-rf17|Nuclear Crash: Nuclear War's Effects by Kosta Tsipis, 2/17/1988|
+4079753|aspace_288c83c2d80e176cc04a120137fbac1a|https://doi.org/10.7916/d8-1c7k-rf77|Nuclear Proliferation: A Look Ahead by Marvin Miller, 3/8/1989|
+4079753|aspace_580d930f2ba38e2e61c847a628714149|https://doi.org/10.7916/d8-e9jy-5017|NYPL: Between the Lions, 2000|
+4079753|aspace_265a42712eaf7d8d2cde75e0d7d2edb1|https://doi.org/10.7916/d8-30dm-be69|Office of Caribbean Program Coordination, Women Health and Development Issue, 10/4/1996|
+4079753|aspace_afd40f837d1c01a0034b45de29bbb61b|https://doi.org/10.7916/d8-c19z-j193|On the Media Sampler, 1995|
+4079753|aspace_d269ac29cc7806ad60e4322f16137eb1|https://doi.org/10.7916/d8-kvw6-j478|On the Threshold: Issues of Peacekeeping in Times of Transition, 1998|
+4079753|aspace_1b69e1bc5275abb8b649141eee2274e8|https://doi.org/10.7916/d8-m67g-gj89|One Life to Live: "Jessica's Story", 1997|
+4079753|aspace_555c8dde6dc47948ff5b959819d6a959|https://doi.org/10.7916/d8-j6f7-5a40|Our Babies, Our Future, 1996|
+4079753|aspace_cdbb5508db43fa125b742684d7e420db|https://doi.org/10.7916/d8-w24q-2j63|Our Youth, Our Future: Leading the Way, 12/18/2000|
+4079753|aspace_615b5eb62660ba37789023910b6e9f71|https://doi.org/10.7916/d8-r0g7-tj41|Overcoming Threats to Inclusion of Minorities in Higher Education, 1994|
+4079753|aspace_dcf54e57b89f1f7baafd161822691772|https://doi.org/10.7916/d8-4vxr-ys82|Pakistan and India: Under the Nuclear Shadow, 7/24/1991|
+4079753|aspace_8244b63d7b4df8a426eaf19669c9e847|https://doi.org/10.7916/d8-7njt-k130|Partners in Progress 2000, 2000|
+4079753|aspace_17ed18c10a9a7a43d8922b828306886e|https://doi.org/10.7916/d8-4y1x-w107|Path to Agreement: Georgia and Abkhazia, 6/2/1993|
+4079753|aspace_ac47e1cf4e4adf679800f159a4f74c78|https://doi.org/10.7916/d8-7c68-e615|PBS Newshour: Alliance for Better Campaigns, 3/30/2000|
+4079753|aspace_f225afa93c736ba9a9c131ce0cfd97b8|https://doi.org/10.7916/d8-7vh1-gq66|People for the American Way: Roundtable on Voting, 11/21/1988|
+4079753|aspace_ea5d956c3587f23bb21cd79a44e2ee06|https://doi.org/10.7916/d8-gk6k-yy45|People's Palace: Secrets of the New York Public Library, 1991|
+4079753|aspace_a3e764e078c14d53d9e7a0722870baf3|https://doi.org/10.7916/d8-hmqm-jx04|Pictures of Possible Iraqi Nuclear Facility: CBS Evening News, CNN Interview with President Bush, 1989|
+4079753|aspace_188a30f3acfe4615585329d05af49c59|https://doi.org/10.7916/d8-v31d-sy29|Policy Forum: "Educational Accountability: First the School System, Then the Students", 3/19/1999|
+4079753|aspace_3faa48f806c75505c0b7096cbd592f67|https://doi.org/10.7916/d8-jaxy-n924|Portland Public Schools Foundation "The Campaign For Our Schools", 4/25/2000|
+4079753|aspace_74377570c33cd9bc11caeb0e4015844d|https://doi.org/10.7916/d8-5mnv-jn72|Positive: a fourteen minute AIDs awareness film for teens, 1997|
+4079753|aspace_0346dde99f334e3a5fa90747aa4af351|https://doi.org/10.7916/d8-gzj3-0a92|Power of Peers, 3/30/2000|
+4079753|aspace_4275a6fa61b00c3eee3e7425fa17b6cc|https://doi.org/10.7916/d8-59mc-vz06|Preserving Andrew Carnegie's Legacy (a symposium), 5/17/2000|
+4079753|aspace_3ba7598099b89639fcbfee61fc741958|https://doi.org/10.7916/d8-tfw4-te56|Program for Infant/Toddler Caregivers, "Discoveries of Infancy", 6/22/1988|
+4079753|aspace_85f046d0d0b1ff005d460103befe596b|https://doi.org/10.7916/d8-689w-r232|Project Spirit Part I--Management (Getting Started); Part II--Classroom (Where it Really Happens), 6/20/1989|
+4079753|aspace_80f4eca3ea72fad7b3bd853aa5219673|https://doi.org/10.7916/d8-2bx6-bn66|Project Vote Smart (sampling: TV coverage 1992), 1992|
+4079753|aspace_de136ea7e08f8161a2850824cb056c24|https://doi.org/10.7916/d8-ge61-sr57|Project Vote Smart: Exercise Your Right, 1992|
+4079753|aspace_b828bbf51f44a174a74dd74f70debae8|https://doi.org/10.7916/d8-0t30-p105|Project Vote Smart: Exercise Your Right, 1992|
+4079753|aspace_c8d2776af3e24f1e4b0949ad76d612da|https://doi.org/10.7916/d8-y8qe-xm47|Project Vote Smart: it's Time for a Change, 1997|
+4079753|aspace_be3e96a54512b03ca35b635c72c7070f|https://doi.org/10.7916/d8-eqy1-f659|Protective Urges, Working with the Feelings of Parents and Caregivers, 1996|
+4079753|aspace_3839391e46458801794cb24ddd18e809|https://doi.org/10.7916/d8-r54z-xj74|Protective Urges, Working with the Feelings of Parents and Caregivers, 1996|
+4079753|aspace_b3df2f9773a177d3308dab6f1f87194c|https://doi.org/10.7916/d8-1kdv-yj43|Puzzle Place (clip reel), 3/21/1995|
+4079753|aspace_c9b546ea734dbbd82ba04ac112ca3766|https://doi.org/10.7916/d8-v6w8-pj45|Puzzle Place/KCET, 1996|
+4079753|aspace_78770c1a7d7e27e27c18753122ca3c67|https://doi.org/10.7916/d8-jtb0-dp85|Question about Sex, 6/11/1990|
+4079753|aspace_ca6ade4c5c5aa433ef4f5b221980f12c|https://doi.org/10.7916/d8-mw42-1w08|Raising the Voices of Global Women Leaders, 7/18/2002|
+4079753|aspace_cc6f1172879f7a163defcaac19a55b5c|https://doi.org/10.7916/d8-9738-7t82|Ralph S. Mouse, 1991-06|
+4079753|aspace_0f2e70d865392eb3373af304a3761ea2|https://doi.org/10.7916/d8-8gmr-jb42|Ralph S. Mouse|
+4079753|aspace_0d281087aeef33fc35d4a51993c9e3dd|https://doi.org/10.7916/d8-7xmc-ja03|Reading Rainbow: Opt: An Illusionary Tale, 1990|
+4079753|aspace_3751076f52375227e7339654613c99d2|https://doi.org/10.7916/d8-xq86-rv37|Reading Rainbow: Raccoons and Ripe Corn; Deer at the Brook; Come out Muskrats, 9/12/1991|
+4079753|aspace_adf15cc0dfa7564162ce9fa084e361e7|https://doi.org/10.7916/d8-1gsh-3b31|Reading Rainbow: Sam the Sea Cow, 1992|
+4079753|aspace_ac9c1ffbb7d050f2544f48c2e1f7b2cd|https://doi.org/10.7916/d8-1a1v-mb53|Reading Rainbow: Sam the Sea Cow, 1992|
+4079753|aspace_971d96d1c234714215ff37cccf2bde0c|https://doi.org/10.7916/d8-nty5-rn42|Red Button: Command of the Nuclear Arsenals by Ashton Carter, 12/16/1987|
+4079753|aspace_e5fc24cc2bc310dd9e2a6aeff14051f4|https://doi.org/10.7916/d8-58x5-c364|Reflections of Performance, 1997|
+4079753|aspace_3bc1eaa4d9a69a7e94aa491494e4558c|https://doi.org/10.7916/d8-hjp6-7j45|Reinventing New Jersey: Innovative Approached Under Fiscal Pressure, 5/14/1996|
+4079753|aspace_16816869e7871b44a29c7a90b2564bb0|https://doi.org/10.7916/d8-9d6a-gg45|Report from Moscow, IPPNW, 1987|
+4079753|aspace_4b96b5eecf1084ca62d14e9cdb70f1d7|https://doi.org/10.7916/d8-pt29-xe48|Respectfully Yours, Spanish Version, 12/28/1987|
+4079753|aspace_915a42d159bdb97613ea85f8461be967|https://doi.org/10.7916/d8-yctz-k731|Rethinking Affirmative Action: Why Inclusion Matters in America, 1994|
+4079753|aspace_b1615aab34dc085fad02f0e4bd62f20b|https://doi.org/10.7916/d8-4ewx-h581|Road to Clean Elections, 2002|
+4079753|aspace_93e43dc83130954b784a6018b9d520a4|https://doi.org/10.7916/d8-h03b-xn98|Rossia Channel News Report about RAPIC Broadcast Nationally (Appendix 1), 1993-09|
+4079753|aspace_7ec972b30db46d6b969dcfe40ce946eb|https://doi.org/10.7916/d8-mtag-jm81|Sakharov and Nuclear Arms Control by Jerome Wiesner, 4/14/1987|
+4079753|aspace_85679c290d2660ab022a9a43d31e8437|https://doi.org/10.7916/d8-chpa-1403|Sampling of Project Vote Smart's Television Coverage, 1992|
+4079753|aspace_c280a108fa77a753dc1b32da91e6b930|https://doi.org/10.7916/d8-y0er-e070|School, The Story of American Public Education, 9/10/2001|
+4079753|aspace_62bfe3a91db549310c0e5cf898b08698|https://doi.org/10.7916/d8-rs4v-bt29|School: Discussion Starter Video, 5/30/2001|
+4079753|aspace_e21c63d6e875d99dd44abd24300da8ed|https://doi.org/10.7916/d8-4qze-yp48|School: Event Reel, 4/12/2001|
+4079753|aspace_c6d0f6129626b7db0733f2db443b2be2|https://doi.org/10.7916/d8-e1m9-3k23|School: Preview Reel, 2/22/2001|
+4079753|aspace_684e5c615226499eefd17b00bbca89cd|https://doi.org/10.7916/d8-2agm-tr30|Schooling of Museums: an NSF/Carnegie Project, 1988|
+4079753|aspace_deff21c28d44fe43149de746376e5219|https://doi.org/10.7916/d8-tpz9-y977|Science and Society, 1990|
+4079753|aspace_e66cc43073d5655a9cabaf67cd169304|https://doi.org/10.7916/d8-9my5-v435|Science Helper, Promotional Tape, 1992|
+4079753|aspace_9cef48d5bcadffcccd522d7669a69531|https://doi.org/10.7916/d8-tsjk-c038|Science Odyssey: Matters of the Heart, Life Beyond Earth, Computer Animations, The Rock Story, 1997|
+4079753|aspace_3e29ab23b5b161089a873316f3fe59c8|https://doi.org/10.7916/d8-6rnn-wh30|Science Technology and Government: "A Crisis of Purpose" by William Blanpied, 1988|
+4079753|aspace_1ecb3a13db7bfe56f959f79a91507b13|https://doi.org/10.7916/d8-6asd-x973|Scientists' Institute for Public Information, TV News: The Cutting Edge, 1992|
+4079753|aspace_aee8b5d47bbb5b4ad4564eee49276abb|https://doi.org/10.7916/d8-qd9b-4p02|SDI: Cruel Hoax or Moral Imperative by Albert Carnesale, 3/11/1987|
+4079753|aspace_c91350473f169c0e64bd9d615c668d4a|https://doi.org/10.7916/d8-bz9w-7f77|Seeking Solutions with Hedrick Smith. Hour 1: Teen Violence, 10/13/1999|
+4079753|aspace_ce2bb32d23fe12dfb18a56f7d745963b|https://doi.org/10.7916/d8-etgq-rd38|Seeking Solutions with Hendrick Smith, 12/6/1999|
+4079753|aspace_ecb691b83390937a170028b36f4ef5f0|https://doi.org/10.7916/d8-0j12-5c55|Senate Debate February 6 and 7, 1/25/1990|
+4079753|aspace_d6aee51581f1bbd262c2fd7d0deee81c|https://doi.org/10.7916/d8-3vt3-0q91|Sexuality Education for the 21st Century, 1995|
+4079753|aspace_78b72cea4a2a4e114e8c80073b034a0a|https://doi.org/10.7916/d8-jek0-8v34|Sexuality Education for the 21st Century, 5/24/1995|
+4079753|aspace_6d5082743c2bb26be86cdb3c89e1adc2|https://doi.org/10.7916/d8-v4gn-cj33|Share-A-Legacy 2000 Participants, 2000|
+4079753|aspace_a88b0e8f66da36e2a060b347b86d29f4|https://doi.org/10.7916/d8-w0f8-xe58|Shifting Responsibilities of Women: Global Issues, 1988|
+4079753|aspace_55b8a465e3f19d240f5691fa4ac111f0|https://doi.org/10.7916/d8-efqq-9n90|Soundings - Side A: Poets on Poetry; Side B: Unlabeled, 1988|
+4079753|aspace_607ccc4b82909b110ce422e98ad690ef|https://doi.org/10.7916/d8-vckh-hh28|Soundings From the National Humanities Center - Future Stakes Pt. 4: American Memory, 1988|
+4079753|aspace_10c27874045deebdab7870a1d39f64cc|https://doi.org/10.7916/d8-bs92-cz86|Soundings, "Future Stakes" - Part 1: Education and the National Economy and Part 2: Teaching Stakes, 1988|
+4079753|aspace_93351ea8a851bb80f751a377c8164bf2|https://doi.org/10.7916/d8-aer1-xs24|South Africa Now #203, 1988|
+4079753|aspace_12affc90ac7b293084e50159b6e23189|https://doi.org/10.7916/d8-k8jr-nt05|South Africa Rural Legal Services Meeting, 6/10/1985|
+4079753|aspace_e0894a98df7bf1af1aa4dc3b6eb6643b|https://doi.org/10.7916/d8-7p6d-c787|Southport Institute for Policy Analysis, 1988|
+4079753|aspace_14e4a8f24c915c1935afd4b55363bcb6|https://doi.org/10.7916/d8-qrvr-1m31|Southwest Voter Registration Education Project - PSA & Youth Video, 8/9/1996|
+4079753|aspace_0a8bcd60ad898a69f94f7f65baa2e10e|https://doi.org/10.7916/d8-6vt2-wx87|Space to Grow, Creating a Child Care Environment for Infants and Toddlers, 6/22/1998|
+4079753|aspace_cf290938572073f64689ae00f1fa7331|https://doi.org/10.7916/d8-ftmz-hb30|Space to Grow, Creating a Child Care Environment for Infants and Toddlers, 1998|
+4079753|aspace_865a56b4bad1471fab0e37c192f7c601|https://doi.org/10.7916/d8-kb37-m517|Starting Points, 4/13/1994|
+4079753|aspace_b71dedb287a81fddcd2af62561c8e08b|https://doi.org/10.7916/d8-xhft-p854|Statecraft Promotional Reel|
+4079753|aspace_88a7e4b41d6ee9731eee3591993fb592|https://doi.org/10.7916/d8-d2pn-gh25|Stones and Bones|
+4079753|aspace_8ab09fe7fb4b8daeb492d0559a952e96|https://doi.org/10.7916/d8-xj9w-5h23|Strategy for Peace by Sissela Bok|
+4079753|aspace_6f4ad936ac6cb2923a94eb03b05b5cbe|https://doi.org/10.7916/d8-0j4m-nx79|Success For All: Awareness Video|
+4079753|aspace_6f73038f016c6d27a8294eeaedd9c732|https://doi.org/10.7916/d8-nspa-by39|Superchief: The Life and Legacy of Earl Warren|
+4079753|aspace_c0d5e703561a88bc6d9472f1a5aa1626|https://doi.org/10.7916/d8-pj6s-y963|Symposium on the Medical Implications of Nuclear War, Part 1 and 2|
+4079753|aspace_47ed096e0b651a7fd353cab8299e9362|https://doi.org/10.7916/d8-ezkt-zp89|Taking a Stand, Standing Together, Bridgeport|
+4079753|aspace_4150bcaf1290d2bd61d0842c07108364|https://doi.org/10.7916/d8-s0bf-m663|Taking a Stand, Standing Together, Bridgeport|
+4079753|aspace_e99d4a2e1eb8cc045baf1f96507898c4|https://doi.org/10.7916/d8-6e7p-rk58|Taking a Stand, Standing Together, Winston-Salem|
+4079753|aspace_0670f917bedc5ec5e5197d01f8e05811|https://doi.org/10.7916/d8-adbw-5a31|Taking a Stand, Standing Together, Winston-Salem|
+4079753|aspace_877bfc463abf65c0daaa73b374fcac6a|https://doi.org/10.7916/d8-3tfr-9b38|These Girls Are Missing|
+4079753|aspace_0fddad24ace06cb9e92ca7bff89707e0|https://doi.org/10.7916/d8-2d7v-wm19|These Girls Are Missing|
+4079753|aspace_e18edc484103faf93698245bb6f6b098|https://doi.org/10.7916/d8-4my0-3z31|Tips with Nancy Stevens, 2 Episodes|
+4079753|aspace_81134f04f8b2365a5c0f54293b598c3c|https://doi.org/10.7916/d8-mpay-0w74|Today's Special: A Fresh Approach to Meals for Preschoolers|
+4079753|aspace_b781a82749e96e44e26b72b0d48e2e72|https://doi.org/10.7916/d8-g0kn-ng22|Today's Special: A Fresh Approach to Meals for Preschoolers|
+4079753|aspace_54630868d9892ec216f7fe792ad9c0d7|https://doi.org/10.7916/d8-ypyr-r354|Tripartite Conference on the October Crisis of 1962|
+4079753|aspace_2c921654b6b13125ea4dfc4ee7ca8459|https://doi.org/10.7916/d8-7tv6-m663|Tripartite Conference on the October Crisis of 1962|
+4079753|aspace_1ef0ae3724dc250a9bfddd427821aa0f|https://doi.org/10.7916/d8-67fv-pe13|UN: Peacekeeping or Warmaking?|
+4079753|aspace_6c74f0d0ca22afc5d967efebe8401c65|https://doi.org/10.7916/d8-h6zb-0v97|Undue Influence: Money in Politics|
+4079753|aspace_18acd4c801869149392984f9e560c8c3|https://doi.org/10.7916/d8-jg60-7d16|Unlabeled Philips Reel|
+4079753|aspace_95b972106c6b29677c8317e9c5b3fb39|https://doi.org/10.7916/d8-4bfz-tk46|Unlabeled Reel|
+4079753|aspace_af5eefd849b1a5891573c80e53f1e136|https://doi.org/10.7916/d8-rqh3-zm37|Unlabeled Reel|
+4079753|aspace_4f52967dc67dd0ac41c3ef9d3d35d233|https://doi.org/10.7916/d8-yy0c-k432|Unlabeled Reel|
+4079753|aspace_0dd69bb6e0e2c73e7c1869288cfdd0ee|https://doi.org/10.7916/d8-zkkv-1087|Unlabeled Reel|
+4079753|aspace_18d991c6147448c2175ba32601bba30d|https://doi.org/10.7916/d8-1wxb-1f19|Unlabeled Reel|
+4079753|aspace_9389a3286d0d767794866f5adbdeaaa3|https://doi.org/10.7916/d8-z3dr-hf23|Uri Treisman|
+4079753|aspace_3209751538ee77b5d54f18a7dab0450f|https://doi.org/10.7916/d8-1dbe-hd17|Visionaries|
+4079753|aspace_f9ba79e7b482e8748b9e8054b7083a30|https://doi.org/10.7916/d8-2ymw-rj61|Visions of Excellence|
+4079753|aspace_c2632a2db5474949841bc61719aace9c|https://doi.org/10.7916/d8-f6je-7p83|Voices of the Electorate: Alvin H. Perlmutter [Houston]|
+4079753|aspace_403236c40d2693e365f3ca22036ed3f5|https://doi.org/10.7916/d8-kfvk-r674|Voices of the Electorate: Hispanic American Voter (Alvin H. Perlmutter)|
+4079753|aspace_9be90605501260d848a67aa7f31246b5|https://doi.org/10.7916/d8-e1v4-1a72|Voices of the Electorate: Local Houston Coverage|
+4079753|aspace_edcafb8663fb72685ac3c867ad078f1f|https://doi.org/10.7916/d8-e1b0-pq32|Voices of the Electorate: The African American Voter (Alvin H. Perlmutter)|
+4079753|aspace_6a78b3412e8d6a103bfc04b2707c6ad9|https://doi.org/10.7916/d8-bpdp-1p42|Voices of the Young: An intergenerational Dialogue|
+4079753|aspace_333a19347ce1682ef9876c1541ed4f29|https://doi.org/10.7916/d8-rykb-0k53|Voices: The Midwest Audio Network for Drug-Free Schools and Communities - Special Edition #2|
+4079753|aspace_16b40ac8794b4cef5ba784699891da0d|https://doi.org/10.7916/d8-5w1c-6553|Voices: the Midwest Audio Network for Drug-Free Schools and Communities (Regular Edition #5)|
+4079753|aspace_7e6a8cba11a320183ec66eb8b8db814c|https://doi.org/10.7916/d8-e3f1-9j52|Voices: the Midwest Audio Network for Drug-Free Schools and Communities (Regular Edition #5)|
+4079753|aspace_edbc0bb58f1abce9a88b14d7bd3b9a63|https://doi.org/10.7916/d8-y1hg-0623|Vote! It counts|
+4079753|aspace_faef8a69ea57fce8528b77e56b3a1d64|https://doi.org/10.7916/d8-hyks-qc18|Vote! It counts|
+4079753|aspace_ceb0531160e0d70e0d9d7711698424cb|https://doi.org/10.7916/d8-8z3a-b760|Vote! It counts PSAs|
+4079753|aspace_711fa1b270a2e78e5a67b72410e456e7|https://doi.org/10.7916/d8-krhx-mw10|Voter Registration Project|
+4079753|aspace_8acd5625830b70af2c06d7e0754b3bac|https://doi.org/10.7916/d8-fmj6-c519|Walt Whitman Center Roundtable: The Politics of Civil Society. Whose Concept? To What End?|
+4079753|aspace_dfa893e9ad5e47febe93d44955657a7b|https://doi.org/10.7916/d8-fj7p-h866|War Torn Societies Project : The First Four Years, and WSP voices|
+4079753|aspace_239b90735e9b2729cbd1be7b40bb7882|https://doi.org/10.7916/d8-dqq6-kh97|War Torn Societies Project: The First Four Years and WSP Voices|
+4079753|aspace_db6da251f61bf8b16a18231b7da815f7|https://doi.org/10.7916/d8-nxqw-3776|Warren Years|
+4079753|aspace_f7d912413b02e91b57f09c0150ff4162|https://doi.org/10.7916/d8-r2fa-2f32|Welcome to HeadsUp Reading!|
+4079753|aspace_adf887a2eed12bd14113f59d48e5548f|https://doi.org/10.7916/d8-q086-4q19|WEWS-TV News 5, Cleveland: Cleveland Public Library series|
+4079753|aspace_9949d4808ddabc308eaccc69c9b0c465|https://doi.org/10.7916/d8-j7bk-4n59|Who Needs the A.B.M. Treaty? By Antonia Chayes|
+4079753|aspace_38d3ec28ed17b0c481262dd5f9251e3b|https://doi.org/10.7916/d8-n2ya-qd75|Why Should We Care About Child Care?|
+4079753|aspace_a160f43c0473399c57dff0bca0e0bea9|https://doi.org/10.7916/d8-49kn-9r43|Will Gorbachev Succeed or Fail? By Robert Legvold|
+4079753|aspace_1fb5b284855b351e964ae908f9e13ba2|https://doi.org/10.7916/d8-wjm7-pr32|Women In International Security: WIIS Works!|
+4079753|aspace_6fbc487ef3645fbc0698d5895a6b9176|https://doi.org/10.7916/d8-h907-k281|Women's Vote Project '96: The Deciding Vote|
+4079753|aspace_0d151800b5c2a5c94401f96f65c7b1dc|https://doi.org/10.7916/d8-jw8t-aw19|World Transformed: Our Reflections on Ending the Cold War|
+4079753|aspace_8cc8ba97b1d6007479542a313d4ba857|https://doi.org/10.7916/d8-tkmv-7020|World Transformed: Our Reflections on Ending the Cold War|
+4079753|aspace_841eee16eabdca5e8d655e576f6f4cc5|https://doi.org/10.7916/d8-r39a-9227|Wusile, the Child that Loves Stories!|
+4079753|aspace_ab0a429c8a077b3e40c864b3e50ea735|https://doi.org/10.7916/d8-pc3x-yp98|Wusile, the Child that Loves Stories!|
+4079753|aspace_49e3f8d5d25ed3589763354b2566d5ad|https://doi.org/10.7916/d8-3dks-8m07|Your Children, Our Children: Child Care Program #6|
+4079753|aspace_85f2e89eda003db679bb6f9391a95d83|https://doi.org/10.7916/d8-5588-6c17|Voices from South Africa|
+4079753|aspace_3671dc05e579bba1fb8bbb95d0051beb|https://archive-it.org/collections/2766?fc=websiteGroup%3ACarnegie+Collection|Archived websites, 2012-2019|
