@@ -33,7 +33,7 @@ def main():
     # the_sheet_data = the_sheet.getData()
     # the_heads = the_sheet_data.pop(0)
 
-    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test2.txt'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test2.txt'  # test
     # aCSV = os.path.join(my_path, 'output/acfa-252-carnegie-urls.txt')
     aCSV = os.path.join(my_path, 'output/acfa-252-all-urls.txt')
 
@@ -79,7 +79,9 @@ def get_response(url):
             # print(x.headers['Location'])
         # print(x.headers)
 
-    except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError) as e:
+    # Note: RequestException is the parent of all other named exceptions and includes them.
+    except requests.exceptions.RequestException as e:
+        # except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError) as e:
         status = "ERROR: " + str(e)
         location = ""
 
