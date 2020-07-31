@@ -33,7 +33,8 @@ def main():
     # the_heads = the_sheet_data.pop(0)
 
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test.txt'
-    aCSV = os.path.join(my_path, 'output/acfa-252-carnegie-urls.txt')
+    # aCSV = os.path.join(my_path, 'output/acfa-252-carnegie-urls.txt')
+    aCSV = os.path.join(my_path, 'output/acfa-252-all-urls.txt')
 
     the_data = []
 
