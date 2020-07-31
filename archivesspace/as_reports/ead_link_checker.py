@@ -12,6 +12,7 @@ def main():
 
     # test_url = 'https://dx.doi.org/10.7916/d8-nfd2-zc36'
     # test_url = 'http://www.columbia.edu/cu/lweb/indiv/rbml/index.html'
+    # test_url = 'http://localhost:8081/repositories/2/resources/1356'
 
     # x = get_response(test_url)
     # print(x)
@@ -32,7 +33,7 @@ def main():
     # the_sheet_data = the_sheet.getData()
     # the_heads = the_sheet_data.pop(0)
 
-    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test.txt'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test2.txt'
     # aCSV = os.path.join(my_path, 'output/acfa-252-carnegie-urls.txt')
     aCSV = os.path.join(my_path, 'output/acfa-252-all-urls.txt')
 
@@ -48,6 +49,7 @@ def main():
     the_new_data = [the_heads]
 
     for a_row in the_data:
+        print(a_row)
         response = get_response(a_row[2])
         if response['status'] != 200:
             new_row = a_row
@@ -77,7 +79,7 @@ def get_response(url):
             # print(x.headers['Location'])
         # print(x.headers)
 
-    except requests.exceptions.MissingSchema as e:
+    except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError) as e:
         status = "ERROR: " + str(e)
         location = ""
 
