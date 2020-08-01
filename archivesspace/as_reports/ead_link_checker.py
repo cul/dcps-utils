@@ -35,7 +35,7 @@ def main():
 
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test2.txt'  # test
     # aCSV = os.path.join(my_path, 'output/acfa-252-carnegie-urls.txt')
-    aCSV = os.path.join(my_path, 'output/output_all_c.txt')
+    aCSV = os.path.join(my_path, 'output/output_all_d.txt')
 
     the_data = []
 
@@ -50,18 +50,22 @@ def main():
 
     for a_row in the_data:
         print(a_row)
-        response = get_response(a_row[2])
-        if response['status'] != 200:
-            new_row = a_row
-            while len(new_row) < 5:
-                new_row.append("")
-            new_row.append(response['status'])
-            if 'location' in response:
-                redirect_response = get_response(response['location'])
-                new_row += [response['location'], redirect_response['status']]
+        if 'clio.columbia.edu' in a_row[2]:
+            print('Skipping CLIO record ' + a_row[2])
+        else:
+            response = get_response(a_row[2])
+            if response['status'] != 200:
+                new_row = a_row
+                while len(new_row) < 5:
+                    new_row.append("")
+                new_row.append(response['status'])
+                if 'location' in response:
+                    redirect_response = get_response(response['location'])
+                    new_row += [response['location'],
+                                redirect_response['status']]
 
-            print(new_row)
-            the_new_data.append(new_row)
+                print(new_row)
+                the_new_data.append(new_row)
 
     the_output_sheet.clear()
     the_output_sheet.appendData(the_new_data)
