@@ -35,7 +35,7 @@ def main():
 
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-252-audit-links/output_test2.txt'  # test
     # aCSV = os.path.join(my_path, 'output/acfa-252-carnegie-urls.txt')
-    aCSV = os.path.join(my_path, 'output/acfa-252-all-urls_a.txt')
+    aCSV = os.path.join(my_path, 'output/acfa-252-all-urls_b.txt')
 
     the_data = []
 
