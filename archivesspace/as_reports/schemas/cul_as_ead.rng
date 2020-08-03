@@ -73,9 +73,9 @@
 -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
 	xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-	xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" ns="urn:isbn:1-931666-22-9">
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" ns="urn:isbn:1-931666-22-9">
 	<sch:ns uri="urn:isbn:1-931666-22-9" prefix="ead"/>
 	<start>
 		<choice>
@@ -87,12 +87,11 @@
 			<attribute name="normal">
 				<data type="token">
 					<!--
-					<param name="pattern" >(\-?(0|1|2)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)(/\-?(0|1|2)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)?</param>
+					<param name="pattern">(\-?(0|1|2)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)(/\-?(0|1|2)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)?</param>
 					-->
-<!--	TODO: Improve this regex. Should match ISO patterns with slash to indicate ranges, e.g., 1985-01-01/1999-05-23, 19850101, or 19850101/19990523, plus BCE, AD, etc. 9999 is locally valid.	-->
-					<param name="pattern"
->(\-?(0|1|2|9)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)(/\-?(0|1|2|9)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)?</param>
-					
+					<!--	TODO: Improve this regex. Should match ISO patterns with slash to indicate ranges, e.g., 1985-01-01/1999-05-23, 19850101, or 19850101/19990523, plus BCE, AD, etc. 9999 is locally valid.	-->
+					<param name="pattern">(\-?(0|1|2|9)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)(/\-?(0|1|2|9)([0-9]{3})(((01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|((1|2)[0-9])|(3[0-1])))|\-((01|02|03|04|05|06|07|08|09|10|11|12)(\-((0[1-9])|((1|2)[0-9])|(3[0-1])))?))?)?</param>
+
 				</data>
 			</attribute>
 		</optional>
@@ -1431,7 +1430,7 @@
 			<ref name="accruals"/>
 			<ref name="acqinfo"/>
 			<ref name="altformavail"/>
-			 <ref name="appraisal"/> 
+			<ref name="appraisal"/>
 			<ref name="arrangement"/>
 			<ref name="bibliography"/>
 			<ref name="bioghist"/>
@@ -1574,7 +1573,7 @@
 	</define>
 	<define name="a.access">
 		<optional>
-		<ref name="source"/>
+			<ref name="source"/>
 		</optional>
 		<optional>
 			<attribute name="rules">
@@ -1663,7 +1662,7 @@
 			<optional>
 				<attribute name="xsi:schemaLocation"/>
 			</optional>
-			
+
 			<element name="eadheader">
 				<ref name="a.common"/>
 				<optional>
@@ -1724,7 +1723,7 @@
 					<optional>
 						<attribute name="encodinganalog"/>
 					</optional>
-					
+
 					<text/>
 				</element>
 				<element name="filedesc">
@@ -3985,10 +3984,12 @@
 				<value>internal</value>
 			</choice>
 		</attribute>
-	</define>	
+	</define>
 	<define name="xlink.href">
 		<attribute name="xlink:href">
-			<data type="anyURI"/>
+			<data type="anyURI">
+				<param name="pattern">https?://\S+</param>
+			</data>
 		</attribute>
 	</define>
 	<define name="xlink.role">
@@ -4067,7 +4068,7 @@
 		<optional>
 			<ref name="xlink.actuate"/>
 		</optional>
-<!--	TODO: Check	-->
+		<!--	TODO: Check	-->
 		<optional>
 			<ref name="href"/>
 		</optional>
@@ -4075,8 +4076,8 @@
 	<define name="extendedLink">
 		<optional>
 			<attribute a:defaultValue="extended" name="xlink:type">
-			<value>extended</value>
-		</attribute>
+				<value>extended</value>
+			</attribute>
 		</optional>
 		<optional>
 			<ref name="xlink.role"/>
@@ -4087,9 +4088,9 @@
 	</define>
 	<define name="locatorLink">
 		<optional>
-		<attribute a:defaultValue="locator" name="xlink:type">
-			<value>locator</value>
-		</attribute>
+			<attribute a:defaultValue="locator" name="xlink:type">
+				<value>locator</value>
+			</attribute>
 		</optional>
 		<ref name="xlink.href"/>
 		<optional>
@@ -4104,9 +4105,9 @@
 	</define>
 	<define name="arcLink">
 		<optional>
-		<attribute a:defaultValue="arc" name="xlink:type">
-			<value>arc</value>
-		</attribute>
+			<attribute a:defaultValue="arc" name="xlink:type">
+				<value>arc</value>
+			</attribute>
 		</optional>
 		<optional>
 			<ref name="xlink.arcrole"/>
@@ -4128,10 +4129,10 @@
 		</optional>
 	</define>
 	<define name="resourceLink">
-	<optional>
-		<attribute a:defaultValue="resource" name="xlink:type">
-			<value>resource</value>
-		</attribute>
+		<optional>
+			<attribute a:defaultValue="resource" name="xlink:type">
+				<value>resource</value>
+			</attribute>
 		</optional>
 		<optional>
 			<ref name="xlink.role"/>
@@ -4143,7 +4144,7 @@
 			<ref name="xlink.label"/>
 		</optional>
 	</define>
-	
+
 	<define name="href">
 		<attribute name="href">
 			<data type="anyURI"/>
