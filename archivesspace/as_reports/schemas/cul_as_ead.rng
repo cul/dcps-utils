@@ -3987,11 +3987,17 @@
 	</define>
 	<define name="xlink.href">
 		<attribute name="xlink:href">
+			<data type="anyURI"/>
+		</attribute>
+	</define>
+	<!--
+	<define name="xlink.href">
+		<attribute name="xlink:href">
 			<data type="anyURI">
 				<param name="pattern">https?://\S+</param>
 			</data>
 		</attribute>
-	</define>
+-->
 	<define name="xlink.role">
 		<attribute name="xlink:role">
 			<data type="anyURI"/>
