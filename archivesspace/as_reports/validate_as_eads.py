@@ -166,9 +166,8 @@ def main():
                 validation_status = True
 
         if validation_result:
-            validation_result_clean = clean_output(validation_result, incl_types=False)[
-                0
-            ]
+            validation_result_clean = clean_output(
+                validation_result, incl_types=False)[0][:1000]
         else:
             validation_result_clean = validation_result
 
@@ -197,8 +196,8 @@ def main():
                 # schematron_result_clean = x[0]
                 # Truncate the results to deal with very large output that can crash the sheet.
                 schematron_result_clean = x[0][:1000]
-                if schematron_result_clean != x[0]:
-                    print("Warning: long schematron result in " + str(bibid))
+                # if schematron_result_clean != x[0]:
+                #     print("Warning: long schematron result in " + str(bibid))
                 warning_types = x[1]
 
                 warning_types = x[1]
