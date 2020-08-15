@@ -99,8 +99,8 @@ def main():
     schema_path = os.path.join(my_path, schema_filename)
     xslt_path = os.path.join(my_path, xslt_filename)
 
-    # data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
-    data_folder = '/cul/cul0/ldpd/archivesspace/test/ead'  # for testing
+    data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
+    # data_folder = '/cul/cul0/ldpd/archivesspace/test/ead'  # for testing
 
     # Use in notification email to distinguish errors/warnings
     icons = {
@@ -195,7 +195,7 @@ def main():
             if schematron_result:
                 x = clean_output(schematron_result, incl_types=True)
                 # schematron_result_clean = x[0]
-                schematron_result_clean = x[0][:10]
+                schematron_result_clean = x[0][:1000]
                 if schematron_result_clean != x[0]:
                     print("Warning: long schematron result in " + str(bibid))
                 warning_types = x[1]
