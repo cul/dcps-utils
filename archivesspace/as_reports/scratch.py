@@ -194,7 +194,10 @@ def main():
 
             if schematron_result:
                 x = clean_output(schematron_result, incl_types=True)
-                schematron_result_clean = x[0]
+                # schematron_result_clean = x[0]
+                schematron_result_clean = x[0][:10]
+                if schematron_result_clean != x[0]:
+                    print("Warning: long schematron result in " + str(bibid))
                 warning_types = x[1]
             else:
                 schematron_result_clean = ""
@@ -214,8 +217,8 @@ def main():
 
     the_data_sheet.clear()
     the_data_sheet.appendData(the_results)
-    the_data_sheet2.clear()
-    the_data_sheet2.appendData(the_results)
+    # the_data_sheet2.clear()
+    # the_data_sheet2.appendData(the_results)
 
     # generate log and add to log tab, if exists.
     the_tabs = the_data_sheet.initTabs
