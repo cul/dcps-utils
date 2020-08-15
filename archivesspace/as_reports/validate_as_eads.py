@@ -194,7 +194,13 @@ def main():
 
             if schematron_result:
                 x = clean_output(schematron_result, incl_types=True)
-                schematron_result_clean = x[0]
+                # schematron_result_clean = x[0]
+                # Truncate the results to deal with very large output that can crash the sheet.
+                schematron_result_clean = x[0][:1000]
+                if schematron_result_clean != x[0]:
+                    print("Warning: long schematron result in " + str(bibid))
+                warning_types = x[1]
+
                 warning_types = x[1]
             else:
                 schematron_result_clean = ""
