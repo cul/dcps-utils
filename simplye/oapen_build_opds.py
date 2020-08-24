@@ -21,8 +21,8 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
 def main():
 
     now = datetime.today().isoformat()  # Current timestamp in ISO
-    base_url = "https://ebooks-test.library.columbia.edu"
-    base_folder = 'output/oapen_clio/'
+    base_url = "https://ebooks.library.columbia.edu/static-feeds/oapen/"
+    base_folder = 'output/oapen/'
 
     pickle_barrel = ['oapen_extract_1.pickle',
                      'oapen_extract_2.pickle',
@@ -36,24 +36,30 @@ def main():
                      'oapen_extract_10.pickle',
                      ]
 
+    feed_stem = 'oapen_clio'
+
     for a_feed in pickle_barrel:
         idx = int(a_feed.split('.')[0].split('_')[-1])
         # print(idx)
         in_file = base_folder + a_feed
-        feed_name = 'oapen_clio_p' + str(idx) + '.xml'
-        feed_next = 'oapen_clio_p' + str(idx + 1) + '.xml'
+
+        if idx > 1:
+            feed_name = feed_stem + '_p' + str(idx) + '.xml'
+        else:
+            feed_name = feed_stem + '.xml'
+        feed_next = feed_stem + '_p' + str(idx + 1) + '.xml'
 
         root = etree.Element("feed", nsmap=NSMAP)
         feed_id = etree.SubElement(root, "id")
-        feed_id.text = base_url + "/static-feeds/oapen_clio"
+        feed_id.text = base_url + "oapen_clio"
         feed_title = etree.SubElement(root, "title")
         feed_title.text = "OAPEN Book Collection | Columbia University Libraries"
         feed_updated = etree.SubElement(root, "updated")
         feed_updated.text = now
         feed_link = etree.SubElement(
-            root, "link", href=base_url + "/static-feeds/" + feed_name, rel="self")
+            root, "link", href=base_url + feed_name, rel="self")
         feed_link_next = etree.SubElement(
-            root, "link", href=base_url + "/static-feeds/" + feed_next, rel="next", title="Next")
+            root, "link", href=base_url + feed_next, rel="next", title="Next")
 
         # the_data = util.unpickle_it('output/oapen_ERC_data.pickle')
         the_data = util.unpickle_it(in_file)
@@ -114,6 +120,8 @@ def make_entry(_parent, _dict):
             print(e_bitstreams['link_cover'])
             e_link_cover = etree.SubElement(
                 entry, "link", href=e_bitstreams['link_cover'], type="image/jpeg", rel="http://opds-spec.org/image")
+            e_link_cover = etree.SubElement(
+                entry, "link", href=e_bitstreams['link_cover'], type="image/jpeg", rel="http://opds-spec.org/image/thumbnail")
 
         # e_summary = etree.SubElement(entry, "summary", type="text")
         # e_updated = etree.SubElement(entry, "updated")
@@ -157,14 +165,14 @@ def make_entry(_parent, _dict):
 
         # Content
         content = metadata_finder(e_metadata, 'dc.description.abstract')
+        e_content = etree.SubElement(entry, "content", type="text/html")
         if content:
-            e_content = etree.SubElement(entry, "content", type="text/html")
             e_content_p1 = etree.SubElement(e_content, "p")
             e_content_p1.text = content[0]
-            e_content_p2 = etree.SubElement(e_content, "p")
-            e_content_clio_link = etree.SubElement(
-                e_content_p2, "a", href='https://clio.columbia.edu/catalog/' + str(_dict['' 'cul_bibid']))
-            e_content_clio_link.text = "View catalog record in CLIO."
+        e_content_p2 = etree.SubElement(e_content, "p")
+        e_content_clio_link = etree.SubElement(
+            e_content_p2, "a", href='https://clio.columbia.edu/catalog/' + str(_dict['' 'cul_bibid']))
+        e_content_clio_link.text = "View catalog record in CLIO."
 
         # publisher
         publisher = metadata_finder(e_metadata, 'publisher.name')

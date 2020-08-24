@@ -1,4 +1,4 @@
-# Script to gather ids and bibids for AI assets linked from CLIO, harvest metadata from IA, and compose an OPDS feed for use in SimplyE.
+# Functions to gather ids and bibids for AI assets linked from CLIO, harvest metadata from IA, and compose paginated OPDS feeds for use in SimplyE.
 
 # internet archive python library docs:
 # https://archive.org/services/docs/api/internetarchive/
@@ -7,9 +7,9 @@ from internetarchive import get_item
 from lxml import etree, html
 from lxml.builder import ElementMaker
 import dcps_utils as util
-from pprint import pprint
+# from pprint import pprint
 from datetime import datetime
-from sheetFeeder import dataSheet
+# from sheetFeeder import dataSheet
 
 
 contentProvider = "CUL: Internet Archive"
@@ -24,51 +24,124 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
          'schema': "http://schema.org/"}
 
 
-def divide_list(lst, n):
-    # generate n-sized chunks from list.
-    for i in range(0, len(lst), n):
-        yield lst[i:i + n]
+# TEST
+
+def find_duplicates(lst):
+    unique = []
+    dupes = []
+    for i in lst:
+        if i not in unique:
+            unique.append(i)
+        else:
+            dupes.append(i)
+    return list(set(dupes))
 
 
 def main():
 
-    # x = get_item('liberiadescribed00mill').metadata
-    # print(type(x['subject']))
+    # recs = [{'bibid': '10299829', 'id': 'cu31924028832941'},
+    #         {'bibid': '10300028', 'id': 'cu31924024896957'},
+    #         {'bibid': '10300029', 'id': 'cu31924024896957'},
+    #         {'bibid': '10300030', 'id': 'cu31924024896957'},
+    #         {'bibid': '10300030', 'id': 'cu31924024896xx7'}, ]
+
+    # feed_stem = 'blah'
+
+    # x = extract_data(recs, feed_stem, 'TEST')
+
+    # pprint(x['errors'])
+
     # quit()
 
-    # feed_stem = 'ia_mwm_feed'
-    # collection_title = "Muslim World Manuscripts"
-    feed_stem = 'ia_mrp_feed'
-    collection_title = "Missionary Research Pamphlets"
+    # the_ids = [r['id'] for r in recs]
 
-    chunk_size = 500
+    # dupe_ids = find_duplicates(the_ids)
 
-    the_in_sheet = dataSheet(
-        '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'Missionary!A:Z')
-    the_out_sheet = dataSheet(
-        '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'errors!A:Z')
+    # dupe_errors = [[feed_stem, r['bibid'], r['id'], 'Duplicate ID']
+    #                for r in recs if r['id'] in dupe_ids]
+    # pprint(dupe_errors)
 
-    # Initialize the output sheet
-    the_out_sheet.clear()
-    the_out_sheet.appendData([['collection', 'file', 'bibid', 'id', 'errors']])
+    # pprint(dupes)
+
+    # print(y)
+
+    # x = get_item('ldpd_14230684_000').metadata
+    # pprint(x)
+    # quit()
+
+    # Test
+    # build_feed('output/ia/ia_test_feed.pickle', 'test')
+
+    quit()
+
+
+def extract_data(records, feed_stem, collection_title):
+    # records is list of dicts of form:
+    #     {'bibid': <bibid>, 'id':<ia_id>}
+    # feed_stem is the label that will be used to name XML files, e.g.:
+    #    'ia_mrp_feed'
+    # collection_title is a human-readable string, e.g.:
+    #    "Missionary Research Pamphlets"
+
+    the_output = []
+    the_errors = []
+
+    # check for duplicate ids and report them (they will be processed anyway)
+    the_ids = [r['id'] for r in records]
+    dupe_ids = find_duplicates(the_ids)
+    dupe_errors = [[feed_stem, r['bibid'], r['id'], 'Duplicate ID']
+                   for r in records if r['id'] in dupe_ids]
+    # pprint(dupe_errors)
+    the_errors += dupe_errors
+
+    for record in records:
+        # print(record['id'])
+        record_metadata = get_item(record['id']).metadata
+        if record_metadata:
+            print(record_metadata['identifier'] +
+                  ': ' + record_metadata['title'])
+            # Add CUL-specific metadata for use in generating feed XML.
+            record_metadata['cul_metadata'] = {'bibid': record['bibid'],
+                                               'feed_id': feed_stem,
+                                               'collection_name': collection_title}
+            the_output.append(record_metadata)
+        else:
+            print('ERROR: No data for ' +
+                  record['bibid'] + ' : ' + record['id'] + '! Skipping...')
+            the_errors.append(
+                [feed_stem, record['bibid'], record['id'], 'No data!'])
+
+    return {'data': the_output, 'errors': the_errors}
+
+
+def build_feed(pickle_path, collection_abbr, chunk_size=500):
+    # Saves output to XML file(s). Returns error data (missing elements, etc.) to be sent to report datasheet.
 
     global now
     now = datetime.today().isoformat()  # Current timestamp in ISO
-    base_url = "https://ebooks-test.library.columbia.edu"
-    base_folder = 'output/output_ia/'
+    base_url = "https://ebooks.library.columbia.edu/static-feeds/ia/" + collection_abbr + "/"
+    base_folder = 'output/ia/' + collection_abbr + '/'
 
-    # get a list of bibids and ia ids to process
-    the_inputs = the_in_sheet.getData()
-    the_inputs.pop(0)
-    the_records = [{'bibid': r[0], 'id':r[6]} for r in the_inputs]
+    # Unpack the data
+    the_records = util.unpickle_it(pickle_path)
+
+    # some collection-level info to use
+    feed_stem = the_records[0]['cul_metadata']['feed_id']
+    collection_title = the_records[0]['cul_metadata']['collection_name']
 
     # Divide list into chunks
+    total_count = len(the_records)
+    print('Total count: ' + str(total_count))
+    running_count = 0
     the_chunks = divide_list(the_records, chunk_size)
 
     for idx, record_chunk in enumerate(the_chunks):
 
         report_data = []
 
+        running_count += len(record_chunk)
+        print('Running_count = ' + str(running_count))
+        print('')
         page_no = idx + 1
         if page_no > 1:
             feed_name = feed_stem + '_p' + str(page_no) + '.xml'
@@ -80,48 +153,42 @@ def main():
         # Set up root and top-level elements
         root = etree.Element("feed", nsmap=NSMAP)
         feed_id = etree.SubElement(root, "id")
-        feed_id.text = base_url + "/static-feeds/ia_clio"
+        feed_id.text = base_url + feed_stem
         feed_title = etree.SubElement(root, "title")
         feed_title.text = collection_title + " | Columbia University Libraries"
         feed_updated = etree.SubElement(root, "updated")
         feed_updated.text = now
 
         feed_link = etree.SubElement(
-            root, "link", href=base_url + "/static-feeds/" + feed_name, rel="self")
+            root, "link", href=base_url + feed_name, rel="self")
 
-        # TODO: omit feed_next if it is the last one
-        feed_link_next = etree.SubElement(
-            root, "link", href=base_url + "/static-feeds/" + feed_next_name, rel="next", title="Next")
+        # Add feed_next, only if it is not the last one
+        if running_count < total_count:
+            feed_link_next = etree.SubElement(
+                root, "link", href=base_url + feed_next_name, rel="next", title="Next")
 
         for record in record_chunk:
+            bibid = record['cul_metadata']['bibid']
 
-            print(record)
-            record_metadata = get_item(record['id']).metadata
-            # pprint(record_metadata)
-
-            e = make_entry(root, record_metadata, record['bibid'])
+            e = make_entry(root, record, bibid)
             if e:  # if there are errors emanating from entry, add them to dict.
-                record['errors'] = e
-            else:
-                record['errors'] = ''
-
-            report_data.append(record)
+                # pprint(e)
+                error_report = [str(now), collection_title, feed_name,
+                                bibid, record['identifier'], '; '.join(e)]
+                report_data.append(error_report)
 
         # Save result xml tree
         with open(base_folder + feed_name, 'wb') as f:
             f.write(etree.tostring(root, pretty_print=True))
 
-        # report results to google sheet
-        results = [[collection_title, feed_name, d['bibid'], d['id'], '; '.join(
-            d['errors'])] for d in report_data]
-
-    # the_out_sheet.clear()
-        the_out_sheet.appendData(results)
+    return(report_data)
 
     # fin
 
 
 def make_entry(_parent, _dict, _bibid):
+    # Add an entry in XML tree to specified parent node.
+
     # collect errors to return for reporting
     global errors
     errors = []
@@ -270,6 +337,12 @@ def convert_date(_datetime):
     # d = datetime.strptime(_datetime, '%Y-%m-%d %H:%M:%S.%f')
     d = datetime.strptime(_datetime, '%Y-%m-%d %H:%M:%S')
     return d.isoformat()
+
+
+def divide_list(lst, n):
+    # generate n-sized chunks from list.
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
 
 
 if __name__ == "__main__":

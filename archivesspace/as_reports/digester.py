@@ -83,15 +83,15 @@ def get_digest(sheet=digest_sheet):
 
 
 def digest_clear(sheet=digest_sheet):
-    post = sheet.clear()
-    return post
+    return sheet.clear()
 
 
-def post_digest(script_name, log, sheet=digest_sheet):
+def post_digest(script_name, log, sheet=digest_sheet, truncate=40000):
     date = str(datetime.datetime.today())
+    if len(log) > truncate:
+        log = log[:truncate] + '[...]'
     data = [[script_name, date, log]]
-    post = sheet.appendData(data)
-    return post
+    return sheet.appendData(data)
 
 
 if __name__ == "__main__":
