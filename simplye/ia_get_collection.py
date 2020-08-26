@@ -12,12 +12,12 @@ import ia_opds_functions as ia
 
 def main():
 
-    feed_stem = 'ia_avt_feed'  # Change this
-    collection_title = "Avery Library Architectural Trade Catalogs"  # Change this
+    feed_stem = 'ia_wwi_feed'  # Change this
+    collection_title = "WWI Pamphlets 1913-1920"  # Change this
 
     # Set the correct sheet to read from
     the_in_sheet = dataSheet(
-        '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'AveryTrade!A:Z')  # Change this
+        '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'WWI!A:Z')  # Change this
     the_out_sheet = dataSheet(
         '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'extract-errors!A:Z')
 
