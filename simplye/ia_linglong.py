@@ -1,36 +1,61 @@
-import ia_build_opds as ia
+import ia_opds_functions as ia
 from sheetFeeder import dataSheet
 from pprint import pprint
 import dcps_utils as util
 
 
-the_sheet = dataSheet(
-    '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'LingLong!A:Z')
+sheet_id = '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I'
 
-output_folder = 'output/ia/ll/'
 
-the_input = the_sheet.getData()
-heads = the_input.pop(0)
+def main():
 
-the_data = []
+    build_linglong_feed()
 
-for y in range(1931, 1938):
-    the_data.append({'vol': y, 'items': [{'bibid': r[0], 'id': r[2]}
-                                         for r in the_input if r[1] == str(y)]})
+    quit()
 
-pprint(the_data)
 
-for vol_data in the_data:
-    print(' ')
-    print(vol_data['vol'])
-    feed_stem = 'ia_ll_' + str(vol_data['vol'])
-    # print(vol_data['items'])
-    the_extracts = ia.extract_data(
-        vol_data['items'], feed_stem, 'Ling Long (' + str(vol_data['vol']) + ')')
+def get_linglong():
+    # Get the linglong data from IA and save in one pickle per year (vol).
+    the_sheet = dataSheet(
+        sheet_id, 'LingLong!A:Z')
 
-    pprint(the_extracts['errors'])
-    # pprint(the_extracts['data'][0]['description'])
+    output_folder = 'output/ia/'
 
-    util.pickle_it(the_extracts['data'], output_folder + feed_stem + '.pickle')
+    the_input = the_sheet.getData()
+    heads = the_input.pop(0)
 
-quit()
+    the_data = []
+
+    for y in range(1931, 1938):
+        the_data.append({'vol': y, 'items': [{'bibid': r[0], 'id': r[2], 'label': r[3]}
+                                             for r in the_input if r[1] == str(y)]})
+
+    pprint(the_data)
+
+    for vol_data in the_data:
+        print(' ')
+        print(vol_data['vol'])
+        feed_stem = 'ia_ll_' + str(vol_data['vol'])
+        # print(vol_data['items'])
+        the_extracts = ia.extract_data(
+            vol_data['items'], feed_stem, 'Ling Long (' + str(vol_data['vol']) + ')')
+
+        pprint(the_extracts['errors'])
+        # pprint(the_extracts['data'][0]['description'])
+
+        util.pickle_it(the_extracts['data'],
+                       output_folder + feed_stem + '.pickle')
+
+
+def build_linglong_feed():
+    # Run after data has been extracted via get_linglong.
+    the_out_sheet = dataSheet(
+        sheet_id, 'errors!A:Z')
+
+    for y in range(1931, 1938):
+        x = ia.build_feed('output/ia/ia_ll_' + str(y) + '.pickle', 'll')
+        the_out_sheet.appendData(x)
+
+
+if __name__ == "__main__":
+    main()

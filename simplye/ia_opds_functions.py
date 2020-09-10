@@ -7,9 +7,8 @@ from internetarchive import get_item
 from lxml import etree, html
 from lxml.builder import ElementMaker
 import dcps_utils as util
-# from pprint import pprint
 from datetime import datetime
-# from sheetFeeder import dataSheet
+import re
 
 
 contentProvider = "CUL: Internet Archive"
@@ -37,47 +36,35 @@ def find_duplicates(lst):
     return list(set(dupes))
 
 
+def parse_920(_str):
+    # Parse a string and extract the $3 subfield as ['label'] and $u or $a as ['id]
+    results = {}
+    p = re.compile('\$3(.*?)(;|\$|$)')
+    match_label = p.match(_str)
+    results['label'] = match_label.group(1) if match_label else None
+    p = re.compile('.*\$[ua]http.*?archive\.org/details/(.*?)(;|\$|$)')
+    match_id = p.match(_str)
+    results['id'] = match_id.group(1) if match_id else None
+    return results
+
+
 def main():
 
-    # recs = [{'bibid': '10299829', 'id': 'cu31924028832941'},
-    #         {'bibid': '10300028', 'id': 'cu31924024896957'},
-    #         {'bibid': '10300029', 'id': 'cu31924024896957'},
-    #         {'bibid': '10300030', 'id': 'cu31924024896957'},
-    #         {'bibid': '10300030', 'id': 'cu31924024896xx7'}, ]
+    the_920s = ['$3Vol. 1$uhttps://archive.org/details/ldpd_14294925_001', '$uhttp://www.idsa.in/system/files/opaper/OP_IndiaandBhutan_pstobdan.pdf$zCurrent site',
+                '$uhttps://web.archive.org/web/20160203223726/http://www.idsa.in/system/files/opaper/OP_IndiaandBhutan_pstobdan.pdf$zArchived site']
 
-    # feed_stem = 'blah'
+    for i in the_920s:
 
-    # x = extract_data(recs, feed_stem, 'TEST')
-
-    # pprint(x['errors'])
-
-    # quit()
-
-    # the_ids = [r['id'] for r in recs]
-
-    # dupe_ids = find_duplicates(the_ids)
-
-    # dupe_errors = [[feed_stem, r['bibid'], r['id'], 'Duplicate ID']
-    #                for r in recs if r['id'] in dupe_ids]
-    # pprint(dupe_errors)
-
-    # pprint(dupes)
-
-    # print(y)
-
-    # x = get_item('ldpd_14230684_000').metadata
-    # pprint(x)
-    # quit()
-
-    # Test
-    # build_feed('output/ia/ia_test_feed.pickle', 'test')
+        # x = '$uhttps://archive.org/details/ldpd_14294926_000'
+        # y = '$3Vol. 1$uhttps://archive.org/details/ldpd_14294925_001'
+        print(parse_920(i))
 
     quit()
 
 
 def extract_data(records, feed_stem, collection_title):
     # records is list of dicts of form:
-    #     {'bibid': <bibid>, 'id':<ia_id>}
+    #     {'bibid': <bibid>, 'id':<ia_id>, 'label':<link_label>}
     # feed_stem is the label that will be used to name XML files, e.g.:
     #    'ia_mrp_feed'
     # collection_title is a human-readable string, e.g.:
@@ -103,7 +90,8 @@ def extract_data(records, feed_stem, collection_title):
             # Add CUL-specific metadata for use in generating feed XML.
             record_metadata['cul_metadata'] = {'bibid': record['bibid'],
                                                'feed_id': feed_stem,
-                                               'collection_name': collection_title}
+                                               'collection_name': collection_title,
+                                               'label': record['label']}
             the_output.append(record_metadata)
         else:
             print('ERROR: No data for ' +

@@ -19,7 +19,9 @@ from sheetFeeder import dataSheet
 the_out_sheet = dataSheet(
     '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I', 'errors!A:Z')
 
-x = ia.build_feed('output/ia/ia_wwi_feed.pickle', 'wwi')
+# x = ia.build_feed('output/ia/ia_wwi_feed.pickle', 'wwi')
+# the_out_sheet.appendData(x)
+x = ia.build_feed('output/ia/ia_durst_feed.pickle', 'durst')
 the_out_sheet.appendData(x)
 
 quit()
