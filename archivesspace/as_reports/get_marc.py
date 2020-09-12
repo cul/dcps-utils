@@ -17,7 +17,8 @@ the_bibids = []
 
 # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/bibids_by_aeon_rank_4.csv'
 # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/test.csv'
-aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_7.csv'
+# aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_7.csv'
+aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/missing_marc3.csv'
 
 the_bibs = open(aCSV)
 for row in csv.reader(the_bibs):

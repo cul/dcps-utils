@@ -26,9 +26,12 @@ def main():
     # sheet_tab = 'AveryTrade'  # The name of the tab to read from; change this
     # feed_stem = 'ia_avt_feed'  # Change this
     # collection_title = "Avery Library Architectural Trade Catalogs"  # Change this
-    sheet_tab = 'MedicalHeritage'  # The name of the tab to read from; change this
-    feed_stem = 'ia_med_feed'  # Change this
-    collection_title = "Medical Heritage Library"  # Change this
+    # sheet_tab = 'MedicalHeritage'  # The name of the tab to read from; change this
+    # feed_stem = 'ia_med_feed'  # Change this
+    # collection_title = "Medical Heritage Library"  # Change this
+    sheet_tab = 'Missionary'  # The name of the tab to read from; change this
+    feed_stem = 'ia_mrp_feed'  # Change this
+    collection_title = "Missionary Research Pamphlets"  # Change this
 
     # Set the sheet to read from
     sheet_id = '1yTDyd5GQFEsVBiKOnt5T1ejBdXhxhmXVUn6jQ-dg_5I'

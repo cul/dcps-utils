@@ -15,22 +15,22 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
 
-    # sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
+    sheet_id = '1bTD8J33d1gbNlP-93XzJ7R0_wju2lPOdVmf8Hw7JSzU'
     # sheet_id = '1e43qKYvqGQFOMxA70U59yPKPs18y-k3ohRNdU-qrTH0'  # test
-    sheet_id = '1OhgJ4g-SWbmnms4b3ppe_0rBT7hz9jfQp6P8mADcatk'  # template doc
 
-    container_sheet = dataSheet(
-        sheet_id, 'containers!A:Z')
+    # container_sheet = dataSheet(
+    #     sheet_id, 'containers!A:Z')
 
     marc_sheet = dataSheet(
         sheet_id, 'marc!A:Z')
 
+    holding_sheet = dataSheet(
+        sheet_id, 'holdings!A:Z')
+
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
-    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_8.csv'
-    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_7.csv'
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-missing-batch-2.csv'
-    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_4.csv'
+    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
 
     the_bibs = open(aCSV)
@@ -44,69 +44,69 @@ def main():
 
     # Read the MARC
 
-    the_heads = ['CONCAT', 'bibid',
-                 'display_string', '876$0', '876$a', '876$p']
+    the_heads = ['bibid', 'holding_id', '876$a', '876$p', 'display_string']
     the_rows = [the_heads]
 
-    row_cnt = 2
+    the_holdings = [['bibid', 'holding_id', 'holding_desc']]
 
     for abib in the_bibids:
         print('Getting MARC for ' + str(abib))
 
         marc_path = os.path.join(my_path, 'output/marc/' + str(abib) + '.marc')
 
-        if os.path.exists(marc_path):
+        with open(marc_path, 'rb') as fh:
+            reader = MARCReader(fh)
+            for record in reader:
 
-            with open(marc_path, 'rb') as fh:
-                reader = MARCReader(fh)
-                for record in reader:
-                    # Find out if there is more than one holding; if there is, we cannot use it to automatically match top containers by name and will skip.
-                    the_852s = record.get_fields('852')
-                    if len(the_852s) > 1:
-                        print("More than one holding record (" +
-                              str(len(the_852s)) + "). Skipping.")
-                    else:
-                        the_099 = record.get_fields('099')
-                        the_bibid = the_099[0].get_subfields('a')[0]
-                        the_876s = record.get_fields('876')
+                the_852s = record.get_fields('852')
+                the_099 = record.get_fields('099')
+                the_bibid = the_099[0].get_subfields('a')[0]
+                the_876s = record.get_fields('876')
 
-                        print(len(the_876s))
-                        for r in the_876s:
-                            # Need to specify order of subfields explicitly
-                            the_876_data = [
-                                r.get_subfields('3'),
-                                r.get_subfields('0'),
-                                r.get_subfields('a'),
-                                r.get_subfields('p')
-                            ]
-                            the_row = []
-                            for d in the_876_data:
-                                try:
-                                    dd = d[0]
-                                except:
-                                    dd = ""
-                                the_row.append(dd)
+                # Get holding record info
+                for r in the_852s:
+                    the_852_data = [
+                        str(abib),
+                        r.get_subfields(
+                            '0')[0],
+                        r.get_subfields('h')[0]
+                    ]
+                    the_holdings.append(the_852_data)
 
-                            # the_row = [
-                            #     r.get_subfields('3')[0],
-                            #     r.get_subfields('0')[0],
-                            #     r.get_subfields('a')[0],
-                            #     r.get_subfields('p')[0]
-                            # ]
+                print(len(the_876s))
 
-                            # print(the_row)
+                cnt = 1
+                for r in the_876s:
+                    cnt += 1
+                    # Need to specify order of subfields explicitly
+                    the_876_data = [
+                        r.get_subfields('0'),
+                        r.get_subfields('a'),
+                        r.get_subfields('p'),
+                        r.get_subfields('3')
+                    ]
+                    the_row = []
+                    for d in the_876_data:
+                        try:
+                            dd = d[0]
+                        except:
+                            dd = ""
+                        the_row.append(dd)
 
-                            the_row.insert(0, str(abib))
+                    # the_row = [
+                    #     r.get_subfields('3')[0],
+                    #     r.get_subfields('0')[0],
+                    #     r.get_subfields('a')[0],
+                    #     r.get_subfields('p')[0]
+                    # ]
 
-                            # concat_str = '=B' + \
-                            #     str(row_cnt) + ' & ": " & C' + str(row_cnt)
-                            concat_str = str(abib) + ": " + str(the_row[1])
-                            the_row.insert(0, concat_str)
+                    # print(the_row)
 
-                            the_rows.append(the_row)
-                            row_cnt += 1  # increment row num used in CONCAT
-        else:
-            print("Could not find " + marc_path + "... skipping...")
+                    the_row.insert(0, str(abib))
+                    # the_row.insert(
+                    #     5, '=VLOOKUP($B' + str(cnt) + ',holdings!B:C,2,false)')
+
+                    the_rows.append(the_row)
 
     # Write results to google sheet
 
@@ -114,8 +114,11 @@ def main():
     x = marc_sheet.appendData(the_rows)
     print(x)
 
-    quit()
+    holding_sheet.clear()
+    x = holding_sheet.appendData(the_holdings)
+    print(x)
 
+    quit()
     # ###
     # #### TOP CONTAINERS ####
     # container_sheet.clear()
