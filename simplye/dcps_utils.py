@@ -138,12 +138,14 @@ def saxon_process2(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
-def jing_process(jingPath, filePath, schemaPath):
+def jing_process(jingPath, filePath, schemaPath, compact=False):
     # Process an xml file against a schema (rng or schematron) using Jing.
     # Tested with jing-20091111.
     # https://code.google.com/archive/p/jing-trang/downloads
     # -d flag (undocumented!) = include diagnostics in output.
-    cmd = "java -jar " + jingPath + " -d " + schemaPath + " " + filePath
+    # -c flag is for compact schema format.
+    flags = ' -cd ' if compact is True else ' -d '
+    cmd = "java -jar " + jingPath + flags + schemaPath + " " + filePath
     # print(cmd)
     p = subprocess.Popen(
         [cmd],
@@ -217,6 +219,7 @@ def get_clio_marc(bibid):
 
 
 def diff(first, second):
-    # Return list of x - y (everything in x that is not in y). Reverse order to get inverse diff.
+    # Return list of x - y (everything in x that is not in y).
+    # Reverse order to get inverse diff.
     second = set(second)
     return [item for item in first if item not in second]

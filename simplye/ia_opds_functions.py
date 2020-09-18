@@ -1,11 +1,13 @@
-# Functions to gather ids and bibids for AI assets linked from CLIO, harvest metadata from IA, and compose paginated OPDS feeds for use in SimplyE.
+# Functions to gather ids and bibids for AI assets linked
+# from CLIO, harvest metadata from IA, and compose paginated
+# OPDS feeds for use in SimplyE.
 
 # internet archive python library docs:
 # https://archive.org/services/docs/api/internetarchive/
 
 from internetarchive import get_item
 from lxml import etree, html
-from lxml.builder import ElementMaker
+# from lxml.builder import ElementMaker
 import dcps_utils as util
 from datetime import datetime
 import re
@@ -23,41 +25,7 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
          'schema': "http://schema.org/"}
 
 
-# TEST
-
-def find_duplicates(lst):
-    unique = []
-    dupes = []
-    for i in lst:
-        if i not in unique:
-            unique.append(i)
-        else:
-            dupes.append(i)
-    return list(set(dupes))
-
-
-def parse_920(_str):
-    # Parse a string and extract the $3 subfield as ['label'] and $u or $a as ['id]
-    results = {}
-    p = re.compile('\$3(.*?)(;|\$|$)')
-    match_label = p.match(_str)
-    results['label'] = match_label.group(1) if match_label else None
-    p = re.compile('.*\$[ua]http.*?archive\.org/details/(.*?)(;|\$|$)')
-    match_id = p.match(_str)
-    results['id'] = match_id.group(1) if match_id else None
-    return results
-
-
 def main():
-
-    the_920s = ['$3Vol. 1$uhttps://archive.org/details/ldpd_14294925_001', '$uhttp://www.idsa.in/system/files/opaper/OP_IndiaandBhutan_pstobdan.pdf$zCurrent site',
-                '$uhttps://web.archive.org/web/20160203223726/http://www.idsa.in/system/files/opaper/OP_IndiaandBhutan_pstobdan.pdf$zArchived site']
-
-    for i in the_920s:
-
-        # x = '$uhttps://archive.org/details/ldpd_14294926_000'
-        # y = '$3Vol. 1$uhttps://archive.org/details/ldpd_14294925_001'
-        print(parse_920(i))
 
     quit()
 
@@ -90,7 +58,8 @@ def extract_data(records, feed_stem, collection_title):
             # Add CUL-specific metadata for use in generating feed XML.
             record_metadata['cul_metadata'] = {'bibid': record['bibid'],
                                                'feed_id': feed_stem,
-                                               'collection_name': collection_title,
+                                               'collection_name':
+                                               collection_title,
                                                'label': record['label']}
             the_output.append(record_metadata)
         else:
@@ -102,9 +71,35 @@ def extract_data(records, feed_stem, collection_title):
     return {'data': the_output, 'errors': the_errors}
 
 
-def build_feed(pickle_path, collection_abbr, chunk_size=500):
-    # Saves output to XML file(s). Returns error data (missing elements, etc.) to be sent to report datasheet.
+def find_duplicates(lst):
+    unique = []
+    dupes = []
+    for i in lst:
+        if i not in unique:
+            unique.append(i)
+        else:
+            dupes.append(i)
+    return list(set(dupes))
 
+
+def parse_920(_str):
+    # Parse a string and extract the $3 subfield
+    # as ['label'] and $u or $a as ['id']
+    results = {}
+    p = re.compile('\$3(.*?)(;|\$|$)')
+    match_label = p.match(_str)
+    results['label'] = match_label.group(1) if match_label else None
+    p = re.compile('.*\$[ua]http.*?archive\.org/details/(.*?)(;|\$|$)')
+    match_id = p.match(_str)
+    results['id'] = match_id.group(1) if match_id else None
+    return results
+
+
+def build_feed(pickle_path, collection_abbr, chunk_size=500):
+    # Saves output to XML file(s). Returns error data (missing elements, etc.)
+    # to be sent to report datasheet.
+    global clio_string
+    clio_string = "Go to catalog record in CLIO."
     global now
     now = datetime.today().isoformat()  # Current timestamp in ISO
     base_url = "https://ebooks.library.columbia.edu/static-feeds/ia/" + collection_abbr + "/"
@@ -263,7 +258,7 @@ def make_entry(_parent, _dict, _bibid):
     e_content_p2 = etree.SubElement(e_content, "p")
     e_content_clio_link = etree.SubElement(
         e_content_p2, "a", href='https://clio.columbia.edu/catalog/' + str(_bibid))
-    e_content_clio_link.text = "View catalog record in CLIO."
+    e_content_clio_link.text = clio_string
 
     # Generic classifcation
     # Audience
