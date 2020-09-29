@@ -5,6 +5,7 @@ from lxml.builder import ElementMaker
 import dcps_utils as util
 from pprint import pprint
 from datetime import datetime
+from opds_validate import validate_files
 
 
 contentProvider = "OAPEN"
@@ -20,60 +21,13 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
 
 def main():
 
-    now = datetime.today().isoformat()  # Current timestamp in ISO
-    base_url = "https://ebooks.library.columbia.edu/static-feeds/oapen/"
-    base_folder = 'output/oapen/'
+    x = build_feed('output/oapen/oapen_clio.pickle', 'books', chunk_size=500)
 
-    pickle_barrel = ['oapen_extract_1.pickle',
-                     'oapen_extract_2.pickle',
-                     'oapen_extract_3.pickle',
-                     'oapen_extract_4.pickle',
-                     'oapen_extract_5.pickle',
-                     'oapen_extract_6.pickle',
-                     'oapen_extract_7.pickle',
-                     'oapen_extract_8.pickle',
-                     'oapen_extract_9.pickle',
-                     'oapen_extract_10.pickle',
-                     ]
-
-    feed_stem = 'oapen_clio'
-
-    for a_feed in pickle_barrel:
-        idx = int(a_feed.split('.')[0].split('_')[-1])
-        # print(idx)
-        in_file = base_folder + a_feed
-
-        if idx > 1:
-            feed_name = feed_stem + '_p' + str(idx) + '.xml'
-        else:
-            feed_name = feed_stem + '.xml'
-        feed_next = feed_stem + '_p' + str(idx + 1) + '.xml'
-
-        root = etree.Element("feed", nsmap=NSMAP)
-        feed_id = etree.SubElement(root, "id")
-        feed_id.text = base_url + "oapen_clio"
-        feed_title = etree.SubElement(root, "title")
-        feed_title.text = "OAPEN Book Collection | Columbia University Libraries"
-        feed_updated = etree.SubElement(root, "updated")
-        feed_updated.text = now
-        feed_link = etree.SubElement(
-            root, "link", href=base_url + feed_name, rel="self")
-        feed_link_next = etree.SubElement(
-            root, "link", href=base_url + feed_next, rel="next", title="Next")
-
-        # the_data = util.unpickle_it('output/oapen_ERC_data.pickle')
-        the_data = util.unpickle_it(in_file)
-
-        for record in the_data:
-
-            make_entry(root, record)
-
-            # with open('output/oapen_clio/oapen_clio_' + str(now) + '.xml', 'wb') as f:
-            with open(base_folder + feed_name, 'wb') as f:
-                f.write(etree.tostring(root, pretty_print=True))
+    # print(x)
+    quit()
 
 
-def make_entry(_parent, _dict):
+def make_entry(_parent, _dict, _bibid):
     ns_bibframe = "{%s}" % NSMAP["bibframe"]
     ns_dcterms = "{%s}" % NSMAP["dcterms"]
     ns_simplified = "{%s}" % NSMAP["simplified"]
@@ -171,8 +125,8 @@ def make_entry(_parent, _dict):
             e_content_p1.text = content[0]
         e_content_p2 = etree.SubElement(e_content, "p")
         e_content_clio_link = etree.SubElement(
-            e_content_p2, "a", href='https://clio.columbia.edu/catalog/' + str(_dict['' 'cul_bibid']))
-        e_content_clio_link.text = "View catalog record in CLIO."
+            e_content_p2, "a", href='https://clio.columbia.edu/catalog/' + str(_bibid))
+        e_content_clio_link.text = clio_string
 
         # publisher
         publisher = metadata_finder(e_metadata, 'publisher.name')
@@ -223,6 +177,97 @@ def convert_date(_datetime):
     # Convert date of format "2020-04-02 12:32:17.628" to ISO
     d = datetime.strptime(_datetime, '%Y-%m-%d %H:%M:%S.%f')
     return d.isoformat()
+
+
+def divide_list(lst, n):
+    # generate n-sized chunks from list.
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+
+
+def build_feed(pickle_path, collection_abbr, chunk_size=500):
+    # Saves output to XML file(s). Returns error data (missing elements, etc.)
+    # to be sent to report datasheet.
+    global clio_string
+    clio_string = "Go to catalog record in CLIO."
+    global now
+    now = datetime.today().isoformat()  # Current timestamp in ISO
+    base_url = "https://ebooks.library.columbia.edu/static-feeds/oapen/" + \
+        collection_abbr + "/"
+    base_folder = 'output/oapen/' + collection_abbr + '/'
+
+    # Unpack the data
+    the_records = util.unpickle_it(pickle_path)
+
+    # some collection-level info to use
+    feed_stem = the_records[0]['cul_metadata']['feed_id']
+    collection_title = the_records[0]['cul_metadata']['collection_name']
+
+    # Divide list into chunks
+    total_count = len(the_records)
+    print('Total count: ' + str(total_count))
+    running_count = 0
+    the_chunks = divide_list(the_records, chunk_size)
+
+    for idx, record_chunk in enumerate(the_chunks):
+
+        report_data = []
+
+        running_count += len(record_chunk)
+        print('Running_count = ' + str(running_count))
+        print('')
+        page_no = idx + 1
+        if page_no > 1:
+            feed_name = feed_stem + '_p' + str(page_no) + '.xml'
+        else:
+            feed_name = feed_stem + '.xml'
+
+        feed_next_name = feed_stem + '_p' + str(page_no + 1) + '.xml'
+
+        # Set up root and top-level elements
+        root = etree.Element("feed", nsmap=NSMAP)
+        feed_id = etree.SubElement(root, "id")
+        feed_id.text = base_url + feed_stem
+        feed_title = etree.SubElement(root, "title")
+        feed_title.text = collection_title + " | Columbia University Libraries"
+        feed_updated = etree.SubElement(root, "updated")
+        feed_updated.text = now
+
+        feed_link = etree.SubElement(
+            root, "link", href=base_url + feed_name, rel="self")
+
+        # Add feed_next, only if it is not the last one
+        if running_count < total_count:
+            feed_link_next = etree.SubElement(
+                root, "link", href=base_url + feed_next_name, rel="next", title="Next")
+
+        for record in record_chunk:
+            bibid = record['cul_metadata']['bibid']
+
+            e = make_entry(root, record, bibid)
+            if e:  # if there are errors emanating from entry, add them to dict.
+                # pprint(e)
+                error_report = [str(now), collection_title, feed_name,
+                                bibid, record['identifier'], '; '.join(e)]
+                report_data.append(error_report)
+
+        # Save result xml tree
+        with open(base_folder + feed_name, 'wb') as f:
+            f.write(etree.tostring(root, pretty_print=True))
+
+    print("")
+    print("Validating files in " + base_folder)
+
+    val = validate_files(base_folder)
+
+    errs = any(v['errors'] for v in val)
+    if errs:
+        print("Validation errors!")
+        print(val)
+    else:
+        print("All XML files are valid.")
+
+    return(report_data)
 
 
 if __name__ == "__main__":

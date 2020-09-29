@@ -13,7 +13,7 @@ schema_path = os.path.join(
 
 def main():
 
-    the_path = os.path.join(my_path,  'output/ia')
+    the_path = os.path.join(my_path,  'output/oapen')
 
     val = validate_files(the_path)
 
