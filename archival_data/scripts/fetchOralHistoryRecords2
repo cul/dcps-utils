@@ -1,0 +1,171 @@
+#!/usr/bin/perl
+#$|++;
+#use warnings;
+#use strict;
+#use English;
+## make sure that any file IO uses utf8
+#use open ':utf8';
+## to build RFC822 time format
+#use POSIX qw(strftime);
+## user modules on VMs
+use lib '/home/ldpdapp/share/perl5';
+use lib '/usr/lib64/perl5/auto';
+use lib '/usr/lib64/perl5';
+use lib '/home/ldpdapp/lib64/perl5';
+#
+#################
+## LDPD modules #
+#################
+# changed to cul0 2017-03-07 by TC
+#use lib '/cul/cul1/ldpd/perl/lib';
+use lib '/cul/cul0/ldpd/perl/lib';
+# direct CLIO query
+use genMarcObject;
+# MARC-processing modules, our local LDPD build
+use MARC::File::XML ( BinaryEncoding => 'utf8' );
+
+################
+# CPAN modules #
+################
+# Flexible parsing of command-line args
+use Getopt::Long;
+
+###########
+# globals #
+###########
+my $me = `basename $0`; chomp $me;
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+
+#######################
+# argument processing #
+#######################
+my $debug;
+my $out;
+GetOptions(
+  'outputfile=s'     => \$out,
+  'debug'             => \$debug,
+);
+
+usage() unless $out;
+
+if (-f $out) {
+  print "output file [$out] already exists - aborting.\n";
+  exit();
+}
+# test the output file....
+open(OUT, ">$out") or die "cannot write to output file [$out] - aborting\n";
+close(OUT);
+
+
+#####################
+# Main control flow #
+#####################
+
+# Use Gary's genMarcObject module to retrieve clio marc records
+print "Getting CLIO handle...\n";
+my $clio_dbh = openCLIO();
+return err("openCLIO failure: $DBI::errstr") unless $clio_dbh;
+print "clio_dbh=[$clio_dbh]\n";
+
+print "Getting bibList...\n";
+# my @bibList303 = getBibsByLocationID($clio_dbh, 303);
+my @bibList303 = getBibsByLocationID($clio_dbh, "oral");
+print "got " . scalar(@bibList303) . " EResource bib ids for 303\n";
+# my @bibList663 = getBibsByLocationID($clio_dbh, 663);
+my @bibList663 = getBibsByLocationID($clio_dbh, "oral,dgtl");
+print "got " . scalar(@bibList663) . " EResource bib ids for 663\n";
+
+print "Getting MARC records...\n";
+my $batch = MARC::File::XML->out($out);
+my $bibCount = 0;
+foreach my $bib ( (@bibList303, @bibList663) ) {
+  $bibCount++;
+  print "$bibCount...\n" if ($bibCount % 1000) == 0;
+  my $marc = getBib($bib);
+  $batch->write($marc);
+
+  #my $clio_id = $marc->field('001')->as_string();
+  #my $marcFile = "$marcDir/$clio_id.xml";
+  #open(M, ">$marcFile") or die "open(>$marcFile) failed: $!";
+  #print M $marc->as_xml();
+  #close(M);
+}
+$batch->close();
+print "Done.\n";
+
+closeCLIO();
+
+
+exit();
+
+#################################################################
+sub getBibsByLocationID {
+  my $dbh = shift;
+  my $location_code = shift;
+
+  my $sql = qq{
+        select  distinct bib_master.bib_id
+        from    columbiadb.mfhd_master,
+                columbiadb.bib_mfhd,
+                columbiadb.bib_master,
+                columbiadb.location
+        where   location.location_code = $location_code
+        and     bib_mfhd.mfhd_id = mfhd_master.mfhd_id
+        and     bib_master.bib_id = bib_mfhd.bib_id
+        and     mfhd_master.suppress_in_opac = 'N'
+        and     bib_master.suppress_in_opac = 'N'
+        };
+
+
+
+
+        #  # We don't care about OPAC suppression for Oral History material
+        #  4/2011 marquis - actually, we do want to respect the suppress flag
+
+#print "sql=[$sql]\n";
+  my $sth = $dbh->prepare($sql);
+#print "sth=[$sth]\n";
+  $sth->execute();
+
+  # pass hash-ref as arg, to get back each row as a hash
+  my $all_rows_array_ref = $sth->fetchall_arrayref();
+#print "all_rows_array_ref=[$all_rows_array_ref]\n";
+  die "sql [$sql] failed: " . $dbh->errstr if $sth->err();
+
+  my @bibList = ();
+  foreach my $row ( @$all_rows_array_ref ) {
+    #print $row->[0] . "\n";
+    push @bibList, $row->[0];
+  }
+  return sort @bibList;
+}
+
+
+
+
+#################################################################
+
+
+#################################################################
+
+
+#################################################################
+
+
+#################################################################
+
+
+#################################################################
+
+
+#################################################################
+
+
+#################################################################
+sub usage{
+  print "usage: $0 --output outputfile.xml [ -debug ]\n";
+  exit();
+}
+#################################################################
+
+
