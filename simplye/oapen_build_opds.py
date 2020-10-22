@@ -158,7 +158,7 @@ def metadata_finder(_list, _keyValue, result_key='value'):
 
 def process_bitstreams(_list):
 
-    url = 'http://library.oapen.org'
+    url = 'https://library.oapen.org'
 
     result = {}
     if len(_list) > 0:

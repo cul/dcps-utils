@@ -753,8 +753,9 @@ def findDigitalObjectDescendants(repo, asid):
 def postArchivalObject(repo, asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
-    post = requests.post(baseURL + endpoint,
-                         headers=headers, data=record).json()
+    post = postIt(baseURL + endpoint, headers, record)
+    # post = requests.post(baseURL + endpoint,
+    #                      headers=headers, data=record).json()
     post = json.dumps(post)
     return post
 
@@ -762,8 +763,9 @@ def postArchivalObject(repo, asid, record):
 def postResource(repo, asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/resources/" + str(asid)
-    post = requests.post(baseURL + endpoint,
-                         headers=headers, data=record).json()
+    post = postIt(baseURL + endpoint, headers, record)
+    # post = requests.post(baseURL + endpoint,
+    #                      headers=headers, data=record).json()
     post = json.dumps(post)
     return post
 
@@ -771,8 +773,9 @@ def postResource(repo, asid, record):
 def postDigitalObject(repo, asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/digital_objects/" + str(asid)
-    post = requests.post(baseURL + endpoint,
-                         headers=headers, data=record).json()
+    post = postIt(baseURL + endpoint, headers, record)
+    # post = requests.post(baseURL + endpoint,
+    #                      headers=headers, data=record).json()
     post = json.dumps(post)
     return post
 
@@ -781,8 +784,9 @@ def postEnumeration(asid, record):
     # TODO: This perhaps does not work?
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/config/enumerations/" + str(asid)
-    post = requests.post(baseURL + endpoint,
-                         headers=headers, data=record).json()
+    post = postIt(baseURL + endpoint, headers, record)
+    # post = requests.post(baseURL + endpoint,
+    #                      headers=headers, data=record).json()
     post = json.dumps(post)
     return post
 
@@ -790,8 +794,9 @@ def postEnumeration(asid, record):
 def postEnumerationValue(asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/config/enumeration_values/" + str(asid)
-    post = requests.post(baseURL + endpoint,
-                         headers=headers, data=record).json()
+    post = postIt(baseURL + endpoint, headers, record)
+    # post = requests.post(baseURL + endpoint,
+    #                      headers=headers, data=record).json()
     post = json.dumps(post)
     return post
 
@@ -799,8 +804,8 @@ def postEnumerationValue(asid, record):
 def postTopContainer(repo, asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/top_containers/" + str(asid)
-    post = requests.post(baseURL + endpoint,
-                         headers=headers, data=record).json()
+
+    post = postIt(baseURL + endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -816,6 +821,8 @@ def suppressEnumerationValue(asid, mode="suppress"):
         "/config/enumeration_values/" +
         str(asid) + "/suppressed?" + suppress_flag
     )
+    # TODO: add postIt method without record data? Test this.
+    post = postIt(baseURL + endpoint, headers, '')
     post = requests.post(baseURL + endpoint, headers=headers).json()
     post = json.dumps(post)
     return post
