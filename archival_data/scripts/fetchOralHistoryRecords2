@@ -69,16 +69,22 @@ print "clio_dbh=[$clio_dbh]\n";
 
 print "Getting bibList...\n";
 # my @bibList303 = getBibsByLocationID($clio_dbh, 303);
-my @bibList303 = getBibsByLocationID($clio_dbh, "oral");
-print "got " . scalar(@bibList303) . " EResource bib ids for 303\n";
+# my @bibList303 = getBibsByLocationID($clio_dbh, "oral");
+# print "got " . scalar(@bibList303) . " EResource bib ids for 303\n";
+my @bibListOral = getBibsByLocationID($clio_dbh, "oral");
+print "got " . scalar(@bibListOral) . " EResource bib ids for ORAL\n";
 # my @bibList663 = getBibsByLocationID($clio_dbh, 663);
-my @bibList663 = getBibsByLocationID($clio_dbh, "oral,dgtl");
-print "got " . scalar(@bibList663) . " EResource bib ids for 663\n";
+# my @bibList663 = getBibsByLocationID($clio_dbh, "oral,dgtl");
+# print "got " . scalar(@bibList663) . " EResource bib ids for 663\n";
+my @bibListOralDigital = getBibsByLocationID($clio_dbh, "oral,dgtl");
+print "got " . scalar(@bibListOralDigital) . " EResource bib ids for ORAL,DGTL\n";
+my @bibListOralOff = getBibsByLocationID($clio_dbh, "off,oral");
+print "got " . scalar(@bibListOralOff) . " EResource bib ids for OFF,ORAL\n";
 
 print "Getting MARC records...\n";
 my $batch = MARC::File::XML->out($out);
 my $bibCount = 0;
-foreach my $bib ( (@bibList303, @bibList663) ) {
+foreach my $bib ( (@bibListOral, @bibListOralDigital, @bibListOralOff ) {
   $bibCount++;
   print "$bibCount...\n" if ($bibCount % 1000) == 0;
   my $marc = getBib($bib);
@@ -109,7 +115,8 @@ sub getBibsByLocationID {
                 columbiadb.bib_mfhd,
                 columbiadb.bib_master,
                 columbiadb.location
-        where   location.location_code = $location_code
+        where   location.location_code = '$location_code'
+        and     mfhd_master.location_id = location.location_id
         and     bib_mfhd.mfhd_id = mfhd_master.mfhd_id
         and     bib_master.bib_id = bib_mfhd.bib_id
         and     mfhd_master.suppress_in_opac = 'N'
