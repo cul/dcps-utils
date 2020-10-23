@@ -2,6 +2,7 @@
 
 import subprocess
 import os
+import re
 
 
 def main():
@@ -13,6 +14,7 @@ def main():
 
     extract_script_path = './fetchOralHistoryRecords2'
     marc_output_path = '../output/ohac_marc_test.xml'
+    marc_output_clean_path = '../output/ohac_marc_test_clean.xml'
     solr_output_path = '../output/ohac_solr_test.xml'
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
@@ -25,7 +27,10 @@ def main():
 
     print('Transforming MARC to SOLR XML...')
 
-    x = saxon_process(saxon_path, marc_output_path,
+    # do regex to remove some illegal characters.
+    sanitize_xml(marc_output_path, marc_output_clean_path)
+
+    x = saxon_process(saxon_path, marc_output_clean_path,
                       xslt_path, solr_output_path)
     print(x)
 
@@ -53,6 +58,24 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=' '):
         return 'SAXON ERROR: ' + str(result[1].decode('utf-8'))
     else:
         return result[0].decode('utf-8')
+
+
+def sanitize_xml(in_path, out_path):
+    # strip out some bad bytes that will foul up parsing.
+    with open(in_path, "r") as f:
+        content = f.read()
+        # content_new = re.sub(
+        #     "[\x01-\x08\x0b\x0c\x0e-\x1f]", r"", content, flags=re.MULTILINE
+        # )
+        repl = re.subn(r"[\x01-\x08\x0b\x0c\x0e-\x1f]",
+                       r"?", content, flags=re.DOTALL)
+
+        if repl[1] > 0:
+            print("Warning: Replaced " +
+                  str(repl[1]) + " illegal characters in " + in_path)
+
+        with open(out_path, "w+") as f:
+            f.write(repl[0])
 
 
 if __name__ == '__main__':
