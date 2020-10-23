@@ -67,9 +67,12 @@ my $clio_dbh = openCLIO();
 return err("openCLIO failure: $DBI::errstr") unless $clio_dbh;
 print "clio_dbh=[$clio_dbh]\n";
 
+# Query Voyager for bibs based on location.
+# See list of locations: https://www1.columbia.edu/sec/cu/libraries/inside/clio/docs/bcd/cpm/cpmhol/cpm500_locations_full.html
+
 print "Getting bibList...\n";
-# my @bibListOral = getBibsByLocationID($clio_dbh, "oral");
-# print "got " . scalar(@bibListOral) . " EResource bib ids for ORAL\n";
+my @bibListOral = getBibsByLocationID($clio_dbh, "oral");
+print "got " . scalar(@bibListOral) . " EResource bib ids for ORAL\n";
 # my @bibListOralDigital = getBibsByLocationID($clio_dbh, "oral,dgtl");
 # print "got " . scalar(@bibListOralDigital) . " EResource bib ids for ORAL,DGTL\n";
 my @bibListOralOff = getBibsByLocationID($clio_dbh, "off,oral");
@@ -79,7 +82,8 @@ print "Getting MARC records...\n";
 my $batch = MARC::File::XML->out($out);
 my $bibCount = 0;
 # foreach my $bib ( (@bibListOral, @bibListOralDigital, @bibListOralOff ) ) {
-foreach my $bib ( (@bibListOralOff ) ) {
+# foreach my $bib ( (@bibListOral, @bibListOralDigital ) ) {
+# foreach my $bib ( (@bibListOralOff ) ) {
   $bibCount++;
   print "$bibCount...\n" if ($bibCount % 1000) == 0;
   my $marc = getBib($bib);
