@@ -19,6 +19,10 @@ def main():
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
 
+    if os.path.exists(marc_output_path):
+        print("Removing old file at " + marc_output_path)
+        os.remove(marc_output_path)
+
     the_shell_command = extract_script_path + ' --output ' + marc_output_path
 
     print('Extracting OHAC MARC data from Voyager...')
