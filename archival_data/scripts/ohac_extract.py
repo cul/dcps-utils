@@ -13,12 +13,15 @@ def main():
     my_path = os.path.dirname(__file__)
 
     extract_script_path = '/cul/cul0/ldpd/ccoh/fetchOralHistoryRecords'
-    marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
-    marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_clean_marc.xml'
+    # marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
+    # marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_clean_marc.xml'
+    marc_output_path = '../output/ohac_marc.xml'
+    marc_output_clean_path = marc_output_path
     solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
 
+    # remove existing file so fetchOralHistoryRecords won't fail.
     if os.path.exists(marc_output_path):
         print("Removing old file at " + marc_output_path)
         os.remove(marc_output_path)
@@ -68,14 +71,13 @@ def sanitize_xml(in_path, out_path):
     # strip out some bad bytes that will foul up parsing.
     with open(in_path, "r") as f:
         content = f.read()
-        repl = re.subn(r"[\x01-\x08\x0b\x0c\x0e-\x1f]",
-                       r"?", content, flags=re.DOTALL)
-        if repl[1] > 0:
-            print("Warning: Replaced " +
-                  str(repl[1]) + " illegal characters in " + in_path)
-
-        with open(out_path, "w+") as f:
-            f.write(repl[0])
+    repl = re.subn(r"[\x01-\x08\x0b\x0c\x0e-\x1f]",
+                   r"?", content, flags=re.DOTALL)
+    if repl[1] > 0:
+        print("Warning: Replaced " +
+              str(repl[1]) + " illegal characters in " + in_path)
+    with open(out_path, "w+") as f:
+        f.write(repl[0])
 
 
 if __name__ == '__main__':

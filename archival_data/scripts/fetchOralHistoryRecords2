@@ -73,10 +73,10 @@ print "clio_dbh=[$clio_dbh]\n";
 print "Getting bibList...\n";
 my @bibListOral = getBibsByLocationID($clio_dbh, "oral");
 print "got " . scalar(@bibListOral) . " EResource bib ids for ORAL\n";
-# my @bibListOralDigital = getBibsByLocationID($clio_dbh, "oral,dgtl");
-# print "got " . scalar(@bibListOralDigital) . " EResource bib ids for ORAL,DGTL\n";
-my @bibListOralOff = getBibsByLocationID($clio_dbh, "off,oral");
-print "got " . scalar(@bibListOralOff) . " EResource bib ids for OFF,ORAL\n";
+my @bibListOralDigital = getBibsByLocationID($clio_dbh, "oral,dgtl");
+print "got " . scalar(@bibListOralDigital) . " EResource bib ids for ORAL,DGTL\n";
+# my @bibListOralOff = getBibsByLocationID($clio_dbh, "off,oral");
+# print "got " . scalar(@bibListOralOff) . " EResource bib ids for OFF,ORAL\n";
 
 print "Getting MARC records...\n";
 my $batch = MARC::File::XML->out($out);
