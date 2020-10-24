@@ -13,11 +13,10 @@ def main():
     my_path = os.path.dirname(__file__)
 
     extract_script_path = '/cul/cul0/ldpd/ccoh/fetchOralHistoryRecords'
-    # marc_output_path = '../output/ohac_marc.xml'
+    # marc_output_path = '../output/ohac_marc.xml' # test
     marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
-    # marc_output_clean_path = marc_output_path
-    # solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
-    solr_output_path = '../output/ohac_solr.xml'
+    solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
+    # solr_output_path = '../output/ohac_solr.xml' # test
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
 
