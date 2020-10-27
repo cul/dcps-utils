@@ -49,11 +49,11 @@ GetOptions(
 usage() unless $out;
 
 if (-f $out) {
-  print "output file [$out] already exists - aborting.\n";
+  print "WARNING: output file [$out] already exists - aborting.\n";
   exit();
 }
 # test the output file....
-open(OUT, ">$out") or die "cannot write to output file [$out] - aborting\n";
+open(OUT, ">$out") or die "WARNING: cannot write to output file [$out] - aborting\n";
 close(OUT);
 
 
