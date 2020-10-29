@@ -9,7 +9,8 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
 
-    marc_data_folder = '/cul/cul0/ldpd/archival_data/marc/archives_portal'
+    # marc_data_folder = '/cul/cul0/ldpd/archival_data/marc/archives_portal'
+    marc_data_folder = '../output'  # TEST
     # solr_output_folder = '/cul/cul0/ldpd/archival_data/solr'
     solr_output_folder = '../output'  # TEST
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
