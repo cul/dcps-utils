@@ -13,7 +13,7 @@ def main():
 
     # extract_script_path = '/cul/cul0/ldpd/ccoh/fetchOralHistoryRecords'
     extract_script_path = os.path.join(
-        my_path, 'fetchOralHistoryRecords')  # TEST
+        my_path, './fetchOralHistoryRecords')  # TEST
     # marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
     marc_output_path = '../output/ohac_marc.xml'  # TEST
     # solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
