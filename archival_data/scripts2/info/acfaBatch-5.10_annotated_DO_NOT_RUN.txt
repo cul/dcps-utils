@@ -1,0 +1,1333 @@
+# IMPORTANT NOTE:
+# Following file is based on acfaBatch-5.10
+# Please note that the sole purpose of this file
+# is to document the underlying script -- the file
+# itself is not a script itself, and may not run,
+# due to pseudo-code, moved-around subroutines,
+# etc.
+
+# CHANGELOG_BEGIN>>>>>>
+# Changelog -- manually generated, may be wrong, check
+# git commits for definitive changes.
+# fcd1, 09/11/18: Replace constant paths, such as
+# HTMLDIR, with value used when script runs with
+# environment set to prod. So, for example, when
+# the script runs for prod, HTMLDIR is set to
+# /www/data/cu/lweb/archival/collections
+# fcd1, 09/11/18: Move main control flow and
+# doAll to top of file
+
+# fcd1, 09/11/18: move buildEAD, the first major
+# subroutine to be called by doAll
+  # fcd1, 09/11/18: move splitMARC, which is the first subroutine
+  # called by buildEAD
+  # fcd1, 09/11/18: move marc2ead, which is the second subroutine
+  # called by buildEAD
+  # fcd1, 10/09/18: comment and move fetchEAD, which is the third, and last,
+  # subroutine called by buildEAD
+
+# fcd1, 10/09/18: move buildHTML, the second major
+# subroutine to be called by doAll
+  # fcd1, 10/09/18: move and comment buildRepositoryHTML, which is
+  # the first subroutine of substance called by buildHTML
+# <<<<<<CHANGELOG_END
+
+#####################
+# Main control flow #
+#####################
+if (-t STDOUT) {
+  # If we're running from a tty (as a shell command), run as-is
+  doAll();
+} else {
+  # If we're running out of cron, wrap all output into an email...
+  email_wrapper(\&doAll);
+}
+
+exit();
+#####################
+#####################
+#####################
+sub doAll {
+  out("$me - environment: $environment\n" 
+      . "HTMLDIR = /www/data/cu/lweb/archival/collections\n"
+      . "LIBDIR  = /ldpd/projects/findingaids/cloaca/lib\n"
+      . "XMLDIR  = /ldpd/projects/findingaids/cloaca/xml\n"
+      . "SSIDIR  = $SSIDIR\n"
+      );
+  my $rcode = 0;
+  umask 0002;   # all output should be publicly readable
+
+  $rcode += buildEAD()   if $doEAD;
+  return err("buildEAD failed!") unless $rcode == 0;
+
+  $rcode += buildHTML()  if $doHTML;
+  return err("buildHTML failed!") unless $rcode == 0;
+
+#  $rcode += buildSubjectCounts()  if $doSubjectCounts;
+#  return err("buildSubjectCounts failed!") unless $rcode == 0;
+
+  $rcode += reindex()    if $doReindex;
+  return err("reindex failed!") unless $rcode == 0;
+
+  $rcode += purge()      if $doPurge;
+  return err("purge failed!") unless $rcode == 0;
+
+  out("$me - environment: $environment - COMPLETE");
+  return $rcode;
+}
+
+# fcd1, 09/11/18: BEGIN>>>>>>
+# buildEAD is the first subroutine called by doAll, as follows
+# $rcode += buildEAD()   if $doEAD;
+# <<<<<<END: fcd1, 09/11/18
+##################
+sub buildEAD {
+  out("======== buildEAD");
+  my $rcode = 0;
+
+  out("== build EAD from local MARC files");
+  my @marcFiles = getFileList("/ldpd/projects/findingaids/cloaca/marc/incoming", '.xml');
+  my $count = ($#marcFiles+1);
+  out("Found $count MARC files:");
+  map { print "  $_\n";} sort @marcFiles;
+  my $expected = scalar(keys %marcFile2repository);
+  #return err("Expected $expected MARC files, got $count - returning")
+  #    if ($expected != $count);
+  err("WARNING:  Expected $expected MARC files, got $count")
+      if ($expected != $count);
+
+  out("* only rebuilding repository: [$repository]") if $repository;
+  out("* filtering on: [$filter]") if $filter;
+
+  my $processedCount = 0;
+  foreach my $marcFile (sort @marcFiles) {
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # I believe this first part of the foreach loop just makes sure we don't
+    # have unxepected files, i.e. file not associated with a repo. This part
+    # does not seem to have any real processing besides just validation
+    # <<<<<<END: fcd1, 09/11/18
+    # Some validation on the MARC file, get the repository name
+    $marcFile =~ m|.*/(.*)|;
+    my $marcFileName = $1;
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # $marcFile2repository is an associative array
+    # that maps file ending to repo (I believe). Actual entry in definition
+    # of associative array:
+    # $marcFile2repository{'AV.xml'} = 'nnc-a';
+    # search for 'Setup mapping table' to find definition of array in file
+    # so given all the above, next line just gets repo code base on filename,
+    # I believe
+    # <<<<<<END: fcd1, 09/11/18
+    my $repoCode = $marcFile2repository{$marcFileName};
+    next if (defined $repository and $repoCode ne $repository);
+    ## watch out for unexpected files
+    if (not $repoCode) {
+      err("Unknown MARC file:  $marcFileName - skipping!!");
+      next;
+    }
+
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # Now this one large file for a repo will be split into one individual
+    # file for each record, as stated in the original comment below.
+    # All this processing is done by the splitMARC helper subroutine.
+    # <<<<<<END: fcd1, 09/11/18
+    # Split into individual per-record MARC files
+    out("Splitting $repoCode into separate single record MARC XML files");
+    $rcode += splitMARC($marcFile, $repoCode);
+    return err("splitMARC() returned error code $rcode") if $rcode;
+
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # Now, as stated in the original comment below, gonna turn each file
+    # representing an individual MARC record (in given repo) into an associated
+    # EAD file. Not sure what is meant by 'Conditionally' in the original comment
+    # All this processing is done by the marc2ead helper subroutine.
+    # <<<<<<END: fcd1, 09/11/18
+    # Conditionally turn each MARC XML file into a single EAD XML file
+    out("Converting MARC to EAD for repository $repoCode");
+    $rcode += marc2ead($repoCode);
+    return err("marc2ead() returned error code $rcode") if $rcode;
+
+    $processedCount++;
+  }
+
+  return err("No MARC file found for repository [$repository]!") if (defined $repository and $processedCount == 0);
+
+  out("== fetch EAD from remote eXist server");
+  out("overlaying built EAD with edited EAD");
+  $rcode += fetchEAD();
+  return err("fetchEAD() returned error code $rcode") if $rcode;
+
+  return $rcode;
+}
+
+# fcd1, 09/11/18: BEGIN>>>>>>
+# splitMARC is only called in one place, inside buildEAD, as follows
+# $rcode += splitMARC($marcFile, $repoCode);
+# <<<<<<END: fcd1, 09/11/18
+##################
+sub splitMARC {
+  my $infile = shift;    # the full MARC XML file for the repo, 1000s of recs.
+  my $repoCode = shift;  # the repository code for the current MARC file
+
+  my $rcode = 0;         # track return code from this sub, 0 == AOK
+
+  return err("Bad MARC input file [$infile]!")
+      unless -f $infile and -r $infile and -s $infile;
+
+  # the split-apart single-record MARC XML files are in subdirs by repo.
+  my $outdir = "/ldpd/projects/findingaids/cloaca/marc/$repoCode";
+
+  # If this is the first run for a new repository, create it's directory
+  if (not -d "$outdir") {
+    mkdir("$outdir", 0775) or return err("mkdir($outdir) failed: $!");
+    system("/bin/chgrp ldpddev $outdir");
+    system("chmod 2775 $outdir");
+  }
+
+  # fcd1, 09/11/18: BEGIN>>>>>>
+  # Header and footer templates for the generated XML are defined here
+  # So, if ever we want to change these, I guess this is the place, except
+  # if they are subsequently changed downstream, such as in a XLST script
+  # <<<<<<END: fcd1, 09/11/18
+  # valid MARC XML output needs boilerplate header/footer ($TOP/$BOTTOM)
+  my $TOP = '<?xml version="1.0" encoding="UTF-8"?>
+<collection
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standard
+s/marcxml/schema/MARC21slim.xsd"
+  xmlns="http://www.loc.gov/MARC21/slim">
+';
+  my $BOTTOM = '</collection>';
+
+  my $inside = 0;    # are we within a MARC record or not?
+  my $bib_id;        # what's the bib id of the current MARC record?
+  my $record;        # scalar to accumulate lines of each MARC record
+  my @bibList = ();  # list of all bibs found in the large XML file
+
+  # fcd1, 09/11/18: BEGIN>>>>>>
+  # Based on code later in the subroutine, seems $filter is
+  # used to filter out bib numbers. Line of code is
+  # if ($filter and not "ldpd_${bib_id}" =~ m|^$filter|i ) {
+  # <<<<<<END: fcd1, 09/11/18
+  out("* filtering on: [$filter]") if $filter;
+  out("*** opening infile [$infile]") if $debug;
+
+  # The MARC data from CLIO is known to contain bad utf characters.
+  open(F, $infile) or return err("open($infile) failed: $!");
+  # Treat the filehandle as binary data - Not UTF8, or the bad utf8
+  # characters will throw errors when read with <>
+  binmode F;
+
+  # fcd1, 09/11/18: BEGIN>>>>>>
+  # Step through the file line by line
+  # <<<<<<END: fcd1, 09/11/18
+  while (my $line = <F>) {
+    # Pure-perl subroutine to strip everything but valid utf8 bytes,
+    # and return the clean data, now tagged as UTF8
+    $line = stripBadUnicode($line);
+
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # record starts with <record>
+    # <<<<<<END: fcd1, 09/11/18
+    $inside = 1 if $line =~ m|<record>|; # found record start indicator.
+    next if $inside == 0;                # this line is not record data? skip.
+
+
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # bib number contained within <controlfield tag="001">BIB_NUMBER_IS_HERE</controlfield>
+    # <<<<<<END: fcd1, 09/11/18
+    # we need to find the bib id within the record, to name the output file
+    if ($line =~ m|<controlfield tag="001">(\d+)</controlfield>|) {
+      $bib_id = $1;
+      out("*** found bib [$bib_id] matching filter") if $filter and $debug and "ldpd_${bib_id}" =~ m|^$filter|i;
+      # fcd1, 09/11/18: BEGIN>>>>>>
+      # bibList is built up as we find each bib number
+      # <<<<<<END: fcd1, 09/11/18
+      push @bibList, $bib_id;
+    }
+
+    $record .= $line;             # accumulate the lines of this MARC record
+
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # record ends with </record>
+    # <<<<<<END: fcd1, 09/11/18
+    if ($line =~ m|</record>|) {  # we've reached the end of a record!
+      die "parse error!" unless $bib_id;  # should have this rec's bib by now
+
+      # skip if we have a filter that doesn't match this bib
+      if ($filter and not "ldpd_${bib_id}" =~ m|^$filter|i ) {
+        $inside = 0;
+        $record = "";
+        $bib_id = undef;
+        next;
+      }
+
+      # fcd1, 09/11/18: BEGIN>>>>>>
+      # $outdir set earlier in the subroutine, cut and pasted line below (value for prod):
+      # my $outdir = "/ldpd/projects/findingaids/cloaca/marc/$repoCode";
+      # <<<<<<END: fcd1, 09/11/18
+      my $outfile = "$outdir/ldpd_${bib_id}_marc.xml";
+
+      $record = $TOP . $record . $BOTTOM;  # attach XML header/footer
+
+      # fcd1, 09/11/18: BEGIN>>>>>>
+      # If understand the code and comments below correctly, check if there is
+      # already an existing file, read it in, and overwrite if not equal.
+      # why check, why not just overwrite?
+      # <<<<<<END: fcd1, 09/11/18
+      # Does this new record data need to be written out?
+      # If there's no file yet, yes.  If the file data does not match, yes.
+      my $existing = "";
+      out("*** testing for outfile [$outfile]...") if $filter and $debug;
+      if (-f $outfile) {  # if a file already exists, read it in.
+        out("*** found.  fetching old record data from outfile [$outfile]...") if $filter and $debug;
+        open(EXISTING, $outfile) or return err("open($outfile) failed: $!");
+        while (my $line = <EXISTING>) {
+          $existing .= $line;
+        }
+        close(EXISTING);
+        out("*** fetched.  existing record:\n$existing\n") if $filter and $debug;
+      }
+
+      if ($record ne $existing) {  # Record data does NOT match - overwrite
+        open(OUT, ">$outfile") or return err("open(>$outfile) failed: $!");
+        print OUT $record;
+        close(OUT);
+        my $action = (-f $outfile) ? "created" : "updated";
+        out("$action MARC record for $bib_id");
+      }
+
+      # reset our tracking variables
+      $inside = 0;      # we're no longer inside the lines of a given record
+      $record = "";     # record-data accumlator is emptied for the next rec.
+      $bib_id = undef;  # we don't yet know the bib id for the next record
+    }
+  }
+  close(F);
+
+  # If we have a filter in place, we're only doing a partial rebuild,
+  # and not purging/deleting ANYTHING
+  return $rcode if $filter;
+
+  # fcd1, 09/11/18: BEGIN>>>>>>
+  # And here we purge, removing any file that does not have a matching bib
+  # in the list that was generated from the 'combined MARC file'
+  # <<<<<<END: fcd1, 09/11/18
+  # PURGING
+  # We have @bibList, a list of all bibs in today's combined MARC file.
+  # We should delete any MARC XML file who's bib is NOT in today's list.
+  my %bibHash;
+  # fcd1, 09/11/18: BEGIN>>>>>>
+  # bibList was built one by one as we looked for each bib number earlier in subroutine
+  # <<<<<<END: fcd1, 09/11/18
+  map { $bibHash{$_}++; } @bibList;   # turn array into hash for each lookup
+  foreach my $file ( getFileList("/ldpd/projects/findingaids/cloaca/marc/$repoCode", "_marc.xml") ) {
+    next unless $file =~ m|ldpd_(\d+)_marc.xml|;
+    my $fileBib = $1;          # the bib id number of this marc file
+    if ($bibHash{$fileBib}) {  # if we find it, fine, skip to next file.
+      next;
+    } else {                   # if we don't find it, try to remove the file.
+      unlink($file) or out("WARNING: unlink($file) failed.");
+      out("found stale MARC XML file for $fileBib:\nunlink($file)");
+    };
+  }
+
+  return $rcode;
+}
+
+# fcd1, 09/11/18: BEGIN>>>>>>
+# marc2ead is only called in one place, inside buildEAD, as follows
+# $rcode += marc2ead($repoCode);
+# <<<<<<END: fcd1, 09/11/18
+##################
+sub marc2ead {
+  my $repoCode = shift;
+
+  my $rcode = 0;
+
+  my $repoMarcDir = "/ldpd/projects/findingaids/cloaca/marc/$repoCode";
+  my $marcFilter = defined($filter) ? "$filter.*_marc.xml" : "_marc.xml";
+  my @marcFileList = getFileList(/ldpd/projects/findingaids/cloaca/marc/$repoCode, $marcFilter);
+
+  my $outdir = "/ldpd/projects/findingaids/cloaca/xml/$repoCode";
+
+  my @bibList = ();  # used to track all today's active bibs for this repo
+  foreach my $marcFile ( sort @marcFileList ) {
+    $marcFile =~ m|.*/ldpd_(\d+)_marc.xml|;
+    my $bib_id = $1;
+
+    # If we're running with a filter in place, then
+    # skip this file if it's not a filter match
+    next if $filter and not "ldpd_${bib_id}" =~ m|^$filter|i ;
+
+    push @bibList, $bib_id;
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # eadFile specified below
+    # <<<<<<END: fcd1, 09/11/18
+    my $eadFile = "/ldpd/projects/findingaids/cloaca/xml/$repoCode/ldpd_${bib_id}_ead.xml";
+
+    # If this is the first run for a new repository, create it's directory
+    if (not -d "/ldpd/projects/findingaids/cloaca/xml/$repoCode") {
+      mkdir("/ldpd/projects/findingaids/cloaca/xml/$repoCode", 0775) or return err("mkdir(/ldpd/projects/findingaids/cloaca/xml/$repoCode) failed: $!");
+      system("/bin/chgrp ldpddev /ldpd/projects/findingaids/cloaca/xml/$repoCode");
+      system("chmod 2775 /ldpd/projects/findingaids/cloaca/xml/$repoCode");
+    }
+
+    # fcd1, 09/11/18: BEGIN>>>>>>
+    # XSLT transform/stylesheet specified below
+    # <<<<<<END: fcd1, 09/11/18
+    my $XSL = "/ldpd/projects/findingaids/cloaca/lib/mrc2ead_single.xsl";
+    my $label = "mrc2ead_single for $bib_id ($repoCode)";
+    my $cmd = "$java -jar $saxonJar -o /ldpd/projects/findingaids/cloaca/xml/$repoCode/ldpd_${bib_id}_ead.xml
+               $marcFile /ldpd/projects/findingaids/cloaca/lib/mrc2ead_single.xsl xmldir=/ldpd/projects/findingaids/cloaca/xml repository='$repoCode'";
+    my $output = /ldpd/projects/findingaids/cloaca/xml/$repoCode/ldpd_${bib_id}_ead.xml;
+    my @inputs = ( $marcFile, /ldpd/projects/findingaids/cloaca/lib/mrc2ead_single.xsl );
+    if ( runCommandConditionally($label, $cmd, $output, @inputs) ) {
+      # non-zero means some kind of failure...
+      if ( -z $output ) {
+        err("*** output EAD file zero length!");
+        err("*** unlinking /ldpd/projects/findingaids/cloaca/xml/$repoCode/ldpd_${bib_id}_ead.xml");
+        unlink($output);
+      }
+      return err("$label failure");
+    }
+  }
+
+  # If we have a filter in place, we're only doing a partial rebuild,
+  # and not purging/deleting ANYTHING
+  return $rcode if $filter;
+
+  # PURGING
+  # fcd1, 09/11/18: BEGIN>>>>>>
+  # Note comments below about purging files
+  # <<<<<<END: fcd1, 09/11/18
+  # We have @bibList, a list of all bibs for today for this repo which have marc
+  # We should delete any EAD XML file who's bib is NOT in today's list.
+  my %bibHash;
+  map { $bibHash{$_}++; } @bibList;   # turn array into hash for each lookup
+  foreach my $file ( getFileList("/ldpd/projects/findingaids/cloaca/xml/$repoCode", "_ead.xml") ) {
+    next unless $file =~ m|ldpd_(\d+)_ead.xml|;
+    my $fileBib = $1;          # the bib id number of this ead file
+    if ($bibHash{$fileBib}) {  # if we find it, fine, skip to next file.
+      next;
+    } else {                   # if we don't find it, try to remove the file.
+      unlink($file) or out("WARNING: unlink($file) failed.");
+      out("found stale EAD XML file for $fileBib:\nunlink($file)");
+    };
+  }
+
+  return $rcode;
+}
+
+# fcd1, 10/09/18: BEGIN>>>>>>
+# fetchEAD is only called in one place, inside buildEAD, as follows
+# $rcode += fetchEAD();
+# <<<<<<END: fcd1, 10/09/18
+##################
+sub fetchEAD {
+  my $rcode = 0;
+
+  my $collectionFile = "/ldpd/projects/findingaids/cloaca/lib/exist-collections.xml";
+  my $XSL = "/ldpd/projects/findingaids/cloaca/lib/refreshAllPublishEAD.xsl";
+  my $label = "refreshAllPublishEAD (from /ldpd/projects/findingaids/cloaca/lib)";
+
+  my $cmd = "$java -jar $saxon9Jar $collectionFile $XSL xmldir=/ldpd/projects/findingaids/cloaca/xml intervalDays=30";
+# fcd1, 10/09/18: BEGIN>>>>>>
+# Here is the verbose version of the above $cmd, with all the variables replaced by the actual values
+  my $cmd =
+  "/usr/java/current/bin/java
+	-jar /ldpd/xml/tools/saxon9/saxon9.jar
+	/ldpd/projects/findingaids/cloaca/lib/exist-collections.xml
+	/ldpd/projects/findingaids/cloaca/lib/refreshAllPublishEAD.xsl
+	xmldir=/ldpd/projects/findingaids/cloaca/xml intervalDays=30
+  ";
+# <<<<<<END: fcd1, 10/09/18
+  my $output = undef;
+  my @inputs = ( $collectionFile, $XSL );
+  if ( runCommandConditionally($label, $cmd, $output, @inputs) ) {
+    return err("$label failure");
+  }
+
+  return $rcode;
+}
+
+# fcd1, 10/09/18: BEGIN>>>>>>
+# buildHTML is the second subroutine called by doAll, as follows
+# $rcode += buildHTML()  if $doHTML;
+# <<<<<<END: fcd1, 10/09/18
+##################
+sub buildHTML {
+  out("======== buildHTML");
+  my $rcode = 0;
+
+  out("* only rebuilding repository: [$repository]") if $repository;
+  out("* filtering on: [$filter]") if $filter;
+
+  my @repoDirList = getFileList(/ldpd/projects/findingaids/cloaca/xml, "nnc-");
+  foreach my $repoDir (sort @repoDirList) {
+    $repoDir =~ m|/(nnc-\w+)|;
+    my $repoCode = $1;
+    next if defined($repository) and ($repoCode ne $repository);
+    $rcode += buildRepositoryHTML($repoDir, $repoCode);
+    return err("buildRepositoryHTML($repoDir) failed: $!") if $rcode;
+  }
+
+  return $rcode;
+}
+
+# fcd1, 10/09/18: BEGIN>>>>>>
+# buildRepositoryHTML is only called in one place, inside buildHTML, as follows
+# $rcode += buildRepositoryHTML($repoDir, $repoCode);
+# <<<<<<END: fcd1, 10/09/18
+##################
+# Build HTML, but only for a single repository
+sub buildRepositoryHTML {
+  my $repoDir = shift;
+  my $repoCode = shift;
+  out("buildRepositoryHTML($repoDir)") if $debug;
+
+  my $rcode = 0;
+
+  my $eadFilter = defined($filter) ? "$filter.*_ead.xml" : "_ead.xml";
+  my @eadFiles = getFileList($repoDir, $eadFilter);  # command-line filter arg
+  out("building " . ($#eadFiles + 1) . " collection home pages for $repoCode");
+
+  out("scanning directories for any files that need to be rebuilt...");
+  foreach my $eadFile (sort @eadFiles) {
+    my ($basename, $path, $suffix) = fileparse($eadFile, ".xml");
+    $basename =~ s|_ead||;
+    # fcd1, 10/09/18: BEGIN>>>>>>
+    # /www/data/cu/lweb/archival/collections/ is the parent dir where the
+    # the subdir for each archival collection is created
+    # for example, the url for
+    # "Frederick H. Knubel papers on Radio Row and the World Trade Center, 1966 "
+    # is http://www.columbia.edu/cu/lweb/archival/collections/ldpd_11908110/
+    # My assumption is that there is an index.html file inside that dir, see
+    # code below where $htmlFile is defined
+    # <<<<<<END: fcd1, 10/09/18
+    my $homepageDir = "/www/data/cu/lweb/archival/collections/$basename";
+
+    # the stylesheet writes to this directory, but won't create it
+    if (not -d "$homepageDir") {
+	# changing back to 0775 from 2775
+      mkdir("$homepageDir", 0775)
+          or return err("mkdir($homepageDir) failed: $!");
+      system("/bin/chgrp ldpddev $homepageDir");
+      system("chmod 2775 $homepageDir");
+    }
+
+    # Now, use the stylesheet to create the collection home page html file
+    my $htmlFile = "$homepageDir/index.html";
+
+    ### Special exception - if the EAD file was edited in exist and
+    ### published, then the content will be served from the "findingaids"
+    ### app, not by a static HTML page.
+    my $ead_timestamp = (stat $eadFile)[9];
+    my $html_timestamp = (stat $htmlFile)[9];
+    if (-f $htmlFile && $ead_timestamp > $html_timestamp) {
+      # Assume that the Oxygen-edited EAD files are fairly consistent,
+      # Specifically that in the top few lines they have the attribute:
+      #     findaidstatus="publish"
+      open(EAD, $eadFile) or return err("cannot open eadFile [$eadFile]: $!");
+      my $line1 = <EAD>; # xml header
+      my $line2 = <EAD>; # oxygen header
+      next if ($line2 =~ m|findaidstatus="publish"|);
+      my $line3 = <EAD>; # oxygen header wrapping to 2nd line
+      next if ($line3 =~ m|findaidstatus="publish"|);
+      my $line4 = <EAD>; # aha, the EAD header!
+      next if ($line4 =~ m|findaidstatus="publish"|);
+      my $line5 = <EAD>; # aha, the EAD header!
+      next if ($line5 =~ m|findaidstatus="publish"|);
+      my $line6 = <EAD>; # aha, the EAD header!
+      next if ($line6 =~ m|findaidstatus="publish"|);
+    }
+
+    my $XSL = "/ldpd/projects/findingaids/cloaca/lib/ead2html.xsl";
+    my $label = "ead2html for $basename ($repoCode)";
+    # switch, for ACFAT2 new interface
+    # my $cmd = "$java -jar $saxonJar -o $htmlFile $eadFile $XSL xmldir=/ldpd/projects/findingaids/cloaca/xml tomcat=$TOMCAT apache=http://www.columbia.edu/cu/lweb/archival/";
+    my $cmd = "$java -jar $saxonJar -o $htmlFile $eadFile $XSL xmldir=/ldpd/projects/findingaids/cloaca/xml webserver=http://archivesportal.cul.columbia.edu apache=http://www.columbia.edu/cu/lweb/archival/";
+    my $output = $htmlFile;
+    my $newFileFlag= 1 if not -f $htmlFile;
+    my @inputs = ( $XSL, "/ldpd/projects/findingaids/cloaca/lib/ead2html_params.xsl", $eadFile );
+    return err("$label failure") if runCommandConditionally($label, $cmd, $output, @inputs);
+    system("/bin/chgrp ldpddev $htmlFile") if $newFileFlag;
+
+    # The collection home pages use SSI, and so need to be executable
+    makeFilesExecutable("$homepageDir");
+
+    out("output HTML page:\n${APACHE}${basename}") if $debug;
+    # And, make sure there are SSI files where there need to be
+    out("building SSI files for $basename") if $debug;
+
+    $basename =~ m|ldpd_(\d+)|;
+    my $bib_id = $1;
+
+    my $outdir = "/www/data/cu/lweb/archival/collections/ssi/$repoCode";
+
+    # If this is the first run for a new repository, create it's directory
+    if (not -d "$outdir") {
+      mkdir("$outdir", 0775) or return err("mkdir($outdir) failed: $!");
+      system("/bin/chgrp ldpddev $outdir");
+      system("chmod 2775 $outdir");
+    }
+
+    my $sideSSI = "$outdir/$bib_id.side.html";
+    return err("createSSI($sideSSI) failed!") if createSSI($sideSSI);
+
+    my $middleSSI = "$outdir/$bib_id.middle.html";
+    return err("createSSI($middleSSI) failed!") if createSSI($middleSSI);
+  }
+
+  return $rcode;
+}
+
+#!/usr/bin/perl
+$|++;
+use warnings;
+use strict;
+use English;
+# make sure that any file IO uses utf8
+use open ':utf8';
+# to build RFC822 time format
+use POSIX qw(strftime);
+# user modules on VMs
+use lib '/home/ldpdapp/share/perl5';
+use lib '/usr/lib64/perl5/auto';
+
+################
+# LDPD modules #
+################
+use lib '/ldpd/perl/lib';
+use LDPD::BatchTools qw(
+    err out abort
+    email_wrapper send_email 
+    marcEqual
+    runCommandConditionally
+    getTimestamp getDirTimestamp getFileTimestamp
+    max
+    makeFilesExecutable
+    getFileList
+);
+
+################
+# CPAN modules #
+################
+# Flexible parsing of command-line args
+use Getopt::Long;
+# avoid shelling out
+use File::Basename;
+# To talk to the SOLR web service
+use LWP::UserAgent;
+use HTTP::Request::Common;
+# To read EAD XML files
+use XML::Simple;
+
+
+###########
+# globals #
+###########
+my $me = `basename $0`; chomp $me;
+my $starttime = Time::HiRes::time();   # used for timing processing phases
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+# datestamp as YYMMDD
+my $datestamp = sprintf("%02d%02d%02d", ($year - 100), $mon, $mday);  
+my $aok_mailto = 'thc4@columbia.edu';
+
+# One MARC directory used for dev, test, and prod
+my $MARCDIR = '/ldpd/projects/findingaids/cloaca/marc';
+# Only one SSI directory for the project:
+my $SSIDIR = '/www/data/cu/lweb/archival/collections/ssi';
+# The below are set on a per-environment basis
+my $HTMLDIR;
+my %HTMLDIR = (
+    'dev'   => '/www/data/cu/libraries/inside/dev/archival/collections',
+    'test'  => '/www/data/cu/libraries/inside/test/archival/collections',
+    'prod'  => '/www/data/cu/lweb/archival/collections',
+);
+my $LIBDIR;
+my %LIBDIR = (
+    'dev'   => '/ldpd/projects/findingaids/cloaca/lib-dev',
+    'test'  => '/ldpd/projects/findingaids/cloaca/lib-test',
+    'prod'  => '/ldpd/projects/findingaids/cloaca/lib',
+);
+my $XMLDIR;
+my %XMLDIR = (
+    'dev'   => '/ldpd/projects/findingaids/cloaca/xml-dev',
+    'test'  => '/ldpd/projects/findingaids/cloaca/xml-test',
+    'prod'  => '/ldpd/projects/findingaids/cloaca/xml',
+);
+# no longer used, switching to ACFAT2 interface...
+#  my $TOMCAT;
+#  my %TOMCAT = (
+#      'dev'   => 'http://appdev.cul.columbia.edu:8080',
+#      'test'  => 'http://apptest.cul.columbia.edu:8080',
+#      'prod'  => 'http://app.cul.columbia.edu:8080',
+#  );
+my $WEBSERVER;
+my %WEBSERVER = (
+    'dev'   => 'http://ldpd.lampdev.columbia.edu/archival',
+    'test'  => 'http://ldpd.lamptest.columbia.edu/archival',
+    'prod'  => 'http://archivesportal.cul.columbia.edu',
+);
+#my $TOMCATDIR;
+#my %TOMCATDIR = (
+#    'dev'   => '/ldpd/web/appdev/tomcat/webapps/findingaids',
+#    'test'  => '/ldpd/web/apptest/tomcat/webapps/findingaids',
+#    'prod'  => '/ldpd/web/app/tomcat/webapps/findingaids',
+#);
+# Should we interrogate the myhost/ourhosts clusters programatically?
+# Or hardcode the relevant hostnames here?  
+# To limit reliance on CUIT infrastructure, hardcode here.
+my $POST_HOSTS;
+my %POST_HOSTS = (
+    'dev'   => [ 'http://ldpd-solr-dev1.cul.columbia.edu:8983/solr/acfa_dev' ],
+    'test'  => [ 'http://ldpd-solr-test1.cul.columbia.edu:8983/solr/acfa_test' ],
+    'prod'  => [ 'http://ldpd-solr-prod1.cul.columbia.edu:8983/solr/acfa_prod' ],
+);
+
+# added to have variable accessible for "return to archival collections"
+my $APACHE;
+my %APACHE = (
+    'dev'   => 'http://www.columbia.edu/cu/libraries/inside/dev/archival/collections/',
+    'test'  => 'http://www.columbia.edu/cu/libraries/inside/test/archival/collections/',
+    'prod'  => 'http://www.columbia.edu/cu/lweb/archival/',
+);
+
+# Some tools and utilities used throughout the batch process
+#my $saxonJar = '/ldpd/xml/tools/saxon/saxon8.jar';
+#my $saxon9Jar = '/ldpd/xml/tools/saxon9/saxon9.jar';
+# moved by TC 2017-03-07 
+my $saxonJar = '/ldpd/xml/tools/saxon/saxon8.jar';
+my $saxon9Jar = '/ldpd/xml/tools/saxon9/saxon9.jar';
+my $java = '/usr/java/current/bin/java';
+# The environment is dev, test, or prod
+my $environment = '';
+# the "do" variables control whether to preform the various processing steps
+my $doAll = 0;
+my $doEAD = 0;
+my $doHTML = 0;
+# my $doSubjectCounts = 0;
+my $doReindex = 0; 
+my $doPurge = 0; 
+my $purgeList = ""; 
+# debug setting used for more verbose output
+my $debug = 0;
+# filter regexp pattern for which html collection home pages to build
+my $filter;
+# if a repository is specified than doEAD will only do that repo.
+my $repository;
+
+# Setup mapping table
+my %marcFile2repository = ();
+$marcFile2repository{'AV.xml'} = 'nnc-a';
+$marcFile2repository{'EA.xml'} = 'nnc-ea';
+$marcFile2repository{'HS.xml'} = 'nnc-m';
+## $marcFile2repository{'OH.xml'} = 'nnc-oh';
+$marcFile2repository{'RB.xml'} = 'nnc-rb';
+$marcFile2repository{'UA.xml'} = 'nnc-ua';
+$marcFile2repository{'UT.xml'} = 'nnc-ut';
+
+my $acfa_solr_file = 'acfa2_solr.xml';
+my $ccoh_solr_file = 'ccoh_solr.xml';
+
+# and, for convenience, invert the hash...
+my %repository2marc = ();
+map { $repository2marc{ $marcFile2repository{$_} } = $_;  } (keys %marcFile2repository);
+
+#######################
+# argument processing #
+#######################
+GetOptions( 
+  'environment=s'     => \$environment,
+  'debug'             => \$debug,
+  'filter=s'          => \$filter,
+  'repository=s'      => \$repository,
+  'doReindex'         => \$doReindex,
+  'doPurge'           => \$doPurge,
+  'purgeList=s'       => \$purgeList,
+  'doEAD'             => \$doEAD,
+  'doHTML'            => \$doHTML,
+#  'doSubjectCounts'   => \$doSubjectCounts,
+  'doAll'             => \$doAll,
+); 
+
+if ($doAll) {
+  $doEAD = 1;
+  $doHTML = 1;
+#  $doSubjectCounts = 1;
+  $doReindex = 1;
+  $doPurge = 1;
+}
+
+if ($filter and $doPurge) {
+  print "Filter option cannot be used with doPurge option -- exiting.\n";
+  exit();
+}
+
+usage() unless $environment eq 'dev' or $environment eq 'test' or $environment eq 'prod';
+# usage() unless $doEAD or $doHTML or $doSubjectCounts or $doReindex or $doPurge;
+usage() unless $doEAD or $doHTML or $doReindex or $doPurge;
+
+$HTMLDIR    = $HTMLDIR{$environment};
+$LIBDIR     = $LIBDIR{$environment};
+$XMLDIR     = $XMLDIR{$environment};
+##  $TOMCAT     = $TOMCAT{$environment};
+$WEBSERVER     = $WEBSERVER{$environment};
+#$TOMCATDIR  = $TOMCATDIR{$environment};
+$POST_HOSTS = $POST_HOSTS{$environment};
+$APACHE     = $APACHE{$environment};
+
+LDPD::BatchTools::startClock($starttime);
+LDPD::BatchTools::setDebugFlag($debug);
+LDPD::BatchTools::setAOKmailto($aok_mailto);
+LDPD::BatchTools::setEmailLabel("ACFA");
+
+##################
+sub usage {
+  print("usage:  $me --environment prod | dev | test [ --debug ]\n"
+      . "        [ --doEAD  [ --repository nnc-xy] [ --filter ldpd_407 ] ]\n"
+      . "        [ --doHTML [ --repository nnc-xy] [ --filter ldpd_407 ] ]\n"
+#      . "        [ --doSubjectCounts [ --repository nnc-xy] ]\n"
+      . "        [ --doReindex ]\n"
+      . "        [ --doPurge [ --purgeList 1362656,1362657,4079186] ]\n"
+      . "        [ --doAll ]\n");
+
+  exit();
+}
+##################
+#sub buildSubjectCounts {
+#  out("======== buildSubjectCounts");
+#  my $rcode = 0;
+#
+#  out("* only counting repository: [$repository]") if $repository;
+#
+#  my %subjectCounts;
+#  my @repoDirList = getFileList(/ldpd/projects/findingaids/cloaca/xml, "nnc-");
+#  foreach my $repoDir (sort @repoDirList) {
+#    $repoDir =~ m|/(nnc-\w+)|;
+#    my $repoCode = $1;
+#    next if defined($repository) and ($repoCode ne $repository);
+#
+#    # this is a bit awkward - we want an integer rcode to be returned,
+#    # but we also need a hashtable of data back from the subroutine.  
+#    # Create the hashtable here, pass by reference into the sub.
+#    my %repoSubjectCounts;
+#    $rcode += buildRepositorySubjectCounts($repoDir, \%repoSubjectCounts);
+#    return err("buildRepositorySubjectCounts($repoDir) failed: $!") if $rcode;
+#
+#    # write out the single-repository subject count file
+#    my $filename = "$TOMCATDIR/subjects-$repoCode.xml";
+#    writeSubjectCountFile($filename, %repoSubjectCounts);
+#
+#    # If we were asked to rebuild counts for only one repo, we're done.
+#    last if $repository;
+#
+#    # add in the this repository's subject counts to the over-all counts
+#    foreach my $item (keys %repoSubjectCounts) {
+#      $subjectCounts{$item} += $repoSubjectCounts{$item};
+#    }
+#  }
+#
+#  # If we were asked to rebuild counts for only one repo, we're all done.
+#  return $rcode if $repository;
+#
+#  # now write out the over-all subject-count file
+#  my $filename = "$TOMCATDIR/subjects.xml";
+#  writeSubjectCountFile($filename, %subjectCounts);
+#  return $rcode;
+#}
+##################
+sub buildRepositorySubjectCounts {
+  my $repoDir = shift;
+  # this is a reference to hash for accumulating counts of subject terms
+  my $terms = shift;  
+
+  my $rcode = 0;
+
+  my @xmlFileList = getFileList($repoDir, ".xml");
+  foreach my $xmlFile (sort @xmlFileList) {
+    open(F, $xmlFile) or return err("open($xmlFile) failed: $!");
+    while (my $line = <F>) {
+      # any of the following are considered "subject terms"
+      $terms->{$1}++ if $line =~ m|<corpname encodinganalog="610">(.*)</|;
+      $terms->{$1}++ if $line =~ m|<corpname encodinganalog="611">(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<corpname encodinganalog="697".*>(.*)</|;
+      $terms->{$1}++ if $line =~ m|<corpname encodinganalog="710">(.*)</|;
+      $terms->{$1}++ if $line =~ m|<corpname encodinganalog="711">(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<function encodinganalog="657">(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<genreform encodinganalog="655".*>(.*)</|;
+      $terms->{$1}++ if $line =~ m|<geogname encodinganalog="651".*>(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<occupation encodinganalog="656".*>(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<persname encodinganalog="600">(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<persname encodinganalog="700">(.*)</|;
+      $terms->{$1}++ if $line =~ m|<subject encodinganalog="650".*>(.*)</|;
+      #$terms->{$1}++ if $line =~ m|<title encodinganalog="730">(.*)</|;
+    }
+    close(F);
+  }
+  return $rcode;
+}
+##################
+sub writeSubjectCountFile {
+  my $outfile = shift;
+  my %subjectCounts = @_;
+
+  open(OUT, ">$outfile") or return err("open(>$outfile) failed: $!");
+  print OUT '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+  print OUT "<items>\n";
+
+  my @items = keys %subjectCounts;
+  foreach my $item (sort { lc($a) cmp lc($b) } @items) {
+    print OUT "  <item>\n";
+    print OUT "    <subject>$item</subject>\n";
+    print OUT "    <count>" . $subjectCounts{$item} . "</count>\n";
+    print OUT "  </item>\n";
+  }
+
+  print OUT "</items>\n";
+
+  close(OUT);
+}
+##################
+sub reindex {
+  out("======== reindex");
+  my $rcode = 0;
+
+  out("SOLR reload");
+  # Two steps in reloading SOLR: (1) build the file, then (2) index into lucene
+  
+  # (1) Build the EAD-extract XML file
+  out("== (1) rebuild $acfa_solr_file file");
+  my $XSL = "/ldpd/projects/findingaids/cloaca/lib/EAD2SOLR.xsl";
+  my $label = "EAD2SOLR";
+  my $output = "/ldpd/projects/findingaids/cloaca/lib/$acfa_solr_file";
+  my $inputXML = "/ldpd/projects/findingaids/cloaca/lib/start.xml";
+  my $cmd = "$java -jar $saxon9Jar -o $output $inputXML $XSL xmldir=/ldpd/projects/findingaids/cloaca/xml";
+  my @inputs = ( $XSL, $inputXML, /ldpd/projects/findingaids/cloaca/xml );
+  return err("$label failure") if runCommandConditionally($label, $cmd, $output, @inputs);
+  
+  # (2) POST the file to SOLR/Lucene
+  out("== (2) post $acfa_solr_file file to SOLR");
+  $rcode = postToSolr("/ldpd/projects/findingaids/cloaca/lib/$acfa_solr_file");
+  return err("postToSolr($acfa_solr_file) failed!") unless $rcode == 0;
+
+  # (3) Build the CCOH-extract XML file
+  out("== (3) rebuild $ccoh_solr_file file");
+  my $ccohMarcFile = "/ldpd/projects/findingaids/cloaca/lib/ccoh_marc.xml";
+  out("fetch ccoh marc records...");
+  unlink($ccohMarcFile);
+  $label = 'fetchOralHistoryRecords';  # label == executable script name
+# changed to cul0 2017-03-07 by TC  
+#$cmd = "/cul/cul1/ldpd/ccoh/$label --output $ccohMarcFile";
+$cmd = "/cul/cul0/ldpd/ccoh/$label --output $ccohMarcFile";
+
+  $output = $ccohMarcFile;
+  return err("$label failure") if runCommandConditionally($label, $cmd, $output);
+  out("transform ccoh marc to solr load file...");
+  $XSL = "/ldpd/projects/findingaids/cloaca/lib/oral2solr.xsl";
+  $label = "oral2solr";
+  $output = "/ldpd/projects/findingaids/cloaca/lib/$ccoh_solr_file";
+  $inputXML = "$ccohMarcFile";
+  $cmd = "$java -jar $saxon9Jar -o $output $inputXML $XSL";
+  @inputs = ( $XSL, $inputXML, /ldpd/projects/findingaids/cloaca/xml );
+  return err("$label failure") if runCommandConditionally($label, $cmd, $output,
+ @inputs);
+
+  # (4) POST the Oral History file to SOLR/Lucene
+  out("== (4) post $ccoh_solr_file file to SOLR");
+  $rcode = postToSolr("/ldpd/projects/findingaids/cloaca/lib/$ccoh_solr_file");
+  return err("postToSolr($ccoh_solr_file) failed!") unless $rcode == 0;
+
+##   # for Dev and Test there is only one host, for Prod there are multiple
+##   foreach my $post_host ( @[ 'http://ldpd-solr-prod1.cul.columbia.edu:8983/solr/acfa_prod' ] ) {
+##     out("running curl post to $post_host" );
+##     my $url = "$post_host/update";
+## 
+##     $inputXML = "/ldpd/projects/findingaids/cloaca/lib/$acfa_solr_file";
+##     my $curlOutput = "/tmp/.curlout.$$";
+##     my $command = "/usr/bin/curl $url --data-binary \@$inputXML " .
+##                   "--silent --show-error --output $curlOutput " .
+##                   "-H 'Content-type:text/xml; charset=utf-8'";
+##     print("$command\n") if $debug;  # raw print, to get cut&pastable command
+##     $rcode = system($command); 
+## 
+##     # if curl returns non-zero value, the fetch itself broke.
+##     return err("curl return code ($rcode) non-zero!") unless $rcode == 0;
+## 
+##     # even if curl returns 0 (AOK), check the Solr result status too...
+##     open(CURLOUT, $curlOutput) or return err("open($curlOutput) failed: $!");
+##     my $solrResultStatus = "-1";
+##     while (my $line = <CURLOUT>) {
+##       $solrResultStatus = $1 if $line =~ m|<result status="(\d+)">|i;  # Solr 1.2.0
+##       $solrResultStatus = $1 if $line =~ m|<int name="status">(\d+)</int>|i; # Solr 1.3.0
+## 
+##       print $line;
+##     }
+##    print "\n";  ### curl outputs web server response without a newline
+##    close(CURLOUT);
+##    unlink($curlOutput);
+##    return err("Solr result status non-zero!") unless $solrResultStatus == 0;
+##
+##    # Final step, commit the changes and optimize the index
+##    my $userAgent = LWP::UserAgent->new;
+##    my $req = HTTP::Request->new(POST => $url);
+##  
+##    out("SOLR commit");
+##    $req->content( '<commit/>' );
+##    my $response = $userAgent->request( $req );
+##    return err($response->status_line) unless $response->is_success;
+##
+##    out("SOLR optimize");
+ ##   $req->content( '<optimize/>' );
+##    $response = $userAgent->request( $req );
+##    return err($response->status_line) unless $response->is_success;
+##  }
+ 
+#  out("== generate list of titles");
+#  my $field = 'unittitle';
+#  my $outputFile = "/ldpd/projects/findingaids/cloaca/lib/list_$field.xml";
+#  my $inputFile = "/ldpd/projects/findingaids/cloaca/lib/$acfa_solr_file";
+#  buildListFile($field, $inputFile, $outputFile);
+#  out("output file:\n$outputFile");
+
+#  out("== generate list of subjects");
+#  $field = 'subject';
+#  $outputFile = "/ldpd/projects/findingaids/cloaca/lib/list_$field.xml";
+#  buildListFile($field, $inputFile, $outputFile);
+#  out("output file:\n$outputFile");
+
+  return $rcode;
+}
+##################
+sub postToSolr {
+  my $solrFile = shift;
+  return err("postToSolr() did not get a valid solrFile! [$solrFile]") 
+    unless $solrFile and -f $solrFile and -r $solrFile;
+
+  my $rcode = 0;
+
+  foreach my $post_host ( @[ 'http://ldpd-solr-prod1.cul.columbia.edu:8983/solr/acfa_prod' ] ) {
+    out("running curl post to $post_host" );
+    my $url = "$post_host/update";
+
+    my $curlOutput = "/tmp/.curlout.$$";
+    my $command = "/usr/bin/curl $url --data-binary \@$solrFile " .
+                  "--silent --show-error --output $curlOutput " .
+                  "-H 'Content-type:text/xml; charset=utf-8'";
+    print("$command\n") if $debug;  # raw print, to get cut&pastable command
+    $rcode = system($command);
+
+    # if curl returns non-zero value, the fetch itself broke.
+    return err("curl return code ($rcode) non-zero!") unless $rcode == 0;
+
+    # even if curl returns 0 (AOK), check the Solr result status too...
+    open(CURLOUT, $curlOutput) or return err("open($curlOutput) failed: $!");
+    my $solrResultStatus = "-1";
+    while (my $line = <CURLOUT>) {
+      $solrResultStatus = $1 if $line =~ m|<result status="(\d+)">|i;  # Solr 1.2.0
+      $solrResultStatus = $1 if $line =~ m|<int name="status">(\d+)</int>|i; # Solr 1.3.0
+
+      print $line;
+    }
+    print "\n";  ### curl outputs web server response without a newline
+    close(CURLOUT);
+    unlink($curlOutput);
+    return err("Solr result status non-zero!") unless $solrResultStatus == 0;
+
+    # Final step, commit the changes and optimize the index
+    my $userAgent = LWP::UserAgent->new;
+    my $req = HTTP::Request->new(POST => $url);
+
+    out("SOLR commit");
+    $req->content( '<commit/>' );
+    # fcd1, 04/05/18: post to http://ldpd-solr-dev1.cul.columbia.edu:8983/solr/acfa2-dev
+    # generates 415 Unsupported Media Type
+    # Gonna set Content-Type
+    $req->header('Content-Type' => 'text/xml; charset=UTF-8');
+    my $response = $userAgent->request( $req );
+    return err($response->status_line) unless $response->is_success;
+
+    out("SOLR optimize");
+    $req->content( '<optimize/>' );
+    $response = $userAgent->request( $req );
+    return err($response->status_line) unless $response->is_success;
+  }
+  
+  return $rcode;
+}
+##################
+sub purge {
+  out("======== purge");
+  my $rcode = 0;
+
+  my %activeBibs;   # easy-to-lookup hash of active bib ids
+
+  out("== get list of active bibs from ACFA Solr load file");
+  my @acfaBibList = getBibList( "/ldpd/projects/findingaids/cloaca/lib/$acfa_solr_file" );
+  map { $activeBibs{$_}++; } @acfaBibList;
+  out("Found " . ($#acfaBibList + 1) . " active acfa bibs.");
+
+  out("== get list of active bibs from CCOH Solr load file");
+  my @ccohBibList = getBibList( "/ldpd/projects/findingaids/cloaca/lib/$ccoh_solr_file" );
+  map { $activeBibs{$_}++; } @ccohBibList;
+  out("Found " . ($#ccohBibList + 1) . " active ccoh bibs.");
+
+  out("== get list of bibs from home pages");
+  my @homeList = getHomePageBibList( /www/data/cu/lweb/archival/collections );
+  out("Found " . ($#homeList + 1) . " bibs with home pages.");
+
+  out("== get list of bibs from SSI files");
+  my @ssiList = getSSIBibList( /www/data/cu/lweb/archival/collections/ssi );
+  out("Found " . ($#ssiList + 1) . " bibs with ssi files.");
+
+  out("== generate list of bibs to be purged");
+  my %doomed;
+  foreach my $bib ( (@homeList, @ssiList) ) {
+    $doomed{ $bib }++ unless $activeBibs{ $bib };
+  }
+  out("Found " . scalar(keys %doomed) . " bibs in filesystem to be purged.");
+  # return $rcode if scalar(keys %doomed) == 0;
+
+  if ($purgeList) {
+    out("Filesystem bibs to purge:\n  " . join(", ", sort keys %doomed) );
+    $purgeList =~ s|\s+||g;  # eliminate any whitespace
+    out("Command-line purge list specified:\n  $purgeList");
+    my @explicitList = split(',', $purgeList);  # command-line global
+    foreach my $explicit ( split(',', $purgeList) ) {
+      $doomed{$explicit}++;
+    }
+  }
+
+  my $doomedCount = scalar(keys %doomed);
+  out("Total list of $doomedCount bibs to be purged:\n  " . join(", ", sort keys %doomed) );
+
+  # For safety we have an upper-limit on how many deletes to do.
+  # Anything past this threshold will need manual intervention.
+  if ($doomedCount > 10) {
+    return err("*** ERROR *** - purge() identified $doomedCount bibs to be purged - this is suspiciously high - aborting.");
+  }
+
+  if ($doomedCount > 0) {
+    out("== purge SOLR index of bad bibs");
+
+    foreach my $post_host ( @[ 'http://ldpd-solr-prod1.cul.columbia.edu:8983/solr/acfa_prod' ] ) {
+      out("running curl post to $post_host" );
+      my $url = "$post_host/update";
+
+      my $userAgent = LWP::UserAgent->new;
+      my $req = HTTP::Request->new(POST => $url);
+      out("posting deletes to $post_host...");
+      foreach my $doomed ( sort keys %doomed ) {
+        $req->content( "<delete><id>ldpd_${doomed}</id></delete>" );
+        $req->header('Content-Type' => 'text/xml; charset=UTF-8');
+        my $response = $userAgent->request( $req );
+        return err($response->status_line) unless $response->is_success;
+        #out($response->status_line);  # way too noisy!
+        print('.');
+      }
+      $req->content( '<commit/>' );
+      $req->header('Content-Type' => 'text/xml; charset=UTF-8');
+      my $response = $userAgent->request( $req );
+      return err($response->status_line) unless $response->is_success;
+      out("done.");
+    }
+  }
+
+  out("== purge home pages of bad bibs");
+  foreach my $doomed ( sort keys %doomed ) {
+    my $homedir = "/www/data/cu/lweb/archival/collections/ldpd_$doomed";
+    my $index   = "$homedir/index.html";
+    ( unlink($index) or out("WARNING: unlink($index) failed: $!") ) if -f $index;
+    ( rmdir($homedir) or out("WARNING: rmdir($homedir) failed: $!") ) if -d $homedir;
+  }
+
+  out("== purge SSIs of bad bibs");
+  foreach my $subdir ( getFileList(/www/data/cu/lweb/archival/collections/ssi, "nnc-") ) {
+    foreach my $ssi ( getFileList($subdir, ".html")) {
+      next unless $ssi =~ m|(\d+)\.\w+\.html|;
+      my $bib = $1;
+      next unless $doomed{$bib};
+      unlink($ssi) or out("WARNING: unlink($ssi) failed.");
+    }
+  }
+
+  return $rcode;
+}
+##################
+##################################################
+## This func is called like this:
+##    my $repository = getRepoCodeFromEAD($eadFile);
+##
+## The line in the EAD XML file looks like this:
+## <unitid countrycode="us" repositorycode="nnc-a" type="clio">2812943</unitid>
+## 
+## The line in the stylesheet looks like this:
+##       <xsl:value-of select="ead/archdesc/did/unitid/@repositorycode"/>
+##################################################
+###   sub getRepoCodeFromEAD {
+###     my $file = shift;
+###     return err("Bad EAD file [$file]!") unless -f $file and -r $file and -s $file;
+###   
+###     out("getRepoCodeFromEAD($file) about to call XMLin()") if $debug;
+###   
+###     my $xsl = XML::Simple->new();
+###     my $doc = $xsl->XMLin($file, ForceArray => 1);  # ForceArrays helps parsing
+###     return err("Unparsable XML in EAD file:\n  $file") unless $doc;
+###   
+###     # Fields may or may not be repeatable, leading to ambiguous parsing.
+###     # With the ForceArray option set, all elements are arrays (possibly 
+###     # only of length 1) so we can consistently use array-accessing syntax.
+###   
+###     my $repoCode = $doc->{'archdesc'}[0]
+###                         ->{'did'}[0]
+###                         ->{'unitid'}[0]
+###                         ->{'repositorycode'};
+###     return err("No repository code found in EAD file:\n  $file") 
+###         unless $repoCode;
+###   
+###     out("file [$file] repository code [$repoCode]") if $debug;
+###   
+###     return $repoCode;
+###   }
+##################
+sub createSSI {
+  my $ssi = shift;
+  my $rcode = 0;   # default, success
+
+  return $rcode if -f $ssi;   # if it's already there, 
+
+  # create the file if it's missing, set unix ownership/permissions
+  my $prefix = '';
+  my $uname = '';
+  $uname = `whoami`; # why not getpwuid($<) ?
+  chomp($uname);
+  unless ($uname eq "ldpdapp") {
+    $prefix = "/usr/bin/sudo -u ldpdapp ";
+  }
+  
+  $rcode += system($prefix . "touch $ssi");
+  $rcode += system($prefix . "chgrp ldpdxml $ssi");
+  $rcode += system($prefix . "chmod 0644 $ssi");
+  return err("system() returned error code $rcode") if $rcode;
+
+  # complain if our creation attempt filed to produce a file
+  return err("Unknown error creating new SSI file:\n$ssi") unless -f $ssi;
+
+  out("new SSI: $ssi") if $debug;
+
+  return $rcode;      # return success
+}
+##################
+sub getBibList {
+  my $file = shift;
+  my @bibList = ();
+
+  open(F, $file) or return err("open($file) failed: $!");
+  while (my $line = <F>) {
+    next unless $line =~ m|<field name="id">ldpd_(\d+)</field>|;
+    push @bibList, $1;
+  }
+  close(F);
+
+  return @bibList;
+}
+##################
+sub getHomePageBibList {
+  my $dir = shift;
+  my @homeList = ();
+
+  foreach my $subdir ( getFileList($dir, '^ldpd_\d+$') ) {
+    next unless $subdir =~ m|ldpd_(\d+)|;
+    push @homeList, $1;
+  }
+
+  return @homeList;
+}
+##################
+sub getSSIBibList {
+  my $dir = shift;
+  my %ssiHash;
+
+  foreach my $subdir ( getFileList($dir, "nnc-") ) {
+    foreach my $ssi ( getFileList($subdir, ".html")) {
+      next unless $ssi =~ m|(\d+)\.\w+\.html|;
+      $ssiHash{$1}++;
+    }
+  }
+
+  return (sort keys %ssiHash);
+}
+##################
+sub buildListFile {
+  my $field = shift;
+  my $infile = shift;
+  my $outfile = shift;
+  
+  return err("Bad input file [$infile]!") 
+      unless -f $infile and -r $infile and -s $infile;
+
+  my $XSL = "/ldpd/projects/findingaids/cloaca/lib/get_field.xsl";
+  my $label = "get_field.xsl \"$field\"";
+  my $output = $outfile;
+  my $inputXML = $infile;
+  my $cmd = "$java -jar $saxonJar -o $output $infile $XSL field=$field";
+  my @inputs = ( $XSL, $infile );
+  return err("$label failure") if runCommandConditionally($label, $cmd, $output,
+ @inputs);
+
+  return 0;  # AOK
+}
+##################
+sub stripBadUnicode {
+  my $raw = shift;
+
+  # If $raw is tagged as raw bytes, that's great.
+  # If it's tagged as utf8, flip the internal flag to raw
+
+  # in-place encoding of utf8-flagged data into raw octets for processing
+  utf8::encode($raw) if utf8::is_utf8($raw);
+
+  my $original = $raw;
+
+  # Hex values of legal XML characters - which is a subset of the full
+  # utf8 set of valid chars.  Use a (+) on the simple ascii for
+  # better efficiency in the below loop.
+  my $valid_xml_regexp = qq!
+        [\x{09},\x{0a},\x{0d},\x{20}-\x{7f}]+
+      | [\x{c2}-\x{df}][\x{80}-\x{bf}]
+      |         \x{e0} [\x{a0}-\x{bf}][\x{80}-\x{bf}]
+      | [\x{e1}-\x{ec}][\x{80}-\x{bf}][\x{80}-\x{bf}]
+      |         \x{ed} [\x{80}-\x{9f}][\x{80}-\x{bf}]
+      | [\x{ee}-\x{ef}][\x{80}-\x{bf}][\x{80}-\x{bf}]
+      |         \x{f0} [\x{90}-\x{bf}][\x{80}-\x{bf}]
+      | [\x{f1}-\x{f3}][\x{80}-\x{bf}][\x{80}-\x{bf}][\x{80}-\x{bf}]
+      |         \x{f4} [\x{80}-\x{8f}][\x{80}-\x{bf}][\x{80}-\x{bf}]
+  !;
+
+  my $line = "";
+  # Add the "s" to the pattern match, to pass-through newlines
+  while ($raw and $raw =~ m|($valid_xml_regexp)(.*)|xs ) {
+    my ($valid_bytes, $remainder) = ($1, $2);
+    $line .= $valid_bytes;
+    $raw = $remainder;
+  }
+
+  if ( ($original ne $line) and $debug) {
+    out("stripBadUnicode:");
+    out("bad:   $original");
+    out("fixed: $line");
+  }
+
+  utf8::decode($line);   # in-place decoding of raw octets into utf8 character data
+
+  return $line;
+}
+##################
+##################
+##################
+##################
+
+
+
+

@@ -1,0 +1,1 @@
+<delete><query>timestamp:[* TO NOW-2HOURS]</query></delete>

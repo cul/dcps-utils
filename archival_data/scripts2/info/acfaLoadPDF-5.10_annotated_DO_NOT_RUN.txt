@@ -1,0 +1,94 @@
+#!/usr/bin/perl
+#$|++;
+#use warnings;
+#use strict;
+#use English;
+## make sure that any file IO uses utf8
+#use open ':utf8';
+## to build RFC822 time format
+#use POSIX qw(strftime);
+## user modules on VMs
+#use lib '/home/ldpdapp/share/perl5';
+#use lib '/usr/lib64/perl5/auto';
+#
+#################
+## LDPD modules #
+#################
+#use lib '/ldpd/perl/lib';
+#use lib '/cul/cul1/ldpd/perl/lib';
+
+################
+# CPAN modules #
+################
+use English;
+use File::Copy;
+
+###########
+# globals #
+###########
+my $me = `basename $0`; chomp $me;
+my $FROM = '/ldpd/projects/findingaids/data/pdfs_in/nnc-rb';
+my $TO   = '/ldpd/projects/findingaids/data/pdfs';
+my $mailto = 'ba2213@columbia.edu,thc4@columbia.edu';
+
+my $message = "";  
+
+my $okCount = 0;
+my $errorCount = 0;
+my $installCount = 0;
+my $updateCount = 0;
+opendir(D, $FROM) or die "opendir($FROM) failed: $!";
+while (my $file = readdir(D)) {
+  next unless $file =~ m|\.pdf$|;  # only move pdf files
+  
+  my $newFlag = 1;
+  $newFlag = 0 if -f "$TO/$file";
+
+  if (move("$FROM/$file", "$TO/$file") ) {
+    if ($newFlag == 1) {
+      system("/bin/chgrp ldpddev '$TO/$file'");
+      system("/bin/chmod 664 '$TO/$file'");
+    }
+    $message .= ( $newFlag ? "installed" : "updated" ) . " $file\n";
+    $installCount++ if ($newFlag == 1);
+    $updateCount++ if ($newFlag == 0);
+    $okCount++;
+  } else {
+    $message .= "failure loading $file:\n";
+    $message .= "move($FROM/$file, $TO/$file) failed: $!\n";
+    $errorCount++;
+  }
+}
+closedir(D);
+
+# If the loop didn't add anything to the message, exit silently.
+exit if ($message eq "");
+
+# Otherwise, if we have a message, email it out to 
+
+# Build up a useful email subject line
+my $subject = ($errorCount == 0) ? "AOK" : "ERR";
+$subject .= " - $me [$okCount loaded";
+$subject .= ", $errorCount failed" if ($errorCount > 0);
+$subject .= "]";
+
+
+# Build up an informative email body
+my $body = qq!======   $me   ======
+Loading PDF files from:
+$FROM
+to:
+$TO
+!;
+$body .= "\nFound " . ($okCount + $errorCount) . " finding aids ready for loading.\n";
+$body .= "$okCount finding aids loaded successfully.\n";
+$body .= "($installCount newly installed, $updateCount updated)\n" if ($okCount > 0);
+$body .= "$errorCount finding aids failed to load.\n" if ($errorCount > 0);
+
+$body .= ("-" x 60) . "\n$message" . ("-" x 60) . "\n";
+
+# Use the BatchTools sub to send the mail
+LDPD::BatchTools::send_email($mailto, $subject, $body);
+
+
+

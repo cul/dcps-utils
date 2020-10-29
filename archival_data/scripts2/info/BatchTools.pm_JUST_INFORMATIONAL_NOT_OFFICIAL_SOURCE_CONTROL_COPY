@@ -1,0 +1,344 @@
+package LDPD::BatchTools;
+use Exporter;
+
+################
+# CPAN modules #
+################
+# For sub-second timings
+use Time::HiRes;
+# Easier syntax for working with permission modes
+use Fcntl ':mode';
+# use more meaningful names for global variables
+use English;
+use Mail::Mailer;
+# Used to build/update RSS feed files
+
+@ISA = ('Exporter');
+@EXPORT = qw(
+  $error_mailto
+);
+@EXPORT_OK = qw(
+    startClock err out abort
+    email_wrapper send_email
+    marcEqual
+    runCommandConditionally
+    getTimestamp getDirTimestamp getFileTimestamp
+    max
+    makeFilesExecutable
+    getFileList
+);
+
+
+our $error_mailto = 'ldpddev@libraries.cul.columbia.edu';
+
+my $starttime;
+my $debug;
+my $email_label;
+my $aok_mailto = $error_mailto;
+
+##################
+##################
+sub setDebugFlag {
+  $debug = shift;
+}
+##################
+sub startClock {
+  $starttime = shift;
+}
+##################
+sub setAOKmailto {
+  $aok_mailto = shift;
+}
+##################
+sub setEmailLabel {
+  $email_label = shift;
+}
+##################
+sub err {  
+  my $text = shift;
+  out($text);
+  return -1;
+} 
+##################
+sub out {  
+  my $text = shift;
+  chomp $text;
+  return unless $text; 
+
+  my $elapsed = Time::HiRes::time() - $starttime;
+
+  my $sec = $elapsed % 60;
+  my $min = ($elapsed - $sec) / 60;
+
+  #printf ("# %7.2f  %s\n", $elapsed, $text);
+  printf ("# %4d:%02d  %s\n", $min, $sec, $text);
+  return 0;
+} 
+##################
+sub abort {
+  my $text = shift;
+  die("UNKNOWN ERROR") unless $text;
+  out("FATAL ERROR - ABORTING");
+  out($text);
+  exit(-1);
+}
+#################
+# email wrapper #
+#################
+sub email_wrapper {
+  my $sub    = shift;
+  my @args   = @_;
+
+  my $rcode = 0;     # aok = 0
+
+  my $me = `/bin/basename $0`; chomp $me;
+  my $whoami = getpwuid($UID);
+  my $hostname = `/bin/hostname`; chomp $hostname;
+
+  my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
+  my $suffix = sprintf("%02d%02d%02d.%02d%02d%02d",
+                       ($year - 100), ($mon + 1), $mday, $hour, $min, $sec);
+  my $date = sprintf("%02d/%02d/%02d", ($mon + 1), $mday, ($year + 1900));
+
+  my $outputFile = "/tmp/.$me.$$.$suffix.log";
+  # take copies of the file descriptors
+  open(OLDOUT, ">&STDOUT");
+  open(OLDERR, ">&STDERR");
+  select OLDERR;  # quiet perl warnings
+  select OLDOUT;  # quiet perl warnings
+
+  open(OUT, ">$outputFile") or die "open(>$outputFile) failed: $!";
+  print OUT "\n$me - $date\n\n";
+  select OUT;
+  $|++;
+
+  # redirect both stdout and stderr into the output log for this script
+  open STDOUT, ">&OUT";
+  open STDERR, ">&OUT";
+
+  $rcode += &$sub( @args );    # call the passed subroutine
+  print OUT "\n\n\n" .
+            "[$me - run by $whoami on $hostname, " .
+            scalar(localtime) . "]\n\n";
+
+  close(OUT);
+
+  # restore stdout and stderr
+  open(STDERR, ">&OLDERR")            or die "Can't restore stderr: $!";
+  open(STDOUT, ">&OLDOUT")            or die "Can't restore stdout: $!";
+
+  my $mailto = ($rcode == 0) ? "$aok_mailto" : "$error_mailto";
+  my $subject = ($rcode == 0) ? "AOK" : "ERR";
+  $subject .= " - $email_label" if $email_label;
+  $subject .= " - $me - $hostname";
+
+  send_email($mailto, $subject, $outputFile);
+
+# leave around for debugging...
+#  unlink($outputFile);
+
+  return $rcode;
+}
+##################
+sub send_email {
+  my $mailto = shift;
+  my $subject = shift;
+  my $body = shift;
+
+  # prepare the headers for the email
+  my %headers = ();
+  $headers{'To'} = $mailto;
+  $headers{'Subject'} = $subject;
+
+  my $mailer = new Mail::Mailer;
+  unless( $mailer->open( \%headers ) ) {
+    abort("mailer->open() failed: $!");
+  }
+
+  # if $body is a filename, insert it's contents.
+  # if not, insert $body verbatim, as a scalar
+  if (not $body =~ m|\n|  and  -f $body) {
+    open(F, $body) or die "open($body) failed: $!";
+    while (my $line = <F>) {
+      print $mailer $line;
+    }
+    close(F);
+  } else {
+    print $mailer "\n$body\n";
+  }
+
+  print $mailer "\n\n";
+  $mailer->close();
+}
+##################
+##################
+sub marcEqual {
+  my $record1 = shift;
+  my $record2 = shift;
+
+  my $formatted1 = $record1->as_formatted();
+  my $formatted2 = $record2->as_formatted();
+
+  # normalize leader position 9, the character encoding
+  $formatted1 = substr($formatted1, 0, 13) . 'X' . substr($formatted1, 14);
+  $formatted2 = substr($formatted2, 0, 13) . 'X' . substr($formatted2, 14);
+
+  return ( $formatted1 eq $formatted2 );
+}
+##################
+##################
+sub runCommandConditionally {
+  my $label = shift;       # used only for messages
+  my $command = shift;     # this is the command to run
+  my $output = shift;      # these are used for timestamp comparison
+  my @inputs = @_;
+
+  if ($debug) {
+    out("inputs:\n" . join("\n", @inputs) );
+    out("output:" . (defined $output ? "\n$output" : " undef - ignoring") );
+  }
+  my $rcode = 0;
+  my $inputTimestamp = 0;
+  foreach my $input (@inputs) {
+
+    return err("$label failure!  Input file does not exist:\n$input") unless -e $input;
+
+    my $timestamp = getTimestamp($input, "input");
+    $inputTimestamp = $timestamp if $timestamp > $inputTimestamp;  # remember the newest input
+  }
+
+  my $outputTimestamp = getTimestamp($output, "output");
+
+  # if the output was produced after the inputs, we don't have to rerun the command
+  if (defined($output) and $inputTimestamp < $outputTimestamp) {
+    # Too noisy, output only when debug flag is turned on
+    out("skipping $label (already done)" ) if $debug;
+    return 0;
+  }
+  out("running $label" );
+  print("$command\n") if $debug;  # raw print, to get cut&pastable command
+  $rcode = system($command);
+
+  return err("$label failure!  Return code $rcode\n$command") if $rcode;
+
+  # if the output is not defined, or is a directory, we can't accurately 
+  # gauge whether the output timestamps have been updated, so return now.
+  return $rcode if (not defined $output) or (-d $output);
+
+  my $newOutputTimestamp = getTimestamp($output, "output");
+
+  return err("$label failure!  Timestamp on output file not updated!  Output file:\n$output") 
+      if ($outputTimestamp == $newOutputTimestamp);
+
+  return $rcode;
+}
+##################
+##################
+
+sub getTimestamp {
+  my $file = shift;
+  my $inputOutputFlag = shift;
+  return 0 unless defined($file) and -e $file;
+  return getDirTimestamp($file, $inputOutputFlag) if -d $file;
+  return getFileTimestamp($file) if -f $file;
+}
+sub getDirTimestamp {
+  my $dir = shift;
+  my $inputOutputFlag = shift;
+  $inputOutputFlag = "output" unless $inputOutputFlag;  # default
+  return 0 unless -d $dir;
+  my $timestamp = (stat $dir)[9];
+  local (*D);    # Isolate the affects of this filehandle
+  opendir(D, $dir) or return $timestamp;
+  while (my $file = readdir(D)) {
+    next if $file =~ m|^\.|;  # skip dot-files
+    next if -l $file;         # skip symlinks
+    my $fileTimestamp = (stat "$dir/$file")[9];
+    # But what if this $file is a subdir, with holding files that 
+    # have changed?  subdir's time only changes on file create/delete.
+    # (Is this recursive call too dangerous?)
+    if (-d "$dir/$file") {
+      $fileTimestamp = getDirTimestamp("$dir/$file", $inputOutputFlag);
+    }
+    # When deciding whether to run or not based on timestamps,
+    # we always want to err on the side of running.
+    # To trigger this desired behavior, therefore,
+    # We want inputs to always look as new as possible, 
+    # and outputs to always look as old as possible.
+    if ($inputOutputFlag eq 'input') {
+      $timestamp = $fileTimestamp if $fileTimestamp > $timestamp;
+    }
+    if ($inputOutputFlag eq 'output') {
+      $timestamp = $fileTimestamp if $fileTimestamp < $timestamp;
+    }
+  }
+  closedir(D);
+  return $timestamp;
+}
+
+sub getFileTimestamp {
+  my $file = shift;
+  return 0 unless -f $file;
+  return (stat $file)[9];
+}
+
+##################
+##################
+sub max {
+  my $a = shift;
+  my $b = shift;
+
+  return $a if ($a > $b);
+  return $b;  # else...
+}
+##################
+sub makeFilesExecutable {
+  my $dir = shift;
+  opendir(D, $dir) or return err("opendir($dir) failed: $!");
+  while (my $file = readdir(D)) {
+    next unless $file =~ m|html$|;             # we only care about html files
+    my $fullfile = "$dir/$file";               # construct full path
+    
+    # if this file is executable by it's owner, great, move on to the next.
+    # (cannot use -x, since it may not be executble by whoever's running this script)
+    my $mode = (stat $fullfile)[2];
+    my $is_userExecutable     =  $mode & S_IXUSR;
+    next if $is_userExecutable;
+
+    # try to chmod file
+    my $cmd = "/bin/chmod u+x $fullfile";
+    my $rcode = system($cmd);
+    return err("WARNING:  chmod failure!  Return code $rcode\n$cmd") if $rcode;
+  }
+  closedir(D);
+
+  return 0;
+}
+##################
+##################
+sub getFileList {
+  my $dir = shift;
+  my $pattern = shift;
+  $pattern = "." unless $pattern;
+  
+  return err("getFileList() not passed a directory!") if not defined $dir;
+  return err("getFileList() [$dir] is not a directory!") if not -d $dir;
+
+  my @fileList = ();
+
+  opendir(D, $dir) or return err("opendir($dir) failed: $!");
+  while (my $file = readdir(D)) {
+    next if $file =~ m|^\.|;           # skip dot files
+    next unless $file =~ m|$pattern|;  # Files must match supplied pattern
+
+    push @fileList, "$dir/$file";
+  }
+  closedir(D);
+
+  return @fileList;
+}
+##################
+
+
+
+1;
