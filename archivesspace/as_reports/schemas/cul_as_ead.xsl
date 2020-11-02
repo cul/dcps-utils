@@ -177,7 +177,7 @@
     </xsl:if>
 
     <!-- Test that barcodes are valid -->
-    <xsl:if test="@label[contains(.,'[')] and not(matches(@label,'\[(RS|UA|OH|RH)\d{8}\]'))">
+    <xsl:if test="@label[contains(.,'[')] and not(matches(@label,'\[(RS|UA|OH|RH|UT|AD|10)\d{8}\]'))">
         <xsl:call-template name="errorMsg">
             <xsl:with-param name="tag">component</xsl:with-param>
             <xsl:with-param name="errStr">Malformed barcode: "<xsl:value-of select="@label"/>
