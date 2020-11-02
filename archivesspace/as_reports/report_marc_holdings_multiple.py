@@ -15,7 +15,7 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
 
-    sheet_id = '1bTD8J33d1gbNlP-93XzJ7R0_wju2lPOdVmf8Hw7JSzU'
+    sheet_id = '1PUolXzynlFh2F-a2gQEvyWtdeTGm-16w-O5mPyWyuLM'
     # sheet_id = '1e43qKYvqGQFOMxA70U59yPKPs18y-k3ohRNdU-qrTH0'  # test
 
     # container_sheet = dataSheet(
@@ -30,16 +30,19 @@ def main():
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_4.csv'
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
+    # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
 
-    the_bibs = open(aCSV)
-    for row in csv.reader(the_bibs):
-        the_bibids.append(row[0])
-    the_bibs.close()
+    # the_bibs = open(aCSV)
+    # for row in csv.reader(the_bibs):
+    #     the_bibids.append(row[0])
+    # the_bibs.close()
 
     # print(the_bibids)
 
+    the_bibids = ['4079753']
+    # the_bibids = ['4078997']
+    # the_bibids = ['6621724']
     ### MARC ###
 
     # Read the MARC
