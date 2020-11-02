@@ -83,8 +83,8 @@ def main():
         '1tQY9kR5YOh1e7i4dVRsl_GMxpNnUgCkb5X8qJQBAsG0', 'test!A:Z')  # Test
 
     # This is a dupe for other reporting
-    the_data_sheet2 = dataSheet(
-        "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
+    # the_data_sheet2 = dataSheet(
+    #     "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
 
     # Set path to saxon processor for evaluator xslt
     saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
