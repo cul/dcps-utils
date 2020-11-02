@@ -76,11 +76,11 @@ def main():
     print(" ")
 
     # The Google Sheet to send data to
-    # the_data_sheet = dataSheet(
-    #     "1tQY9kR5YOh1e7i4dVRsl_GMxpNnUgCkb5X8qJQBAsG0", "validation!A:Z")
-
     the_data_sheet = dataSheet(
-        '1tQY9kR5YOh1e7i4dVRsl_GMxpNnUgCkb5X8qJQBAsG0', 'test!A:Z')  # Test
+        "1tQY9kR5YOh1e7i4dVRsl_GMxpNnUgCkb5X8qJQBAsG0", "validation!A:Z")
+
+    # the_data_sheet = dataSheet(
+    #     '1tQY9kR5YOh1e7i4dVRsl_GMxpNnUgCkb5X8qJQBAsG0', 'test!A:Z')  # Test
 
     # This is a dupe for other reporting
     the_data_sheet2 = dataSheet(
@@ -219,8 +219,8 @@ def main():
 
     the_data_sheet.clear()
     the_data_sheet.appendData(the_results)
-    # the_data_sheet2.clear()
-    # the_data_sheet2.appendData(the_results)
+    the_data_sheet2.clear()
+    the_data_sheet2.appendData(the_results)
 
     # generate log and add to log tab, if exists.
     the_tabs = the_data_sheet.initTabs
