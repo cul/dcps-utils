@@ -8,7 +8,7 @@
 
     <xsl:output method="text" indent="no"/>
 
-    <xsl:template match ='ead'>
+    <xsl:template match="ead">
         <!-- put here all the elements of which to check children... -->
         <xsl:apply-templates select="archdesc" mode="eval"/>
         <xsl:apply-templates select="archdesc/did" mode="eval"/>
@@ -35,7 +35,8 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">authorities</xsl:with-param>
                 <xsl:with-param name="errStr">@authfilenumber '<xsl:value-of select="."/>
-' is not correctly formed. </xsl:with-param>
+ ' is not
+                    correctly formed. </xsl:with-param>
             </xsl:call-template>
 
         </xsl:if>
@@ -50,14 +51,16 @@
         <xsl:if test="not(scopecontent)">
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">archdesc</xsl:with-param>
-                <xsl:with-param name="errStr">archdesc must have scope and content element.</xsl:with-param>
+                <xsl:with-param name="errStr">archdesc must have scope and content
+                    element.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
         <xsl:if test="not(accessrestrict)">
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">archdesc</xsl:with-param>
-                <xsl:with-param name="errStr">archdesc must have at least one accessrestrict child element.</xsl:with-param>
+                <xsl:with-param name="errStr">archdesc must have at least one accessrestrict child
+                    element.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -108,7 +111,8 @@
 
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">archdesc</xsl:with-param>
-                <xsl:with-param name="errStr">did/origination must have at least one of persname, corpname, or famname as child element.</xsl:with-param>
+                <xsl:with-param name="errStr">did/origination must have at least one of persname,
+                    corpname, or famname as child element.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -123,7 +127,8 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">component</xsl:with-param>
                 <xsl:with-param name="errStr">c[@id="<xsl:value-of select="@id"/>
-"] contains more than 3 container elements.</xsl:with-param>
+ "] contains more
+                    than 3 container elements.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -132,7 +137,8 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">component</xsl:with-param>
                 <xsl:with-param name="errStr">c[@id="<xsl:value-of select="@id"/>
-"] contains more than 1 unittitle.</xsl:with-param>
+ "] contains more
+                    than 1 unittitle.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -142,7 +148,8 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">component</xsl:with-param>
                 <xsl:with-param name="errStr">c[@id="<xsl:value-of select="@id"/>
-"] has series nested inside series.</xsl:with-param>
+ "] has series
+                    nested inside series.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -150,7 +157,8 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">component</xsl:with-param>
                 <xsl:with-param name="errStr">c[@id="<xsl:value-of select="@id"/>
-"] is a subseries NOT nested inside a series.</xsl:with-param>
+ "] is a subseries
+                    NOT nested inside a series.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -158,7 +166,8 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">component</xsl:with-param>
                 <xsl:with-param name="errStr">c[@id="<xsl:value-of select="@id"/>
-"] is a file not a child of another c.</xsl:with-param>
+ "] is a file not a
+                    child of another c.</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
 
@@ -172,17 +181,19 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">component</xsl:with-param>
                 <xsl:with-param name="errStr">c[@id="<xsl:value-of select="ancestor::c[1]/@id"/>
-"]//                <xsl:value-of select="name(.)"></xsl:value-of> contains no text.</xsl:with-param>
+                    "]//                <xsl:value-of select="name(.)"/>
+ contains no text.</xsl:with-param>
         </xsl:call-template>
     </xsl:if>
 
     <!-- Test that barcodes are valid -->
-    <xsl:if test="@label[contains(.,'[')] and not(matches(@label,'\[(RS|UA|OH|RH|UT|AD|10)\d{8}\]'))">
+    <xsl:if test="@label[contains(.,'[')] and not(matches(@label,'\[(RS|UA|OH|RH|UT|AD|EA|CR|10)\d{8}\]'))">
         <xsl:call-template name="errorMsg">
             <xsl:with-param name="tag">component</xsl:with-param>
             <xsl:with-param name="errStr">Malformed barcode: "<xsl:value-of select="@label"/>
-" in c[@id="<xsl:value-of select="ancestor::c[1]/@id"/>
-"]</xsl:with-param>
+ "
+                    in c[@id="<xsl:value-of select="ancestor::c[1]/@id"/>
+ "]</xsl:with-param>
     </xsl:call-template>
 </xsl:if>
 
@@ -194,7 +205,8 @@
     <xsl:call-template name="errorMsg">
         <xsl:with-param name="tag">data</xsl:with-param>
         <xsl:with-param name="errStr">
-            <xsl:value-of select="name()"></xsl:value-of> contains no text.</xsl:with-param>
+            <xsl:value-of select="name()"/>
+ contains no text.</xsl:with-param>
     </xsl:call-template>
 </xsl:if>
 
@@ -208,7 +220,7 @@
         <xsl:with-param name="tag">structure</xsl:with-param>
         <xsl:with-param name="errStr">
             <xsl:value-of select="name()"/>
-  must be a descendant of did.</xsl:with-param>
+ must be a descendant of did.</xsl:with-param>
     </xsl:call-template>
 </xsl:if>
 
@@ -223,8 +235,9 @@
         <xsl:call-template name="errorMsg">
             <xsl:with-param name="tag">title</xsl:with-param>
             <xsl:with-param name="errStr">@                <xsl:value-of select="name()"/>
- ≠ 'italic' (<xsl:value-of select="normalize-space(parent::title)"/>
-).</xsl:with-param>
+ ≠ 'italic'
+                            (                <xsl:value-of select="normalize-space(parent::title)"/>
+                        ).</xsl:with-param>
         </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
@@ -232,8 +245,9 @@
             <xsl:call-template name="errorMsg">
                 <xsl:with-param name="tag">title</xsl:with-param>
                 <xsl:with-param name="errStr">@                    <xsl:value-of select="name()"/>
- not allowed (<xsl:value-of select="normalize-space(parent::title)"/>
-).</xsl:with-param>
+ not allowed
+                                (                    <xsl:value-of select="normalize-space(parent::title)"/>
+                            ).</xsl:with-param>
             </xsl:call-template>
         </xsl:if>
     </xsl:otherwise>
@@ -274,7 +288,7 @@
 <xsl:for-each select="$pNode/ancestor-or-self::*">
     <xsl:text>/</xsl:text>
     <xsl:variable name="nodeName">
-        <xsl:value-of select="name()"></xsl:value-of>
+        <xsl:value-of select="name()"/>
     </xsl:variable>
     <xsl:value-of select="$nodeName"/>
     <xsl:text>[</xsl:text>
