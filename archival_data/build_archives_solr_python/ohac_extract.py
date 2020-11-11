@@ -12,14 +12,12 @@ def main():
     my_path = os.path.dirname(__file__)
 
     # extract_script_path = '/cul/cul0/ldpd/ccoh/fetchOralHistoryRecords'
-    extract_script_path = os.path.join(
-        my_path, './fetchOralHistoryRecords')  # TEST
-    # marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
-    marc_output_path = '../output/ohac_marc.xml'  # TEST
-    # solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
-    solr_output_path = '../output/ohac_solr.xml'  # TEST
+    extract_script_path = os.path.join(my_path, './fetchOralHistoryRecords')
+    marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
+    marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc_clean.xml'
+    solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
-    saxon_path = '../../resources/saxon-9.8.0.12-he.jar'  # TEST
+    saxon_path = '../../resources/saxon-9.8.0.12-he.jar'
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
 
     # remove existing file so fetchOralHistoryRecords won't fail.
@@ -34,12 +32,12 @@ def main():
     print(acfa.run_bash(the_shell_command))
 
     # Do regex to remove some illegal characters. See ACFA-270.
-    acfa.sanitize_xml(marc_output_path, marc_output_path)
+    acfa.sanitize_xml(marc_output_path, marc_output_clean_path)
 
     print('Transforming MARC to SOLR XML...')
 
     response = acfa.run_saxon(
-        saxon_path, marc_output_path, xslt_path, solr_output_path)
+        saxon_path, marc_output_clean_path, xslt_path, solr_output_path)
     print(response)
     if response.find('SAXON ERROR') > -1:
         return []
