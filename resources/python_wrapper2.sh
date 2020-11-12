@@ -107,6 +107,8 @@ echo " " >> $log_file
 echo "===================" >> $log_file
 
 
+echo Running $@ >> $log_file
+
 # python $py_script &>> $log_file
 python_exec $py_script
 
