@@ -1,4 +1,5 @@
 #!/bin/bash
+. /home/ldpdapp/.bashrc
 
 # Generic wrapper for running Python scripts using a virtual environment and sending log to designated recipient.
 #
@@ -54,19 +55,19 @@ shift $((OPTIND -1))
 function python_exec()
 # Function to execute a python script (arg1) and distinguish any errors from stdout  
 {
-    echo $@
-    # PYTHON_ERROR=false
-    # STDERR=''
-    # STDOUT=''
-    # local OUTPUT
-    # local RESULT
+    PYTHON_ERROR=false
+    STDERR=''
+    STDOUT=''
+    local OUTPUT
+    local RESULT
     # if RESULT=$(python $1 2>&1); then
-    #     STDOUT="$RESULT"
-    # else
-    #     rc=$?
-    #     PYTHON_ERROR=true
-    #     STDERR="$RESULT"
-    # fi
+    if RESULT=$(python $@ 2>&1); then
+        STDOUT="$RESULT"
+    else
+        rc=$?
+        PYTHON_ERROR=true
+        STDERR="$RESULT"
+    fi
 
 }
 
