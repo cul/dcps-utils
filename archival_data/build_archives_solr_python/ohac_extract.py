@@ -17,7 +17,7 @@ def main():
     marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc_clean.xml'
     solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
-    saxon_path = '../../resources/saxon-9.8.0.12-he.jar'
+    saxon_path = '/opt/dcps/resources/saxon-9.8.0.12-he.jar'
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
 
     # remove existing file so fetchOralHistoryRecords won't fail.
