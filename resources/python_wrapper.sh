@@ -1,4 +1,5 @@
 #!/bin/bash
+. /home/ldpdapp/.bashrc
 
 # Generic wrapper for running Python scripts using a virtual environment and sending log to designated recipient.
 #
@@ -59,17 +60,16 @@ function python_exec()
     STDOUT=''
     local OUTPUT
     local RESULT
-    if RESULT=$(python $1 2>&1); then
+    # if RESULT=$(python $1 2>&1); then
+    # if RESULT=$(python $@ 2>&1); then
+    if RESULT=$(python $1 $2 2>&1); then
         STDOUT="$RESULT"
-        # OUTPUT="$RESULT"
     else
         rc=$?
         PYTHON_ERROR=true
         STDERR="$RESULT"
-        # OUTPUT="$STDERR"
     fi
 
-    # return "$OUTPUT"
 }
 
 
@@ -82,7 +82,7 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 py_env=$SCRIPTPATH/pyvenv_ldpdapp
 
 # Name of python script to run
-py_script=$1
+py_script=$@
 py_script_name=`basename "$1"`
 
 # Log file location (gets replaced with each run)
@@ -107,6 +107,8 @@ echo " " >> $log_file
 
 echo "===================" >> $log_file
 
+
+echo Running $@ >> $log_file # Test
 
 # python $py_script &>> $log_file
 python_exec $py_script
