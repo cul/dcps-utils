@@ -82,7 +82,7 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 py_env=$SCRIPTPATH/pyvenv_ldpdapp
 
 # Name of python script to run
-py_script=$1
+py_script=$@
 py_script_name=`basename "$1"`
 
 # Log file location (gets replaced with each run)
