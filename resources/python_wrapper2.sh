@@ -61,7 +61,8 @@ function python_exec()
     local OUTPUT
     local RESULT
     # if RESULT=$(python $1 2>&1); then
-    if RESULT=$(python $@ 2>&1); then
+    # if RESULT=$(python $@ 2>&1); then
+    if RESULT=$(python $1 $2 2>&1); then
         STDOUT="$RESULT"
     else
         rc=$?
@@ -107,7 +108,7 @@ echo " " >> $log_file
 echo "===================" >> $log_file
 
 
-echo Running $@ >> $log_file
+echo Running $@ >> $log_file # Test
 
 # python $py_script &>> $log_file
 python_exec $py_script
