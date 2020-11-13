@@ -6,8 +6,12 @@
 # Put python script name in first argument when running, e.g., 
 # nohup ./python_wrapper.sh /path/to/script.py &
 #
-# Run in "test mode":
+# Run in "test mode" -t to have notifications sent to the test email only:
 # nohup ./python_wrapper.sh -t /path/to/script.py &
+# 
+# Use the -e flag to load the owner's .bashrc environment.
+#
+# Silent mode (-s) will only send notification if an exception is thrown in Python.
 
 
 # Generalizable option handler
@@ -16,8 +20,6 @@ NOTIFICATION=true # report will be sent in notificaiton email
 # emails for production use -- may be overridden by -t flag
 mail_from=asops@library.columbia.edu
 mail_to=asops@library.columbia.edu
-# mail_from=dwh2128@columbia.edu  # test
-# mail_to=dwh2128@columbia.edu # test
 
 
 while getopts ":stpeh" opt; do
@@ -33,7 +35,7 @@ while getopts ":stpeh" opt; do
     mail_from=dwh2128@columbia.edu
     mail_to=dwh2128@columbia.edu
       ;;
-    p ) # process option p
+    p ) # process option p (No longer supported!)
     myOpt=productionMode
       ;;
     e ) # process option e: Load user's bash environment.

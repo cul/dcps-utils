@@ -1,7 +1,6 @@
 # build.py
 import sys
 import os
-# import string
 import acfa
 import archival_collections_extract
 import ohac_extract
@@ -9,9 +8,11 @@ import ohac_extract
 
 def main():
     solr_index_envs = []
-    if sys.argv[1]:
-        # solr_index_envs = string.split(sys.argv[1], ',')
+    if len(sys.argv) > 1:
         solr_index_envs = sys.argv[1].split(',')
+    else:
+        # Exit because there was no argument dev|test|prod.
+        sys.exit("Error: No solr_index_env argument(s) provided!")
     solr_update_urls = ["http://ldpd-solr-" + solr_index_env +
                         "1.cul.columbia.edu:8983/solr/archives_portal/update" for solr_index_env in solr_index_envs]
     for solr_xml_path in archival_collections_extract.main():
