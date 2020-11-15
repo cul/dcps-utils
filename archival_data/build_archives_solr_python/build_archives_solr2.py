@@ -6,12 +6,13 @@ import acfa
 sys.path.insert(1, '/opt/dcps/archivesspace/as_reports')
 import digester
 
+my_name = __file__
+script_name = os.path.basename(my_name)
+my_path = os.path.dirname(__file__)
+
 
 def main():
 
-    my_name = __file__
-    script_name = os.path.basename(my_name)
-    my_path = os.path.dirname(__file__)
 
     solr_index_envs = []
     if len(sys.argv) > 1:
