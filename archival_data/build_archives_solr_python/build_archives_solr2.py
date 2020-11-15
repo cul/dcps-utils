@@ -1,6 +1,7 @@
 import sys
 import os
 import acfa
+import re
 # module for reporting;
 # TODO: reorganize into importable resources package.
 sys.path.insert(1, '/opt/dcps/archivesspace/as_reports')
