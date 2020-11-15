@@ -9,9 +9,9 @@ def run_bash(cmd, errorPrefix=''):
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
     if result[1]:  # error
-        # return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
-        raise Exception(errorPrefix + 'ERROR: ' +
-                        str(result[1].decode('utf-8')))
+        return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
+        # raise Exception(errorPrefix + 'ERROR: ' +
+        #                 str(result[1].decode('utf-8')))
     else:
         return result[0].decode('utf-8')
 
