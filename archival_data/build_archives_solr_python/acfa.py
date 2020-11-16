@@ -13,7 +13,7 @@ def run_bash(cmd, errorPrefix=''):
         # raise Exception(errorPrefix + 'ERROR: ' +
         #                 str(result[1].decode('utf-8')))
     else:
-        print(result[0].decode('utf-8'))
+        print(result[0].decode('utf-8')) # test
         return result[0].decode('utf-8')
 
 
