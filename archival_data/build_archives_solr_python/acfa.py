@@ -35,8 +35,9 @@ def sanitize_xml(in_path, out_path):
         content = f.read()
     repl = re.subn(r"[\x01-\x08\x0b\x0c\x0e-\x1f]",
                    r"?", content, flags=re.DOTALL)
-    if repl[1] > 0:
-        print("Warning: Replaced " +
-              str(repl[1]) + " illegal characters in " + in_path)
     with open(out_path, "w+") as f:
         f.write(repl[0])
+    if repl[1] > 0:
+        return "Warning: Replaced " +
+              str(repl[1]) + " illegal characters in " + in_path
+
