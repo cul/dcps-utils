@@ -38,6 +38,5 @@ def sanitize_xml(in_path, out_path):
     with open(out_path, "w+") as f:
         f.write(repl[0])
     if repl[1] > 0:
-        return "WARNING: Replaced " +
-              str(repl[1]) + " illegal characters in " + in_path
+        return "WARNING: Replaced " + str(repl[1]) + " illegal characters in " + in_path
 
