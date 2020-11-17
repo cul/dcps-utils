@@ -59,7 +59,7 @@ def archival_collections_extract():
     ]
 
     transform_paths = []
-    error_pattern = re.compile("^SAXON ERROR")
+    # error_pattern = re.compile("^SAXON ERROR")
     for r in the_repos:
         raw_file_path = marc_data_folder + '/' + r['data_file']
         clean_file_path = marc_data_folder + '/' + r['clean_file']
@@ -80,7 +80,7 @@ def archival_collections_extract():
             saxon_path, clean_file_path, xslt_path, out_path, theParams=the_params)
 
         print(response)
-        if not error_pattern.match(response):
+        if "ERROR" not in response:
             transform_paths.append(out_path)
     return transform_paths
 
@@ -119,7 +119,7 @@ def ohac_extract():
     response = acfa.run_saxon(
         saxon_path, marc_output_clean_path, xslt_path, solr_output_path)
     print(response)
-    if response.find('SAXON ERROR') > -1:
+    if "ERROR" in response:
         return []
     else:
         return [solr_output_path]

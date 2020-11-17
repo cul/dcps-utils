@@ -26,13 +26,10 @@ def run_bash(cmd, errorPrefix=''):
 #     return run_bash(cmd, 'SAXON ')
 
 
-def run_saxon(saxonPath, inFile, transformFile, outFile, theParams=" "):
+def run_saxon(saxonPath, inFile, transformFile, outFile, theParams=' '):
     # TODO: Test error parsing.
     # Process an XSLT transformation. Use None for outFile to send to stdout.
-    if outFile:
-        outStr = " > " + outFile
-    else:
-        outStr = " "
+    outStr = " > " + outFile if outFile else " "
     cmd = (
         "java -jar "
         + saxonPath
