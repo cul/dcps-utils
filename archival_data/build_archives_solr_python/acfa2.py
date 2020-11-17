@@ -9,16 +9,15 @@ def run_bash(cmd, errorPrefix=''):
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
     #DEBUG
-    print("0: " + fix_cr(str(result[0].decode('utf-8'))) )
-    print("1: " + fix_cr(str(result[1].decode('utf-8'))) )
+    # print("0: " + fix_cr(str(result[0].decode('utf-8'))) )
+    # print("1: " + fix_cr(str(result[1].decode('utf-8'))) )
     if result[1]:  # error
         # print(errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8')))
-        return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
-        # raise Exception(errorPrefix + 'ERROR: ' +
-        #                 str(result[1].decode('utf-8')))
-    else:
-        print(result[0].decode('utf-8')) # test
-        return result[0].decode('utf-8')
+        # return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
+        raise Exception(errorPrefix + 'ERROR: ' +
+                        fix_cr(str(result[1].decode('utf-8'))))
+    print(result[0].decode('utf-8')) # test
+    return result[0].decode('utf-8')
 
 
 def run_saxon(saxonPath, inFile, transformFile, outFile, theParams=' '):
@@ -37,12 +36,12 @@ def run_post(solr_xml_path, solr_update_url):
     p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
-    if '200' not in str(result[0].decode('utf-8')) and '201' not in str(result[0].decode('utf-8')):
+    if '300' not in str(result[0].decode('utf-8')) and '301' not in str(result[0].decode('utf-8')):
         raise Exception('SOLR ERROR: Reponse other than 200/201!')
     elif 'Error' in str(result[1].decode('utf-8')):
         raise Exception('SOLR ERROR: ' +
-                        str(result[1].decode('utf-8')))
-    print(result[0].decode('utf-8')) # test
+                        fix_cr(str(result[1].decode('utf-8'))))
+    # print(result[0].decode('utf-8')) # test
     return result[0].decode('utf-8')
 
 
