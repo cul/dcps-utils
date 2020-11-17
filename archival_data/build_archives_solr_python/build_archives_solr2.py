@@ -70,7 +70,10 @@ def archival_collections_extract():
         print('Processing ' + r['data_file'] + '...')
 
         # strip out bad characters if any. See ACFA-270.
-        acfa.sanitize_xml(raw_file_path, clean_file_path)
+        res = acfa.sanitize_xml(raw_file_path, clean_file_path)
+        if res:
+            print(res)
+            digester.post_digest(script_name,res) # reporting
 
         # transform to solr xml
         response = acfa.run_saxon(
@@ -108,6 +111,7 @@ def ohac_extract():
     # Do regex to remove some illegal characters. See ACFA-270.
     res = acfa.sanitize_xml(marc_output_path, marc_output_clean_path)
     if res:
+        print(res)
         digester.post_digest(script_name,res) # reporting
 
     print('Transforming MARC to SOLR XML...')
