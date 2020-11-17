@@ -38,7 +38,7 @@ def sanitize_xml(in_path, out_path):
     with open(in_path, "r") as f:
         content = f.read()
     repl = re.subn(r"[\x01-\x08\x0b\x0c\x0e-\x1f]",
-                   r"?", content, flags=re.DOTALL)
+                   "?", content, flags=re.DOTALL)
     with open(out_path, "w+") as f:
         f.write(repl[0])
     if repl[1] > 0:
