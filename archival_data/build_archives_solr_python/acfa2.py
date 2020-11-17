@@ -33,13 +33,12 @@ def run_saxon(saxonPath, inFile, transformFile, outFile, theParams=' '):
 #     return run_bash(cmd, 'SOLR ')
 
 def run_post(solr_xml_path, solr_update_url):
-    cmd = 'curl -i -X POST {0} -H "Content-Type: text/xml" --data-binary "@{1}"'.format(
-        solr_update_url, solr_xml_path)
-        p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    cmd = 'curl -i -X POST {0} -H "Content-Type: text/xml" --data-binary "@{1}"'.format(solr_update_url, solr_xml_path)
+    p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
-    if not ('200' in result[0] or '201' in result[0]):
-        raise Exception('SOLR ERROR: Reponse other than 200!')
+    if '200' not in result[0] and '201' not in result[0]:
+        raise Exception('SOLR ERROR: Reponse other than 200/201!')
     elif 'Error' in result[1]:
         raise Exception('SOLR ERROR: ' +
                         str(result[1].decode('utf-8')))
