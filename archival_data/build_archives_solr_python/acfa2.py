@@ -45,4 +45,4 @@ def sanitize_xml(in_path, out_path):
         return "WARNING: Replaced " + str(repl[1]) + " illegal characters in " + in_path
 
 def fix_cr(_str):
-    return re.subn(r"\x0D", r"\n", _str, flags=re.DOTALL)[0]
+    return re.sub(r"\x0D", "\n", _str, flags=re.DOTALL)[0]
