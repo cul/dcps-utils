@@ -8,8 +8,11 @@ def run_bash(cmd, errorPrefix=''):
     p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
+    #DEBUG
+    print("0: " + str(result[0].decode('utf-8')))
+    print("1: " + str(result[1].decode('utf-8')))
     if result[1]:  # error
-        print(errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8')))
+        # print(errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8')))
         return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
         # raise Exception(errorPrefix + 'ERROR: ' +
         #                 str(result[1].decode('utf-8')))

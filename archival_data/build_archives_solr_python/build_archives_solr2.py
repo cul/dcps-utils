@@ -102,7 +102,7 @@ def ohac_extract():
     print('Extracting OHAC MARC data from Voyager...')
 
     res = acfa.run_bash(the_shell_command)
-    print(res)
+    # print(res)
     digester.post_digest(script_name,res) # reporting
 
     # Do regex to remove some illegal characters. See ACFA-270.
