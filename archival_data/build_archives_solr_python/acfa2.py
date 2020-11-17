@@ -9,8 +9,8 @@ def run_bash(cmd, errorPrefix=''):
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
     #DEBUG
-    print("0: " + str(result[0].decode('utf-8')))
-    print("1: " + str(result[1].decode('utf-8')))
+    print("0: " + fix_cr(str(result[0].decode('utf-8'))) )
+    print("1: " + fix_cr(str(result[1].decode('utf-8'))) )
     if result[1]:  # error
         # print(errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8')))
         return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
@@ -44,3 +44,5 @@ def sanitize_xml(in_path, out_path):
     if repl[1] > 0:
         return "WARNING: Replaced " + str(repl[1]) + " illegal characters in " + in_path
 
+def fix_cr(_str):
+    return re.subn(r"\x0D", r"\x0A", _str, flags=re.DOTALL)[0]
