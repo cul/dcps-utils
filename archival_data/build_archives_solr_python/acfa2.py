@@ -88,7 +88,7 @@ def run_post(solr_xml_path, solr_update_url):
     elif 'Error' in str(result[1].decode('utf-8')):
         raise Exception('SOLR ERROR: ' +
                         fix_cr(str(result[1].decode('utf-8'))))
-    print(fix_cr(str(result[1].decode('utf-8')))))
+    print(fix_cr(str(result[1].decode('utf-8'))))
     return result[0].decode('utf-8')
 
 
