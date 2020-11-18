@@ -85,7 +85,7 @@ my $bibCount = 0;
 foreach my $bib ( (@bibListOral, @bibListOralDigital ) ) {
 # foreach my $bib ( (@bibListOralOff ) ) {
   $bibCount++;
-  print "$bibCount...\n" if ($bibCount % 1000) == 0;
+  # print "$bibCount...\n" if ($bibCount % 1000) == 0;
   my $marc = getBib($bib);
   $batch->write($marc);
 
