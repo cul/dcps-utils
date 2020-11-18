@@ -79,6 +79,7 @@ def run_saxon(saxonPath, inFile, transformFile, outFile, theParams=' '):
 
 def run_post(solr_xml_path, solr_update_url):
     cmd = 'curl -i -X POST {0} -H "Content-Type: text/xml" --data-binary "@{1}"'.format(solr_update_url, solr_xml_path)
+    print(cmd)
     p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     result = p.communicate()
@@ -87,6 +88,7 @@ def run_post(solr_xml_path, solr_update_url):
     elif 'Error' in str(result[1].decode('utf-8')):
         raise Exception('SOLR ERROR: ' +
                         fix_cr(str(result[1].decode('utf-8'))))
+    print(fix_cr(str(result[1].decode('utf-8')))))
     return result[0].decode('utf-8')
 
 

@@ -14,7 +14,6 @@ my_path = os.path.dirname(__file__)
 
 def main():
 
-
     solr_index_envs = []
     if len(sys.argv) > 1:
         solr_index_envs = sys.argv[1].split(',')
