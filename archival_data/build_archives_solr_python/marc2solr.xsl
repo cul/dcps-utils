@@ -18,6 +18,8 @@
 
 
     <xsl:template match="/">
+        <xsl:message>Record count: <xsl:value-of select="count(collection/record)"/></xsl:message>
+        
         <add>
             <xsl:apply-templates select="collection/record"/>
 
