@@ -39,7 +39,7 @@ def main():
     else:
         parent_folder = "/cul/cul0/ldpd/archivesspace/resources"
         sheet_id = "1T3EpIZmnh3Gk-VAIGtvavTQUIpS7AluyKQ8-sJsS8vg"
-        the_repos = [2, 3, 4, 5]
+        the_repos = [2, 3, 4, 5, 6]
 
     output_folder = parent_folder + "/" + today_str
 
