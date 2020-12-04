@@ -52,9 +52,11 @@ begin_of_week = (now1 - datetime.timedelta(day_offset)).date()
 
 the_sheet_rbml = dataSheet(the_sheet_id, 'rbml!A:Z')
 the_sheet_avery = dataSheet(the_sheet_id, 'avery!A:Z')
+the_sheet_rbmlbooks = dataSheet(the_sheet_id, 'rbmlbooks!A:Z')
 
 rbml_acc_file = os.path.join(my_path, 'output/report_rbml_accessions.json')
 avery_acc_file = os.path.join(my_path, 'output/report_avery_accessions.json')
+rbmlbooks_acc_file = os.path.join(my_path, 'output/report_rbmlbooks_accessions.json')
 
 
 print(' ')
@@ -94,6 +96,21 @@ if mode == 'Prod':
         y = json.loads(x)
         if 'error' in y[0]:
             print(y[0]['error'])
+
+    print('Saving RBMLBOOKS accession data to ' + rbmlbooks_acc_file + '....')
+
+    with open(rbmlbooks_acc_file, "w+") as f:
+        try:
+            x = asf.getAccessions(6)
+            f.write(x)
+        except:
+            raise ValueError(
+                "There was an error in getting RBMLBOOKS accession data!")
+
+        y = json.loads(x)
+        if 'error' in y[0]:
+            print(y[0]['error'])
+
 
 print(' ')
 
