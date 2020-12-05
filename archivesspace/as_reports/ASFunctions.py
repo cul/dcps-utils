@@ -66,9 +66,12 @@ def main():
     setServer("Test")
     # print(getArchivalObject2(2, 456421))
 
-    print(getArchivalObjectByRef(2, "266090999677e24ca27d118ab5923dbb"))
+    print(getArchivalObjectByRef(2, "fd30ef92c90442fe861683b81dd1b4e8"))
 
-    print(getEAD(2, 5907))
+    print(getResponse('repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8'))
+
+    print(getArchivalObject(2,'560142'))
+    # print(getEAD(2, 5907))
     # print(unpublishArchivalObject2(2, 456421))
 
     # print(getResource2(2, 5907))
@@ -116,6 +119,17 @@ def deleteArchivalObject(repo, asid):
                          headers=headers).json()
     return json.dumps(deletion)
 
+def getArchivalObjectByRef2(repo, ref):
+    # supply arch obj ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5
+    headers = ASAuthenticate(user, baseURL, password)
+    params = {"ref_id[]": ref}
+    endpoint = "/repositories/" + str(repo) + "/find_by_id/archival_objects"
+    lookup = getIt(baseURL + endpoint, headers=headers, params=params)
+    return lookup
+    # archival_object_uri = lookup["archival_objects"][0]["ref"]
+    # asid = archival_object_uri.split("/")[-1]
+    # output = getArchivalObject(repo, asid)
+    # return output
 
 
 
