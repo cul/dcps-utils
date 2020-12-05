@@ -107,6 +107,16 @@ def postIt(uri_str, headers, data):
 
 
 ###########################
+### TEST
+
+def deleteArchivalObject(repo, asid):
+    headers = ASAuthenticate(user, baseURL, password)
+    endpoint = '/repositories/' + str(repo) + '/archival_objects/' + str(asid)
+    deletion = requests.delete(baseURL + endpoint,
+                         headers=headers).json()
+    return json.dumps(deletion)
+
+
 
 
 #####################################
