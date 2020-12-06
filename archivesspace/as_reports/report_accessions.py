@@ -131,6 +131,11 @@ the_info = [{'repo_name': 'Avery',
              'repo_id': 2,
              'acc_file': rbml_acc_file,
              'the_sheet': the_sheet_rbml
+             },
+            {'repo_name': 'RBMLBOOKS',
+             'repo_id': 6,
+             'acc_file': rbmlbooks_acc_file,
+             'the_sheet': the_sheet_rbmlbooks
              }
             ]
 
