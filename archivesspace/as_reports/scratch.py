@@ -16,24 +16,20 @@ def main():
 
     for r in the_data:
         the_ref = r[2]
-        lookup = json.loads (asf.getResponse('repositories/2/find_by_id/archival_objects?ref_id[]=' + the_ref))
+        asid = get_ao_asid_from_ref(2,the_ref)
 
-        archival_object_uri = lookup["archival_objects"][0]["ref"]
-        asid = archival_object_uri.split("/")[-1]
+        print(','.join([the_ref,asid]))
 
-        ao = json.loads(asf.getArchivalObject(2,asid))
-        print(','.join([the_ref,asid,ao['title']]))
-    # pprint(ao)
-
-
-    # aoref = '21849d537360a6da5b6d900cf561f99f'
-    # aoid = asf.getArchivalObjectByRef(2, aoref)
-    # print(aoid)
-    # deletion = asf.deleteArchivalObject(2, aoid)
     quit()
 
 
 # Functions go here.
+
+def get_ao_asid_from_ref(repo, ref):
+    lookup = json.loads (asf.getResponse('repositories/' + str(repo) + '/find_by_id/archival_objects?ref_id[]=' + ref))
+    uri = lookup["archival_objects"][0]["ref"]
+    return uri.split("/")[-1]
+
 
 if __name__ == "__main__":
     main()
