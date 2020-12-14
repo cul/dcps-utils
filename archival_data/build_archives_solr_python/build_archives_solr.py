@@ -14,10 +14,6 @@ my_path = os.path.dirname(__file__)
 reporting = False
 
 def main():
-    solr_index_envs = ['dev', 'test']
-    global reporting
-    if 'test' in solr_index_envs:
-        reporting = True
 
     solr_index_envs = []
     if len(sys.argv) > 1:
@@ -26,7 +22,10 @@ def main():
         # Exit because there was no argument dev|test|prod.
         sys.exit("Error: No solr_index_env argument(s) provided!")
 
-
+    global reporting
+    if 'test' in solr_index_envs:
+        print("Reporting == True!") # test
+        reporting = True
 
     solr_update_urls = ["http://ldpd-solr-" + solr_index_env +
                         "1.cul.columbia.edu:8983/solr/archives_portal/update" for solr_index_env in solr_index_envs]
