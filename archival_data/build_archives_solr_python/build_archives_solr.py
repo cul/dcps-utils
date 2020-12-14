@@ -11,9 +11,11 @@ my_name = __file__
 script_name = os.path.basename(my_name)
 my_path = os.path.dirname(__file__)
 
+reporting = False
 
 def main():
     solr_index_envs = ['dev', 'test']
+    global reporting
     if 'test' in solr_index_envs:
         reporting = True
 
@@ -72,7 +74,10 @@ def archival_collections_extract():
         out_path = solr_output_folder + '/' + repo_id + '_solr' + '.xml'
         the_params = 'repo=' + repo_id
 
-        print('Processing ' + r['data_file'] + '...')
+        repo_msg = 'Processing ' + r['data_file'] + '...'
+        print(repo_msg)
+        if reporting:
+            digester.post_digest(script_name,repo_msg) # reporting
 
         # strip out bad characters if any. See ACFA-270.
         res = acfa.sanitize_xml(raw_file_path, clean_file_path)
