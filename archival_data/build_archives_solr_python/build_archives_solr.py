@@ -22,8 +22,9 @@ def main():
         # Exit because there was no argument dev|test|prod.
         sys.exit("Error: No solr_index_env argument(s) provided!")
 
+    # Only turn on digest reporting if running on Prod.
     global reporting
-    if 'test' in solr_index_envs:
+    if 'prod' in solr_index_envs:
         print("Reporting == True!") # test
         reporting = True
 
