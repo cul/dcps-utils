@@ -79,6 +79,7 @@ def archival_collections_extract():
             saxon_path, clean_file_path, xslt_path, out_path, theParams=the_params)
 
         print(response)
+        digester.post_digest(script_name,response) # reporting
         if "ERROR" not in response:
             transform_paths.append(out_path)
     return transform_paths

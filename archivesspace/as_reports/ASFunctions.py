@@ -114,10 +114,10 @@ def postIt(uri_str, headers, data):
 
 def deleteArchivalObject(repo, asid):
     headers = ASAuthenticate(user, baseURL, password)
+    print(headers)
     endpoint = '/repositories/' + str(repo) + '/archival_objects/' + str(asid)
-    deletion = requests.delete(baseURL + endpoint,
-                         headers=headers).json()
-    return json.dumps(deletion)
+    deletion = requests.delete(baseURL + endpoint, headers=headers)
+    return deletion
 
 def getArchivalObjectByRef2(repo, ref):
     # supply arch obj ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5
