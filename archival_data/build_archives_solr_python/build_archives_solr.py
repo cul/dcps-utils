@@ -13,6 +13,9 @@ my_path = os.path.dirname(__file__)
 
 
 def main():
+    solr_index_envs = ['dev', 'test']
+    if 'test' in solr_index_envs:
+        reporting = True
 
     solr_index_envs = []
     if len(sys.argv) > 1:
@@ -20,6 +23,9 @@ def main():
     else:
         # Exit because there was no argument dev|test|prod.
         sys.exit("Error: No solr_index_env argument(s) provided!")
+
+
+
     solr_update_urls = ["http://ldpd-solr-" + solr_index_env +
                         "1.cul.columbia.edu:8983/solr/archives_portal/update" for solr_index_env in solr_index_envs]
     for solr_xml_path in archival_collections_extract():
@@ -72,14 +78,16 @@ def archival_collections_extract():
         res = acfa.sanitize_xml(raw_file_path, clean_file_path)
         if res:
             print(res)
-            digester.post_digest(script_name,res) # reporting
+            if reporting:
+                digester.post_digest(script_name,res) # reporting
 
         # transform to solr xml
         response = acfa.run_saxon(
             saxon_path, clean_file_path, xslt_path, out_path, theParams=the_params)
 
         print(response)
-        digester.post_digest(script_name,response) # reporting
+        if reporting:
+            digester.post_digest(script_name,response) # reporting
         if "ERROR" not in response:
             transform_paths.append(out_path)
     return transform_paths
@@ -106,13 +114,15 @@ def ohac_extract():
 
     res = acfa.run_bash(the_shell_command)
     # print(res)
-    digester.post_digest(script_name,res) # reporting
+    if reporting:
+        digester.post_digest(script_name,res) # reporting
 
     # Do regex to remove some illegal characters. See ACFA-270.
     res = acfa.sanitize_xml(marc_output_path, marc_output_clean_path)
     if res:
         print(res)
-        digester.post_digest(script_name,res) # reporting
+        if reporting:
+            digester.post_digest(script_name,res) # reporting
 
     print('Transforming MARC to SOLR XML...')
 
