@@ -1,6 +1,7 @@
 import sys
 import os
-import acfa as acfa
+import datetime
+import acfa
 import re
 # module for reporting;
 # TODO: reorganize into importable resources package.
@@ -46,6 +47,9 @@ def main():
         acfa.run_post(delete_xml_path, solr_update_url)
         # commit the deletes
         acfa.run_post(commit_xml_path, solr_update_url)
+
+    if reporting:
+        digester.post_digest(script_name, script_name + ' completed at ' + str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
 
 
 def archival_collections_extract():
