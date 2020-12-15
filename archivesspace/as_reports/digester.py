@@ -28,10 +28,10 @@ def main():
     print(' ')
     print(' ')
 
-    x = get_digest()
+
 
     # Format the digest content.
-    for s in x:
+    for s in get_digest():
         print(icons['right-triangle'] + ' *** OUTPUT FROM ' + s['script'] + ' ***')
         for m in s['msg']:
             print('• ' + m['value'])
