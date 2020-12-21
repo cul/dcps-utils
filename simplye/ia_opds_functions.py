@@ -27,6 +27,9 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
 
 def main():
 
+    now = datetime.today().isoformat()  # Current timestamp in ISO
+    print(now)
+
     quit()
 
 
