@@ -27,7 +27,10 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
 
 def main():
 
-    now = datetime.today().isoformat()  # Current timestamp in ISO
+    now = datetime.today().strftime('%Y-%m-%dT%H:%M:%S.%fZ')  # Current timestamp in ISO
+    print(now)
+
+    now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
     print(now)
 
     quit()
@@ -98,13 +101,14 @@ def parse_920(_str):
     return results
 
 
-def build_feed(pickle_path, collection_abbr, chunk_size=500):
+def build_feed(pickle_path, collection_abbr, chunk_size=100):
     # Saves output to XML file(s). Returns error data (missing elements, etc.)
     # to be sent to report datasheet.
     global clio_string
     clio_string = "Go to catalog record in CLIO."
     global now
-    now = datetime.today().isoformat()  # Current timestamp in ISO
+    # now = datetime.today().isoformat()  # Current timestamp in ISO
+    now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%fZ") # Current timestamp in ISO
     base_url = "https://ebooks.library.columbia.edu/static-feeds/ia/" + collection_abbr + "/"
     base_folder = 'output/ia/' + collection_abbr + '/'
 
@@ -185,7 +189,8 @@ def make_entry(_parent, _dict, _bibid):
         errors.append('Error: No data!')
         return errors
 
-    ia_base_url = 'https://archive.org/download/'
+    # ia_base_url = 'https://archive.org/download/'
+    ia_base_url = 'https://archive.org/'
     # define namespaces
     ns_bibframe = "{%s}" % NSMAP["bibframe"]
     ns_dcterms = "{%s}" % NSMAP["dcterms"]
@@ -221,11 +226,11 @@ def make_entry(_parent, _dict, _bibid):
         errors.append('creator')
 
     # Links to resources
-    add_subelement_static(entry, "link", href=ia_base_url + str(_dict['identifier']) + "/" + str(
+    add_subelement_static(entry, "link", href=ia_base_url + "cors/" + str(_dict['identifier']) + "/" + str(
         _dict['identifier']) + ".pdf", type="application/pdf", rel="http://opds-spec.org/acquisition/open-access")
-    add_subelement_static(entry, "link", href=ia_base_url + str(
+    add_subelement_static(entry, "link", href=ia_base_url + "download/" + str(
         _dict['identifier']) + "/page/cover_medium.jpg", type="image/jpeg", rel="http://opds-spec.org/image")
-    add_subelement_static(entry, "link", href=ia_base_url + str(
+    add_subelement_static(entry, "link", href=ia_base_url + "download/" + str(
         _dict['identifier']) + "/page/cover_medium.jpg", type="image/jpeg", rel="http://opds-spec.org/image/thumbnail")
 
     # === OPDS spec on dates ===

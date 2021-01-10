@@ -63,10 +63,12 @@ except Exception as e:
 
 def main():
     # Test functions here.
-    setServer("Test")
+    setServer("Prod")
     # print(getArchivalObject2(2, 456421))
+    from pprint import pprint
+    pprint(json.loads(getArchivalObjectByRef(2, "f600a2fa87f5def358831bd367753f2a")))
 
-    print(getArchivalObjectByRef(2, "fd30ef92c90442fe861683b81dd1b4e8"))
+    quit()
 
     print(getResponse('repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8'))
 

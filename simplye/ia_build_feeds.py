@@ -16,7 +16,8 @@ the_collections = [('output/ia/ia_avt_feed.pickle', 'avt'),
                    ('output/ia/ia_mrp_feed.pickle', 'mrp'),
                    ('output/ia/ia_mwm_feed.pickle', 'mwm'),
                    ('output/ia/ia_wwi_feed.pickle', 'wwi'),
-                   ('output/ia/ia_clc_feed.pickle', 'clc'), ]
+                   ('output/ia/ia_clc_feed.pickle', 'clc'), 
+                   ]
 
 for col in the_collections:
     x = ia.build_feed(col[0], col[1])
