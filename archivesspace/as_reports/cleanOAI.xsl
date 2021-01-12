@@ -233,19 +233,21 @@
         </datafield>
     </xsl:template>
     
-    <xsl:template match="marc:datafield[@tag='099'][contains(ancestor::record/header/identifier, 'repositories/6')]">
-    <!--   Omit 099    -->
+    <!--   Omit 099 and 035   -->
+    <xsl:template match="marc:datafield[@tag=('099','035')][contains(ancestor::record/header/identifier, 'repositories/6')]">
     </xsl:template>
-    
-    <xsl:template match="marc:datafield[@tag=('035', '099')][contains(ancestor::record/header/identifier, 'repositories/6')]">
+   
+   
+        <!--   Omit 035 if has only bibid    -->
+   <!--
+    <xsl:template match="marc:datafield[@tag='035'][contains(ancestor::record/header/identifier, 'repositories/6')]">
         <xsl:if test="contains(marc:subfield[@code='a'], 'CULASPC')">
             <datafield ind1="{@ind1}" ind2="{@ind2}" tag="035">
                 <xsl:apply-templates/>
             </datafield>
         </xsl:if>
-        <!--   Omit 035 if has only bibid    -->
     </xsl:template>
-    
+-->    
 
 
     <xsl:template match="marc:datafield[starts-with(@tag,'1')][contains(ancestor::record/header/identifier, 'repositories/6')]">
