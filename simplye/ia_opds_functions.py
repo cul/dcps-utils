@@ -33,6 +33,9 @@ def main():
     now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
     print(now)
 
+    x = get_item('ldpd_11562549_000').metadata
+    print(x)
+
     quit()
 
 
