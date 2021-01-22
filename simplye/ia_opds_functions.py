@@ -27,14 +27,13 @@ NSMAP = {None: "http://www.w3.org/2005/Atom",
 
 def main():
 
-    now = datetime.today().strftime('%Y-%m-%dT%H:%M:%S.%fZ')  # Current timestamp in ISO
-    print(now)
+    x = util.unpickle_it('output/ia/ia_ccny_feed.pickle')
 
-    now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
-    print(now)
-
-    x = get_item('ldpd_11562549_000').metadata
-    print(x)
+    # from pprint import pprint
+    # pprint(x)
+    for r in x:
+        print(r['identifier'])
+        print(r['cul_metadata']['bibid'])
 
     quit()
 

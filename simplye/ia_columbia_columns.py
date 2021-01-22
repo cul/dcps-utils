@@ -13,7 +13,7 @@ the_err_sheet = dataSheet(sheet_id, 'errors!A:Z')
 
 output_folder = 'output/ia/'
 feed_stem = 'ia_clc_feed'
-collection_title = 'Columbia University Columns'
+collection_title = 'Columbia Library Columns'
 abbr = 'clc'
 
 pickle_path = output_folder + feed_stem + '.pickle'
