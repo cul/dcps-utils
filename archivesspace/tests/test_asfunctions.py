@@ -8,7 +8,7 @@ import json
 
 asf.setServer('Prod')
 
+
 def test_get_resource():
     x = json.loads(asf.getResource(2, 5907))
-    assert x['id_0'] == '4078601', "BIBID should be 4078601"
-
+    assert x['id_0'] == '4078601', "BIBID should be 4078601X"
