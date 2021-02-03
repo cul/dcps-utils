@@ -2,7 +2,7 @@
 ## Purpose
 This python script builds the solr index for the archives portal and oral history portal via an xslt transformation of MARC-XML outputs generated upstream.
 ## Requirements
-Python 3. Does not require any extra installed modules. 
+Python 3. Reporting (via digester.py script) requires sheetFeeder library. Run in virtual Python environment (/opt/dcps/resources/pyvenv_ldpdapp).
 
 ## Setup
 ### Saxon 9
