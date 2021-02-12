@@ -7,6 +7,7 @@ import os.path
 import csv
 import uuid
 import time
+import random
 
 
 # If modifying these scopes, delete the file token.json.
@@ -24,8 +25,8 @@ TOKEN = os.path.join(my_path, "token.json")
 
 # Set defaults for how to handle http errors.
 retry_default = True
-interval_default = 5
-max_tries_default = 3
+interval_default = 0.5
+max_tries_default = 5
 
 
 # Classes and Methods
@@ -76,7 +77,8 @@ def main():
     # Test some code here if you like.
 
     # the_sheet = dataSheet("19zHqOJt9XUGfrfzAXzOcr4uARgCGbyYiOtoaOCAMP7s", "Sheet1!A:Z")
-    the_sheet = dataSheet("1yLW0HjCc0XnwCTTsv6-BFpN4WLSumXJm9aF973UjG9o", "Sheet1!A:Z")
+    the_sheet = dataSheet(
+        "1yLW0HjCc0XnwCTTsv6-BFpN4WLSumXJm9aF973UjG9o", "Sheet1!A:Z")
 
     print(the_sheet.getData())
 
@@ -90,19 +92,10 @@ def main():
 
 
 ###########
-## TEST
 
-
-# def set_config(
-#     retry=True, interval=interval_default, max_tries=max_tries_default,
-# ):
-#     global retry_default
-#     global interval_default
-#     global max_tries_default
-#     retry_default = retry
-#     interval_default = interval
-#     max_tries_default = max_tries
-#     pass
+def backoff(num, multiplier=2):
+    # incremental backoff function for retries
+    return (num * multiplier) + (random.randint(0, 1000) / 1000)
 
 
 def execute_request(
@@ -120,6 +113,7 @@ def execute_request(
             print(e)
             print("Retrying after " + str(interval) + " sec ...")
             time.sleep(interval)
+            interval = backoff(interval)
             attempt += 1
     # Failed all attempts.
     raise sheetFeederError(
@@ -129,9 +123,6 @@ def execute_request(
         + str(attempt)
         + " tries."
     )
-
-
-###########
 
 
 def getSheetInfo(sheet):
@@ -210,11 +201,7 @@ def getSheetDataColumns(sheet, range):
         )
     )
     the_data = execute_request(request)
-    if "values" in the_data:
-        response = the_data["values"]
-    else:
-        response = []
-    return response
+    return the_data["values"] if "values" in the_data else []
 
 
 def getSheetDataSeries(sheet, range):
@@ -257,7 +244,8 @@ def getSheetURL(sheet, range):
             + str(sheet_id)
         )
     except StopIteration:
-        raise sheetFeederError("The tab '" + tab_name + "' could not be found!")
+        raise sheetFeederError("The tab '" + tab_name +
+                               "' could not be found!")
     return the_url
 
 
@@ -319,9 +307,7 @@ def sheetLookup(sheet, range, search_str, col_search, col_result):
     for aRow in theData:
         if aRow[col_search] == search_str:
             # matching result
-            theResultSet = []
-            for y in returnCols:
-                theResultSet.append(aRow[y])
+            theResultSet = [aRow[y] for y in returnCols]
             theResults.append(theResultSet)
     return theResults
 
@@ -412,7 +398,8 @@ def getMatchingRows(sheet, range, queries, regex=True, operator="or"):
     the_query_pairs = []
     for q in queries:
         # Get list of column indexes for which the head matches query (should usually be just one or none).
-        the_col_indexes = [ind for ind, txt in enumerate(the_heads) if txt == q[0]]
+        the_col_indexes = [ind for ind,
+                           txt in enumerate(the_heads) if txt == q[0]]
         the_query_pairs.append([q[1], the_col_indexes])
 
     # Process each row testing against all query pairs; result is a list of booleans.
@@ -475,8 +462,7 @@ def googleAuth():
         flow = client.flow_from_clientsecrets(CREDENTIALS, SCOPES)
         creds = tools.run_flow(flow, store)
 
-    service = build("sheets", "v4", http=creds.authorize(Http()))
-    return service
+    return build("sheets", "v4", http=creds.authorize(Http()))
 
 
 if __name__ == "__main__":

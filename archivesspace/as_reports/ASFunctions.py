@@ -63,16 +63,26 @@ except Exception as e:
 
 def main():
     # Test functions here.
-    setServer("Prod")
-    # print(getArchivalObject2(2, 456421))
     from pprint import pprint
-    pprint(json.loads(getArchivalObjectByRef(2, "f600a2fa87f5def358831bd367753f2a")))
+    setServer("Test")
+    x = json.loads(getResource(2, 5907))
+    pprint(x)
+    setServer("Prod")
+    x = json.loads(getResource(2, 5907))
+
+    pprint(x)
 
     quit()
 
-    print(getResponse('repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8'))
+    pprint(json.loads(getArchivalObjectByRef(
+        2, "f600a2fa87f5def358831bd367753f2a")))
 
-    print(getArchivalObject(2,'560142'))
+    quit()
+
+    print(getResponse(
+        'repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8'))
+
+    print(getArchivalObject(2, '560142'))
     # print(getEAD(2, 5907))
     # print(unpublishArchivalObject2(2, 456421))
 
@@ -112,7 +122,7 @@ def postIt(uri_str, headers, data):
 
 
 ###########################
-### TEST
+# TEST
 
 def deleteArchivalObject(repo, asid):
     headers = ASAuthenticate(user, baseURL, password)
@@ -120,6 +130,7 @@ def deleteArchivalObject(repo, asid):
     endpoint = '/repositories/' + str(repo) + '/archival_objects/' + str(asid)
     deletion = requests.delete(baseURL + endpoint, headers=headers)
     return deletion
+
 
 def getArchivalObjectByRef2(repo, ref):
     # supply arch obj ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5
@@ -132,7 +143,6 @@ def getArchivalObjectByRef2(repo, ref):
     # asid = archival_object_uri.split("/")[-1]
     # output = getArchivalObject(repo, asid)
     # return output
-
 
 
 #####################################
@@ -194,6 +204,8 @@ def setServer(server):
     global user
     global password
     global config
+    global session_token
+    session_token = ""  # start with fresh auth token
     if server == "Dev":
         baseURL = config["DEV"]["baseURL"]
         user = config["DEV"]["user"]

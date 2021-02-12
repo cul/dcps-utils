@@ -9,6 +9,22 @@ import json
 asf.setServer('Prod')
 
 
-def test_get_resource():
+def test_get_resource_prod():
     x = json.loads(asf.getResource(2, 5907))
-    assert x['id_0'] == '4078601', "BIBID should be 4078601"
+    assert x['id_0'] == '4078601', "Prod: BIBID for resource 2:5907 should be 4078601"
+
+
+asf.setServer('Test')
+
+
+def test_get_resource_test():
+    x = json.loads(asf.getResource(2, 5907))
+    assert x['id_0'] == '4078601', "Test: BIBID for resource 2:5907 should be 4078601"
+
+
+asf.setServer('Dev')
+
+
+def test_get_resource_dev():
+    x = json.loads(asf.getResource(2, 5907))
+    assert x['id_0'] == '4078601', "Dev: BIBID for resource 2:5907 should be 4078601"
