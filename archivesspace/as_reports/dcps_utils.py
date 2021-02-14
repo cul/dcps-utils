@@ -224,6 +224,8 @@ def get_status(url):
 
 
 def check_clio_status(bibid):
+    # If using in bulk, add sleep of .5 sec or more to
+    # avoid "too many requests" error
     return get_status('https://clio.columbia.edu/catalog/' + str(bibid))
 
 
