@@ -10,7 +10,7 @@ test_sheet = dataSheet(sheet_id, sheet_range)
 
 def test_read_sheet_rows():
     the_data = test_sheet.getData()
-    assert len(the_data) == 3, "Count of rows should be 3"
+    assert len(the_data) == 4, "Count of rows should be 4"
 
 
 def test_read_sheet_columns():
