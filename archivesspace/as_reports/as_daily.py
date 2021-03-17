@@ -41,7 +41,9 @@ def main():
 
     # Select date interval for harvest
     # TODO: change this to be controlled by param file.
-    date_params = "-f " + yesterday
+
+    # date_params = "-f " + yesterday
+    date_params = " "  # Use this to harvest all records.
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
