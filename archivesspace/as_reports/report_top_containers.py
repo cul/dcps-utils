@@ -15,9 +15,10 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
 
+    sheet_id = '13OakaS0KHtxcaV9HGWDP9Zfnz9TVJR_9zGUnKrb90jk'  # test
     # sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
     # sheet_id = '1e43qKYvqGQFOMxA70U59yPKPs18y-k3ohRNdU-qrTH0'  # test
-    sheet_id = '1OhgJ4g-SWbmnms4b3ppe_0rBT7hz9jfQp6P8mADcatk'  # batch template doc
+    # sheet_id = '1OhgJ4g-SWbmnms4b3ppe_0rBT7hz9jfQp6P8mADcatk'  # batch template doc
 
     container_sheet = dataSheet(
         sheet_id, 'containers!A:Z')
@@ -51,7 +52,7 @@ def main():
 
         # list of top containers
         the_refs = json.loads(asf.getResponse(the_query))
-
+        print(the_refs)
         cnt = 0
         for r in the_refs:
             cnt += 1
