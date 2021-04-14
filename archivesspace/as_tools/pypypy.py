@@ -68,7 +68,7 @@ print(' ')
 
 print("testing saxon ...")
 
-saxon_path = os.path.join(my_path, '/opt/dcps/resources/saxon-9.8.0.12-he.jar')
+saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
 source_dir = '/cul/cul0/ldpd/archivesspace/oai'
 in_file = os.path.join(source_dir, '20201111.asClean.xml')
 xsl_file = os.path.join(my_path, '../xslt/extract-bibids.xsl')
