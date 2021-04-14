@@ -17,7 +17,7 @@ def main():
     saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
 
     # XSLT for transformation. Accepts a path in param in which to save the html snippet files.
-    xsl_filename = 'generate_browse_list.xsl'
+    xsl_filename = '../xslt/generate_browse_list.xsl'
 
     xsl_path = os.path.join(my_path, xsl_filename)
 

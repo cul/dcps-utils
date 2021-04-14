@@ -21,7 +21,7 @@ def main():
     destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
     # destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
     # destination_folder = "./"  # test
-    xslt_path = os.path.join(my_path, "cleanOAI.xsl")
+    xslt_path = os.path.join(my_path, "../xslt/cleanOAI.xsl")
     saxon_path = os.path.join(
         my_path, "/opt/dcps/resources/saxon-9.8.0.12-he.jar")
     # saxon_path = os.path.join(my_path, "../resources/saxon-9.8.0.12-he.jar")  # test

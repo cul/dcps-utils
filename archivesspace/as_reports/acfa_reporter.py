@@ -39,7 +39,7 @@ def main():
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
 
     # XSLT file to generate report
-    marc_xslt_file = os.path.join(my_path, 'marcDataExtract.xsl')
+    marc_xslt_file = os.path.join(my_path, '../xslt/marcDataExtract.xsl')
 
     if mode == 'Prod':
         # OAI XML file to use as source

@@ -93,9 +93,9 @@ def main():
     jing_path = os.path.join(
         my_path, "../../resources/jing-20091111/bin/jing.jar")
 
-    schema_filename = "schemas/cul_as_ead.rng"
+    schema_filename = "../schemas/cul_as_ead.rng"
     # schematron_filename = "schemas/cul_as_ead.sch"
-    xslt_filename = "schemas/cul_as_ead.xsl"
+    xslt_filename = "../schemas/cul_as_ead.xsl"
     schema_path = os.path.join(my_path, schema_filename)
     xslt_path = os.path.join(my_path, xslt_filename)
 

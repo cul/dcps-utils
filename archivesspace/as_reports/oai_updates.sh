@@ -66,8 +66,8 @@ esac
 subject="${SCRIPTNAME} is done."
 
 
-xsl_file1=$SCRIPTPATH/extract-bibids.xsl
-xsl_file2=$SCRIPTPATH/generateLookupTable.xsl
+xsl_file1=$SCRIPTPATH/../xslt/extract-bibids.xsl
+xsl_file2=$SCRIPTPATH/../xslt/generateLookupTable.xsl
 
 saxon_jar=/opt/dcps/resources/saxon-9.8.0.12-he.jar
 
