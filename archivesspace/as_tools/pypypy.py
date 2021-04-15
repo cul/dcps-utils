@@ -21,7 +21,6 @@ logging.basicConfig(level=logging.ERROR)
 # logging.error('¥¥¥¥¥¥ This is an error message')
 # logging.critical('¥¥¥¥¥¥ This is a critical message')
 
-
 my_name = __file__
 
 # This makes sure the script can be run from any working directory and still find related files.
