@@ -38,9 +38,9 @@ def main():
     print("====== Syncing files from production cache... ======")
     print(" ")
 
-    keyPath = "/home/ldpdapp/.ssh/id_dsa"
+    keyPath = "/home/ldpdserv/.ssh/id_dsa"
     fromPath = (
-        "ldpdapp@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
+        "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
     )
     toPath = "/cul/cul0/ldpd/archivesspace/"
 
