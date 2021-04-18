@@ -56,7 +56,7 @@ def oai_harvest(
         return result[0].decode("utf-8")
 
 
-def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
+def saxon_process(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
     # Process an XSLT transformation. Use None for outFile to send to stdout.
     if outFile:
         outStr = " > " + outFile
@@ -90,7 +90,7 @@ def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
-def saxon_process2(saxonPath, inFile, transformFile, outFile, theParams=" "):
+def saxon_process2(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
     # TODO: Test error parsing.
     # Process an XSLT transformation. Use None for outFile to send to stdout.
     if outFile:
@@ -139,7 +139,7 @@ def saxon_process2(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
-def jing_process(jingPath, filePath, schemaPath, compact=False):
+def jing_process(filePath, schemaPath, compact=False, jingPath=config['FILES']['jingPath']):
     # Process an xml file against a schema (rng or schematron) using Jing.
     # Tested with jing-20091111.
     # https://code.google.com/archive/p/jing-trang/downloads
@@ -162,7 +162,7 @@ def jing_process(jingPath, filePath, schemaPath, compact=False):
         return result[0].decode("utf-8")
 
 
-def rsync_process(keyPath, fromPath, toPath, options):
+def rsync_process(fromPath, toPath, options, keyPath=config["FILES"]["keyPath"]):
     if keyPath:
         cmd = (
             '/usr/bin/rsync -zarvhe "ssh -i '

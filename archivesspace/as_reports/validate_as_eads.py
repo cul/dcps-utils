@@ -38,7 +38,7 @@ def main():
     print("====== Syncing files from production cache... ======")
     print(" ")
 
-    keyPath = "/home/ldpdserv/.ssh/id_dsa"
+    # keyPath = "/home/ldpdserv/.ssh/id_dsa"
     fromPath = (
         "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
     )
@@ -46,7 +46,7 @@ def main():
 
     myOptions = "--exclude 'clio*'"
 
-    x = util.rsync_process(keyPath, fromPath, toPath, myOptions)
+    x = util.rsync_process(fromPath, toPath, myOptions)
     print(x)
 
     print(" ")
@@ -87,11 +87,11 @@ def main():
         "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
 
     # Set path to saxon processor for evaluator xslt
-    saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
+    # saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
 
     # Set path to schema validator (Jing)
-    jing_path = os.path.join(
-        my_path, "../../resources/jing-20091111/bin/jing.jar")
+    # jing_path = os.path.join(
+    #     my_path, "../../resources/jing-20091111/bin/jing.jar")
 
     schema_filename = "../schemas/cul_as_ead.rng"
     # schematron_filename = "schemas/cul_as_ead.sch"
@@ -127,9 +127,7 @@ def main():
         "warning type",
     ]
 
-    the_results = []
-
-    the_results.append(the_heads)
+    the_results = [the_heads]
 
     # counters
     parse_errors = 0
@@ -141,7 +139,7 @@ def main():
         file_name = a_file.split("/")[-1]
         bibid = file_name.split("_")[-1].split(".")[0]
 
-        validation_result = util.jing_process(jing_path, a_file, schema_path)
+        validation_result = util.jing_process(a_file, schema_path)
 
         if "fatal:" in validation_result:
             # It's a parsing error.
@@ -171,16 +169,12 @@ def main():
         else:
             validation_result_clean = validation_result
 
-        if wf_status == False:
-            schematron_result_clean = "-"
-            warning_types = []
-
-        else:
+        if wf_status:
 
             # schematron_result = util.jing_process(
             #     jing_path, a_file, schematron_path)
             schematron_result = util.saxon_process(
-                saxon_path, a_file, xslt_path, None)
+                a_file, xslt_path, None)
 
             if schematron_result:
                 # It's a schematron violiation.
@@ -205,6 +199,10 @@ def main():
                 schematron_result_clean = ""
                 warning_types = ""
 
+        else:
+            schematron_result_clean = "-"
+            warning_types = []
+
         the_file_data = [
             bibid,
             file_name,
@@ -227,32 +225,32 @@ def main():
 
     now2 = datetime.datetime.now()
     end_time = str(now2)
-    my_duration = str(now2 - now1)
-
-    the_log = (
-        "EADs from "
-        + data_folder
-        + " evaluated by "
-        + schema_filename
-        + " and "
-        + xslt_filename
-        + ". Parse errors: "
-        + str(parse_errors)
-        + ". Schema errors: "
-        + str(validation_errors)
-        + ". Schematron warnings: "
-        + str(sch_warnings)
-        + ". Start: "
-        + start_time
-        + ". Finished: "
-        + end_time
-        + " (duration: "
-        + my_duration
-        + ")."
-    )
-
     if "log" in the_tabs:
         log_range = "log!A:A"
+        my_duration = str(now2 - now1)
+
+        the_log = (
+            "EADs from "
+            + data_folder
+            + " evaluated by "
+            + schema_filename
+            + " and "
+            + xslt_filename
+            + ". Parse errors: "
+            + str(parse_errors)
+            + ". Schema errors: "
+            + str(validation_errors)
+            + ". Schematron warnings: "
+            + str(sch_warnings)
+            + ". Start: "
+            + start_time
+            + ". Finished: "
+            + end_time
+            + " (duration: "
+            + my_duration
+            + ")."
+        )
+
         # today = datetime.datetime.today().strftime('%c')
         dataSheet(the_data_sheet.id, log_range).appendData([[the_log]])
     else:
