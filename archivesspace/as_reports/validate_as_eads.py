@@ -134,6 +134,7 @@ def main():
     validation_errors = 0
     sch_warnings = 0
 
+    # TODO: refactor into function(s)
     for a_file in the_file_paths:
         the_file_data = []
         file_name = a_file.split("/")[-1]
