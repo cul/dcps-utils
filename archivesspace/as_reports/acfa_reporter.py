@@ -36,7 +36,7 @@ def main():
     ########################
 
     # Set path to Saxon processor
-    saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
+    # saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
 
     # XSLT file to generate report
     marc_xslt_file = os.path.join(my_path, '../xslt/marcDataExtract.xsl')
@@ -69,7 +69,7 @@ def main():
     the_sheets['oai_last'].clear()
     the_sheets['oai_last'].appendData(the_old_data)
     # Process OAI MARC and output to CSV
-    util.saxon_process(saxon_path, oai_file, marc_xslt_file, the_outpath)
+    util.saxon_process(oai_file, marc_xslt_file, the_outpath)
 
     # clear data from "new" sheet
     the_sheets['oai'].clear()

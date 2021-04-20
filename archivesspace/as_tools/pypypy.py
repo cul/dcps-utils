@@ -72,7 +72,7 @@ source_dir = '/cul/cul0/ldpd/archivesspace/oai'
 in_file = os.path.join(source_dir, '20201111.asClean.xml')
 xsl_file = os.path.join(my_path, '../xslt/extract-bibids.xsl')
 params = 'filename=' + in_file
-x = util.saxon_process2(saxon_path, in_file, xsl_file, None, theParams=params)
+x = util.saxon_process2(in_file, xsl_file, None, theParams=params)
 print(x)
 
 print("This is a test!")

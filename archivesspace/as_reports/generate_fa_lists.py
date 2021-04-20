@@ -14,7 +14,7 @@ def main():
 
     storage_dir = "/cul/cul0/ldpd/archivesspace/"
 
-    saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
+    # saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
 
     # XSLT for transformation. Accepts a path in param in which to save the html snippet files.
     xsl_filename = '../xslt/generate_browse_list.xsl'
@@ -38,7 +38,7 @@ def main():
 
     params = "output_dir=" + output_path
 
-    x = util.saxon_process(saxon_path, input_path, xsl_path, None, params)
+    x = util.saxon_process(input_path, xsl_path, None, params)
     print(x)
 
 
