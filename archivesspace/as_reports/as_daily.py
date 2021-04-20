@@ -3,11 +3,14 @@
 import os
 import datetime
 import dcps_utils as util
-from as_reports_param import time_offset
+# from as_reports_param import time_offset
 import digester  # for generating composite digest of report info.
 
 
 def main():
+
+    # Set to True to harvest complete set; otherwise will select based on date.
+    HARVESTALL = True
 
     my_name = __file__
     my_path = os.path.dirname(__file__)
@@ -42,8 +45,10 @@ def main():
     # Select date interval for harvest
     # TODO: change this to be controlled by param file.
 
-    date_params = "-f " + yesterday
-    # date_params = " "  # Use this to harvest all records.
+    if HARVESTALL == True:
+        date_params = " "  # Use this to harvest all records.
+    else:
+        date_params = "-f " + yesterday
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
