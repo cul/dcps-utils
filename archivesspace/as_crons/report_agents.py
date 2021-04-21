@@ -35,7 +35,9 @@ the_info = [
 
 for i in the_info:
     print("Getting agents: " + i["name"])
-    out_path = os.path.join(my_path, "output/agents_" + i["name"] + ".pickle")
+    # out_path = os.path.join(my_path, "output/agents_" + i["name"] + ".pickle")
+    out_folder = "/cul/cul0/ldpd/archivesspace/agents"
+    out_path = os.path.join(out_path, "agents_" + i["name"] + ".pickle")
 
     # Get a list of agent ids from API
     agents_list = json.loads(asf.getResponse(i["endpoint"] + "?all_ids=true"))
@@ -78,9 +80,9 @@ the_fields = [
 ]
 
 
-family_agents_file = os.path.join(my_path, "output/agents_families.pickle")
-corp_agents_file = os.path.join(my_path, "output/agents_corporate.pickle")
-persons_agents_file = os.path.join(my_path, "output/agents_persons.pickle")
+family_agents_file = os.path.join(out_path, "agents_families.pickle")
+corp_agents_file = os.path.join(out_path, "agents_corporate.pickle")
+persons_agents_file = os.path.join(out_path, "agents_persons.pickle")
 
 
 the_stuff = [
