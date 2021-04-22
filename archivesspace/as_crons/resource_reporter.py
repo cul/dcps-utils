@@ -5,7 +5,7 @@ import ASFunctions as asf
 import json
 from pprint import pprint
 import dpath.util
-from sheetFeeder import dataSheet # test
+from sheetFeeder import dataSheet
 import os.path
 from datetime import datetime, date, timedelta
 from shutil import make_archive, move, rmtree
@@ -13,10 +13,9 @@ import digester  # for generating composite digest of report info.
 
 
 def main():
-    # Main code goes here.
 
     # set to True to use test sheet and test json folder location.
-    debug = False
+    debug = True
 
     asf.setServer("Prod")
 
@@ -76,6 +75,7 @@ def main():
         # ["enum_2", "/user_defined/enum_2"],
         ["description status", "/user_defined/enum_3"],
         ["collecting area", "/user_defined/enum_4"],
+        ["level", "level"]
         # (Scope and bioghist notes are added in separately below.)
     ]
 
