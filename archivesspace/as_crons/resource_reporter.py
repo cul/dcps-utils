@@ -15,7 +15,7 @@ import digester  # for generating composite digest of report info.
 def main():
 
     # set to True to use test sheet and test json folder location.
-    debug = True
+    debug = False
 
     asf.setServer("Prod")
 
