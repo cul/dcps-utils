@@ -54,9 +54,13 @@ the_sheet_rbml = dataSheet(the_sheet_id, 'rbml!A:Z')
 the_sheet_avery = dataSheet(the_sheet_id, 'avery!A:Z')
 the_sheet_rbmlbooks = dataSheet(the_sheet_id, 'rbmlbooks!A:Z')
 
-rbml_acc_file = os.path.join(my_path, 'output/report_rbml_accessions.json')
-avery_acc_file = os.path.join(my_path, 'output/report_avery_accessions.json')
-rbmlbooks_acc_file = os.path.join(my_path, 'output/report_rbmlbooks_accessions.json')
+# Location to save output
+out_folder = "/cul/cul0/ldpd/archivesspace/accessions"
+
+rbml_acc_file = os.path.join(out_folder, 'report_rbml_accessions.json')
+avery_acc_file = os.path.join(out_folder, 'report_avery_accessions.json')
+rbmlbooks_acc_file = os.path.join(
+    out_folder, 'report_rbmlbooks_accessions.json')
 
 
 print(' ')
