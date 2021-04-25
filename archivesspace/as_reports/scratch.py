@@ -3,11 +3,21 @@ from sheetFeeder import dataSheet
 import json
 from pprint import pprint
 import requests
+import os
+import dcps_utils as util
 
 
 def main():
     # Main code goes here.
+    my_path = os.path.dirname(__file__)
 
+    xml_path = os.path.join(my_path, '../xslt/EAD_SAMPLE.xml')
+    schema_path = os.path.join(my_path, "../schemas/cul_as_ead.rng")
+
+    x = util.jing_process(xml_path, schema_path)
+
+    print(x)
+    quit()
     asf.setServer("Test")
 
     x = asf.getResource(2, 4967)
