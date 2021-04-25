@@ -201,10 +201,6 @@ def main():
     quit()
 
 
-if __name__ == "__main__":
-    main()
-
-
 def log_it(script, log):
     if DEBUG is not True:
         digester.post_digest(script, log)
@@ -234,3 +230,7 @@ def get_agent_data(name, endpoint, pickle_path):
     # Save data as pickle
     util.pickle_it(agent_data, pickle_path)
     return agent_data
+
+
+if __name__ == "__main__":
+    main()
