@@ -26,19 +26,32 @@ end_time = ""  # set later
 
 asf.setServer("Prod")  # AS instance: Prod | Dev | Test
 
+out_folder = "/cul/cul0/ldpd/archivesspace/agents"
+
+family_agents_file = os.path.join(out_folder, "agents_families.pickle")
+corp_agents_file = os.path.join(out_folder, "agents_corporate.pickle")
+persons_agents_file = os.path.join(out_folder, "agents_corporate.pickle")
 
 the_info = [
-    {"name": "families", "endpoint": "/agents/families", },
-    {"name": "corporate", "endpoint": "/agents/corporate_entities", },
-    {"name": "persons", "endpoint": "/agents/people", },
+    {"name": "families",
+     "endpoint": "/agents/families",
+     "pickle": family_agents_file
+     },
+    {"name": "corporate",
+     "endpoint": "/agents/corporate_entities",
+     "pickle": corp_agents_file
+     },
+    {"name": "persons",
+     "endpoint": "/agents/people",
+     "pickle": persons_agents_file
+     },
 ]
+
 
 for i in the_info:
     print("Getting agents: " + i["name"])
     # out_path = os.path.join(my_path, "output/agents_" + i["name"] + ".pickle")
-    out_folder = "/cul/cul0/ldpd/archivesspace/agents"
-    out_path = os.path.join(out_folder, "agents_" + i["name"] + ".pickle")
-
+    # out_path = os.path.join(out_folder, "agents_" + i["name"] + ".pickle")
     # Get a list of agent ids from API
     agents_list = json.loads(asf.getResponse(i["endpoint"] + "?all_ids=true"))
 
@@ -47,20 +60,17 @@ for i in the_info:
     print(agent_cnt_str)
     digester.post_digest(script_name, agent_cnt_str)
 
-    cnt = 0
-
     agent_data = []
 
     # Loop through agent ids and get full record from API.
-    for agent in agents_list:
-        cnt += 1
+    for cnt, agent in enumerate(agents_list):
         # print("COUNT: " + str(cnt))
         # print("Agent # " + str(agent))
         x = asf.getResponse(i["endpoint"] + "/" + str(agent))
         agent_data.append(json.loads(x))
 
     # Save data as pickle
-    util.pickle_it(agent_data, out_path)
+    util.pickle_it(agent_data, i["pickle"])
 
     print(" ")
 
@@ -79,12 +89,7 @@ the_fields = [
     ["last_modified", "system_mtime"],
 ]
 
-
-family_agents_file = os.path.join(out_path, "agents_families.pickle")
-corp_agents_file = os.path.join(out_path, "agents_corporate.pickle")
-persons_agents_file = os.path.join(out_path, "agents_persons.pickle")
-
-
+# TODO: refactor to consolidate with the_info.
 the_stuff = [
     {
         "name": "families",
@@ -140,10 +145,7 @@ for i in the_stuff:
 print(the_record_cnts)
 print(" ".join(the_record_cnts))
 
-cnt_str = ""
-
-for k, v in the_record_cnts.items():
-    cnt_str += k + "=" + v + ". "
+cnt_str = "".join(k + "=" + v + ". " for k, v in the_record_cnts.items())
 
 # print(cnt_str)
 
