@@ -79,38 +79,12 @@ def main():
     for i in the_info:
         print("Getting agents: " + i["name"])
         agent_data = get_agent_data(i["name"], i["endpoint"], i["pickle"])
-        # out_path = os.path.join(my_path, "output/agents_" + i["name"] + ".pickle")
-        # out_path = os.path.join(out_folder, "agents_" + i["name"] + ".pickle")
-        # Get a list of agent ids from API
-        # agents_list = json.loads(asf.getResponse(i["endpoint"] + "?all_ids=true"))
-
-        # agent_cnt_str = "Number of agents (" + \
-        #     i['name'] + "): " + str(len(agents_list))
-        # print(agent_cnt_str)
-        # digester.post_digest(script_name, agent_cnt_str)
-
-        # agent_data = []
-
-        # # Loop through agent ids and get full record from API.
-        # for cnt, agent in enumerate(agents_list):
-        #     # print("COUNT: " + str(cnt))
-        #     # print("Agent # " + str(agent))
-        #     x = asf.getResponse(i["endpoint"] + "/" + str(agent))
-        #     agent_data.append(json.loads(x))
-
-        # # Save data as pickle
-        # util.pickle_it(agent_data, i["pickle"])
 
         print(" ")
 
         # Report the saved data to Google Sheet
 
         the_sheet = i["sheet"]
-
-        # open pickled file
-        # agent_data = util.unpickle_it(i["pickle"])
-        # with open(i["pickle"], "rb") as f:
-        #     agent_data = pickle.load(f)
 
         the_heads = [x[0] for x in the_fields]
         the_output = [the_heads]
@@ -132,24 +106,6 @@ def main():
         the_sheet.clear()
         save = the_sheet.appendData(the_output)
         print(save)
-
-    # the_stuff = [
-    #     {
-    #         "name": "families",
-    #         "sheet": dataSheet(sheet_id, "families!A:Z"),
-    #         "pickle": family_agents_file,
-    #     },
-    #     {
-    #         "name": "corporate",
-    #         "sheet": dataSheet(sheet_id, "corporate!A:Z"),
-    #         "pickle": corp_agents_file,
-    #     },
-    #     {
-    #         "name": "persons",
-    #         "sheet": dataSheet(sheet_id, "persons!A:Z"),
-    #         "pickle": persons_agents_file,
-    #     },
-    # ]
 
     # Generate log
 
