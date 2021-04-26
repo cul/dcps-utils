@@ -11,7 +11,7 @@ import digester  # for generating composite digest of report info.
 MY_NAME = __file__
 SCRIPT_NAME = os.path.basename(MY_NAME)
 
-DEBUG = True
+DEBUG = False
 
 
 def main():
@@ -39,7 +39,7 @@ def main():
 
     family_agents_file = os.path.join(out_folder, "agents_families.pickle")
     corp_agents_file = os.path.join(out_folder, "agents_corporate.pickle")
-    persons_agents_file = os.path.join(out_folder, "agents_corporate.pickle")
+    persons_agents_file = os.path.join(out_folder, "agents_persons.pickle")
 
     the_info = [
         {"name": "families",
@@ -53,8 +53,8 @@ def main():
          "pickle": corp_agents_file
          },
         {"name": "persons",
-         "sheet": dataSheet(sheet_id, "persons!A:Z"),
          "endpoint": "/agents/people",
+         "sheet": dataSheet(sheet_id, "persons!A:Z"),
          "pickle": persons_agents_file
          },
     ]
