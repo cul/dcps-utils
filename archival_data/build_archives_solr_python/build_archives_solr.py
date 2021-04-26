@@ -26,7 +26,7 @@ def main():
     # Only turn on digest reporting if running on Prod.
     global reporting
     if 'prod' in solr_index_envs:
-        print("Reporting == True!")  # test
+        print("Reporting == True!")
         reporting = True
 
     solr_update_urls = ["http://ldpd-solr-" + solr_index_env +
@@ -54,10 +54,10 @@ def main():
 
 
 def archival_collections_extract():
-    marc_data_folder = '/cul/cul0/ldpd/archival_data/test/marc/archives_portal'
-    solr_output_folder = '/cul/cul0/ldpd/archival_data/test/solr'
-    # marc_data_folder = '/cul/cul0/ldpd/archival_data/marc/archives_portal'
-    # solr_output_folder = '/cul/cul0/ldpd/archival_data/solr'
+    # marc_data_folder = '/cul/cul0/ldpd/archival_data/test/marc/archives_portal'
+    # solr_output_folder = '/cul/cul0/ldpd/archival_data/test/solr'
+    marc_data_folder = '/cul/cul0/ldpd/archival_data/marc/archives_portal'
+    solr_output_folder = '/cul/cul0/ldpd/archival_data/solr'
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
     saxon_path = '/opt/dcps/resources/saxon-9.8.0.12-he.jar'
     xslt_path = os.path.join(my_path, 'marc2solr.xsl')
@@ -108,12 +108,12 @@ def archival_collections_extract():
 def ohac_extract():
     # extract_script_path = '/cul/cul0/ldpd/ccoh/fetchOralHistoryRecords'
     extract_script_path = os.path.join(my_path, './fetchOralHistoryRecords')
-    marc_output_path = '/cul/cul0/ldpd/archival_data/test/marc/ohac_marc.xml'  # Test
-    # marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
-    marc_output_clean_path = '/cul/cul0/ldpd/archival_data/test/marc/ohac_marc_clean.xml'  # Test
-    # marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc_clean.xml'
-    solr_output_path = '/cul/cul0/ldpd/archival_data/test/solr/ohac_solr.xml'  # Test
-    # solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
+    # marc_output_path = '/cul/cul0/ldpd/archival_data/test/marc/ohac_marc.xml'  # Test
+    marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
+    # marc_output_clean_path = '/cul/cul0/ldpd/archival_data/test/marc/ohac_marc_clean.xml'  # Test
+    marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc_clean.xml'
+    # solr_output_path = '/cul/cul0/ldpd/archival_data/test/solr/ohac_solr.xml'  # Test
+    solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
     saxon_path = '/opt/dcps/resources/saxon-9.8.0.12-he.jar'
     xslt_path = os.path.join(my_path, 'oral2solr.xsl')
