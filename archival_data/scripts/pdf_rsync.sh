@@ -10,4 +10,6 @@ echo "--------------"
 echo $DT
 
 
-/usr/bin/rsync -ave "ssh -i /home/ldpdserv/.ssh/id_rsa" /cul/cul0/ldpd/archival_data/pdfs/ ldpdserv@cunix.cc.columbia.edu:/www/data/cu/libraries/inside/projects/findingaids/scans/pdfs
+# /usr/bin/rsync -ave "ssh -i /home/ldpdserv/.ssh/id_rsa" /cul/cul0/ldpd/archival_data/pdfs/ ldpdserv@cunix.cc.columbia.edu:/www/data/cu/libraries/inside/projects/findingaids/scans/pdfs
+/usr/bin/rsync -ave "ssh -i /home/ldpdapp/.ssh/id_dsa" /cul/cul0/ldpd/archival_data/pdfs/ ldpdapp@cunix.cc.columbia.edu:/www/data/cu/librari
+es/inside/projects/findingaids/scans/pdfs
