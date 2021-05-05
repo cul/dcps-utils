@@ -24,15 +24,11 @@ def main():
     # XSLT_PATH = os.path.join(
     #     MY_PATH, "/Users/dwh2128/Documents/ACFA/TEST/ACFA-289-test-CLIO/acfa-289-test-clio.xslt")
     XSLT_PATH = os.path.join(MY_PATH, "../xslt/bibids_as_list.xsl")
-    # SAXON_PATH = os.path.join(
-    #     MY_PATH, "/opt/dcps/resources/saxon-9.8.0.12-he.jar")
-    # SAXON_PATH = os.path.join(
-    #     MY_PATH, '../../resources/saxon-9.8.0.12-he.jar')  # Test
 
     SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
 
     # Get a list of BIBIDs from stylesheet
-    x = util.saxon_process2(SOURCE_PATH, XSLT_PATH, None)
+    x = util.saxon_process(SOURCE_PATH, XSLT_PATH, None)
     the_deltas = x.split(',')
 
     # Choose one random one to look up

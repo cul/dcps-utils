@@ -73,7 +73,7 @@ print("testing saxon ...")
 in_file = os.path.join(MY_PATH, '../xslt/OAI_SAMPLE.asClean.xml')
 xsl_file = os.path.join(MY_PATH, '../xslt/extract-bibids.xsl')
 params = 'filename=' + in_file
-x = util.saxon_process2(in_file, xsl_file, None, theParams=params)
+x = util.saxon_process(in_file, xsl_file, None, theParams=params)
 print(x)
 
 print("This is a test!")

@@ -56,42 +56,41 @@ def oai_harvest(
         return result[0].decode("utf-8")
 
 
+# def saxon_process(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
+#     # Process an XSLT transformation. Use None for outFile to send to stdout.
+#     if outFile:
+#         outStr = " > " + outFile
+#     else:
+#         outStr = " "
+#     cmd = (
+#         "java -jar "
+#         + saxonPath
+#         + " "
+#         + inFile
+#         + " "
+#         + transformFile
+#         + " "
+#         + theParams
+#         + " "
+#         + "--suppressXsltNamespaceCheck:on"
+#         + outStr
+#     )
+#     # print(cmd)
+#     p = subprocess.Popen(
+#         [cmd],
+#         stdin=subprocess.PIPE,
+#         stdout=subprocess.PIPE,
+#         stderr=subprocess.PIPE,
+#         shell=True,
+#     )
+#     result = p.communicate()
+#     if result[1]:  # error
+#         return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
+#     else:
+#         return result[0].decode("utf-8")
+
+
 def saxon_process(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
-    # Process an XSLT transformation. Use None for outFile to send to stdout.
-    if outFile:
-        outStr = " > " + outFile
-    else:
-        outStr = " "
-    cmd = (
-        "java -jar "
-        + saxonPath
-        + " "
-        + inFile
-        + " "
-        + transformFile
-        + " "
-        + theParams
-        + " "
-        + "--suppressXsltNamespaceCheck:on"
-        + outStr
-    )
-    # print(cmd)
-    p = subprocess.Popen(
-        [cmd],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        shell=True,
-    )
-    result = p.communicate()
-    if result[1]:  # error
-        return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
-    else:
-        return result[0].decode("utf-8")
-
-
-def saxon_process2(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
-    # TODO: Test error parsing.
     # Process an XSLT transformation. Use None for outFile to send to stdout.
     if outFile:
         outStr = " > " + outFile
@@ -254,3 +253,14 @@ def trim_array(data, indices):
         for i in sorted(indices, reverse=True):
             del row[i]
     return new_data
+
+
+def sort_array(data, match_key=0, ignore_heads=False):
+    # Sort an array based on given column (1st one by default)
+    data_sorted = copy.deepcopy(data)
+    if ignore_heads:
+        heads = data_sorted.pop(0)
+    data_sorted.sort(key=lambda x: x[match_key])
+    if ignore_heads:
+        data_sorted.insert(0, heads)
+    return data_sorted

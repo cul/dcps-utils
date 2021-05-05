@@ -38,7 +38,8 @@ def main():
 
     params = "output_dir=" + output_path
 
-    x = util.saxon_process(input_path, xsl_path, None, params)
+    # x = util.saxon_process(input_path, xsl_path, None, params)
+    x = util.saxon_process(input_path, xsl_path, None, theParams=params)
     print(x)
 
 

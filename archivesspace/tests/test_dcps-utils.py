@@ -14,13 +14,16 @@ MY_PATH = os.path.dirname(__file__)
 some_data = [['a', 'b', 'c'], [1, 2, 3], [4, 5, 6],
              [0, 2, 10], [1, 22, 33], [7, 2, 100]]
 
+some_data2 = [[1, 'b', 'c'], [2, 2, 3], [4, 5, 6],
+              [3, 2, 10], [22, 22, 33], [7, 2, 100]]
 
-def test_saxon_process2():
+
+def test_saxon_process():
     # Test XSLT transform using Saxon
     in_file = os.path.join(MY_PATH, '../xslt/OAI_SAMPLE.asClean.xml')
     xsl_file = os.path.join(MY_PATH, '../xslt/extract-bibids.xsl')
     params = 'filename=' + in_file
-    x = util.saxon_process2(in_file, xsl_file, None, theParams=params)
+    x = util.saxon_process(in_file, xsl_file, None, theParams=params)
     assert 'BibID: 4078817' in x
 
 
@@ -56,6 +59,11 @@ def test_dedupe_array():
 def test_trim_array():
     x = util.trim_array(some_data, [1, 2])
     assert x[2] == [4]
+
+
+def test_sort_array():
+    x = util.sort_array(some_data2)
+    assert x[2][0] == 3
 
 
 def test_pickle_it():
