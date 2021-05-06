@@ -4,8 +4,7 @@ import datetime
 import acfa
 import re
 # module for reporting;
-# TODO: reorganize into importable resources package.
-sys.path.insert(1, '/opt/dcps/archivesspace/as_reports')
+# sys.path.insert(1, '/opt/dcps/archivesspace/as_reports')
 import digester
 
 my_name = __file__
@@ -13,6 +12,7 @@ script_name = os.path.basename(my_name)
 my_path = os.path.dirname(__file__)
 
 reporting = False
+
 
 def main():
 
@@ -26,7 +26,7 @@ def main():
     # Only turn on digest reporting if running on Prod.
     global reporting
     if 'prod' in solr_index_envs:
-        print("Reporting == True!") # test
+        print("Reporting == True!")
         reporting = True
 
     solr_update_urls = ["http://ldpd-solr-" + solr_index_env +
@@ -49,10 +49,13 @@ def main():
         acfa.run_post(commit_xml_path, solr_update_url)
 
     if reporting:
-        digester.post_digest(script_name, script_name + ' completed at ' + str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
+        digester.post_digest(script_name, script_name + ' completed at ' +
+                             str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
 
 
 def archival_collections_extract():
+    # marc_data_folder = '/cul/cul0/ldpd/archival_data/test/marc/archives_portal'
+    # solr_output_folder = '/cul/cul0/ldpd/archival_data/test/solr'
     marc_data_folder = '/cul/cul0/ldpd/archival_data/marc/archives_portal'
     solr_output_folder = '/cul/cul0/ldpd/archival_data/solr'
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
@@ -81,14 +84,14 @@ def archival_collections_extract():
         repo_msg = 'Processing ' + r['data_file'] + '...'
         print(repo_msg)
         if reporting:
-            digester.post_digest(script_name,repo_msg) # reporting
+            digester.post_digest(script_name, repo_msg)  # reporting
 
         # strip out bad characters if any. See ACFA-270.
         res = acfa.sanitize_xml(raw_file_path, clean_file_path)
         if res:
             print(res)
             if reporting:
-                digester.post_digest(script_name,res) # reporting
+                digester.post_digest(script_name, res)  # reporting
 
         # transform to solr xml
         response = acfa.run_saxon(
@@ -96,7 +99,7 @@ def archival_collections_extract():
 
         print(response)
         if reporting:
-            digester.post_digest(script_name,response) # reporting
+            digester.post_digest(script_name, response)  # reporting
         if "ERROR" not in response:
             transform_paths.append(out_path)
     return transform_paths
@@ -105,8 +108,11 @@ def archival_collections_extract():
 def ohac_extract():
     # extract_script_path = '/cul/cul0/ldpd/ccoh/fetchOralHistoryRecords'
     extract_script_path = os.path.join(my_path, './fetchOralHistoryRecords')
+    # marc_output_path = '/cul/cul0/ldpd/archival_data/test/marc/ohac_marc.xml'  # Test
     marc_output_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc.xml'
+    # marc_output_clean_path = '/cul/cul0/ldpd/archival_data/test/marc/ohac_marc_clean.xml'  # Test
     marc_output_clean_path = '/cul/cul0/ldpd/archival_data/marc/oral_history_portal/ohac_marc_clean.xml'
+    # solr_output_path = '/cul/cul0/ldpd/archival_data/test/solr/ohac_solr.xml'  # Test
     solr_output_path = '/cul/cul0/ldpd/archival_data/solr/ohac_solr.xml'
     # saxon_path = os.environ['HOME'] + '/lib/saxon-9he.jar'
     saxon_path = '/opt/dcps/resources/saxon-9.8.0.12-he.jar'
@@ -124,14 +130,14 @@ def ohac_extract():
     res = acfa.run_bash(the_shell_command)
     # print(res)
     if reporting:
-        digester.post_digest(script_name,res) # reporting
+        digester.post_digest(script_name, res)  # reporting
 
     # Do regex to remove some illegal characters. See ACFA-270.
     res = acfa.sanitize_xml(marc_output_path, marc_output_clean_path)
     if res:
         print(res)
         if reporting:
-            digester.post_digest(script_name,res) # reporting
+            digester.post_digest(script_name, res)  # reporting
 
     print('Transforming MARC to SOLR XML...')
 

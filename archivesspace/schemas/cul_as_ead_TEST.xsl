@@ -20,6 +20,7 @@
         <xsl:apply-templates select="//container" mode="eval"/>  
         <xsl:apply-templates select="//unittitle | //persname | //corpname | //famname" mode="eval"/>
         <xsl:apply-templates select="//unitdate" mode="eval"/>
+        <xsl:apply-templates select="//title/@*" mode="eval"/>
     </xsl:template>
   
   
@@ -167,7 +168,15 @@
        <xsl:if test="not(normalize-space(.))">
            <xsl:call-template name="errorMsg">
                <xsl:with-param name="tag">component</xsl:with-param>
-               <xsl:with-param name="errStr">c[@id="<xsl:value-of select="ancestor::c[1]/@id"/>"]//<xsl:value-of select="name(.)"></xsl:value-of> contains no text.</xsl:with-param>
+               <xsl:with-param name="errStr">c[@id="<xsl:value-of select="ancestor::c[1]/@id"/>"]//<xsl:value-of select="name(.)"/> contains no text.</xsl:with-param>
+           </xsl:call-template> 
+       </xsl:if>
+       
+       <!-- Test that barcodes are valid -->
+       <xsl:if test="@label[contains(.,'[')] and not(matches(@label,'\[(RS|UA|OH|RH)\d{8}\]'))" >
+           <xsl:call-template name="errorMsg">
+               <xsl:with-param name="tag">component</xsl:with-param>
+               <xsl:with-param name="errStr">Malformed barcode: "<xsl:value-of select="@label"/>" in c[@id="<xsl:value-of select="ancestor::c[1]/@id"/>"]</xsl:with-param>
            </xsl:call-template> 
        </xsl:if>
        
@@ -197,6 +206,29 @@
     </xsl:template>
    
    
+
+   
+    <xsl:template match="title/@*" mode="eval">
+        <xsl:choose>
+            <xsl:when test="name()='render' and not(.='italic')">
+                <xsl:call-template name="errorMsg">
+                    <xsl:with-param name="tag">title</xsl:with-param>
+                    <xsl:with-param name="errStr">@<xsl:value-of select="name()"/> ≠ 'italic' (<xsl:value-of select="normalize-space(parent::title)"/>).</xsl:with-param>
+                </xsl:call-template> 
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:if test="not(name() = ('render','source','authfilenumber') ) ">
+                    <xsl:call-template name="errorMsg">
+                        <xsl:with-param name="tag">title</xsl:with-param>
+                        <xsl:with-param name="errStr">@<xsl:value-of select="name()"/> not allowed (<xsl:value-of select="normalize-space(parent::title)"/>).</xsl:with-param>
+                    </xsl:call-template> 
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:template>
+    
+    
     <!-- ################# -->
   
   

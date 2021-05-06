@@ -1,7 +1,7 @@
 # Requires pytest. Checks basic connectivity and read functions from sample data sheet.
 # If in virtual environment, use 'python -m pytest'.
 
-from as_reports.sheetFeeder import dataSheet
+from sheetFeeder import dataSheet
 
 sheet_id = '19zHqOJt9XUGfrfzAXzOcr4uARgCGbyYiOtoaOCAMP7s'
 sheet_range = 'Sheet1!A:Z'
