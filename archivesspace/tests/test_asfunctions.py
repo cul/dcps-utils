@@ -1,7 +1,7 @@
 # Requires pytest. Checks basic connectivity and read functions from sample data sheet.
 # Run all tests with 'pytest --disable-pytest-warnings'.
 # If in virtual environment, use 'python -m pytest --disable-pytest-warnings'.
-import as_reports.ASFunctions as asf
+import ASFunctions as asf
 import json
 # import logging
 

@@ -3,7 +3,7 @@
 import os
 import datetime
 import dcps_utils as util
-from as_reports_param import time_offset
+# from as_reports_param import time_offset
 import digester  # for generating composite digest of report info.
 
 
@@ -24,10 +24,7 @@ def main():
     destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
     # destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
     # destination_folder = "./"  # test
-    xslt_path = os.path.join(my_path, "cleanOAI.xsl")
-    saxon_path = os.path.join(
-        my_path, "/opt/dcps/resources/saxon-9.8.0.12-he.jar")
-    # saxon_path = os.path.join(my_path, "../resources/saxon-9.8.0.12-he.jar")  # test
+    xslt_path = os.path.join(my_path, "../xslt/cleanOAI.xsl")
 
     out_path_raw = os.path.join(destination_folder, today + ".asRaw.xml")
     out_path_raw_all = os.path.join(
@@ -62,7 +59,7 @@ def main():
     saxon_params = " time_offset=" + time_offset
 
     print("Processing file with XSLT...")
-    x = util.saxon_process(saxon_path, out_path_raw,
+    x = util.saxon_process(out_path_raw,
                            xslt_path, out_path_clean, theParams=saxon_params)
     print(x)
     digester.post_digest(script_name, x)

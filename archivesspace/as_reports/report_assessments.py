@@ -26,8 +26,8 @@ day_offset = 7  # use past seven days, regardless of current day
 print("Script " + my_name + " begun at " + start_time + ". ")
 
 
-output_dir = os.path.join(my_path, "output")
-# TODO: output files to a more useful location.
+# output_dir = os.path.join(my_path, "output")
+output_dir = os.path.join(my_path, "/cul/cul0/ldpd/archivesspace/accessions")
 
 the_repos = [3, 5, 4, 2]
 
@@ -43,4 +43,3 @@ for r in the_repos:
             f.write(x)
         except:
             raise ValueError("There was an error in getting assessment data!")
-

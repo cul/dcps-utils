@@ -85,7 +85,7 @@ SCRIPTNAME=`basename "$0"`
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Python virtual environment to use
-py_env=$SCRIPTPATH/pyvenv_ldpdapp
+py_env=$SCRIPTPATH/pyvenv_${USER}
 
 # Name of python script to run
 py_script=$@

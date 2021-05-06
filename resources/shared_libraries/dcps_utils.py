@@ -56,42 +56,41 @@ def oai_harvest(
         return result[0].decode("utf-8")
 
 
-def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=" "):
-    # Process an XSLT transformation. Use None for outFile to send to stdout.
-    if outFile:
-        outStr = " > " + outFile
-    else:
-        outStr = " "
-    cmd = (
-        "java -jar "
-        + saxonPath
-        + " "
-        + inFile
-        + " "
-        + transformFile
-        + " "
-        + theParams
-        + " "
-        + "--suppressXsltNamespaceCheck:on"
-        + outStr
-    )
-    # print(cmd)
-    p = subprocess.Popen(
-        [cmd],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        shell=True,
-    )
-    result = p.communicate()
-    if result[1]:  # error
-        return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
-    else:
-        return result[0].decode("utf-8")
+# def saxon_process(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
+#     # Process an XSLT transformation. Use None for outFile to send to stdout.
+#     if outFile:
+#         outStr = " > " + outFile
+#     else:
+#         outStr = " "
+#     cmd = (
+#         "java -jar "
+#         + saxonPath
+#         + " "
+#         + inFile
+#         + " "
+#         + transformFile
+#         + " "
+#         + theParams
+#         + " "
+#         + "--suppressXsltNamespaceCheck:on"
+#         + outStr
+#     )
+#     # print(cmd)
+#     p = subprocess.Popen(
+#         [cmd],
+#         stdin=subprocess.PIPE,
+#         stdout=subprocess.PIPE,
+#         stderr=subprocess.PIPE,
+#         shell=True,
+#     )
+#     result = p.communicate()
+#     if result[1]:  # error
+#         return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
+#     else:
+#         return result[0].decode("utf-8")
 
 
-def saxon_process2(saxonPath, inFile, transformFile, outFile, theParams=" "):
-    # TODO: Test error parsing.
+def saxon_process(inFile, transformFile, outFile, theParams=" ", saxonPath=config['FILES']['saxonPath']):
     # Process an XSLT transformation. Use None for outFile to send to stdout.
     if outFile:
         outStr = " > " + outFile
@@ -139,7 +138,7 @@ def saxon_process2(saxonPath, inFile, transformFile, outFile, theParams=" "):
         return result[0].decode("utf-8")
 
 
-def jing_process(jingPath, filePath, schemaPath, compact=False):
+def jing_process(filePath, schemaPath, compact=False, jingPath=config['FILES']['jingPath']):
     # Process an xml file against a schema (rng or schematron) using Jing.
     # Tested with jing-20091111.
     # https://code.google.com/archive/p/jing-trang/downloads
@@ -162,7 +161,7 @@ def jing_process(jingPath, filePath, schemaPath, compact=False):
         return result[0].decode("utf-8")
 
 
-def rsync_process(keyPath, fromPath, toPath, options):
+def rsync_process(fromPath, toPath, options, keyPath=config["FILES"]["keyPath"]):
     if keyPath:
         cmd = (
             '/usr/bin/rsync -zarvhe "ssh -i '
@@ -254,3 +253,14 @@ def trim_array(data, indices):
         for i in sorted(indices, reverse=True):
             del row[i]
     return new_data
+
+
+def sort_array(data, match_key=0, ignore_heads=False):
+    # Sort an array based on given column (1st one by default)
+    data_sorted = copy.deepcopy(data)
+    if ignore_heads:
+        heads = data_sorted.pop(0)
+    data_sorted.sort(key=lambda x: x[match_key])
+    if ignore_heads:
+        data_sorted.insert(0, heads)
+    return data_sorted
