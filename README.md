@@ -28,6 +28,8 @@ Make changes in `development` first and deploy to the dev folder to try out scri
 
 You can also set up a `test` remote pointing to service-test, where code will be deployed to symetric folders there for testing purposes.
 
+(Note: the routing of deployment based on branch name is handled by logic found in the `post-receive` file of the git-deploy bare repo.)
+
 ## Overview
 
 ### resources directory
