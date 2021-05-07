@@ -6,6 +6,28 @@ This is a repo for DCPS scripts and utilities. Contact dwh2128 for questions/inf
 
 This repo is git deployed to service server via a post-receive hook located in ~/git-deploy/dcps-utils. Do not make changes to files in situ on server; they will be overwritten on deploy.
 
+### Deploy
+
+Set up a production remote in local git: 
+
+ production --> ldpdserv@service:/home/ldpdserv/git-deploy/dcps-utils
+
+When on the `development` branch, a push will deploy commits to the dcps-utils-dev folder:
+
+```
+git push production development
+```
+
+When on `master`, a push will deploy to dcps-utils folder. 
+
+```
+git push production master
+```
+
+Make changes in `development` first and deploy to the dev folder to try out scripts and run tests before making them available to crontab via master.
+
+You can also set up a `test` remote pointing to service-test, where code will be deployed to symetric folders there for testing purposes.
+
 ## Overview
 
 ### resources directory
