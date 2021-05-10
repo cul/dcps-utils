@@ -8,31 +8,6 @@ import datetime
 
 def main():
 
-    # the_bibids = [3460558]
-    # the_bibids_tried = []
-
-    # retry_max = 2
-    # retries = 0
-    # bibid = random.choice(the_bibids)
-
-    # while retries < retry_max:
-
-    #     while bibid in the_bibids_tried:
-    #         bibid = random.choice(the_bibids)
-    #     the_bibids_tried.append(bibid)
-    #     print(bibid)
-    #     print(retries)
-    #     try:
-    #         datestamp = read_005(bibid)
-    #         print(datestamp)
-    #         retries = retry_max
-    #     except Exception as e:
-    #         if "request error" in str(e):
-    #             retries += 1
-    #             print(e)
-
-    # quit()
-
     MY_NAME = __file__
     MY_PATH = os.path.dirname(__file__)
     SCRIPT_NAME = os.path.basename(MY_NAME)
@@ -41,12 +16,13 @@ def main():
     TODAY = datetime.date.today().strftime("%Y%m%d")
     YESTERDAY = (datetime.date.today() -
                  datetime.timedelta(days=1)).strftime("%Y%m%d")
-    # YESTERDAY = "20210312"  # Test
 
     SOURCE_FOLDER = "/cul/cul0/ldpd/archivesspace/oai"
 
     XSLT_PATH = os.path.join(MY_PATH, "../xslt/bibids_as_list.xsl")
 
+    # path to yesterday's OAI output, which should have all been
+    # loaded yesterday by litoserv.
     SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
 
     # Get a list of BIBIDs from stylesheet
@@ -59,6 +35,8 @@ def main():
 
     # Check to see if the datestamp in the 005 field matches the date from the delta update.
 
+    # Allow a couple of retries, as some MARC records are very large and
+    # may not be loadable by http.
     retry_max = 2
     retries = 0
     # Choose one random one to look up
@@ -83,15 +61,14 @@ def main():
         except Exception as e:
             if "request error" in str(e):
                 retries += 1
-                print(e)
+                raise Exception(
+                    "CLIO error: Could not verify that datestamps have been updated! " + str(e))
 
     quit()
 
 
 def read_005(bibid):
     marc = util.get_clio_marc(bibid)
-    # if "request error" in str(marc):
-    #     return marc
     reader = MARCReader(marc)
     for record in reader:
         # title = record.title()
