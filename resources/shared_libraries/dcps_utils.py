@@ -212,7 +212,7 @@ def get_clio_marc(bibid):
         response = requests.get(url)
         response.raise_for_status()
     except Exception as err:
-        print('*** get_clio_marc request error: ' + str(err))
+        raise Exception('*** get_clio_marc request error: ' + str(err))
     else:
         # If the response was successful, no exception will be raised
         return response.content
