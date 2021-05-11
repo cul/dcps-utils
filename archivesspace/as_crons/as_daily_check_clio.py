@@ -6,24 +6,28 @@ import os
 import datetime
 
 
+MY_NAME = __file__
+MY_PATH = os.path.dirname(__file__)
+SCRIPT_NAME = os.path.basename(MY_NAME)
+
+# calculate dates in format yyyymmdd
+# TODAY = datetime.date.today().strftime("%Y%m%d")
+YESTERDAY = (datetime.date.today() -
+             datetime.timedelta(days=1)).strftime("%Y%m%d")
+
+SOURCE_FOLDER = "/cul/cul0/ldpd/archivesspace/oai"
+XSLT_PATH = os.path.join(MY_PATH, "../xslt/bibids_as_list.xsl")
+# path to yesterday's OAI output, which should have all been
+# loaded yesterday by litoserv.
+SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
+
+
 def main():
+    print(check_clio())
+    quit()
 
-    MY_NAME = __file__
-    MY_PATH = os.path.dirname(__file__)
-    SCRIPT_NAME = os.path.basename(MY_NAME)
 
-    # calculate dates in format yyyymmdd
-    TODAY = datetime.date.today().strftime("%Y%m%d")
-    YESTERDAY = (datetime.date.today() -
-                 datetime.timedelta(days=1)).strftime("%Y%m%d")
-
-    SOURCE_FOLDER = "/cul/cul0/ldpd/archivesspace/oai"
-
-    XSLT_PATH = os.path.join(MY_PATH, "../xslt/bibids_as_list.xsl")
-
-    # path to yesterday's OAI output, which should have all been
-    # loaded yesterday by litoserv.
-    SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
+def check_clio():
 
     # Get a list of BIBIDs from stylesheet
     x = util.saxon_process(SOURCE_PATH, XSLT_PATH, None)
@@ -53,11 +57,11 @@ def main():
         try:
             datestamp = read_005(bibid)
             if datestamp == YESTERDAY:
-                print("OK!")
-            else:
-                print("WARNING: 005 data for " + str(bibid) +
-                      " (" + datestamp + ") does not match " + str(YESTERDAY))
-            retries = retry_max
+                return True
+            print("WARNING: 005 data for " + str(bibid) +
+                  " (" + datestamp + ") does not match " + str(YESTERDAY))
+            return False
+            # retries = retry_max
         except Exception as e:
             if "request error" in str(e):
                 retries += 1
@@ -74,6 +78,10 @@ def read_005(bibid):
         # title = record.title()
         datestamp = record['005'].value()[0:8]
     return datestamp
+
+
+def test_clio_check():
+    assert check_clio() == True
 
 
 if __name__ == "__main__":
