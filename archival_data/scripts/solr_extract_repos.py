@@ -14,6 +14,7 @@ def main():
 
     solr_output_folder = '/cul/cul0/ldpd/archival_data/solr'
     destination_folder = '/cul/cul0/ldpd/archival_data/bib_ids'  # test
+    destination_folder = '/cul/cul0/ldpd/archival_data/test/bib_ids'  # test
     xslt_file = 'solr_repo_extract.xsl'
 
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
