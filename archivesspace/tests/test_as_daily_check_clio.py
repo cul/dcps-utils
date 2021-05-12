@@ -4,7 +4,7 @@ import datetime
 import os
 
 
-# TODAY = datetime.date.today().strftime("%Y%m%d")
+TODAY = datetime.date.today().strftime("%Y%m%d")
 YESTERDAY = (datetime.date.today() -
              datetime.timedelta(days=1)).strftime("%Y%m%d")
 
@@ -13,4 +13,5 @@ SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
 
 
 def test_clio_check():
-    assert clio.check_clio(YESTERDAY, SOURCE_PATH) == True
+    the_date = TODAY if clio.is_after("20:01:01") else YESTERDAY
+    assert clio.check_clio(the_date, SOURCE_PATH) == True

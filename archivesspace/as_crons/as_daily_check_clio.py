@@ -11,7 +11,7 @@ MY_PATH = os.path.dirname(__file__)
 SCRIPT_NAME = os.path.basename(MY_NAME)
 
 # calculate dates in format yyyymmdd
-# TODAY = datetime.date.today().strftime("%Y%m%d")
+TODAY = datetime.date.today().strftime("%Y%m%d")
 YESTERDAY = (datetime.date.today() -
              datetime.timedelta(days=1)).strftime("%Y%m%d")
 
@@ -23,8 +23,21 @@ SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
 
 
 def main():
-    print(check_clio(YESTERDAY, SOURCE_PATH))
-    quit()
+    # print(check_clio(YESTERDAY, SOURCE_PATH))
+    if is_after("20:01:01"):
+        print(check_clio(TODAY, SOURCE_PATH))
+    else:
+        print(check_clio(YESTERDAY, SOURCE_PATH))
+
+
+def is_after(cutoff_time_str):
+    # cutoff_time in format "21:30:00"
+    now = datetime.datetime.now().time()
+    print(now)
+    cutoff_time = datetime.datetime.strptime(cutoff_time_str, "%H:%M:%S")
+    cutoff_time = now.replace(hour=cutoff_time.time().hour, minute=cutoff_time.time(
+    ).minute, second=cutoff_time.time().second, microsecond=0)
+    return now > cutoff_time
 
 
 def check_clio(date, filepath):
