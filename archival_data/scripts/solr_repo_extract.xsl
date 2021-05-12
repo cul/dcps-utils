@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:saxon="http://saxon.sf.net/" 
-    xmlns:xlink="http://www.w3.org/1999/xlink" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:saxon="http://saxon.sf.net/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
 
     <!-- Generate delimited text file of bibid and repository code, as represented in Solr (Archives Portal). 
@@ -26,7 +26,7 @@
         <xsl:text>&#x0A;</xsl:text>
     </xsl:variable>
 
-    <xsl:variable name="delim1">|</xsl:variable>
+    <xsl:variable name="delim1">: </xsl:variable>
 
     <xsl:template match="/">
         <xsl:for-each select="$file_list/file">

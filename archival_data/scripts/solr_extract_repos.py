@@ -18,7 +18,7 @@ def main():
 
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(my_path, xslt_file)
-    out_path = os.path.join(destination_folder, 'valid_fa_bib_ids.txt')
+    out_path = os.path.join(destination_folder, 'valid_fa_bib_ids.yml')
     the_params = 'source_dir=' + solr_output_folder
 
     print('Processing files in ' + solr_output_folder)
