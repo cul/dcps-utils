@@ -5,23 +5,43 @@ from pprint import pprint
 import requests
 import os
 import dcps_utils as util
+import datefinder
+import datetime
+
+
+def datetime_to_date(str):
+    x = datefinder.find_dates(str)
+    for m in x:
+        # return the first date found (should be only one)
+        return m.strftime('%Y-%m-%d')
+
+
+def fix_begin_date(repo, refid):
+    the_data = json.loads(asf.getArchivalObjectByRef(
+        repo, refid))
+    asid = the_data['uri'].split('/')[4]
+    print("asid: " + str(asid))
+    the_dates = the_data['dates']
+    begin_date = the_dates[0]['begin']
+    print("Original: " + str(begin_date))
+    new_date = datetime_to_date(begin_date)
+    print("New: " + str(new_date))
+    the_dates[0]['begin'] = new_date
+    the_data['dates'] = the_dates
+
+    return asf.postArchivalObject(repo, asid, json.dumps(the_data))
 
 
 def main():
     # Main code goes here.
-    my_path = os.path.dirname(__file__)
 
-    xml_path = os.path.join(my_path, '../xslt/EAD_SAMPLE.xml')
-    schema_path = os.path.join(my_path, "../schemas/cul_as_ead.rng")
-
-    x = util.jing_process(xml_path, schema_path)
-
-    print(x)
-    quit()
     asf.setServer("Test")
 
-    x = asf.getResource(2, 4967)
-    pprint(json.loads(x))
+    x = fix_begin_date(2, 'b2ec9ce511e4212ebb145fb909ca85bd')
+    print(x)
+
+    pprint(json.loads(asf.getArchivalObjectByRef(
+        2, 'b2ec9ce511e4212ebb145fb909ca85bd')))
     quit()
 
     the_sheet = dataSheet(

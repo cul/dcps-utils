@@ -13,13 +13,13 @@ def main():
     my_path = os.path.dirname(__file__)
 
     solr_output_folder = '/cul/cul0/ldpd/archival_data/solr'
-    destination_folder = '/cul/cul0/ldpd/archival_data/bib_ids'  # test
-    destination_folder = '/cul/cul0/ldpd/archival_data/test/bib_ids'  # test
-    xslt_file = 'solr_repo_extract.xsl'
+    destination_folder = '/cul/cul0/ldpd/archival_data/bib_ids'
+    # destination_folder = '/cul/cul0/ldpd/archival_data/test/bib_ids'  # test
+    out_path = os.path.join(destination_folder, 'valid_fa_bib_ids.yml')
 
+    xslt_file = 'solr_repo_extract.xsl'
     saxon_path = os.path.join(my_path, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(my_path, xslt_file)
-    out_path = os.path.join(destination_folder, 'valid_fa_bib_ids.yml')
     the_params = 'source_dir=' + solr_output_folder
 
     print('Processing files in ' + solr_output_folder)
