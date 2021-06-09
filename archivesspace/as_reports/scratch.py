@@ -1,12 +1,13 @@
-import ASFunctions as asf
-from sheetFeeder import dataSheet
+# import ASFunctions as asf
+# from sheetFeeder import dataSheet
 import json
 from pprint import pprint
 import requests
 import os
-import dcps_utils as util
+# import dcps_utils as util
 import datefinder
 import datetime
+from shutil import copyfile
 
 
 def datetime_to_date(str):
@@ -32,9 +33,31 @@ def fix_begin_date(repo, refid):
     return asf.postArchivalObject(repo, asid, json.dumps(the_data))
 
 
+def make_dated_backup(filepath, date):
+    # make a copy of file in same directory with date prepended.
+    dir = os.path.dirname(filepath)
+    filename = os.path.basename(filepath)
+    newpath = os.path.join(dir, str(date) + '_' + filename)
+    return copyfile(filepath, newpath)
+
+
 def main():
     # Main code goes here.
+    my_path = os.path.dirname(__file__)
+    print(my_path)
 
+    today = datetime.date.today().strftime("%Y%m%d")
+    yesterday = (datetime.date.today() -
+                 datetime.timedelta(days=1)).strftime("%Y%m%d")
+
+    filename = 'blah_nocommit.txt'
+    test_file = os.path.join(my_path, filename)
+    out_file = os.path.join(my_path, str(today) + '_' + filename)
+
+    print(make_dated_backup(test_file, today))
+    # copyfile(test_file, out_file)
+
+    quit()
     asf.setServer("Test")
 
     x = fix_begin_date(2, 'b2ec9ce511e4212ebb145fb909ca85bd')

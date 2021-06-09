@@ -1,4 +1,5 @@
-# TESTING. Check if data updated in AS has been loaded in CLIO.
+# Check if data updated in AS has been loaded in CLIO.
+#! This is currently executed as part of pytests, not standalone.
 import dcps_utils as util
 import random
 from pymarc import MARCReader
