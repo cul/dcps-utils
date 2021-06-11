@@ -22,7 +22,9 @@ def main():
     # destination_folder = '/cul/cul0/ldpd/archival_data/test/bib_ids'  # test
     out_path = os.path.join(destination_folder, 'valid_fa_bib_ids.yml')
 
-    make_dated_backup(out_path, TODAY)  # make a backup with date.
+    print("Making backup file ...")
+    print(make_dated_backup(out_path, TODAY))
+
     xslt_file = 'solr_repo_extract.xsl'
     saxon_path = os.path.join(MY_PATH, "../../resources/saxon-9.8.0.12-he.jar")
     xslt_path = os.path.join(MY_PATH, xslt_file)
@@ -33,6 +35,8 @@ def main():
         saxon_path, xslt_path, xslt_path, out_path, theParams=the_params)
 
     print(response)
+
+    print("New repo file saved at " + str(out_path))
 
 
 def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=' '):
@@ -53,7 +57,8 @@ def make_dated_backup(filepath, date):
     dir = os.path.dirname(filepath)
     filename = os.path.basename(filepath)
     newpath = os.path.join(dir, str(date) + '_' + filename)
-    return copyfile(filepath, newpath)
+    copyfile(filepath, newpath)
+    return str(newpath)
 
 
 if __name__ == '__main__':
