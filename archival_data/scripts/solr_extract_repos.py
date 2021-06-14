@@ -4,6 +4,7 @@ import subprocess
 import os
 from shutil import copyfile
 import datetime
+import dcps_utils as util
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
 
     # This makes sure the script can be run from any working directory and still find related files.
     MY_PATH = os.path.dirname(__file__)
-
+    DAYS = 7  # number of days to preserve dated backup files
     TODAY = datetime.date.today().strftime("%Y%m%d")
     YESTERDAY = (datetime.date.today() -
                  datetime.timedelta(days=1)).strftime("%Y%m%d")
@@ -24,6 +25,7 @@ def main():
 
     print("Making backup file ...")
     print(make_dated_backup(out_path, TODAY))
+    print("")
 
     xslt_file = 'solr_repo_extract.xsl'
     saxon_path = os.path.join(MY_PATH, "../../resources/saxon-9.8.0.12-he.jar")
@@ -35,8 +37,15 @@ def main():
         saxon_path, xslt_path, xslt_path, out_path, theParams=the_params)
 
     print(response)
+    print("")
 
     print("New repo file saved at " + str(out_path))
+
+    print("")
+
+    print("Cleaning up files over " + str(DAYS) + " old...")
+
+    util.file_cleanup(destination_folder, DAYS)
 
 
 def saxon_process(saxonPath, inFile, transformFile, outFile, theParams=' '):
