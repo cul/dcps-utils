@@ -271,13 +271,13 @@ def file_cleanup(_dir, _days):
     # Remove files from a directory that are of a certain age.
     now = time.time()
     old = now - int(_days) * 24 * 60 * 60
-    print(old)
+    # print(old)
     for f in os.listdir(_dir):
         path = os.path.join(_dir, f)
         if os.path.isfile(path):
             stat = os.stat(path)
-            print("")
-            print(stat.st_mtime)
+            # print("")
+            # print(stat.st_mtime)
             if stat.st_mtime < old:
                 print("removing: ", path)
                 os.remove(path)

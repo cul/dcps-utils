@@ -43,7 +43,7 @@ def main():
 
     print("")
 
-    print("Cleaning up files over " + str(DAYS) + " old...")
+    print("Removing backup files over " + str(DAYS) + " days old...")
 
     util.file_cleanup(destination_folder, DAYS)
 
