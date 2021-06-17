@@ -10,7 +10,7 @@ import digester  # for generating composite digest of report info.
 def main():
 
     # Set to True to harvest complete set; otherwise will select based on date.
-    HARVESTALL = True
+    HARVESTALL = False
 
     my_name = __file__
     my_path = os.path.dirname(__file__)
