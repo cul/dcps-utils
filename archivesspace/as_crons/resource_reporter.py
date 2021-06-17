@@ -2,6 +2,7 @@
 # See ACFA-177.
 
 import ASFunctions as asf
+import dcps_utils as util
 import json
 from pprint import pprint
 import dpath.util
@@ -30,7 +31,7 @@ def main():
     end_time = ""  # set later
     today_str = str((date.today()).strftime("%Y%m%d"))
 
-    if debug == True:
+    if debug:
         print("[Running script in debug mode...]")
         parent_folder = "/cul/cul0/ldpd/archivesspace/test/resources"  # test folder
         sheet_id = "1wFyLN_Ea7ExCZSMuksB8MTrS9DjsUkwsmaPBujL7x0U"  # test sheet
@@ -181,7 +182,7 @@ def main():
             except:
                 pass
 
-        if len(the_scope_notes) > 0:
+        if the_scope_notes:
             # If there are scope notes, grab all the text and concatenate. Then get the total length in # chars.
             scope_note_texts = [s["subnotes"][0]["content"]
                                 for s in the_scope_notes]
@@ -195,7 +196,7 @@ def main():
             scope_note_short = ""
             scope_note_len = 0
 
-        if len(the_biog_notes) > 0:
+        if the_biog_notes:
             # If there are bioghist notes, grab all the text and concatenate. Then get the total length in # chars.
             biog_note_texts = [s["subnotes"][0]["content"]
                                for s in the_biog_notes]
@@ -240,6 +241,8 @@ def main():
 
     # Remove the json folder once zip is in place.
     rmtree(parent_folder + "/" + today_str)
+
+    util.file_cleanup(parent_folder, 60)
 
     # Write output to Google sheet.
 
