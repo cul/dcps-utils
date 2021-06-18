@@ -68,6 +68,9 @@ def main():
     date_params = " "
     util.oai_harvest(out_path_raw_all, server=server, date_params=date_params)
 
+    # Remove old OAI files
+    util.file_cleanup(destination_folder, 30)
+
     digester.post_digest(script_name, script_name + ' completed at ' +
                          str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
 
