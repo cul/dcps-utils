@@ -11,13 +11,13 @@ import re
 
 
 def main():
-    # SERVER = "Test" # test
-    SERVER = "Prod"
+    SERVER = "Prod"  # test
+    # SERVER = "Prod"
     asf.setServer(SERVER)
 
     sheet_id = '1Jbdhda0HbmHKJ7COOJ3CBzdMwpSeIbYHyXzr179ETpI'
     read_sheet = dataSheet(sheet_id, 'TEST!A:Z')  # Test
-    write_sheet = dataSheet(sheet_id, 'Output!A:Z')  # Test
+    write_sheet = dataSheet(sheet_id, 'Output!A:Z')
 
     the_data = read_sheet.getData()
     the_data.pop(0)
@@ -37,8 +37,13 @@ def main():
 
         the_notes = json.dumps(the_ao['notes'])
 
-        the_new_notes = the_notes.replace(extref_old, extref_new)
+        # fix problem of leading space in href
+        the_new_notes = the_notes.replace(
+            'xlink:href=\\" http', 'xlink:href=\\"http')
+        # replace old url with new one
+        the_new_notes = the_new_notes.replace(extref_old, extref_new)
 
+        print(the_new_notes)
         the_ao['notes'] = json.loads(the_new_notes)
 
         pprint(the_ao)
@@ -48,7 +53,7 @@ def main():
         print(out_row)
         the_output.append(out_row)
 
-    write_sheet.clear()
+    # write_sheet.clear()
     write_sheet.appendData(the_output)
     quit()
 
