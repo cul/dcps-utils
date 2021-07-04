@@ -127,8 +127,6 @@ def main():
     x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar ' +
                       util.config['FILES']['jingPath'] + ' -d ' + schema_path, errorPrefix='JING')
 
-    x = util.config['FILES']['jingPath']
-
     schema_errs = [
         msg_parse(l, icons['exclamation'])
         for l in str(x).splitlines()
@@ -229,7 +227,7 @@ def msg_parse(_str, icon):
 
 def log_it(msg):
     print(msg)
-    digester.post_digest(SCRIPT_NAME, msg)
+    # digester.post_digest(SCRIPT_NAME, msg)
 
 
 def get_unique_count(_array):
