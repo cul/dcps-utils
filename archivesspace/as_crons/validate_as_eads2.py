@@ -132,7 +132,7 @@ def main():
 
     # Validate against schema. Xargs batches files so they won't exceed
     # limit on arguments with thousands of files.
-    # x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar /Users/dwh2128/Documents/git/resources/jing-20091111/bin/jing.jar -d /Users/dwh2128/Documents/git/dcps-utils/archivesspace/schemas/cul_as_ead.rng', errorPrefix='JING')
+
     x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar ' +
                       util.config['FILES']['jingPath'] + ' -d ' + schema_path, errorPrefix='JING')
 
@@ -145,10 +145,12 @@ def main():
 
     schema_err_cnt = get_unique_count(schema_errs)
 
-    # print(schema_errs)
-    for e in get_unique_bibids(schema_errs):
-        print(icons['exclamation'] + " " +
-              str(e) + " has validation errors.")
+    if schema_errs:
+        for e in get_unique_bibids(schema_errs):
+            print(icons['exclamation'] + " " +
+                  str(e) + " has validation errors.")
+    else:
+        print("All files are valid.")
 
     # print("There are " + str(schema_err_cnt) +
     #       " records with validation errors.")
@@ -168,7 +170,7 @@ def main():
         if "SAXON ERROR" in str(e):
             print("Cancelled!")
 
-    eval_bibs = eval_sheet.getDataColumns()[0]
+    eval_bibs = set(eval_sheet.getDataColumns()[0])
 
     warnings_cnt = len(eval_bibs)
 
@@ -219,7 +221,7 @@ def main():
     print("Schema errors: " + str(schema_err_cnt))
     # digester.post_digest(SCRIPT_NAME, "Schema errors: " +
     #  str(validation_errors))
-    print("Schematron warnings: " + str(warnings_cnt))
+    print("XSLT warnings: " + str(warnings_cnt))
     # digester.post_digest(
     # SCRIPT_NAME, "Schematron warnings: " + str(sch_warnings))
 
