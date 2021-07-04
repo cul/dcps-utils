@@ -132,7 +132,11 @@ def main():
 
     # Validate against schema. Xargs batches files so they won't exceed
     # limit on arguments with thousands of files.
-    x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar /Users/dwh2128/Documents/git/resources/jing-20091111/bin/jing.jar -d /Users/dwh2128/Documents/git/dcps-utils/archivesspace/schemas/cul_as_ead.rng', errorPrefix='JING')
+    # x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar /Users/dwh2128/Documents/git/resources/jing-20091111/bin/jing.jar -d /Users/dwh2128/Documents/git/dcps-utils/archivesspace/schemas/cul_as_ead.rng', errorPrefix='JING')
+    x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar ' +
+                      util.config['FILES']['jingPath'] + ' -d ' + schema_path, errorPrefix='JING')
+
+    x = util.config['FILES']['jingPath']
 
     schema_errs = [
         msg_parse(l, icons['exclamation'])
