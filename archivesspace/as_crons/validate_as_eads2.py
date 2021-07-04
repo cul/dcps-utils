@@ -6,23 +6,13 @@ import re
 import datetime
 from sheetFeeder import dataSheet
 import dcps_utils as util
-# import digester  # for generating composite digest of report info.
-
-
-def msg_parse(_str, icon):
-    # Parses errors/warnings from Jing or XMLLint into
-    # array of [[bibid, message], [bibid, message]...]
-    pattern = re.compile(r'^.*?as_ead_ldpd_(\d+)\.xml:(.*)$')
-    r = pattern.search(_str)
-    try:
-        return [r.group(1), icon + " " + r.group(2)]
-    except:
-        return []
+import digester  # for generating composite digest of report info.
 
 
 def main():
 
     MY_NAME = __file__
+    global SCRIPT_NAME
     SCRIPT_NAME = os.path.basename(MY_NAME)
 
     # This makes sure the script can be run from any working directory and still find related files.
@@ -100,8 +90,9 @@ def main():
     try:
         x = util.run_bash('xmllint ' + data_folder +
                           '/* --noout', errorPrefix='PARSE')
-        print(x)
-        print("All files well-formed.")
+        # print(x)
+        log_it("All files well-formed.")
+
     except Exception as e:
         if 'PARSEERROR' in str(e):
             parse_errs = [
@@ -111,8 +102,8 @@ def main():
 
             # print(parse_errs)
         for e in get_unique_bibids(parse_errs):
-            print(icons['redx'] + " " +
-                  str(e) + " has parsing errors.")
+            log_it(icons['redx'] + " " +
+                   str(e) + " has parsing errors.")
 
     parse_err_cnt = get_unique_count(parse_errs)
 
@@ -147,10 +138,10 @@ def main():
 
     if schema_errs:
         for e in get_unique_bibids(schema_errs):
-            print(icons['exclamation'] + " " +
-                  str(e) + " has validation errors.")
+            log_it(icons['exclamation'] + " " +
+                   str(e) + " has validation errors.")
     else:
-        print("All files are valid.")
+        log_it("All files are valid.")
 
     # print("There are " + str(schema_err_cnt) +
     #       " records with validation errors.")
@@ -173,9 +164,6 @@ def main():
     eval_bibs = set(eval_sheet.getDataColumns()[0])
 
     warnings_cnt = len(eval_bibs)
-
-    # print("There are " + str(warnings_cnt) +
-    #       " records with warnings.")
 
     the_tabs = validation_sheet.initTabs
 
@@ -216,22 +204,32 @@ def main():
 
     # print(the_log)
 
-    print("Parse errors: " + str(parse_err_cnt))
-    # digester.post_digest(SCRIPT_NAME, "Parse errors: " + str(parse_errors))
-    print("Schema errors: " + str(schema_err_cnt))
-    # digester.post_digest(SCRIPT_NAME, "Schema errors: " +
-    #  str(validation_errors))
-    print("XSLT warnings: " + str(warnings_cnt))
-    # digester.post_digest(
-    # SCRIPT_NAME, "Schematron warnings: " + str(sch_warnings))
+    log_it("Parse errors: " + str(parse_err_cnt))
+    log_it("Schema errors: " + str(schema_err_cnt))
+    log_it("XSLT warnings: " + str(warnings_cnt))
 
     print(" ")
 
     exit_msg = "Script done. Check report sheet for more details: " + validation_sheet.url
-    print(exit_msg)
-    # digester.post_digest(SCRIPT_NAME, exit_msg)
+    log_it(exit_msg)
 
     quit()
+
+
+def msg_parse(_str, icon):
+    # Parses errors/warnings from Jing or XMLLint into
+    # array of [[bibid, message], [bibid, message]...]
+    pattern = re.compile(r'^.*?as_ead_ldpd_(\d+)\.xml:(.*)$')
+    r = pattern.search(_str)
+    try:
+        return [r.group(1), icon + " " + r.group(2)]
+    except:
+        return []
+
+
+def log_it(msg):
+    print(msg)
+    digester.post_digest(SCRIPT_NAME, msg)
 
 
 def get_unique_count(_array):

@@ -1,4 +1,4 @@
-from sheetFeeder import dataSheet # test
+from sheetFeeder import dataSheet  # test
 import datetime
 from itertools import groupby
 from pprint import pprint
@@ -13,7 +13,7 @@ digest_sheet = dataSheet(digest_sheet, digest_range)
 def main():
 
     icons = {
-        "right-triangle": "\U000025B6",  # use for parse errors
+        "right-triangle": "\U000025B6",
     }
 
     my_name = __file__
@@ -28,11 +28,10 @@ def main():
     print(' ')
     print(' ')
 
-
-
     # Format the digest content.
     for s in get_digest():
-        print(icons['right-triangle'] + ' *** OUTPUT FROM ' + s['script'] + ' ***')
+        print(icons['right-triangle'] +
+              ' *** OUTPUT FROM ' + s['script'] + ' ***')
         for m in s['msg']:
             print('• ' + m['value'])
         print("******************")
