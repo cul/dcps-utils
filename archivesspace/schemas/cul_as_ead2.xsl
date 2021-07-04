@@ -19,7 +19,7 @@
 
     <!--    Provide file path ($filePath) of folder to evaluate. -->
     <xsl:param name="filePath"
-        >/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_rsync/</xsl:param>
+        >/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_rsync</xsl:param>
 
 
     <xsl:template match="/">
@@ -311,7 +311,7 @@
         <xsl:param name="errStr"/>
         <xsl:param name="tag"/>
 
-        <xsl:value-of select="$filename"/>
+        <xsl:value-of select="substring-after(substring-before($filename, '.xml'), 'ldpd_')"/>
         <xsl:value-of select="$delim1"/>
         <xsl:text>⚠ </xsl:text>
         <xsl:value-of select="normalize-space($errStr)"/>

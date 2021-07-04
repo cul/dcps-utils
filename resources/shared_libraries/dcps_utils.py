@@ -5,7 +5,7 @@ import pickle
 import requests
 import copy
 import time
-
+import re
 
 my_path = os.path.dirname(__file__)
 # harvester_path = os.path.join(my_path, "pyoaiharvester/pyoaiharvest.py")
@@ -281,3 +281,26 @@ def file_cleanup(_dir, _days):
             if stat.st_mtime < old:
                 print("removing: ", path)
                 os.remove(path)
+
+
+#! TEST  ###
+
+def run_bash(cmd, errorPrefix=''):
+    # print(cmd)
+    p = subprocess.Popen([cmd], stdin=subprocess.PIPE,
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    result = p.communicate()
+    # DEBUG
+    # print("0: " + fix_cr(str(result[0].decode('utf-8'))) )
+    # print("1: " + fix_cr(str(result[1].decode('utf-8'))) )
+    if result[1]:  # error
+        # print(errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8')))
+        # return errorPrefix + 'ERROR: ' + str(result[1].decode('utf-8'))
+        raise Exception(errorPrefix + 'ERROR: ' +
+                        fix_cr(str(result[1].decode('utf-8'))))
+    # print(result[0].decode('utf-8'))  # test
+    return result[0].decode('utf-8')
+
+
+def fix_cr(_str):
+    return re.sub(r"\x0D", "\n", _str, flags=re.DOTALL)
