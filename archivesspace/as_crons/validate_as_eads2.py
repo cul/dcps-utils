@@ -18,41 +18,6 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     MY_PATH = os.path.dirname(__file__)
 
-    now1 = datetime.datetime.now()
-    start_time = str(now1)
-    end_time = ""  # set later
-
-    print("Script " + MY_NAME + " begun at " + start_time + ". ")
-    print(" ")
-
-    ################################
-    #
-    # Rsync files from web application to storage directory
-    #
-    ################################
-
-    # print("====== Syncing files from production cache... ======")
-    # print(" ")
-
-    # # keyPath = "/home/ldpdserv/.ssh/id_dsa"
-    # fromPath = (
-    #     "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
-    # )
-    # toPath = "/cul/cul0/ldpd/archivesspace/"
-
-    # myOptions = "--exclude 'clio*'"
-
-    # x = util.rsync_process(fromPath, toPath, myOptions)
-    # print(x)
-
-    # print(" ")
-
-    ################################
-    #
-    # Perform validation reporting
-    #
-    ################################
-
     sheet_id = '1Ltf5_hhR-xN4YSvNWmPX8bqJA1UjqAaSjgeHBr_5chA'
 
     parse_sheet = dataSheet(sheet_id, 'parse!A:Z')  # Test
@@ -63,10 +28,42 @@ def main():
     # the_data_sheet2 = dataSheet(
     #     "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
 
+    now1 = datetime.datetime.now()
+    start_time = str(now1)
+    end_time = ""  # set later
+
+    ################################
+    #
+    # Rsync files from web application to storage directory
+    #
+    ################################
+
+    print("====== Syncing files from production cache... ======")
+    print(" ")
+
+    # keyPath = "/home/ldpdserv/.ssh/id_dsa"
+    fromPath = (
+        "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
+    )
+    toPath = "/cul/cul0/ldpd/archivesspace/"
+
+    myOptions = "--exclude 'clio*'"
+
+    x = util.rsync_process(fromPath, toPath, myOptions)
+    print(x)
+
+    print(" ")
+
+    ################################
+    #
+    # Perform validation reporting
+    #
+    ################################
+
     schema_path = os.path.join(MY_PATH, "../schemas/cul_as_ead.rng")
 
     csv_out_path = os.path.join(MY_PATH, "temp_out.txt")
-    # xslt_path = "../schemas/cul_as_ead.xsl"
+
     xslt_path = os.path.join(MY_PATH, "../schemas/cul_as_ead2.xsl")  # test
 
     data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
@@ -109,8 +106,8 @@ def main():
 
     if parse_errs:
 
-        print('There were ' + str(parse_err_cnt) +
-              ' unparseable records! Validation of files could not be completed. Fix syntax and run script again.')
+        log_it('There were ' + str(parse_err_cnt) +
+               ' unparseable records! Validation of files could not be completed. Fix syntax and run script again.')
         parse_sheet.clear()
         parse_sheet.appendData(parse_errs)
         quit()
@@ -172,6 +169,7 @@ def main():
 
     now2 = datetime.datetime.now()
     end_time = str(now2)
+
     if "log" in the_tabs:
         log_range = "log!A:A"
         my_duration = str(now2 - now1)
