@@ -69,8 +69,8 @@ def main():
     # xslt_path = "../schemas/cul_as_ead.xsl"
     xslt_path = os.path.join(MY_PATH, "../schemas/cul_as_ead2.xsl")  # test
 
-    # data_folder = "/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_rsync_test"  # test
     data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
+    # data_folder = "/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_rsync_test"  # test
     # data_folder = '/cul/cul0/ldpd/archivesspace/test/ead'  # for testing
 
     # Use in notification email to distinguish errors/warnings
@@ -124,7 +124,8 @@ def main():
     # Validate against schema. Xargs batches files so they won't exceed
     # limit on arguments with thousands of files.
 
-    x = util.run_bash('find ' + data_folder + ' -name "as_ead*"  | xargs -L 128 java -jar ' +
+    x = util.run_bash('find ' + data_folder +
+                      ' -name "as_ead*"  | xargs -L 128 java -jar ' +
                       util.config['FILES']['jingPath'] + ' -d ' + schema_path, errorPrefix='JING')
 
     schema_errs = [
@@ -141,8 +142,6 @@ def main():
     else:
         log_it("All files are valid.")
 
-    # print("There are " + str(schema_err_cnt) +
-    #       " records with validation errors.")
     validation_sheet.clear()
     validation_sheet.appendData(schema_errs)
 
@@ -159,9 +158,15 @@ def main():
         if "SAXON ERROR" in str(e):
             print("Cancelled!")
 
-    eval_bibs = set(eval_sheet.getDataColumns()[0])
-
+    evals = eval_sheet.getDataColumns()[0]
+    eval_bibs = set(evals)
     warnings_cnt = len(eval_bibs)
+
+    if evals:
+        log_it(icons['warning'] + " " + str(len(evals)) +
+               " warnings in " + str(warnings_cnt) + " files.")
+    else:
+        log_it("There were no problems found!")
 
     the_tabs = validation_sheet.initTabs
 
@@ -202,9 +207,9 @@ def main():
 
     # print(the_log)
 
-    log_it("Parse errors: " + str(parse_err_cnt))
-    log_it("Schema errors: " + str(schema_err_cnt))
-    log_it("XSLT warnings: " + str(warnings_cnt))
+    log_it("Files with parse errors: " + str(parse_err_cnt))
+    log_it("Files with schema errors: " + str(schema_err_cnt))
+    log_it("Files with warnings: " + str(warnings_cnt))
 
     print(" ")
 
