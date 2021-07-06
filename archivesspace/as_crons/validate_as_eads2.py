@@ -230,7 +230,7 @@ def msg_parse(_str, icon):
 
 def log_it(msg):
     print(msg)
-    # digester.post_digest(SCRIPT_NAME, msg)
+    digester.post_digest(SCRIPT_NAME, msg)
 
 
 def get_unique_count(_array):
