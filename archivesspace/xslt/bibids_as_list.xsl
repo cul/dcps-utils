@@ -11,11 +11,17 @@
     <xsl:template match="/">
 
 
-        <xsl:for-each select="repository/record[contains(header/identifier, '/resources/')]">
+        <xsl:for-each
+            select="repository/record[contains(header/identifier, '/resources/')][not(header/@status = 'deleted')]">
+
             <xsl:value-of
-                select="metadata/marc:collection/marc:record/marc:datafield[@tag='099']/marc:subfield[@code='a']"/>
+                select="metadata/marc:collection/marc:record/marc:datafield[@tag = '099']/marc:subfield[@code = 'a']"/>
+
+
             <xsl:if test="position() &lt; last()">
                 <xsl:text>,</xsl:text>
+
+
             </xsl:if>
         </xsl:for-each>
 
