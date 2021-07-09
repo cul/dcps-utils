@@ -1,4 +1,4 @@
-# Script to copy the latest EAD files and validate them against schema and schematron. Output is piped to a google sheet report using sheetFeeder.
+# Script to copy the latest EAD files and parse, validate them against schema, and evaluate them with XSLT audit stylesheet. Output is piped to a google sheet report using sheetFeeder.
 
 
 import os
