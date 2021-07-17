@@ -97,10 +97,11 @@ def main():
                 for l in str(e).splitlines()
                 if 'as_ead' in l]
 
-            # print(parse_errs)
-        for e in get_unique_bibids(parse_errs):
-            log_it(icons['redx'] + " " +
-                   str(e) + " has parsing errors.")
+        # for e in get_unique_bibids(parse_errs):
+            # log_it(icons['redx'] + " " +
+            #        str(e) + " has parsing errors.")
+        for e in get_unique_bibid_all_errors(parse_errs):
+            log_it(icons['redx'] + "PARSE ERROR: " + e)
 
     parse_err_cnt = get_unique_count(parse_errs)
 
@@ -133,9 +134,11 @@ def main():
     schema_err_cnt = get_unique_count(schema_errs)
 
     if schema_errs:
-        for e in get_unique_bibids(schema_errs):
-            log_it(icons['exclamation'] + " " +
-                   str(e) + " has validation errors.")
+        # for e in get_unique_bibids(schema_errs):
+        #     log_it(icons['exclamation'] + " " +
+        #            str(e) + " has validation errors.")
+        for e in get_unique_bibid_all_errors(schema_errs):
+            log_it(icons['exclamation'] + "VALIDATION ERROR: " + e)
     else:
         log_it("All files are valid.")
 
@@ -239,6 +242,20 @@ def get_unique_count(_array):
 
 def get_unique_bibids(_array):
     return {p[0] for p in _array}
+
+
+def get_unique_bibid_all_errors(_array):
+    return {str(p[0]) + ": " + p[1] for p in _array}
+
+
+def get_unique_bibid_first_error(_array):
+    bibs = []
+    result = []
+    for bibid, msg in _array:
+        if bibid not in bibs:
+            result.append(str(bibid) + ": " + msg)
+            bibs.append(bibid)
+    return result
 
 
 if __name__ == "__main__":
