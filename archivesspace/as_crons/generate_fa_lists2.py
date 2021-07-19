@@ -30,7 +30,7 @@ def main():
 
     # The location to save output documents.
     # output_dir = os.path.join(MY_PATH, storage_dir + "fa_lists")
-    output_dir = os.path.join(MY_PATH, storage_dir + "/test/fa_lists")
+    output_dir = os.path.join(MY_PATH, storage_dir + "fa_lists")
 
     the_repos = ["nnc-a", "nnc-ea", "nnc-rb", "nnc-ua", "nnc-ut", "nnc-ccoh"]
 
