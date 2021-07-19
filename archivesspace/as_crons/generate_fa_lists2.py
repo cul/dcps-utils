@@ -16,7 +16,11 @@ def main():
 
     # storage_dir = "../output/"  # test
     storage_dir = "/cul/cul0/ldpd/archivesspace/"
-    yaml_path = os.path.join(MY_PATH, storage_dir, "valid_fa_bib_ids.yml")
+
+    # Location of yaml file output from solr_extract_repos.
+    # Used to restrict output to only collections that are in Solr.
+    # yaml_path = os.path.join(MY_PATH, storage_dir, "valid_fa_bib_ids.yml") # test
+    yaml_path = "/cul/cul0/ldpd/archival_data/bib_ids/valid_fa_bib_ids.yml")
 
     # Use the OAI file from previous day as source to generate lists.
     input_path = os.path.join(MY_PATH, storage_dir, "oai/" + yest_str + ".asAllRaw.xml")
