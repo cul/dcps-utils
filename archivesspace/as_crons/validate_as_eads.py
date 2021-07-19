@@ -18,11 +18,11 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     MY_PATH = os.path.dirname(__file__)
 
-    sheet_id = '1Ltf5_hhR-xN4YSvNWmPX8bqJA1UjqAaSjgeHBr_5chA'
+    sheet_id = "1Ltf5_hhR-xN4YSvNWmPX8bqJA1UjqAaSjgeHBr_5chA"
 
-    parse_sheet = dataSheet(sheet_id, 'parse!A:Z')  # Test
-    validation_sheet = dataSheet(sheet_id, 'schema!A:Z')  # Test
-    eval_sheet = dataSheet(sheet_id, 'eval!A:Z')  # Test
+    parse_sheet = dataSheet(sheet_id, "parse!A:Z")  # Test
+    validation_sheet = dataSheet(sheet_id, "schema!A:Z")  # Test
+    eval_sheet = dataSheet(sheet_id, "eval!A:Z")  # Test
 
     # This is a dupe for other reporting
     # the_data_sheet2 = dataSheet(
@@ -42,9 +42,7 @@ def main():
     print(" ")
 
     # keyPath = "/home/ldpdserv/.ssh/id_dsa"
-    fromPath = (
-        "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
-    )
+    fromPath = "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
     toPath = "/cul/cul0/ldpd/archivesspace/"
 
     myOptions = "--exclude 'clio*'"
@@ -85,30 +83,33 @@ def main():
 
     parse_errs = []
     try:
-        x = util.run_bash('xmllint ' + data_folder +
-                          '/* --noout', errorPrefix='PARSE')
+        x = util.run_bash("xmllint " + data_folder + "/* --noout", errorPrefix="PARSE")
         # print(x)
         log_it("All files well-formed.")
 
     except Exception as e:
-        if 'PARSEERROR' in str(e):
+        if "PARSEERROR" in str(e):
             parse_errs = [
-                msg_parse(l, icons['redx'])
+                msg_parse(l, icons["redx"])
                 for l in str(e).splitlines()
-                if 'as_ead' in l]
+                if "as_ead" in l
+            ]
 
         # for e in get_unique_bibids(parse_errs):
-            # log_it(icons['redx'] + " " +
-            #        str(e) + " has parsing errors.")
+        # log_it(icons['redx'] + " " +
+        #        str(e) + " has parsing errors.")
         for e in get_unique_bibid_all_errors(parse_errs):
-            log_it(icons['redx'] + "PARSE ERROR: " + e)
+            log_it(icons["redx"] + "PARSE ERROR: " + e)
 
     parse_err_cnt = get_unique_count(parse_errs)
 
     if parse_errs:
 
-        log_it('There were ' + str(parse_err_cnt) +
-               ' unparseable records! Validation of files could not be completed. Fix syntax and run script again.')
+        log_it(
+            "There were "
+            + str(parse_err_cnt)
+            + " unparseable records! Validation of files could not be completed. Fix syntax and run script again."
+        )
         parse_sheet.clear()
         parse_sheet.appendData(parse_errs)
         quit()
@@ -122,14 +123,19 @@ def main():
     # Validate against schema. Xargs batches files so they won't exceed
     # limit on arguments with thousands of files.
 
-    x = util.run_bash('find ' + data_folder +
-                      ' -name "as_ead*"  | xargs -L 128 java -jar ' +
-                      util.config['FILES']['jingPath'] + ' -d ' + schema_path, errorPrefix='JING')
+    x = util.run_bash(
+        "find "
+        + data_folder
+        + ' -name "as_ead*"  | xargs -L 128 java -jar '
+        + util.config["FILES"]["jingPath"]
+        + " -d "
+        + schema_path,
+        errorPrefix="JING",
+    )
 
     schema_errs = [
-        msg_parse(l, icons['exclamation'])
-        for l in str(x).splitlines()
-        if 'as_ead' in l]
+        msg_parse(l, icons["exclamation"]) for l in str(x).splitlines() if "as_ead" in l
+    ]
 
     schema_err_cnt = get_unique_count(schema_errs)
 
@@ -138,7 +144,7 @@ def main():
         #     log_it(icons['exclamation'] + " " +
         #            str(e) + " has validation errors.")
         for e in get_unique_bibid_all_errors(schema_errs):
-            log_it(icons['exclamation'] + "VALIDATION ERROR: " + e)
+            log_it(icons["exclamation"] + "VALIDATION ERROR: " + e)
     else:
         log_it("All files are valid.")
 
@@ -149,10 +155,11 @@ def main():
     print("====== Evaluating with XSLT ... ======")
 
     try:
-        x = util.saxon_process(xslt_path, xslt_path, csv_out_path,
-                               theParams='filePath=' + data_folder)
+        x = util.saxon_process(
+            xslt_path, xslt_path, csv_out_path, theParams="filePath=" + data_folder
+        )
         eval_sheet.clear()
-        eval_sheet.importCSV(csv_out_path, delim='|')
+        eval_sheet.importCSV(csv_out_path, delim="|")
 
     except Exception as e:
         if "SAXON ERROR" in str(e):
@@ -163,8 +170,14 @@ def main():
     warnings_cnt = len(eval_bibs)
 
     if evals:
-        log_it(icons['warning'] + " " + str(len(evals)) +
-               " warnings in " + str(warnings_cnt) + " files.")
+        log_it(
+            icons["warning"]
+            + " "
+            + str(len(evals))
+            + " warnings in "
+            + str(warnings_cnt)
+            + " files."
+        )
     else:
         log_it("There were no problems found!")
 
@@ -214,7 +227,9 @@ def main():
 
     print(" ")
 
-    exit_msg = "Script done. Check report sheet for more details: " + validation_sheet.url
+    exit_msg = (
+        "Script done. Check report sheet for more details: " + validation_sheet.url
+    )
     log_it(exit_msg)
 
     quit()
@@ -223,7 +238,7 @@ def main():
 def msg_parse(_str, icon):
     # Parses errors/warnings from Jing or XMLLint into
     # array of [[bibid, message], [bibid, message]...]
-    pattern = re.compile(r'^.*?as_ead_ldpd_(\d+)\.xml:(.*)$')
+    pattern = re.compile(r"^.*?as_ead_ldpd_(\d+)\.xml:(.*)$")
     r = pattern.search(_str)
     try:
         return [r.group(1), icon + " " + r.group(2)]

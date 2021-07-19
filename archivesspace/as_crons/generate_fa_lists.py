@@ -14,17 +14,13 @@ def main():
 
     storage_dir = "/cul/cul0/ldpd/archivesspace/"
 
-    # saxon_path = os.path.join(my_path, '../../resources/saxon-9.8.0.12-he.jar')
-
     # XSLT for transformation. Accepts a path in param in which to save the html snippet files.
-    xsl_filename = '../xslt/generate_browse_list.xsl'
 
-    xsl_path = os.path.join(my_path, xsl_filename)
+    xsl_path = os.path.join(my_path, "../xslt/generate_browse_list.xsl")
 
     # Use the OAI file from previous day as source to generate lists.
-    input_filename = yest_str + ".asAllRaw.xml"
 
-    input_path = storage_dir + "oai/" + input_filename
+    input_path = storage_dir + "oai/" + yest_str + ".asAllRaw.xml"
 
     print("Input file: " + input_path)
 
