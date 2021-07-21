@@ -37,4 +37,4 @@ def test_filter_results():
     y = fa.filter_fa_list(x, YAML_PATH)
     z = [i["bibid"] for i in y]
     print(z)
-    assert "9999999" not in y
+    assert "9999999" not in z
