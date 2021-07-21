@@ -54,10 +54,10 @@ def check_clio(date, filepath):
 
     # Get a list of BIBIDs from stylesheet
     x = util.saxon_process(filepath, XSLT_PATH, None)
-    the_deltas = x.split(",")
+    the_deltas = [i for i in x.split(",") if i]  # if x is null, return null set
     print(the_deltas)
 
-    if len(the_deltas) < 1:
+    if not the_deltas:
         print("No bibids found in " + str(filepath) + ". Bypassing CLIO check.")
         quit()
 
