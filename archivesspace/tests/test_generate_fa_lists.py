@@ -35,5 +35,6 @@ def test_filter_results():
     x = fa.extract_record_list(repo, OAI_PATH, XSL_PATH)
     x.append({"bibid": "9999999", "title": "TEST TITLE"})
     y = fa.filter_fa_list(x, YAML_PATH)
-    print(y)
-    assert "9999999" in y
+    z = [i["bibid"] for i in y]
+    print(z)
+    assert "9999999" not in y
