@@ -24,7 +24,7 @@ SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
 
 def main():
 
-    TESTDATE = "20210718"
+    TESTDATE = "20210718"  # test
     print(check_clio(TESTDATE, SOURCE_PATH))
 
     quit()
