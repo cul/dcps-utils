@@ -1,4 +1,7 @@
-# Script to generate html snippets of lists of published finding aids. Run daily on cron. See ACFA-213.
+# Script to generate html snippets of lists of published finding aids.
+# Run daily on cron. See ACFA-213.
+# Depends on yaml file of bibids:repos extracted from the ArchivesPortal Solr
+# index, to determine which AS collections are public.
 
 import dcps_utils as util
 import os

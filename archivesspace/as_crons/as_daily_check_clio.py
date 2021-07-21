@@ -13,8 +13,7 @@ SCRIPT_NAME = os.path.basename(MY_NAME)
 
 # calculate dates in format yyyymmdd
 TODAY = datetime.date.today().strftime("%Y%m%d")
-YESTERDAY = (datetime.date.today() -
-             datetime.timedelta(days=1)).strftime("%Y%m%d")
+YESTERDAY = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y%m%d")
 
 SOURCE_FOLDER = "/cul/cul0/ldpd/archivesspace/oai"
 XSLT_PATH = os.path.join(MY_PATH, "../xslt/bibids_as_list.xsl")
@@ -24,7 +23,12 @@ SOURCE_PATH = os.path.join(SOURCE_FOLDER, YESTERDAY + ".asRaw.xml")
 
 
 def main():
-    # print(check_clio(YESTERDAY, SOURCE_PATH))
+
+    TESTDATE = "20210718"
+    print(check_clio(TESTDATE, SOURCE_PATH))
+
+    quit()
+
     if is_after("20:01:01"):
         print(check_clio(TODAY, SOURCE_PATH))
     else:
@@ -36,8 +40,12 @@ def is_after(cutoff_time_str):
     now = datetime.datetime.now().time()
     print(now)
     cutoff_time = datetime.datetime.strptime(cutoff_time_str, "%H:%M:%S")
-    cutoff_time = now.replace(hour=cutoff_time.time().hour, minute=cutoff_time.time(
-    ).minute, second=cutoff_time.time().second, microsecond=0)
+    cutoff_time = now.replace(
+        hour=cutoff_time.time().hour,
+        minute=cutoff_time.time().minute,
+        second=cutoff_time.time().second,
+        microsecond=0,
+    )
     return now > cutoff_time
 
 
@@ -45,7 +53,7 @@ def check_clio(date, filepath):
 
     # Get a list of BIBIDs from stylesheet
     x = util.saxon_process(filepath, XSLT_PATH, None)
-    the_deltas = x.split(',')
+    the_deltas = x.split(",")
     print(the_deltas)
 
     if len(the_deltas) < 1:
@@ -73,22 +81,30 @@ def check_clio(date, filepath):
             datestamp = read_005(bibid)
             if datestamp == date:
                 return True
-            print("WARNING: 005 data for " + str(bibid) +
-                  " (" + datestamp + ") does not match " + str(date))
+            print(
+                "WARNING: 005 data for "
+                + str(bibid)
+                + " ("
+                + datestamp
+                + ") does not match "
+                + str(date)
+            )
             return False
             # retries = retry_max
         except Exception as e:
             if "request error" in str(e):
                 retries += 1
                 raise Exception(
-                    "CLIO error: Could not verify that datestamps have been updated! " + str(e))
+                    "CLIO error: Could not verify that datestamps have been updated! "
+                    + str(e)
+                )
 
 
 def check_clio2():
 
     # Get a list of BIBIDs from stylesheet
     x = util.saxon_process(SOURCE_PATH, XSLT_PATH, None)
-    the_deltas = x.split(',')
+    the_deltas = x.split(",")
 
     if len(the_deltas) < 1:
         print("No bibids found in " + str(SOURCE_PATH) + ". Bypassing CLIO check.")
@@ -115,15 +131,23 @@ def check_clio2():
             datestamp = read_005(bibid)
             if datestamp == YESTERDAY:
                 return True
-            print("WARNING: 005 data for " + str(bibid) +
-                  " (" + datestamp + ") does not match " + str(YESTERDAY))
+            print(
+                "WARNING: 005 data for "
+                + str(bibid)
+                + " ("
+                + datestamp
+                + ") does not match "
+                + str(YESTERDAY)
+            )
             return False
             # retries = retry_max
         except Exception as e:
             if "request error" in str(e):
                 retries += 1
                 raise Exception(
-                    "CLIO error: Could not verify that datestamps have been updated! " + str(e))
+                    "CLIO error: Could not verify that datestamps have been updated! "
+                    + str(e)
+                )
 
 
 def read_005(bibid):
@@ -131,7 +155,7 @@ def read_005(bibid):
     reader = MARCReader(marc)
     for record in reader:
         # title = record.title()
-        datestamp = record['005'].value()[0:8]
+        datestamp = record["005"].value()[0:8]
     return datestamp
 
 
