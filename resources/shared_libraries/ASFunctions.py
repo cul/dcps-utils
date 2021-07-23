@@ -64,6 +64,7 @@ except Exception as e:
 def main():
     # Test functions here.
     from pprint import pprint
+
     setServer("Test")
     x = json.loads(getResource(2, 5907))
     pprint(x)
@@ -74,15 +75,17 @@ def main():
 
     quit()
 
-    pprint(json.loads(getArchivalObjectByRef(
-        2, "f600a2fa87f5def358831bd367753f2a")))
+    pprint(json.loads(getArchivalObjectByRef(2, "f600a2fa87f5def358831bd367753f2a")))
 
     quit()
 
-    print(getResponse(
-        'repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8'))
+    print(
+        getResponse(
+            "repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8"
+        )
+    )
 
-    print(getArchivalObject(2, '560142'))
+    print(getArchivalObject(2, "560142"))
     # print(getEAD(2, 5907))
     # print(unpublishArchivalObject2(2, 456421))
 
@@ -91,6 +94,7 @@ def main():
 
 
 ########### TEST ##########
+
 
 def postSubject(asid, record):
     headers = ASAuthenticate(user, baseURL, password)
@@ -106,8 +110,7 @@ def postSubject(asid, record):
 def getIt(uri_str, headers, params=None, output="json"):
     if https_proxy:
         response = requests.get(
-            uri_str, headers=headers, params=params, proxies={
-                "https": https_proxy}
+            uri_str, headers=headers, params=params, proxies={"https": https_proxy}
         )
     else:
         response = requests.get(uri_str, headers=headers)
@@ -117,6 +120,7 @@ def getIt(uri_str, headers, params=None, output="json"):
         return response.text
     else:
         print("ERROR: Output type " + output + " not recognized!")
+
 
 # Generic fn to do POST with or without proxy, as defined by config.
 
@@ -133,10 +137,11 @@ def postIt(uri_str, headers, data):
 ###########################
 # TEST
 
+
 def deleteArchivalObject(repo, asid):
     headers = ASAuthenticate(user, baseURL, password)
     print(headers)
-    endpoint = '/repositories/' + str(repo) + '/archival_objects/' + str(asid)
+    endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
     deletion = requests.delete(baseURL + endpoint, headers=headers)
     return deletion
 
@@ -266,8 +271,7 @@ def getArchivalObjectByRef(repo, ref):
 def getCollectionManagement(repo, asid):
     # supply repo and id
     headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + \
-        str(repo) + "/collection_management/" + str(asid)
+    endpoint = "/repositories/" + str(repo) + "/collection_management/" + str(asid)
     output = getIt(baseURL + endpoint, headers=headers)
     output = json.dumps(output)
     return output
@@ -359,9 +363,10 @@ def getBibID(repo, asid):
     return bibID
 
 
-def getAgent(asid):
+def getAgent(asid, agent_type="people"):
+    # types: people, families, corporate_entities
     headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "//agents/people/" + str(asid)
+    endpoint = "//agents/" + agent_type + "/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
     output = json.dumps(output)
     return output
@@ -471,9 +476,10 @@ def getAccessions(repo):
     return output
 
 
-def getAgents():
+def getAgents(agent_type="people"):
+    # types: people, families, corporate_entities
     headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "//agents/people?all_ids=true"
+    endpoint = "//agents/" + agent_type + "?all_ids=true"
     ids = getIt(baseURL + endpoint, headers)
     # iterate over each returned ID, grabbing the json object
     records = []
@@ -490,8 +496,7 @@ def getArchivalObjectChildren(repo, asid):
     # Get a list of asids of children of an archival object.
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = (
-        "/repositories/" + str(repo) + "/archival_objects/" +
-        str(asid) + "/children"
+        "/repositories/" + str(repo) + "/archival_objects/" + str(asid) + "/children"
     )
     response = getIt(baseURL + endpoint, headers)
     my_ids = [x["uri"].split("/")[-1] for x in response]
@@ -758,8 +763,7 @@ def daosRecurse(repo, asid):
     # Recursive function; only use in call from find_daos()!
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = (
-        "/repositories/" + str(repo) + "/archival_objects/" +
-        str(asid) + "/children"
+        "/repositories/" + str(repo) + "/archival_objects/" + str(asid) + "/children"
     )
     x = getIt(baseURL + endpoint, headers)
 
@@ -800,6 +804,17 @@ def findDigitalObjectDescendants(repo, asid):
 def postArchivalObject(repo, asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
+    post = postIt(baseURL + endpoint, headers, record)
+    # post = requests.post(baseURL + endpoint,
+    #                      headers=headers, data=record).json()
+    post = json.dumps(post)
+    return post
+
+
+def postAgent(asid, record, agent_type="people"):
+    # types: people, families, corporate_entities
+    headers = ASAuthenticate(user, baseURL, password)
+    endpoint = "/agents/" + agent_type + "/" + str(asid)
     post = postIt(baseURL + endpoint, headers, record)
     # post = requests.post(baseURL + endpoint,
     #                      headers=headers, data=record).json()
@@ -865,11 +880,10 @@ def suppressEnumerationValue(asid, mode="suppress"):
         suppress_flag = "suppressed=false"
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = (
-        "/config/enumeration_values/" +
-        str(asid) + "/suppressed?" + suppress_flag
+        "/config/enumeration_values/" + str(asid) + "/suppressed?" + suppress_flag
     )
     # TODO: add postIt method without record data? Test this.
-    post = postIt(baseURL + endpoint, headers, '')
+    post = postIt(baseURL + endpoint, headers, "")
     post = requests.post(baseURL + endpoint, headers=headers).json()
     post = json.dumps(post)
     return post
