@@ -59,7 +59,7 @@ def check_clio(date, filepath):
 
     if not the_deltas:
         print("No bibids found in " + str(filepath) + ". Bypassing CLIO check.")
-        quit()
+        return True
 
     # Check to see if the datestamp in the 005 field matches the date from the delta update.
 
