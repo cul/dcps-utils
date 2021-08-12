@@ -1,13 +1,22 @@
+# Script to log results from other scripts to a sheet
+# and report results based on date to email notification.
+# Call post_digest() from other scripts to add to log.
+# Call main() to generate report.
+
 from sheetFeeder import dataSheet  # test
 import datetime
 from itertools import groupby
 from pprint import pprint
 import os
+import dateutil.parser
 
-digest_sheet = '190p6gnhpakdYD72Eb1PLicdVlAtAxjQ7D_8oee7Tk1U'
-digest_range = 'Sheet1!A:Z'
 
-digest_sheet = dataSheet(digest_sheet, digest_range)
+digest_sheet_id = "190p6gnhpakdYD72Eb1PLicdVlAtAxjQ7D_8oee7Tk1U"
+digest_sheet_id2 = "1PLtSL1NHQ_PooSd2LkEDTHZMmhmrxPv4cv8STpmhknk"  # test
+digest_range = "Sheet1!A:Z"
+
+digest_sheet = dataSheet(digest_sheet_id, digest_range)
+# digest_sheet = dataSheet(digest_sheet_id2, digest_range)  # test
 
 
 def main():
@@ -16,24 +25,28 @@ def main():
         "right-triangle": "\U000025B6",
     }
 
-    my_name = __file__
-    script_name = os.path.basename(my_name)
+    MY_NAME = __file__
+    SCRIPT_NAME = os.path.basename(MY_NAME)
     # This makes sure the script can be run from any working directory and still find related files.
 
-    now = str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S'))
+    NOW = str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
 
-    print('This 24-hour digest composed at ' + now + ' by ' + script_name +
-          '. Contact asops@library.columbia.edu with questions/problems.')
+    print(
+        "This 24-hour digest composed at "
+        + NOW
+        + " by "
+        + SCRIPT_NAME
+        + ". Contact asops@library.columbia.edu with questions/problems."
+    )
 
-    print(' ')
-    print(' ')
+    print(" ")
+    print(" ")
 
     # Format the digest content.
     for s in get_digest():
-        print(icons['right-triangle'] +
-              ' *** OUTPUT FROM ' + s['script'] + ' ***')
-        for m in s['msg']:
-            print('• ' + m['value'])
+        print(icons["right-triangle"] + " *** OUTPUT FROM " + s["script"] + " ***")
+        for m in s["msg"]:
+            print("• " + m["value"])
         print("******************")
         print(" ")
 
@@ -43,7 +56,7 @@ def main():
 
 def date_is_recent(_date, _offset=1):
     # check if input date is within 24 hours (or other day offset value) of current time.
-    d_compare = (datetime.datetime.now() - datetime.timedelta(days=_offset))
+    d_compare = datetime.datetime.now() - datetime.timedelta(days=_offset)
     return _date > d_compare
 
 
@@ -53,9 +66,10 @@ def get_digest(sheet=digest_sheet):
     the_msg_data = []
     for a_row in data:
         name = a_row[0]
-        date = datetime.datetime.strptime(a_row[1], '%m/%d/%Y %H:%M:%S')
+        # date = datetime.datetime.strptime(a_row[1], "%m/%d/%Y %H:%M:%S")
+        date = dateutil.parser.parse(a_row[1]).strftime("%m/%d/%Y %H:%M:%S")
+        date = dateutil.parser.parse(a_row[1])
         msg = a_row[2]
-        # test date
         if date_is_recent(date):
             # if date == datetime.today().date():
             the_msg_data.append([name, date, msg])
@@ -68,12 +82,11 @@ def get_digest(sheet=digest_sheet):
     for key, group in groupby(sorted(the_msg_data), lambda x: x[0]):
 
         # Return a dict of values with timestamps grouped by script.
-        r = {'script': key, 'msg': [
-            {'time': m[1], 'value': m[2]} for m in group]}
+        r = {"script": key, "msg": [{"time": m[1], "value": m[2]} for m in group]}
 
         the_result.append(r)
         # Sort the results reverse chronologically.
-        the_result.sort(key=lambda x: x['msg'][0]['time'], reverse=True)
+        the_result.sort(key=lambda x: x["msg"][0]["time"], reverse=True)
 
     return the_result
 
@@ -85,7 +98,7 @@ def digest_clear(sheet=digest_sheet):
 def post_digest(script_name, log, sheet=digest_sheet, truncate=40000):
     date = str(datetime.datetime.today())
     if len(log) > truncate:
-        log = log[:truncate] + '[...]'
+        log = log[:truncate] + "[...]"
     data = [[script_name, date, log]]
     return sheet.appendData(data)
 
