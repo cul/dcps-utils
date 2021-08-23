@@ -1,5 +1,10 @@
 # Script to harvest OAI from Prod and Dev with different versions of AS, and generate
 # files with overlapping records to diff.
+# After harvesting data from Prod and Dev, parameters of file locations (inputs and outpus)
+# are passed to XSLT. Results will be found in destination_folder path.
+# Diff the resulting files to see changes in output for unchanged records between
+# two versions of AS.
+# (If running locally, change folder location accordingly.)
 
 import os
 import datetime
