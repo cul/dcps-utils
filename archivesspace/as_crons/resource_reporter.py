@@ -116,8 +116,7 @@ def main():
     for r in the_repos:
         print("Getting ids for repo: " + str(r) + "...")
         asids = json.loads(
-            asf.getResponse("/repositories/" + str(r) +
-                            "/resources?all_ids=true")
+            asf.getResponse("/repositories/" + str(r) + "/resources?all_ids=true")
         )
 
         print(str(len(asids)) + " records found in repo " + str(r) + ".")
@@ -184,27 +183,22 @@ def main():
 
         if the_scope_notes:
             # If there are scope notes, grab all the text and concatenate. Then get the total length in # chars.
-            scope_note_texts = [s["subnotes"][0]["content"]
-                                for s in the_scope_notes]
+            scope_note_texts = [s["subnotes"][0]["content"] for s in the_scope_notes]
             the_scope_text = " ".join(scope_note_texts)
             scope_note_len = len(the_scope_text)
 
-            scope_note_short = truncate_str(
-                the_scope_text, length=trunc_len
-            )
+            scope_note_short = truncate_str(the_scope_text, length=trunc_len)
         else:
             scope_note_short = ""
             scope_note_len = 0
 
         if the_biog_notes:
             # If there are bioghist notes, grab all the text and concatenate. Then get the total length in # chars.
-            biog_note_texts = [s["subnotes"][0]["content"]
-                               for s in the_biog_notes]
+            biog_note_texts = [s["subnotes"][0]["content"] for s in the_biog_notes]
             the_biog_text = " ".join(biog_note_texts)
             biog_note_len = len(the_biog_text)
 
-            biog_note_short = truncate_str(the_biog_text, length=trunc_len
-                                           )
+            biog_note_short = truncate_str(the_biog_text, length=trunc_len)
         else:
             biog_note_short = ""
             biog_note_len = 0
@@ -217,8 +211,7 @@ def main():
         the_output.append(the_row)
 
     # Zip up the JSON files for storage.
-    zip_out = make_archive(
-        today_str, "zip", root_dir=parent_folder, base_dir=today_str)
+    zip_out = make_archive(today_str, "zip", root_dir=parent_folder, base_dir=today_str)
 
     print(zip_out)
 
@@ -253,12 +246,14 @@ def main():
     the_sheets["cm"].clear()
     the_sheets["cm"].appendData(the_cms)
     digester.post_digest(
-        script_name, "Total collection management records: " + str(len(the_cms) - 1))
+        script_name, "Total collection management records: " + str(len(the_cms) - 1)
+    )
 
     the_sheets["resources"].clear()
     the_sheets["resources"].appendData(the_output)
     digester.post_digest(
-        script_name, "Total number of resource records: " + str(len(the_output) - 1))
+        script_name, "Total number of resource records: " + str(len(the_output) - 1)
+    )
 
     ########################
     ### FINISH UP ###
@@ -289,8 +284,13 @@ def main():
 
     print(" ")
 
-    exit_msg = "Script done. Updated data is available at " + \
-        the_sheets["resources"].url
+    debug_msg = " [Debug mode]" if debug else ""
+    exit_msg = (
+        "Script done"
+        + debug_msg
+        + ". Updated data is available at "
+        + the_sheets["resources"].url
+    )
     print(exit_msg)
     digester.post_digest(script_name, exit_msg)
 

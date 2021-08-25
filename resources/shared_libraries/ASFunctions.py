@@ -96,6 +96,34 @@ def main():
 ########### TEST ##########
 
 
+def getResourceByID(repo, bibid):
+    # Attempt to find and return resource based on field 'identifier'=<bibid>.
+    aquery = {
+        "query": {
+            "op": "AND",
+            "subqueries": [
+                {
+                    "field": "primary_type",
+                    "value": "resource",
+                    "comparator": "equals",
+                    "jsonmodel_type": "field_query",
+                },
+                {
+                    "field": "identifier",
+                    "value": str(bibid),
+                    "comparator": "equals",
+                    "jsonmodel_type": "field_query",
+                },
+            ],
+            "jsonmodel_type": "boolean_query",
+        },
+        "jsonmodel_type": "advanced_query",
+    }
+    res = getSearchResults(repo, json.dumps(aquery))
+    if len(res) == 1:
+        return json.dumps(res[0])
+
+
 def postSubject(asid, record):
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/subjects/" + str(asid)
@@ -113,7 +141,7 @@ def getIt(uri_str, headers, params=None, output="json"):
             uri_str, headers=headers, params=params, proxies={"https": https_proxy}
         )
     else:
-        response = requests.get(uri_str, headers=headers)
+        response = requests.get(uri_str, headers=headers, params=params)
     if output == "json":
         return response.json()
     elif output == "text":
@@ -293,17 +321,14 @@ def getEnumerationValue(asid):
     return output
 
 
-# This doesn't work yet :(
-
-
-def getResourceByID(repo, ref):
-    # supply resource ID
-    headers = ASAuthenticate(user, baseURL, password)
-    params = {"identifier[]": ref}
-    endpoint = "/repositories/" + str(repo) + "/find_by_id/resources"
-    output = getIt(baseURL + endpoint, headers=headers, params=params)
-    output = json.dumps(output)
-    return output
+# def getResourceByID(repo, ref):
+#     # supply resource ID
+#     headers = ASAuthenticate(user, baseURL, password)
+#     params = {"identifier[]": ref}
+#     endpoint = "/repositories/" + str(repo) + "/find_by_id/resources"
+#     output = getIt(baseURL + endpoint, headers=headers, params=params)
+#     output = json.dumps(output)
+#     return output
 
 
 def getResource(repo, asid):
