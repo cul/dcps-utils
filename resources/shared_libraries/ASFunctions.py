@@ -16,6 +16,7 @@ from configparser import ConfigParser
 # Then call functions like
 #   asf.getResource(2,4277)
 #
+#
 
 
 global baseURL
