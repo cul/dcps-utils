@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to dcps-utils documentation’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Welcome to dcps-utils script documentation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -161,7 +161,7 @@
             
   <div class="section" id="script-documentation">
 <h1>Script Documentation<a class="headerlink" href="#script-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Documentation of CUL ArchivesSpace API functions.</p>
+<p>Documentation of CUL ArchivesSpace API functions. Managed in <a class="reference external" href="https://github.com/cul/dcps-utils">dcps-utils</a></p>
 <div class="section" id="module-ASFunctions">
 <span id="asfunctions"></span><h2>ASFunctions<a class="headerlink" href="#module-ASFunctions" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
@@ -576,7 +576,16 @@ asid (int): asid</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ASFunctions.postAgent">
 <span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'people'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postAgent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>POST agent</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asid (int): asid of agent
+record (str): JSON agent record
+agent_type (str, optional): Options: people, families, corporate_entities. Defaults to “people”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: JSON response from POST</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ASFunctions.postArchivalObject">
@@ -653,7 +662,16 @@ record (str): JSON object (resource)</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ASFunctions.postTopContainer">
 <span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postTopContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postTopContainer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>POST top container</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>repo (int): repo id
+asid (int): asid of top container
+record (str): JSON object (top container)</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: JSON response from POST</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ASFunctions.setServer">
@@ -668,7 +686,15 @@ record (str): JSON object (resource)</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ASFunctions.suppressEnumerationValue">
 <span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">suppressEnumerationValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'suppress'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.suppressEnumerationValue" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Suppress/unsuppres an enumeration value. Options ‘unsuppress’, ‘suppress’</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>asid (int): ID of enumeration value
+mode (str, optional): Options: “suppress”, “unsuppress”. Defaults to “suppress”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: JSON response from POST</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ASFunctions.unpublishArchivalObject">
@@ -684,7 +710,7 @@ record (str): JSON object (resource)</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to dcps-utils documentation’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to dcps-utils script documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

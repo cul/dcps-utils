@@ -3,9 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to dcps-utils documentation's documentation!
-====================================================
+Welcome to dcps-utils script documentation
+===========================================
 
+Work in progress. Repo: <https://github.com/cul/dcps-utils>
 
 .. toctree::
    :maxdepth: 2
