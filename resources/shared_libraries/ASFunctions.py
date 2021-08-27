@@ -184,6 +184,18 @@ def ASAuthenticate(user, baseURL, password):
 
 # Generic fn to do GET with or without proxy, as defined by config.
 def getIt(uri_str, headers, params=None, output="json"):
+    """Generic fn to do GET with or without proxy, as defined by config.
+    For internal use only.
+
+    Args:
+        uri_str (str): URI
+        headers (dict): Headers including session token from ASAuthenticate
+        params (dict, optional): Additional GET parameters. Defaults to None.
+        output (str, optional): Output type (json|text). Defaults to "json".
+
+    Returns:
+        str: JSON object.
+    """
     if https_proxy:
         response = requests.get(
             uri_str, headers=headers, params=params, proxies={"https": https_proxy}
@@ -202,6 +214,17 @@ def getIt(uri_str, headers, params=None, output="json"):
 
 
 def postIt(uri_str, headers, data):
+    """Generic fn to do POST with or without proxy, as defined by config.
+    For internal use only.
+
+    Args:
+        uri_str (str): URL
+        headers (dict): Headers including session token
+        data (str): JSON object to post
+
+    Returns:
+        str: JSON response
+    """
     if https_proxy:
         return requests.post(
             uri_str, headers=headers, data=data, proxies={"https": https_proxy}
@@ -217,6 +240,11 @@ def postIt(uri_str, headers, data):
 
 # Set server to 'Prod' (default) | 'Test' | 'Dev'
 def setServer(server):
+    """Set AS server for subsequent API calls ('Prod' (default) | 'Test' | 'Dev')
+
+    Args:
+        server (str): Server name
+    """
     global baseURL
     global user
     global password
@@ -239,6 +267,14 @@ def setServer(server):
 
 # General function to get response from a provided endpoint string (must start with slash).
 def getResponse(endpoint):
+    """General function to get response from a provided endpoint string (must start with slash).
+
+    Args:
+        endpoint (str): API enpoint with args/params
+
+    Returns:
+        str: JSON response
+    """
     headers = ASAuthenticate(user, baseURL, password)
     output = getIt(baseURL + endpoint, headers=headers)
     output = json.dumps(output)
@@ -252,6 +288,15 @@ def getResponse(endpoint):
 
 def getArchivalObject(repo, asid):
     # supply repo and id
+    """GET an archival object
+
+    Args:
+        repo (int): Repository code
+        asid (int): ASID
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
     output = getIt(baseURL + endpoint, headers=headers)
@@ -260,7 +305,15 @@ def getArchivalObject(repo, asid):
 
 
 def getArchivalObjectByRef(repo, ref):
-    # supply arch obj ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5
+    """GET archival object by ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5
+
+    Args:
+        repo (int): Repo code
+        ref (str): AO ref id
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     params = {"ref_id[]": ref}
     endpoint = "/repositories/" + str(repo) + "/find_by_id/archival_objects"
@@ -271,7 +324,15 @@ def getArchivalObjectByRef(repo, ref):
 
 
 def getCollectionManagement(repo, asid):
-    # supply repo and id
+    """GET collection mangement by repo/asid
+
+    Args:
+        repo (int): repo id
+        asid (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/collection_management/" + str(asid)
     output = getIt(baseURL + endpoint, headers=headers)
@@ -280,6 +341,14 @@ def getCollectionManagement(repo, asid):
 
 
 def getEnumeration(asid):
+    """GET enumeration
+
+    Args:
+        asid (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/config/enumerations/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
@@ -296,6 +365,15 @@ def getEnumerationValue(asid):
 
 
 def getResource(repo, asid):
+    """GET resource by repo/asid
+
+    Args:
+        repo (int): repo id
+        asid (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/resources/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
@@ -304,6 +382,15 @@ def getResource(repo, asid):
 
 
 def getResourceByID(bibid, repos=valid_repos):
+    """Find resource across all valid repos using field 'identifier'=<bibid>.
+
+    Args:
+        bibid (int): BIBID
+        repos (list, optional): List of valid repo codes. Defaults to valid_repos.
+
+    Returns:
+        str: JSON object of found resource
+    """
     # Find resource across all valid repos using field 'identifier'=<bibid>.
     for r in repos:
         res = getResourceByRepoID(r, bibid)
@@ -341,6 +428,15 @@ def getResourceByRepoID(repo, bibid):
 
 
 def getDigitalObject(repo, asid):
+    """GET digital object
+
+    Args:
+        repo (int): repo id
+        asid (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/digital_objects/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
@@ -349,6 +445,15 @@ def getDigitalObject(repo, asid):
 
 
 def getDigitalObjectByRef(repo, ref):
+    """GET digital object by AS ref id
+
+    Args:
+        repo (int): repo id
+        ref (str): digital object ref id
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     params = {"resolve[]": "digital_objects", "digital_object_id[]": ref}
     endpoint = "/repositories/" + str(repo) + "/find_by_id/digital_objects"
@@ -391,6 +496,15 @@ def getBibID(repo, asid):
 
 def getAgent(asid, agent_type="people"):
     # types: people, families, corporate_entities
+    """GET agent
+
+    Args:
+        asid (int): agent asid
+        agent_type (str, optional): available types: people, families, corporate_entities. Defaults to "people".
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "//agents/" + agent_type + "/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
@@ -399,6 +513,15 @@ def getAgent(asid, agent_type="people"):
 
 
 def getAccession(repo, asid):
+    """GET accession
+
+    Args:
+        repo (int): repo id
+        asid (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/accessions/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
@@ -467,6 +590,14 @@ def getAssessment(repo, asid):
 
 
 def getSubject(id):
+    """GET subject
+
+    Args:
+        id (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/subjects/" + str(id)
     output = getIt(baseURL + endpoint, headers)
@@ -475,6 +606,15 @@ def getSubject(id):
 
 
 def getTopContainer(repo, asid):
+    """GET top container
+
+    Args:
+        repo (int): repo id
+        asid (int): asid
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/top_containers/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
