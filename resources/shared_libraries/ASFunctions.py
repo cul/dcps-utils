@@ -628,6 +628,14 @@ def getTopContainer(repo, asid):
 
 
 def getAccessions(repo):
+    """GET all accessions of a repo.
+
+    Args:
+        repo (int): repo id
+
+    Returns:
+        str: JSON list of accessions
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "//repositories/" + str(repo) + "/accessions?all_ids=true"
     ids = getIt(baseURL + endpoint, headers)
@@ -643,7 +651,14 @@ def getAccessions(repo):
 
 
 def getAgents(agent_type="people"):
-    # types: people, families, corporate_entities
+    """GET all agents, filtered by type
+
+    Args:
+        agent_type (str, optional): Options: people, families, corporate_entities. Defaults to "people".
+
+    Returns:
+        list: List of agent records
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "//agents/" + agent_type + "?all_ids=true"
     ids = getIt(baseURL + endpoint, headers)
@@ -659,17 +674,33 @@ def getAgents(agent_type="people"):
 
 
 def getArchivalObjectChildren(repo, asid):
+    """GET a list of asids of children of an archival object.
+
+    Args:
+        repo (int): repo id
+        asid (int): asid of archival object
+
+    Returns:
+        list: List of archival objects
+    """
     # Get a list of asids of children of an archival object.
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = (
         "/repositories/" + str(repo) + "/archival_objects/" + str(asid) + "/children"
     )
     response = getIt(baseURL + endpoint, headers)
-    my_ids = [x["uri"].split("/")[-1] for x in response]
-    return my_ids
+    return [x["uri"].split("/")[-1] for x in response]
 
 
 def getAssessments(repo):
+    """GET all assessments for a repo
+
+    Args:
+        repo (int): repo id
+
+    Returns:
+        str: JSON list of assessments
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "//repositories/" + str(repo) + "/assessments?all_ids=true"
     ids = getIt(baseURL + endpoint, headers)
@@ -739,6 +770,14 @@ def getByDate(
 
 
 def getResources(repo):
+    """GET all resources for a repo.
+
+    Args:
+        repo (int): repo id
+
+    Returns:
+        str: JSON list of resources
+    """
     # https://archivesspace.github.io/archivesspace/api/#get-repositories-repo_id-resources-id
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "//repositories/" + str(repo) + "/resources?all_ids=true"
@@ -755,6 +794,14 @@ def getResources(repo):
 
 
 def getResourceIDs(repo):
+    """GET list of resource IDs for a repo, not the resources themselves.
+
+    Args:
+        repo (int): repo id
+
+    Returns:
+        str: JSON list of ids
+    """
     # Return only the list of IDs, not the resources themselves
     # https://archivesspace.github.io/archivesspace/api/#get-repositories-repo_id-resources
     headers = ASAuthenticate(user, baseURL, password)
@@ -913,6 +960,11 @@ def getCollectionManagements(
 
 
 def getUsers():
+    """GET all users
+
+    Returns:
+        str: JSON list of users
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "//users?all_ids=true"
     ids = getIt(baseURL + endpoint, headers)
@@ -954,6 +1006,15 @@ def daosRecurse(repo, asid):
 
 
 def findDigitalObjectDescendants(repo, asid):
+    """For any archival object, return a list of DAOs that are associated with children or descendants. Note: calls a recursive function, can take some time for large trees.
+
+    Args:
+        repo (int): repo id
+        asid (int): asid of archival object
+
+    Returns:
+        list: List of digital object descendants
+    """
     # For any archival object, return a list of DAOs that are associated with children or descendants.
     # Note: calls a recursive function, can take some time for large trees.
     global the_daos
@@ -968,6 +1029,16 @@ def findDigitalObjectDescendants(repo, asid):
 
 
 def postArchivalObject(repo, asid, record):
+    """POST archival object
+
+    Args:
+        repo (int): repo id
+        asid (int): asid of archival object
+        record (str): JSON object (archival object)
+
+    Returns:
+        str: JSON response from POST
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
     post = postIt(baseURL + endpoint, headers, record)
@@ -989,6 +1060,16 @@ def postAgent(asid, record, agent_type="people"):
 
 
 def postDigitalObject(repo, asid, record):
+    """POST digital object
+
+    Args:
+        repo (int): repo id
+        asid (int): asid of digital object
+        record (str): JSON object (digital object)
+
+    Returns:
+        str: JSON response from POST
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/digital_objects/" + str(asid)
     post = postIt(baseURL + endpoint, headers, record)
@@ -1020,6 +1101,16 @@ def postEnumerationValue(asid, record):
 
 
 def postResource(repo, asid, record):
+    """POST resource
+
+    Args:
+        repo (int): repo id
+        asid (int): asid of resource
+        record (str): JSON object (resource)
+
+    Returns:
+        str: JSON response from POST
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/resources/" + str(asid)
     post = postIt(baseURL + endpoint, headers, record)

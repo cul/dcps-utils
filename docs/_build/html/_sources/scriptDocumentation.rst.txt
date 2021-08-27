@@ -1,7 +1,7 @@
 Script Documentation
 ====================
 
-Text TK.
+Documentation of CUL ArchivesSpace API functions.
 
 ASFunctions
 -----------
