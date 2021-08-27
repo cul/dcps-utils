@@ -104,8 +104,7 @@ def deleteArchivalObject(repo, asid):
     headers = ASAuthenticate(user, baseURL, password)
     print(headers)
     endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
-    deletion = requests.delete(baseURL + endpoint, headers=headers)
-    return deletion
+    return requests.delete(baseURL + endpoint, headers=headers)
 
 
 def getArchivalObjectByRef2(repo, ref):
@@ -114,8 +113,7 @@ def getArchivalObjectByRef2(repo, ref):
     headers = ASAuthenticate(user, baseURL, password)
     params = {"ref_id[]": ref}
     endpoint = "/repositories/" + str(repo) + "/find_by_id/archival_objects"
-    lookup = getIt(baseURL + endpoint, headers=headers, params=params)
-    return lookup
+    return getIt(baseURL + endpoint, headers=headers, params=params)
     # archival_object_uri = lookup["archival_objects"][0]["ref"]
     # asid = archival_object_uri.split("/")[-1]
     # output = getArchivalObject(repo, asid)
@@ -134,6 +132,16 @@ def getArchivalObjectByRef2(repo, ref):
 
 
 def ASAuthenticate(user, baseURL, password):
+    """Main authentication handler. Called by other functions.
+
+    Args:
+        user (str): username
+        baseURL (str): Base API URL
+        password (str): password
+
+    Returns:
+        dict: Headers with session token for use in API calls.
+    """
     global session_token
     if session_token != "":
         # there is already a token in env
@@ -259,8 +267,7 @@ def getArchivalObjectByRef(repo, ref):
     lookup = getIt(baseURL + endpoint, headers=headers, params=params)
     archival_object_uri = lookup["archival_objects"][0]["ref"]
     asid = archival_object_uri.split("/")[-1]
-    output = getArchivalObject(repo, asid)
-    return output
+    return getArchivalObject(repo, asid)
 
 
 def getCollectionManagement(repo, asid):
