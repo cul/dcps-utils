@@ -1,7 +1,8 @@
 Script Documentation
 ====================
 
-Documentation of CUL ArchivesSpace API functions.
+Documentation of CUL ArchivesSpace API functions. Managed in `dcps-utils <https://github.com/cul/dcps-utils>`_
+
 
 ASFunctions
 -----------

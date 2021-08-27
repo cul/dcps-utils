@@ -1049,6 +1049,16 @@ def postArchivalObject(repo, asid, record):
 
 
 def postAgent(asid, record, agent_type="people"):
+    """POST agent
+
+    Args:
+        asid (int): asid of agent
+        record (str): JSON agent record
+        agent_type (str, optional): Options: people, families, corporate_entities. Defaults to "people".
+
+    Returns:
+        str: JSON response from POST
+    """
     # types: people, families, corporate_entities
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/agents/" + agent_type + "/" + str(asid)
@@ -1131,6 +1141,16 @@ def postSubject(asid, record):
 
 
 def postTopContainer(repo, asid, record):
+    """POST top container
+
+    Args:
+        repo (int): repo id
+        asid (int): asid of top container
+        record (str): JSON object (top container)
+
+    Returns:
+        str: JSON response from POST
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/repositories/" + str(repo) + "/top_containers/" + str(asid)
 
@@ -1140,11 +1160,17 @@ def postTopContainer(repo, asid, record):
 
 
 def suppressEnumerationValue(asid, mode="suppress"):
+    """Suppress/unsuppres an enumeration value. Options 'unsuppress', 'suppress'
+
+    Args:
+        asid (int): ID of enumeration value
+        mode (str, optional): Options: "suppress", "unsuppress". Defaults to "suppress".
+
+    Returns:
+        str: JSON response from POST
+    """
     # Set mode to 'unsuppress' to do so, otherwise suppress
-    if mode == "suppress":
-        suppress_flag = "suppressed=true"
-    else:
-        suppress_flag = "suppressed=false"
+    suppress_flag = "suppressed=true" if mode == "suppress" else "suppressed=false"
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = (
         "/config/enumeration_values/" + str(asid) + "/suppressed?" + suppress_flag
