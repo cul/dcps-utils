@@ -30,9 +30,19 @@ author = "CUL-DCPS"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.autosummary"]
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.todo",
+    "sphinx.ext.napoleon",
+]
 
 autosummary_generate = True  # Turn on sphinx.ext.autosummary
+
+# Display todos by setting to True
+todo_include_todos = True
+todo_link_only = False
+todo_emit_warnings = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

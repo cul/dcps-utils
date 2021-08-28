@@ -7,11 +7,24 @@ Documentation of CUL ArchivesSpace API functions. Managed in `dcps-utils <https:
 ASFunctions
 -----------
 
-.. automodule:: ASFunctions
-   :imported-members:
+.. automodule:: ASFunctions2.ASFunctions_main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+GET functions
+~~~~~~~~~~~~~
+
+.. automodule:: ASFunctions2.ASFunctions_get
    :members:
    :undoc-members:
    :show-inheritance:
 
 
+POST functions
+~~~~~~~~~~~~~~
 
+.. automodule:: ASFunctions2.ASFunctions_post
+   :members:
+   :undoc-members:
+   :show-inheritance:

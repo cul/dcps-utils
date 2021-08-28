@@ -100,6 +100,18 @@ def main():
 
 
 def deleteArchivalObject(repo, asid):
+    """Delete archival object
+
+    Args:
+        repo (int): repo id
+        asid (int): ID of archival object
+
+    Returns:
+        str: JSON response
+
+    .. todo::
+       Test this
+    """
     # TODO: Test
     headers = ASAuthenticate(user, baseURL, password)
     print(headers)
@@ -823,14 +835,20 @@ def getSubjects():
 
 
 def getSearchResults(repo, query_params):
-    # General function to process an advanced query and return unfiltered results. Intended to be called by other functions where the query string may be built by user input and the results parsed, e.g, getByCreateDate.
-    # Supply repo id and advanced query string of the form:
-    #     x = getSearchResults(2, '{"query":{"field":"create_time",
-    #           "value":"2019-08-13","comparator":"equal",
-    #           "jsonmodel_type":"date_field_query"},
-    #           "jsonmodel_type":"advanced_query"}')
-    #
-    # See http://lyralists.lyrasis.org/pipermail/archivesspace_users_group/2015-May/001654.html for advanced query info.
+    """General function to process an advanced query and return unfiltered results. Intended to be called by other functions where the query string may be built by user input and the results parsed, e.g, getByCreateDate.
+    Supply repo id and advanced query string of the form:
+
+    x = getSearchResults(2, '{"query":{"field":"create_time", "value":"2019-08-13","comparator":"equal", "jsonmodel_type":"date_field_query"}, "jsonmodel_type":"advanced_query"}')
+
+    See http://lyralists.lyrasis.org/pipermail/archivesspace_users_group/2015-May/001654.html for advanced query info.
+
+    Args:
+        repo (int): repo id
+        query_params (str): parameters as string
+
+    Returns:
+        list: List or results found
+    """
 
     records = []
 
@@ -908,6 +926,16 @@ def getSearchResults(repo, query_params):
 
 
 def getUnpublished(repo, filter=None, fields=["id", "create_time", "title"]):
+    """Returns unpublished records for a given repo. Any list of top-level fields can be selected to return in output.
+
+    Args:
+        repo (int): repo id
+        filter (str, optional): Filter results to parent_type. Defaults to None.
+        fields (list, optional): List of fields to return. Defaults to ["id", "create_time", "title"].
+
+    Returns:
+        list: List of dicts of results containing fields requested.
+    """
     # Returns unpublished records for a given repo. Any list of top-level fields can be selected to return in output.
 
     aqparams = '{"query":{"field":"publish","value":false,"jsonmodel_type":"boolean_field_query"},"jsonmodel_type":"advanced_query"}'
@@ -935,6 +963,16 @@ def getUnpublished(repo, filter=None, fields=["id", "create_time", "title"]):
 def getCollectionManagements(
     repo, filter=None, fields=["id", "parent_id", "title", "system_mtime"]
 ):
+    """Returns list of collection management records for a given repo. Filter by parent type, i.e., resource | accession (default all). Any arbitrary set of top-level fields can be returned.
+
+    Args:
+        repo (int): repo id
+        filter (str, optional): Parent type to filter by (resource, accession). Defaults to None.
+        fields (list, optional): List of fields to return for each result. Defaults to ["id", "parent_id", "title", "system_mtime"].
+
+    Returns:
+        list: List of dicts with fields specified for each result.
+    """
     # Returns list of collection management records for a given repo. Filter by parent type, i.e., resource | accession (default all). Any arbitrary set of top-level fields can be returned.
 
     aqparams = '{"query":{"field":"primary_type", "value":"collection_management", "jsonmodel_type":"field_query"},"jsonmodel_type":"advanced_query"}'
@@ -978,6 +1016,12 @@ def getUsers():
 
 
 def daosRecurse(repo, asid):
+    """Recursive function; only use in call from find_daos()!
+
+    Args:
+        repo (int): repo id
+        asid (int): asid
+    """
     # Recursive function; only use in call from find_daos()!
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = (
@@ -1090,6 +1134,18 @@ def postDigitalObject(repo, asid, record):
 
 
 def postEnumeration(asid, record):
+    """POST enumeration
+
+    Args:
+        asid (int): ID of enumeration
+        record (str): JSON object (record)
+
+    Returns:
+        str: JSON response
+
+    .. todo::
+       This perhaps does not work?
+    """
     # TODO: This perhaps does not work?
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/config/enumerations/" + str(asid)
@@ -1131,6 +1187,15 @@ def postResource(repo, asid, record):
 
 
 def postSubject(asid, record):
+    """POST subject
+
+    Args:
+        asid (int): repo id
+        record (str): JSON object (subject)
+
+    Returns:
+        str: JSON response
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/subjects/" + str(asid)
     post = postIt(baseURL + endpoint, headers, record)
@@ -1183,6 +1248,15 @@ def suppressEnumerationValue(asid, mode="suppress"):
 
 
 def unpublishArchivalObject(repo, asid):
+    """Unpublish archival object
+
+    Args:
+        repo (int): repo id
+        asid (int): id of archival object
+
+    Returns:
+        str: JSON response
+    """
     x = getArchivalObject(repo, asid)
     y = json.loads(x)
     y["publish"] = False
