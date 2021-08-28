@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Script Documentation &mdash; dcps-utils  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to dcps-utils script documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dcps-utils
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Script Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-ASFunctions">ASFunctions</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dcps-utils</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Script Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/scriptDocumentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="script-documentation">
+<h1>Script Documentation<a class="headerlink" href="#script-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Documentation of CUL ArchivesSpace API functions. Managed in <a class="reference external" href="https://github.com/cul/dcps-utils">dcps-utils</a></p>
+<div class="section" id="module-ASFunctions">
+<span id="asfunctions"></span><h2>ASFunctions<a class="headerlink" href="#module-ASFunctions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.ASAuthenticate">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">ASAuthenticate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseURL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.ASAuthenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main authentication handler. Called by other functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> (<em>str</em>) – username</p></li>
+<li><p><strong>baseURL</strong> (<em>str</em>) – Base API URL</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – password</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Headers with session token for use in API calls.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.daosRecurse">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">daosRecurse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.daosRecurse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursive function; only use in call from find_daos()!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.deleteArchivalObject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">deleteArchivalObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.deleteArchivalObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete archival object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – ID of archival object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Test this</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.findDigitalObjectDescendants">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">findDigitalObjectDescendants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.findDigitalObjectDescendants" title="Permalink to this definition">¶</a></dt>
+<dd><p>For any archival object, return a list of DAOs that are associated with children or descendants. Note: calls a recursive function, can take some time for large trees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid of archival object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of digital object descendants</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getAccession">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getAccession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getAccession" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET accession</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getAccessions">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getAccessions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getAccessions" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET all accessions of a repo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo</strong> (<em>int</em>) – repo id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON list of accessions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getAgent">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'people'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asid</strong> (<em>int</em>) – agent asid</p></li>
+<li><p><strong>agent_type</strong> (<em>str</em><em>, </em><em>optional</em>) – available types: people, families, corporate_entities. Defaults to “people”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getAgents">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getAgents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'people'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getAgents" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET all agents, filtered by type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>agent_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Options: people, families, corporate_entities. Defaults to “people”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of agent records</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getArchivalObject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getArchivalObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getArchivalObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET an archival object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – Repository code</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – ASID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getArchivalObjectByRef">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getArchivalObjectByRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getArchivalObjectByRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET archival object by ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – Repo code</p></li>
+<li><p><strong>ref</strong> (<em>str</em>) – AO ref id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getArchivalObjectByRef2">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getArchivalObjectByRef2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getArchivalObjectByRef2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getArchivalObjectChildren">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getArchivalObjectChildren</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getArchivalObjectChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET a list of asids of children of an archival object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid of archival object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of archival objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getAssessment">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getAssessment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getAssessment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getAssessments">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getAssessments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getAssessments" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET all assessments for a repo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo</strong> (<em>int</em>) – repo id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON list of assessments</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getBibID">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getBibID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getBibID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getByDate">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getByDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ctime'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comparator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'equal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['id',</span> <span class="pre">'create_time',</span> <span class="pre">'title']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getByDate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getCollectionManagement">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getCollectionManagement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getCollectionManagement" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET collection mangement by repo/asid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getCollectionManagements">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getCollectionManagements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['id',</span> <span class="pre">'parent_id',</span> <span class="pre">'title',</span> <span class="pre">'system_mtime']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getCollectionManagements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of collection management records for a given repo. Filter by parent type, i.e., resource | accession (default all). Any arbitrary set of top-level fields can be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>filter</strong> (<em>str</em><em>, </em><em>optional</em>) – Parent type to filter by (resource, accession). Defaults to None.</p></li>
+<li><p><strong>fields</strong> (<em>list</em><em>, </em><em>optional</em>) – List of fields to return for each result. Defaults to [“id”, “parent_id”, “title”, “system_mtime”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of dicts with fields specified for each result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getDigitalObject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getDigitalObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getDigitalObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET digital object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getDigitalObjectByRef">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getDigitalObjectByRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getDigitalObjectByRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET digital object by AS ref id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>ref</strong> (<em>str</em>) – digital object ref id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getDigitalObjectFromParent">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getDigitalObjectFromParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getDigitalObjectFromParent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getEAD">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getEAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getEAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getEnumeration">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getEnumeration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getEnumeration" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET enumeration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>asid</strong> (<em>int</em>) – asid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getEnumerationValue">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getEnumerationValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getEnumerationValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getIt">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getIt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getIt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic fn to do GET with or without proxy, as defined by config.
+For internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri_str</strong> (<em>str</em>) – URI</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – Headers including session token from ASAuthenticate</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – Additional GET parameters. Defaults to None.</p></li>
+<li><p><strong>output</strong> (<em>str</em><em>, </em><em>optional</em>) – Output type (json|text). Defaults to “json”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResource">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET resource by repo/asid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResourceByBibID">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResourceByBibID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aBibID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aCSV</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResourceByBibID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResourceByID">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResourceByID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bibid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResourceByID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find resource across all valid repos using field ‘identifier’=&lt;bibid&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bibid</strong> (<em>int</em>) – BIBID</p></li>
+<li><p><strong>repos</strong> (<em>list</em><em>, </em><em>optional</em>) – List of valid repo codes. Defaults to valid_repos.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object of found resource</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResourceByRepoID">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResourceByRepoID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bibid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResourceByRepoID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResourceIDs">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResourceIDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResourceIDs" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET list of resource IDs for a repo, not the resources themselves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo</strong> (<em>int</em>) – repo id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON list of ids</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResources">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResources" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET all resources for a repo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>repo</strong> (<em>int</em>) – repo id</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON list of resources</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getResponse">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>General function to get response from a provided endpoint string (must start with slash).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>endpoint</strong> (<em>str</em>) – API enpoint with args/params</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getSchema">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getSchema</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getSchema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getSearchResults">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getSearchResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getSearchResults" title="Permalink to this definition">¶</a></dt>
+<dd><p>General function to process an advanced query and return unfiltered results. Intended to be called by other functions where the query string may be built by user input and the results parsed, e.g, getByCreateDate.
+Supply repo id and advanced query string of the form:</p>
+<p>x = getSearchResults(2, ‘{“query”:{“field”:”create_time”, “value”:”2019-08-13”,”comparator”:”equal”, “jsonmodel_type”:”date_field_query”}, “jsonmodel_type”:”advanced_query”}’)</p>
+<p>See <a class="reference external" href="http://lyralists.lyrasis.org/pipermail/archivesspace_users_group/2015-May/001654.html">http://lyralists.lyrasis.org/pipermail/archivesspace_users_group/2015-May/001654.html</a> for advanced query info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>query_params</strong> (<em>str</em>) – parameters as string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List or results found</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getSubject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getSubject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getSubject" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET subject</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – asid</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getSubjects">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getSubjects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getSubjects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getTopContainer">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getTopContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getTopContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET top container</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getUnpublished">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getUnpublished</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['id',</span> <span class="pre">'create_time',</span> <span class="pre">'title']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getUnpublished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns unpublished records for a given repo. Any list of top-level fields can be selected to return in output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>filter</strong> (<em>str</em><em>, </em><em>optional</em>) – Filter results to parent_type. Defaults to None.</p></li>
+<li><p><strong>fields</strong> (<em>list</em><em>, </em><em>optional</em>) – List of fields to return. Defaults to [“id”, “create_time”, “title”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of dicts of results containing fields requested.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.getUsers">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">getUsers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.getUsers" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET all users</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>JSON list of users</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.lookupBibID">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">lookupBibID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aCSV</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.lookupBibID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.lookupByBibID">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">lookupByBibID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aBibID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aCSV</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.lookupByBibID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.main">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postAgent">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'people'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asid</strong> (<em>int</em>) – asid of agent</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON agent record</p></li>
+<li><p><strong>agent_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Options: people, families, corporate_entities. Defaults to “people”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response from POST</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postArchivalObject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postArchivalObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postArchivalObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST archival object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid of archival object</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON object (archival object)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response from POST</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postDigitalObject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postDigitalObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postDigitalObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST digital object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid of digital object</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON object (digital object)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response from POST</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postEnumeration">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postEnumeration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postEnumeration" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST enumeration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asid</strong> (<em>int</em>) – ID of enumeration</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON object (record)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>This perhaps does not work?</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postEnumerationValue">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postEnumerationValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postEnumerationValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postIt">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postIt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postIt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic fn to do POST with or without proxy, as defined by config.
+For internal use only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri_str</strong> (<em>str</em>) – URL</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – Headers including session token</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – JSON object to post</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postResource">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST resource</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid of resource</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON object (resource)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response from POST</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postSubject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postSubject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postSubject" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST subject</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asid</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON object (subject)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.postTopContainer">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">postTopContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.postTopContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST top container</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – asid of top container</p></li>
+<li><p><strong>record</strong> (<em>str</em>) – JSON object (top container)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response from POST</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.setServer">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">setServer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.setServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set AS server for subsequent API calls (‘Prod’ (default) | ‘Test’ | ‘Dev’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>server</strong> (<em>str</em>) – Server name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.suppressEnumerationValue">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">suppressEnumerationValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'suppress'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.suppressEnumerationValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suppress/unsuppres an enumeration value. Options ‘unsuppress’, ‘suppress’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asid</strong> (<em>int</em>) – ID of enumeration value</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – Options: “suppress”, “unsuppress”. Defaults to “suppress”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response from POST</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ASFunctions.unpublishArchivalObject">
+<span class="sig-prename descclassname"><span class="pre">ASFunctions.</span></span><span class="sig-name descname"><span class="pre">unpublishArchivalObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ASFunctions.unpublishArchivalObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpublish archival object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>int</em>) – repo id</p></li>
+<li><p><strong>asid</strong> (<em>int</em>) – id of archival object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to dcps-utils script documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, CUL-DCPS.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

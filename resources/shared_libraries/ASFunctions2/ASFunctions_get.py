@@ -1,10 +1,22 @@
 import json
 import requests
 import csv
-import sys
-import os
-from configparser import ConfigParser
 
+# import sys
+import os
+
+from ASFunctions2.ASFunctions_main import (
+    ASAuthenticate,
+    getIt,
+    postIt,
+    baseURL,
+    password,
+    user,
+    valid_repos,
+    https_proxy,
+    session_token,
+    config_path,
+)
 
 #
 # Compilation of ArchivesSpace API functions.
@@ -19,262 +31,9 @@ from configparser import ConfigParser
 #
 
 
-global baseURL
-global user
-global password
-global session_token
-global config
-
-
-my_name = __file__
-
-# This makes sure the script can be run from any working directory and still find related files.
-my_path = os.path.dirname(__file__)
-
-config_path = os.path.join(my_path, "config.ini")
-
-
-try:
-    # See if there is an initial session token in environment to use.
-    session_token = os.environ["session"]
-except:
-    session_token = ""
-
-
-# Set server to Prod as default. Override in parent script with
-# ASFunctions.setServer('Test') or ASFunctions.setServer('Dev').
-try:
-    # Read default config values
-    config = ConfigParser()
-    config.read(config_path)
-
-    baseURL = config["PROD"]["baseURL"]
-    user = config["PROD"]["user"]
-    password = config["PROD"]["password"]
-    # List of used AS repo codes
-    valid_repos = json.loads(config["REPOS"]["validRepos"])
-
-    # Get proxy url if there is one.
-    if "httpsProxy" in config["PROXIES"]:
-        https_proxy = config["PROXIES"]["httpsProxy"]
-    else:
-        https_proxy = None
-except Exception as e:
-    print("Error: There was a problem reading the config.ini file." + str(e))
-    sys.exit(1)
-
-
-def main():
-    # Test functions here.
-    from pprint import pprint
-
-    setServer("Test")
-    x = json.loads(getResource(2, 5907))
-    pprint(x)
-    setServer("Prod")
-    x = json.loads(getResource(2, 5907))
-
-    pprint(x)
-
-    quit()
-
-    pprint(json.loads(getArchivalObjectByRef(2, "f600a2fa87f5def358831bd367753f2a")))
-
-    quit()
-
-    print(
-        getResponse(
-            "repositories/2/find_by_id/archival_objects?ref_id[]=fd30ef92c90442fe861683b81dd1b4e8"
-        )
-    )
-
-    print(getArchivalObject(2, "560142"))
-    # print(getEAD(2, 5907))
-    # print(unpublishArchivalObject2(2, 456421))
-
-    # print(getResource2(2, 5907))
-    quit()
-
-
-########### TEST ##########
-
-
-def deleteArchivalObject(repo, asid):
-    """Delete archival object
-
-    Args:
-        repo (int): repo id
-        asid (int): ID of archival object
-
-    Returns:
-        str: JSON response
-
-    .. todo::
-       Test this
-    """
-    # TODO: Test
-    headers = ASAuthenticate(user, baseURL, password)
-    print(headers)
-    endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
-    return requests.delete(baseURL + endpoint, headers=headers)
-
-
-def getArchivalObjectByRef2(repo, ref):
-    # TODO! Reconcile if needed.(?)
-    # supply arch obj ref_id, e.g., bed5f26c0673086345e624f9bbf1d1c5
-    headers = ASAuthenticate(user, baseURL, password)
-    params = {"ref_id[]": ref}
-    endpoint = "/repositories/" + str(repo) + "/find_by_id/archival_objects"
-    return getIt(baseURL + endpoint, headers=headers, params=params)
-    # archival_object_uri = lookup["archival_objects"][0]["ref"]
-    # asid = archival_object_uri.split("/")[-1]
-    # output = getArchivalObject(repo, asid)
-    # return output
-
-
-###########################
-# TEST
-
-
-#######################################
-# Authentication and global handlers  #
-#######################################
-
-# Returns session headers for next API call, either using existing session token or generating one.
-
-
-def ASAuthenticate(user, baseURL, password):
-    """Main authentication handler. Called by other functions.
-
-    Args:
-        user (str): username
-        baseURL (str): Base API URL
-        password (str): password
-
-    Returns:
-        dict: Headers with session token for use in API calls.
-    """
-    global session_token
-    if session_token != "":
-        # there is already a token in env
-        headers = {
-            "X-ArchivesSpace-Session": session_token,
-            "Content_Type": "application/json",
-        }
-    else:
-        # generate a new token and save to env
-        try:
-            # get auth response including session token from API
-            if https_proxy:
-                auth = requests.post(
-                    baseURL + "/users/" + user + "/login?password=" + password,
-                    proxies={"https": https_proxy},
-                ).json()
-                msg = "(Authenticated using proxy " + https_proxy + ")"
-            else:
-                auth = requests.post(
-                    baseURL + "/users/" + user + "/login?password=" + password
-                ).json()
-                msg = "(Authenticated)"
-
-            if "error" in auth:
-                print("AUTHENTICATION ERROR: " + auth["error"])
-                sys.exit(1)
-            else:
-                print(msg)
-            session_token = auth["session"]
-            os.environ["session"] = session_token
-        except Exception as e:
-            print("Error: There was a problem authenticating to the API!" + str(e))
-            sys.exit(1)
-        headers = {
-            "X-ArchivesSpace-Session": session_token,
-            "Content_Type": "application/json",
-        }
-    return headers
-
-
-# Generic fn to do GET with or without proxy, as defined by config.
-def getIt(uri_str, headers, params=None, output="json"):
-    """Generic fn to do GET with or without proxy, as defined by config.
-    For internal use only.
-
-    Args:
-        uri_str (str): URI
-        headers (dict): Headers including session token from ASAuthenticate
-        params (dict, optional): Additional GET parameters. Defaults to None.
-        output (str, optional): Output type (json|text). Defaults to "json".
-
-    Returns:
-        str: JSON object.
-    """
-    if https_proxy:
-        response = requests.get(
-            uri_str, headers=headers, params=params, proxies={"https": https_proxy}
-        )
-    else:
-        response = requests.get(uri_str, headers=headers, params=params)
-    if output == "json":
-        return response.json()
-    elif output == "text":
-        return response.text
-    else:
-        print("ERROR: Output type " + output + " not recognized!")
-
-
-# Generic fn to do POST with or without proxy, as defined by config.
-
-
-def postIt(uri_str, headers, data):
-    """Generic fn to do POST with or without proxy, as defined by config.
-    For internal use only.
-
-    Args:
-        uri_str (str): URL
-        headers (dict): Headers including session token
-        data (str): JSON object to post
-
-    Returns:
-        str: JSON response
-    """
-    if https_proxy:
-        return requests.post(
-            uri_str, headers=headers, data=data, proxies={"https": https_proxy}
-        ).json()
-    else:
-        return requests.post(uri_str, headers=headers, data=data).json()
-
-
 #################
 ### FUNCTIONS ###
 #################
-
-
-# Set server to 'Prod' (default) | 'Test' | 'Dev'
-def setServer(server):
-    """Set AS server for subsequent API calls ('Prod' (default) | 'Test' | 'Dev')
-
-    Args:
-        server (str): Server name
-    """
-    global baseURL
-    global user
-    global password
-    global config
-    global session_token
-    session_token = ""  # start with fresh auth token
-    if server == "Dev":
-        baseURL = config["DEV"]["baseURL"]
-        user = config["DEV"]["user"]
-        password = config["DEV"]["password"]
-    elif server == "Test":
-        baseURL = config["TEST"]["baseURL"]
-        user = config["TEST"]["user"]
-        password = config["TEST"]["password"]
-    else:
-        baseURL = config["PROD"]["baseURL"]
-        user = config["PROD"]["user"]
-        password = config["PROD"]["password"]
 
 
 # General function to get response from a provided endpoint string (must start with slash).
@@ -353,10 +112,10 @@ def getCollectionManagement(repo, asid):
 
 
 def getEnumeration(asid):
-    """GET enumeration
+    """GET an enumeration
 
     Args:
-        asid (int): asid
+        asid (int): ID of enumeration
 
     Returns:
         str: JSON object
@@ -369,6 +128,14 @@ def getEnumeration(asid):
 
 
 def getEnumerationValue(asid):
+    """GET enumeration value
+
+    Args:
+        asid (int): ID of enumeration
+
+    Returns:
+        str: JSON object
+    """
     headers = ASAuthenticate(user, baseURL, password)
     endpoint = "/config/enumeration_values/" + str(asid)
     output = getIt(baseURL + endpoint, headers)
@@ -1065,203 +832,6 @@ def findDigitalObjectDescendants(repo, asid):
     the_daos = []
     daosRecurse(repo, asid)
     return the_daos
-
-
-###################################
-# Functions to post data          #
-###################################
-
-
-def postArchivalObject(repo, asid, record):
-    """POST archival object
-
-    Args:
-        repo (int): repo id
-        asid (int): asid of archival object
-        record (str): JSON object (archival object)
-
-    Returns:
-        str: JSON response from POST
-    """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postAgent(asid, record, agent_type="people"):
-    """POST agent
-
-    Args:
-        asid (int): asid of agent
-        record (str): JSON agent record
-        agent_type (str, optional): Options: people, families, corporate_entities. Defaults to "people".
-
-    Returns:
-        str: JSON response from POST
-    """
-    # types: people, families, corporate_entities
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/agents/" + agent_type + "/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postDigitalObject(repo, asid, record):
-    """POST digital object
-
-    Args:
-        repo (int): repo id
-        asid (int): asid of digital object
-        record (str): JSON object (digital object)
-
-    Returns:
-        str: JSON response from POST
-    """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/digital_objects/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postEnumeration(asid, record):
-    """POST enumeration
-
-    Args:
-        asid (int): ID of enumeration
-        record (str): JSON object (record)
-
-    Returns:
-        str: JSON response
-
-    .. todo::
-       This perhaps does not work?
-    """
-    # TODO: This perhaps does not work?
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/config/enumerations/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postEnumerationValue(asid, record):
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/config/enumeration_values/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postResource(repo, asid, record):
-    """POST resource
-
-    Args:
-        repo (int): repo id
-        asid (int): asid of resource
-        record (str): JSON object (resource)
-
-    Returns:
-        str: JSON response from POST
-    """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/resources/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postSubject(asid, record):
-    """POST subject
-
-    Args:
-        asid (int): repo id
-        record (str): JSON object (subject)
-
-    Returns:
-        str: JSON response
-    """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/subjects/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
-    post = json.dumps(post)
-    return post
-
-
-def postTopContainer(repo, asid, record):
-    """POST top container
-
-    Args:
-        repo (int): repo id
-        asid (int): asid of top container
-        record (str): JSON object (top container)
-
-    Returns:
-        str: JSON response from POST
-    """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/top_containers/" + str(asid)
-
-    post = postIt(baseURL + endpoint, headers, record)
-    post = json.dumps(post)
-    return post
-
-
-def suppressEnumerationValue(asid, mode="suppress"):
-    """Suppress/unsuppres an enumeration value. Options 'unsuppress', 'suppress'
-
-    Args:
-        asid (int): ID of enumeration value
-        mode (str, optional): Options: "suppress", "unsuppress". Defaults to "suppress".
-
-    Returns:
-        str: JSON response from POST
-    """
-    # Set mode to 'unsuppress' to do so, otherwise suppress
-    suppress_flag = "suppressed=true" if mode == "suppress" else "suppressed=false"
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = (
-        "/config/enumeration_values/" + str(asid) + "/suppressed?" + suppress_flag
-    )
-    # TODO: add postIt method without record data? Test this.
-    post = postIt(baseURL + endpoint, headers, "")
-    post = requests.post(baseURL + endpoint, headers=headers).json()
-    post = json.dumps(post)
-    return post
-
-
-def unpublishArchivalObject(repo, asid):
-    """Unpublish archival object
-
-    Args:
-        repo (int): repo id
-        asid (int): id of archival object
-
-    Returns:
-        str: JSON response
-    """
-    x = getArchivalObject(repo, asid)
-    y = json.loads(x)
-    y["publish"] = False
-    z = json.dumps(y)
-    return postArchivalObject(repo, asid, z)
 
 
 if __name__ == "__main__":
