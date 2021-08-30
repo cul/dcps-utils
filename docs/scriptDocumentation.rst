@@ -7,6 +7,8 @@ Documentation of CUL ArchivesSpace API functions. Managed in `dcps-utils <https:
 ASFunctions
 -----------
 
+Functions for interacting with the ArchivesSpace API. Located in resources/shared_libraries.
+
 .. automodule:: ASFunctions
    :members:
    :undoc-members:
@@ -37,6 +39,8 @@ ASFunctions
 
 dcps-utils
 -----------
+
+General utility functions. Located in resources/shared_libraries.
 
 .. automodule:: dcps_utils
    :members:
