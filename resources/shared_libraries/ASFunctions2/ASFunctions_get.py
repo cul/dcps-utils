@@ -832,7 +832,3 @@ def findDigitalObjectDescendants(repo, asid):
     the_daos = []
     daosRecurse(repo, asid)
     return the_daos
-
-
-if __name__ == "__main__":
-    main()

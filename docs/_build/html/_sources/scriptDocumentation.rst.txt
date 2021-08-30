@@ -33,3 +33,12 @@ ASFunctions
 ..    :members:
 ..    :undoc-members:
 ..    :show-inheritance:
+
+
+dcps-utils
+-----------
+
+.. automodule:: dcps_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

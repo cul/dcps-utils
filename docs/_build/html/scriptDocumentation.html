@@ -90,6 +90,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Script Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-ASFunctions">ASFunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">dcps-utils</a></li>
 </ul>
 </li>
 </ul>
@@ -994,6 +995,321 @@ For internal use only.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h2>dcps-utils<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-dcps_utils"></span><dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.check_clio_status">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">check_clio_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bibid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.check_clio_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that a BIBID has a publicly available CLIO record. If using in bulk, add sleep of .5 sec or more to avoid “too many requests” error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bibid</strong> (<em>str</em>) – BIBID</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HTTP status code</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.dedupe_array">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">dedupe_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.dedupe_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a 2D array (list of lists), remove rows that have duplicate data in a given column. Provide column on which to match dupes (starts with 0).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em>) – 2-dimensional array</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – Column to match for duplicates (starts with 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result array with duplicates removed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.diff">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Diff two lists. Return list of x - y (everything in x that is not in y). Reverse order to get inverse diff.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>first</strong> (<em>list</em>) – List1</p></li>
+<li><p><strong>second</strong> (<em>list</em>) – List2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of items in List1 that are not in List2.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.file_cleanup">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">file_cleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_days</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.file_cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove files from a directory that are of a certain age.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_dir</strong> (<em>str</em>) – Path to directory</p></li>
+<li><p><strong>_days</strong> (<em>int</em>) – Number of days beyond which old files should be deleted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.fix_cr">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">fix_cr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.fix_cr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all
+with
+in string</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>_str (str): Input string</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Output string</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.get_clio_marc">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">get_clio_marc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bibid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.get_clio_marc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve MARC data from CLIO via http</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bibid</strong> (<em>str</em>) – BIBID</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – get_clio_marc request error</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>MARC21 data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>binary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.get_status">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.get_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get http status code for URL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – URL</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Status code</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.jing_process">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">jing_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schemaPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jingPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Users/dwh2128/Documents/git/resources/jing-20091111/bin/jing.jar'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.jing_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process an xml file against a schema (rng or schematron) using Jing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filePath</strong> (<em>str</em>) – Path to input file</p></li>
+<li><p><strong>schemaPath</strong> (<em>str</em>) – Path to schema file</p></li>
+<li><p><strong>compact</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use “compact” RelaxNG schema format. Defaults to False.</p></li>
+<li><p><strong>jingPath</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to Jing. Defaults to config[“FILES”][“jingPath”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result stdout</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.oai_harvest">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">oai_harvest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'oai_marc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Prod'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harvester_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Users/dwh2128/Documents/git/dcps-utils/resources/shared_libraries/pyoaiharvester/pyoaiharvest.py'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.oai_harvest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Harvest OAI-PMH records from ArchivesSpace and save to file. See <a class="reference external" href="https://github.com/vphill/pyoaiharvester">https://github.com/vphill/pyoaiharvester</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_path</strong> (<em>str</em>) – Local file path</p></li>
+<li><p><strong>output_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Output type. Defaults to “oai_marc”.</p></li>
+<li><p><strong>server</strong> (<em>str</em><em>, </em><em>optional</em>) – Prod, Test, or Dev. Defaults to “Prod”.</p></li>
+<li><p><strong>date_params</strong> (<em>str</em><em>, </em><em>optional</em>) – From/until date parameters, using format -f yyyy-mm-dd -u format: yyyy-mm-dd. Defaults to “”.</p></li>
+<li><p><strong>harvester_path</strong> (<em>str</em><em>, </em><em>optional</em>) – File path to pyoaiharvest.py. Defaults to os.path.join(my_path, “pyoaiharvester/pyoaiharvest.py”).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>stdout result</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.pickle_it">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">pickle_it</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.pickle_it" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save object as pickle file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>dict</em><em>, </em><em>list</em>) – Python object (e.g., dict) to pickle</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Path to output file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.rsync_process">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">rsync_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Users/dwh2128/.ssh/id_rsa_cunix2'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.rsync_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rsync files in a given directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fromPath</strong> (<em>str</em>) – Path to directory to sync from</p></li>
+<li><p><strong>toPath</strong> (<em>str</em>) – Path to directory to sync to</p></li>
+<li><p><strong>options</strong> (<em>str</em><em>, </em><em>optional</em>) – Rsync additional option flags, e.g., “–exclude ‘*.zip’”. Defaults to False.</p></li>
+<li><p><strong>keyPath</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to ssh key. Defaults to config[“FILES”][“keyPath”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result stdout</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.run_bash">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">run_bash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorPrefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.run_bash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a command in bash</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>str</em>) – Command</p></li>
+<li><p><strong>errorPrefix</strong> (<em>str</em><em>, </em><em>optional</em>) – Prefix to apply to any error outputs, e.g., for logging, raising exceptions. Defaults to “”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Error output (if any), with prefix applied</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Result stdout</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.saxon_process">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">saxon_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theParams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saxonPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Users/dwh2128/Documents/git/resources/saxon-9.8.0.12-he.jar'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.saxon_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process an XSLT transformation using Saxon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inFile</strong> (<em>str</em>) – Path to input XML</p></li>
+<li><p><strong>transformFile</strong> (<em>str</em>) – Path to XSLT</p></li>
+<li><p><strong>outFile</strong> (<em>str</em>) – Path to output file. Use None to send to stdout.</p></li>
+<li><p><strong>theParams</strong> (<em>str</em><em>, </em><em>optional</em>) – Additional parameters, as defined by stylesheet. Defaults to ” “.</p></li>
+<li><p><strong>saxonPath</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to Saxon. Defaults to config[“FILES”][“saxonPath”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – “SAXON ERROR: &lt;error message&gt;</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Result stdout</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.sort_array">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">sort_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.sort_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort an array based on given column (1st one by default)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em>) – 2-dimensional array (list of lists)</p></li>
+<li><p><strong>match_key</strong> (<em>int</em><em>, </em><em>optional</em>) – Column to sort on. Defaults to 0.</p></li>
+<li><p><strong>ignore_heads</strong> (<em>bool</em><em>, </em><em>optional</em>) – Treat row 0 as heads and ignore. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New sorted list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.trim_array">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">trim_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.trim_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trim columns from array. Provide column indexes as list to remove (starts with 0). Leaves original array intact (by deep copying)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em>) – 2-dimensional array (list of lists)</p></li>
+<li><p><strong>indices</strong> (<em>list</em>) – List of integer column indexes (starting with 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New list with columns trimmed</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.unpickle_it">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">unpickle_it</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.unpickle_it" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpickle a pickle file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to pickle to unpickle</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The unpickled objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict or list</p>
 </dd>
 </dl>
 </dd></dl>
