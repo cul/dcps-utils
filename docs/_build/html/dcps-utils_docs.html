@@ -296,15 +296,14 @@ in string</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dcps_utils.jing_process">
-<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">jing_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schemaPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jingPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path/to/jing'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.jing_process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Process an xml file against a schema (rng or schematron) using Jing.</p>
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">jing_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schemaPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.jing_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process an xml file against a schema (rng or schematron) using Jing. Relies on JING_PATH (path to jing-20091111 or comparable).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filePath</strong> (<em>str</em>) – Path to input file</p></li>
 <li><p><strong>schemaPath</strong> (<em>str</em>) – Path to schema file</p></li>
 <li><p><strong>compact</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use “compact” RelaxNG schema format. Defaults to False.</p></li>
-<li><p><strong>jingPath</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to Jing. Defaults to config[“FILES”][“jingPath”].</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -318,8 +317,8 @@ in string</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dcps_utils.oai_harvest">
-<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">oai_harvest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'oai_marc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Prod'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harvester_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Users/dwh2128/Documents/git/dcps-utils/resources/shared_libraries/pyoaiharvester/pyoaiharvest.py'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.oai_harvest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Harvest OAI-PMH records from ArchivesSpace and save to file. See <a class="reference external" href="https://github.com/vphill/pyoaiharvester">https://github.com/vphill/pyoaiharvester</a></p>
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">oai_harvest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'oai_marc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Prod'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.oai_harvest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Harvest OAI-PMH records from ArchivesSpace and save to file. Relies on HARVESTER_PATH to pyoaiharvest.py. See <a class="reference external" href="https://github.com/vphill/pyoaiharvester">https://github.com/vphill/pyoaiharvester</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -327,7 +326,6 @@ in string</p>
 <li><p><strong>output_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Output type. Defaults to “oai_marc”.</p></li>
 <li><p><strong>server</strong> (<em>str</em><em>, </em><em>optional</em>) – Prod, Test, or Dev. Defaults to “Prod”.</p></li>
 <li><p><strong>date_params</strong> (<em>str</em><em>, </em><em>optional</em>) – From/until date parameters, using format -f yyyy-mm-dd -u format: yyyy-mm-dd. Defaults to “”.</p></li>
-<li><p><strong>harvester_path</strong> (<em>str</em><em>, </em><em>optional</em>) – File path to pyoaiharvest.py. Defaults to os.path.join(my_path, “pyoaiharvester/pyoaiharvest.py”).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -355,15 +353,14 @@ in string</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dcps_utils.rsync_process">
-<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">rsync_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path/to/ssh/key'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.rsync_process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rsync files in a given directory</p>
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">rsync_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fromPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.rsync_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rsync files in a given directory. Relies on SSH_KEY_PATH from config.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fromPath</strong> (<em>str</em>) – Path to directory to sync from</p></li>
 <li><p><strong>toPath</strong> (<em>str</em>) – Path to directory to sync to</p></li>
 <li><p><strong>options</strong> (<em>str</em><em>, </em><em>optional</em>) – Rsync additional option flags, e.g., “–exclude ‘*.zip’”. Defaults to False.</p></li>
-<li><p><strong>keyPath</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to ssh key. Defaults to config[“FILES”][“keyPath”].</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -400,8 +397,8 @@ in string</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dcps_utils.saxon_process">
-<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">saxon_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theParams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saxonPath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'path/to/saxon'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.saxon_process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Process an XSLT transformation using Saxon.</p>
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">saxon_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theParams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.saxon_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process an XSLT transformation using Saxon. Relies on SAXON_PATH (to saxon-9.8.0.12-he.jar or similar).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -409,7 +406,6 @@ in string</p>
 <li><p><strong>transformFile</strong> (<em>str</em>) – Path to XSLT</p></li>
 <li><p><strong>outFile</strong> (<em>str</em>) – Path to output file. Use None to send to stdout.</p></li>
 <li><p><strong>theParams</strong> (<em>str</em><em>, </em><em>optional</em>) – Additional parameters, as defined by stylesheet. Defaults to ” “.</p></li>
-<li><p><strong>saxonPath</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to Saxon. Defaults to config[“FILES”][“saxonPath”].</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
