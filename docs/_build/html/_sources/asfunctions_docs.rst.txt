@@ -1,7 +1,7 @@
 ArchivesSpace Python Functions Documentation
 ============================================
 
-Documentation of CUL ArchivesSpace API functions. Managed in `dcps-utils <https://github.com/cul/dcps-utils>`_
+Documentation of CUL ArchivesSpace API Python functions (ASFunctions). Managed in `dcps-utils <https://github.com/cul/dcps-utils>`_
 
 
 ASFunctions
