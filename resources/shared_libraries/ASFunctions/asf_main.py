@@ -6,7 +6,6 @@ import os
 from configparser import ConfigParser
 
 
-#
 # Compilation of ArchivesSpace API functions.
 # See README for config.ini setup.
 
