@@ -16,8 +16,11 @@ from configparser import ConfigParser
 # Then call functions like
 #   asf.getResource(2,4277)
 #
-#
+#   Recommended to use setServer first to make sure you are hitting the correct API:
+#   asf.setServer('Test')
 
+
+DEBUG = False  # output more info if True
 
 global baseURL
 global user
@@ -26,12 +29,12 @@ global session_token
 global config
 
 
-my_name = __file__
+MY_NAME = __file__
 
 # This makes sure the script can be run from any working directory and still find related files.
-my_path = os.path.dirname(__file__)
+MY_PATH = os.path.dirname(__file__)
 
-config_path = os.path.join(my_path, "../config.ini")
+CONFIG_PATH = os.path.join(MY_PATH, "../config.ini")
 
 
 try:
@@ -46,7 +49,7 @@ except:
 try:
     # Read default config values
     config = ConfigParser()
-    config.read(config_path)
+    config.read(CONFIG_PATH)
 
     baseURL = config["PROD"]["baseURL"]
     user = config["PROD"]["user"]
@@ -64,10 +67,11 @@ except Exception as e:
     sys.exit(1)
 
 
-def main():
-    # Test functions here.
+class server:
+    """Information about the ArchivesSpace server"""
 
-    quit()
+    def url():
+        return baseURL
 
 
 #######################################
@@ -77,26 +81,18 @@ def main():
 # Returns session headers for next API call, either using existing session token or generating one.
 
 
-def ASAuthenticate(user, baseURL, password):
-    """Main authentication handler. Called by other functions.
-
-    Args:
-        user (str): username
-        baseURL (str): Base API URL
-        password (str): password
+def ASAuthenticate():
+    """Main authentication handler. Called by other functions. Relies on 'user' and 'password' global variables, obtained from config.ini.
 
     Returns:
         dict: Headers with session token for use in API calls.
     """
     global session_token
-    if session_token != "":
-        # there is already a token in env
-        headers = {
-            "X-ArchivesSpace-Session": session_token,
-            "Content_Type": "application/json",
-        }
-    else:
+    global baseURL
+    global DEBUG
+    if session_token == "":
         # generate a new token and save to env
+        debug_log("Generating new session token.")
         try:
             # get auth response including session token from API
             if https_proxy:
@@ -121,33 +117,40 @@ def ASAuthenticate(user, baseURL, password):
         except Exception as e:
             print("Error: There was a problem authenticating to the API!" + str(e))
             sys.exit(1)
-        headers = {
-            "X-ArchivesSpace-Session": session_token,
-            "Content_Type": "application/json",
-        }
+    # there is already a token in env
+    headers = {
+        "X-ArchivesSpace-Session": session_token,
+        "Content_Type": "application/json",
+    }
+    debug_log("Authenticated to baseURL: " + baseURL)
+    debug_log(headers)
     return headers
 
 
 # Generic fn to do GET with or without proxy, as defined by config.
-def getIt(uri_str, headers, params=None, output="json"):
+def getIt(endpoint, headers, params=None, output="json"):
     """Generic fn to do GET with or without proxy, as defined by config.
     For internal use only.
 
     Args:
         uri_str (str): URI
-        headers (dict): Headers including session token from ASAuthenticate
+        headers (dict): Headers including session token from ASAuthenticate()
         params (dict, optional): Additional GET parameters. Defaults to None.
         output (str, optional): Output type (json|text). Defaults to "json".
 
     Returns:
         str: JSON object.
     """
+    debug_log("GET from: " + baseURL + endpoint)
     if https_proxy:
         response = requests.get(
-            uri_str, headers=headers, params=params, proxies={"https": https_proxy}
+            baseURL + endpoint,
+            headers=headers,
+            params=params,
+            proxies={"https": https_proxy},
         )
     else:
-        response = requests.get(uri_str, headers=headers, params=params)
+        response = requests.get(baseURL + endpoint, headers=headers, params=params)
     if output == "json":
         return response.json()
     elif output == "text":
@@ -159,24 +162,48 @@ def getIt(uri_str, headers, params=None, output="json"):
 # Generic fn to do POST with or without proxy, as defined by config.
 
 
-def postIt(uri_str, headers, data):
+def postIt(endpoint, headers, data):
     """Generic fn to do POST with or without proxy, as defined by config.
     For internal use only.
 
     Args:
         uri_str (str): URL
-        headers (dict): Headers including session token
+        headers (dict): Headers including session token obtained from ASAuthenticate()
         data (str): JSON object to post
 
     Returns:
         str: JSON response
     """
+    debug_log("POST to: " + baseURL + endpoint)
     if https_proxy:
         return requests.post(
-            uri_str, headers=headers, data=data, proxies={"https": https_proxy}
+            baseURL + endpoint,
+            headers=headers,
+            data=data,
+            proxies={"https": https_proxy},
         ).json()
     else:
-        return requests.post(uri_str, headers=headers, data=data).json()
+        return requests.post(baseURL + endpoint, headers=headers, data=data).json()
+
+
+def setDebug(bool):
+    """Set DEBUG to True from outside module scope to allow debug messages.
+
+    Args:
+        bool (boolean): True/False
+    """
+    global DEBUG
+    DEBUG = bool
+
+
+def debug_log(msg):
+    """Output message if DEBUG==True. Use setDebug() outside of module.
+
+    Args:
+        msg (str): Message text
+    """
+    if DEBUG:
+        print("*** DEBUG: " + str(msg))
 
 
 # Set server to 'Prod' (default) | 'Test' | 'Dev'
@@ -204,7 +231,4 @@ def setServer(server):
         baseURL = config["PROD"]["baseURL"]
         user = config["PROD"]["user"]
         password = config["PROD"]["password"]
-
-
-if __name__ == "__main__":
-    main()
+    debug_log("SERVER set to: " + baseURL)

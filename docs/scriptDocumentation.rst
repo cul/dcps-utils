@@ -1,48 +1,12 @@
 Script Documentation
 ====================
 
-Documentation of CUL ArchivesSpace API functions. Managed in `dcps-utils <https://github.com/cul/dcps-utils>`_
+Documentation of Python modules found in `dcps-utils <https://github.com/cul/dcps-utils>`_
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-ASFunctions
------------
+   asfunctions_docs
+   dcps-utils_docs
 
-Functions for interacting with the ArchivesSpace API. Located in resources/shared_libraries.
-
-.. automodule:: ASFunctions
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. .. automodule:: ASFunctions2.ASFunctions_main
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
-
-.. GET functions
-.. ~~~~~~~~~~~~~
-
-.. .. automodule:: ASFunctions2.ASFunctions_get
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
-
-
-.. POST functions
-.. ~~~~~~~~~~~~~~
-
-.. .. automodule:: ASFunctions2.ASFunctions_post
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
-
-
-dcps-utils
------------
-
-General utility functions. Located in resources/shared_libraries.
-
-.. automodule:: dcps_utils
-   :members:
-   :undoc-members:
-   :show-inheritance:

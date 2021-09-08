@@ -6,20 +6,13 @@ import csv
 import os
 
 # from configparser import ConfigParser
-from ASFunctions2.ASFunctions_main import (
+from .asf_main import (
     ASAuthenticate,
     getIt,
     postIt,
-    baseURL,
-    password,
-    user,
     valid_repos,
-    https_proxy,
-    session_token,
-    config_path,
 )
 
-import ASFunctions2.ASFunctions_get
 
 #
 # Compilation of ArchivesSpace API functions.
@@ -32,11 +25,6 @@ import ASFunctions2.ASFunctions_get
 #   asf.getResource(2,4277)
 #
 #
-
-
-def main():
-    # Test functions here.
-    quit()
 
 
 #################
@@ -60,11 +48,9 @@ def postArchivalObject(repo, asid, record):
     Returns:
         str: JSON response from POST
     """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/archival_objects/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "repositories/" + str(repo) + "/archival_objects/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -81,11 +67,9 @@ def postAgent(asid, record, agent_type="people"):
         str: JSON response from POST
     """
     # types: people, families, corporate_entities
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/agents/" + agent_type + "/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "agents/" + agent_type + "/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -101,17 +85,18 @@ def postDigitalObject(repo, asid, record):
     Returns:
         str: JSON response from POST
     """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/digital_objects/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "repositories/" + str(repo) + "/digital_objects/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
 
 def postEnumeration(asid, record):
     """POST enumeration
+
+    .. todo::
+       This perhaps does not work?
 
     Args:
         asid (int): ID of enumeration
@@ -120,25 +105,19 @@ def postEnumeration(asid, record):
     Returns:
         str: JSON response
 
-    .. todo::
-       This perhaps does not work?
     """
     # TODO: This perhaps does not work?
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/config/enumerations/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "config/enumerations/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
 
 def postEnumerationValue(asid, record):
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/config/enumeration_values/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "config/enumeration_values/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -154,11 +133,9 @@ def postResource(repo, asid, record):
     Returns:
         str: JSON response from POST
     """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/resources/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "repositories/" + str(repo) + "/resources/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -173,11 +150,9 @@ def postSubject(asid, record):
     Returns:
         str: JSON response
     """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/subjects/" + str(asid)
-    post = postIt(baseURL + endpoint, headers, record)
-    # post = requests.post(baseURL + endpoint,
-    #                      headers=headers, data=record).json()
+    headers = ASAuthenticate()
+    endpoint = "subjects/" + str(asid)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -193,10 +168,10 @@ def postTopContainer(repo, asid, record):
     Returns:
         str: JSON response from POST
     """
-    headers = ASAuthenticate(user, baseURL, password)
-    endpoint = "/repositories/" + str(repo) + "/top_containers/" + str(asid)
+    headers = ASAuthenticate()
+    endpoint = "repositories/" + str(repo) + "/top_containers/" + str(asid)
 
-    post = postIt(baseURL + endpoint, headers, record)
+    post = postIt(endpoint, headers, record)
     post = json.dumps(post)
     return post
 
@@ -213,12 +188,12 @@ def suppressEnumerationValue(asid, mode="suppress"):
     """
     # Set mode to 'unsuppress' to do so, otherwise suppress
     suppress_flag = "suppressed=true" if mode == "suppress" else "suppressed=false"
-    headers = ASAuthenticate(user, baseURL, password)
+    headers = ASAuthenticate()
     endpoint = (
         "/config/enumeration_values/" + str(asid) + "/suppressed?" + suppress_flag
     )
     # TODO: add postIt method without record data? Test this.
-    post = postIt(baseURL + endpoint, headers, "")
+    post = postIt(endpoint, headers, "")
     post = requests.post(baseURL + endpoint, headers=headers).json()
     post = json.dumps(post)
     return post
@@ -227,6 +202,8 @@ def suppressEnumerationValue(asid, mode="suppress"):
 def unpublishArchivalObject(repo, asid):
     """Unpublish archival object
 
+    .. todo:: Move this function to an "update" set as it uses both GET and POST.
+
     Args:
         repo (int): repo id
         asid (int): id of archival object
@@ -234,12 +211,10 @@ def unpublishArchivalObject(repo, asid):
     Returns:
         str: JSON response
     """
-    x = ASFunctions2.ASFunctions_get.getArchivalObject(repo, asid)
+    from .asf_get import getArchivalObject
+
+    x = getArchivalObject(repo, asid)
     y = json.loads(x)
     y["publish"] = False
     z = json.dumps(y)
     return postArchivalObject(repo, asid, z)
-
-
-if __name__ == "__main__":
-    main()
