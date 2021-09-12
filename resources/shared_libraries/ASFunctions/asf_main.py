@@ -185,26 +185,6 @@ def postIt(endpoint, headers, data):
         return requests.post(baseURL + endpoint, headers=headers, data=data).json()
 
 
-def setDebug(bool):
-    """Set DEBUG to True from outside module scope to allow debug messages.
-
-    Args:
-        bool (boolean): True/False
-    """
-    global DEBUG
-    DEBUG = bool
-
-
-def debug_log(msg):
-    """Output message if DEBUG==True. Use setDebug() outside of module.
-
-    Args:
-        msg (str): Message text
-    """
-    if DEBUG:
-        print("*** DEBUG: " + str(msg))
-
-
 # Set server to 'Prod' (default) | 'Test' | 'Dev'
 def setServer(server):
     """Set AS server for subsequent API calls ('Prod' (default) | 'Test' | 'Dev')
@@ -231,3 +211,23 @@ def setServer(server):
         user = config["PROD"]["user"]
         password = config["PROD"]["password"]
     debug_log("SERVER set to: " + baseURL)
+
+
+def setDebug(bool):
+    """Set DEBUG to True from outside module scope to allow debug messages.
+
+    Args:
+        bool (boolean): True/False
+    """
+    global DEBUG
+    DEBUG = bool
+
+
+def debug_log(msg):
+    """Output message if DEBUG==True. Use setDebug() outside of module.
+
+    Args:
+        msg (str): Message text
+    """
+    if DEBUG:
+        print("*** DEBUG: " + str(msg))

@@ -371,9 +371,6 @@ def file_cleanup(_dir, _days):
                 os.remove(path)
 
 
-#! TEST  ###
-
-
 def run_bash(cmd, errorPrefix=""):
     """Run a command in bash
 
