@@ -14,6 +14,9 @@ SCRIPT_NAME = os.path.basename(MY_NAME)
 # calculate dates in format yyyymmdd
 TODAY = datetime.date.today().strftime("%Y%m%d")
 YESTERDAY = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y%m%d")
+DAY_BEFORE_YESTERDAY = (datetime.date.today() - datetime.timedelta(days=2)).strftime(
+    "%Y%m%d"
+)
 
 SOURCE_FOLDER = "/cul/cul0/ldpd/archivesspace/oai"
 XSLT_PATH = os.path.join(MY_PATH, "../xslt/bibids_as_list.xsl")
@@ -80,14 +83,14 @@ def check_clio(date, filepath):
         # print(retries)
         try:
             datestamp = read_005(bibid)
-            if datestamp == date:
+            if datestamp >= date:
                 return True
             print(
                 "WARNING: 005 data for "
                 + str(bibid)
                 + " ("
                 + datestamp
-                + ") does not match "
+                + ") is before "
                 + str(date)
             )
             return False

@@ -6,12 +6,19 @@ import requests
 import copy
 import time
 import re
+from io import StringIO
+import csv
 
-my_path = os.path.dirname(__file__)
-# harvester_path = os.path.join(my_path, "pyoaiharvester/pyoaiharvest.py")
-config_path = os.path.join(my_path, "config.ini")
-config = ConfigParser()
-config.read(config_path)
+MY_PATH = os.path.dirname(__file__)
+CONFIG_PATH = os.path.join(MY_PATH, "config.ini")
+CONFIG = ConfigParser()
+CONFIG.read(CONFIG_PATH)
+
+
+HARVESTER_PATH = os.path.join(MY_PATH, "pyoaiharvester/pyoaiharvest.py")
+SAXON_PATH = CONFIG["FILES"]["saxonPath"]
+JING_PATH = CONFIG["FILES"]["jingPath"]
+SSH_KEY_PATH = CONFIG["FILES"]["keyPath"]
 
 
 def oai_harvest(
@@ -19,30 +26,28 @@ def oai_harvest(
     output_type="oai_marc",
     server="Prod",
     date_params="",
-    harvester_path=os.path.join(my_path, "pyoaiharvester/pyoaiharvest.py"),
 ):
-    """Harvest OAI-PMH records from ArchivesSpace and save to file. See https://github.com/vphill/pyoaiharvester
+    """Harvest OAI-PMH records from ArchivesSpace and save to file. Relies on HARVESTER_PATH to pyoaiharvest.py. See https://github.com/vphill/pyoaiharvester
 
     Args:
         out_path (str): Local file path
         output_type (str, optional): Output type. Defaults to "oai_marc".
         server (str, optional): Prod, Test, or Dev. Defaults to "Prod".
         date_params (str, optional): From/until date parameters, using format -f yyyy-mm-dd -u format: yyyy-mm-dd. Defaults to "".
-        harvester_path (str, optional): File path to pyoaiharvest.py. Defaults to os.path.join(my_path, "pyoaiharvester/pyoaiharvest.py").
 
     Returns:
         str: stdout result
     """
     if server == "Dev":
-        oaiURL = config["DEV"]["baseOAIURL"]
+        oaiURL = CONFIG["DEV"]["baseOAIURL"]
     elif server == "Test":
-        oaiURL = config["TEST"]["baseOAIURL"]
+        oaiURL = CONFIG["TEST"]["baseOAIURL"]
     else:
-        oaiURL = config["PROD"]["baseOAIURL"]
+        oaiURL = CONFIG["PROD"]["baseOAIURL"]
 
     cmd = (
         "python "
-        + harvester_path
+        + HARVESTER_PATH
         + " -l "
         + oaiURL
         + " -m "
@@ -68,21 +73,14 @@ def oai_harvest(
         return result[0].decode("utf-8")
 
 
-def saxon_process(
-    inFile,
-    transformFile,
-    outFile,
-    theParams=" ",
-    saxonPath=config["FILES"]["saxonPath"],
-):
-    """Process an XSLT transformation using Saxon.
+def saxon_process(inFile, transformFile, outFile, theParams=" "):
+    """Process an XSLT transformation using Saxon. Relies on SAXON_PATH (to saxon-9.8.0.12-he.jar or similar).
 
     Args:
         inFile (str): Path to input XML
         transformFile (str): Path to XSLT
         outFile (str): Path to output file. Use None to send to stdout.
         theParams (str, optional): Additional parameters, as defined by stylesheet. Defaults to " ".
-        saxonPath (str, optional): Path to Saxon. Defaults to config["FILES"]["saxonPath"].
 
     Raises:
         Exception: "SAXON ERROR: <error message>
@@ -93,7 +91,7 @@ def saxon_process(
     outStr = " > " + outFile if outFile else " "
     cmd = (
         "java -jar "
-        + saxonPath
+        + SAXON_PATH
         + " "
         + inFile
         + " "
@@ -133,16 +131,13 @@ def saxon_process(
         return "SAXON MESSAGE: " + str(result[1].decode("utf-8"))
 
 
-def jing_process(
-    filePath, schemaPath, compact=False, jingPath=config["FILES"]["jingPath"]
-):
-    """Process an xml file against a schema (rng or schematron) using Jing.
+def jing_process(filePath, schemaPath, compact=False):
+    """Process an xml file against a schema (rng or schematron) using Jing. Relies on JING_PATH (path to jing-20091111 or comparable).
 
     Args:
         filePath (str): Path to input file
         schemaPath (str): Path to schema file
         compact (bool, optional): Use "compact" RelaxNG schema format. Defaults to False.
-        jingPath (str, optional): Path to Jing. Defaults to config["FILES"]["jingPath"].
 
     Returns:
         str: Result stdout
@@ -153,7 +148,7 @@ def jing_process(
     # -d flag (undocumented!) = include diagnostics in output.
     # -c flag is for compact schema format.
     flags = " -cd " if compact is True else " -d "
-    cmd = "java -jar " + jingPath + flags + schemaPath + " " + filePath
+    cmd = "java -jar " + JING_PATH + flags + schemaPath + " " + filePath
     # print(cmd)
     p = subprocess.Popen(
         [cmd],
@@ -169,22 +164,39 @@ def jing_process(
         return result[0].decode("utf-8")
 
 
-def rsync_process(fromPath, toPath, options="", keyPath=config["FILES"]["keyPath"]):
-    """Rsync files in a given directory
+def xml_to_array(in_file, xslt_file, delim="|", params=" "):
+    """Process XML via XSLT to tabular format, and then return as a list of lists.
+    Requires XSLT that outputs delimited plain text.
+
+    Args:
+        in_file (str): path to xml file
+        xslt_file (str): path to xslt file
+        delim (str, optional): tabular delimiter character. Defaults to '|'.
+        params (str, optional): additional XSLT parameters. Defaults to " ".
+
+    Returns:
+        list: 2-dimensional array (list of lists)
+    """
+    tabular = saxon_process(in_file, xslt_file, None, theParams=params)
+    f = StringIO(tabular)
+    return list(csv.reader(f, delimiter=delim))
+
+
+def rsync_process(fromPath, toPath, options=""):
+    """Rsync files in a given directory. Relies on SSH_KEY_PATH from config.
 
     Args:
         fromPath (str): Path to directory to sync from
         toPath (str): Path to directory to sync to
         options (str, optional): Rsync additional option flags, e.g., "--exclude '\*.zip'". Defaults to False.
-        keyPath (str, optional): Path to ssh key. Defaults to config["FILES"]["keyPath"].
 
     Returns:
         str: Result stdout
     """
-    if keyPath:
+    if SSH_KEY_PATH:
         cmd = (
             '/usr/bin/rsync -zarvhe "ssh -i '
-            + keyPath
+            + SSH_KEY_PATH
             + '" '
             + options
             + " "
@@ -377,9 +389,6 @@ def file_cleanup(_dir, _days):
             if stat.st_mtime < old:
                 print("removing: ", path)
                 os.remove(path)
-
-
-#! TEST  ###
 
 
 def run_bash(cmd, errorPrefix=""):
