@@ -20,7 +20,11 @@ digest_sheet = dataSheet(digest_sheet_id, digest_range)
 
 
 def main():
-
+    """Script to log results from other scripts to a sheet
+    and report results based on date to email notification.
+    Call post_digest() from other scripts to add to log.
+    Call main() to generate report.
+    """
     icons = {
         "right-triangle": "\U000025B6",
     }
