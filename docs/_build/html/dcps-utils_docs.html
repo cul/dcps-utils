@@ -478,6 +478,29 @@ in string</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.xml_to_array">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">xml_to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xslt_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'|'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.xml_to_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process XML via XSLT to tabular format, and then return as a list of lists.
+Requires XSLT that outputs delimited plain text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_file</strong> (<em>str</em>) – path to xml file</p></li>
+<li><p><strong>xslt_file</strong> (<em>str</em>) – path to xslt file</p></li>
+<li><p><strong>delim</strong> (<em>str</em><em>, </em><em>optional</em>) – tabular delimiter character. Defaults to ‘|’.</p></li>
+<li><p><strong>params</strong> (<em>str</em><em>, </em><em>optional</em>) – additional XSLT parameters. Defaults to ” “.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>2-dimensional array (list of lists)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 

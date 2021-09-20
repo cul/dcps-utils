@@ -45,7 +45,7 @@ def main():
     fromPath = "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
     toPath = "/cul/cul0/ldpd/archivesspace/"
 
-    myOptions = "--exclude 'clio*'"
+    myOptions = "--exclude 'clio*' --exclude '*.txt'"
 
     x = util.rsync_process(fromPath, toPath, myOptions)
     print(x)
@@ -95,11 +95,10 @@ def main():
                 if "as_ead" in l
             ]
 
-        # for e in get_unique_bibids(parse_errs):
-        # log_it(icons['redx'] + " " +
-        #        str(e) + " has parsing errors.")
-        for e in get_unique_bibid_all_errors(parse_errs):
-            log_it(icons["redx"] + "PARSE ERROR: " + e)
+        parse_errs = clean_array(parse_errs)
+        if parse_errs:
+            for e in get_unique_bibid_all_errors(parse_errs):
+                log_it(icons["redx"] + "PARSE ERROR: " + e)
 
     parse_err_cnt = get_unique_count(parse_errs)
 
@@ -260,7 +259,7 @@ def get_unique_bibids(_array):
 
 
 def get_unique_bibid_all_errors(_array):
-    return {str(p[0]) + ": " + p[1] for p in _array}
+    return {str(p[0]) + ": " + p[1] for p in _array if len(p) > 1}
 
 
 def get_unique_bibid_first_error(_array):
@@ -271,6 +270,10 @@ def get_unique_bibid_first_error(_array):
             result.append(str(bibid) + ": " + msg)
             bibs.append(bibid)
     return result
+
+
+def clean_array(_array):
+    return [r for r in _array if r]
 
 
 if __name__ == "__main__":

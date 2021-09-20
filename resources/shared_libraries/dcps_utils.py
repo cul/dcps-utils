@@ -6,6 +6,8 @@ import requests
 import copy
 import time
 import re
+from io import StringIO
+import csv
 
 MY_PATH = os.path.dirname(__file__)
 CONFIG_PATH = os.path.join(MY_PATH, "config.ini")
@@ -160,6 +162,24 @@ def jing_process(filePath, schemaPath, compact=False):
         return "SAXON ERROR: " + str(result[1].decode("utf-8"))
     else:
         return result[0].decode("utf-8")
+
+
+def xml_to_array(in_file, xslt_file, delim="|", params=" "):
+    """Process XML via XSLT to tabular format, and then return as a list of lists.
+    Requires XSLT that outputs delimited plain text.
+
+    Args:
+        in_file (str): path to xml file
+        xslt_file (str): path to xslt file
+        delim (str, optional): tabular delimiter character. Defaults to '|'.
+        params (str, optional): additional XSLT parameters. Defaults to " ".
+
+    Returns:
+        list: 2-dimensional array (list of lists)
+    """
+    tabular = saxon_process(in_file, xslt_file, None, theParams=params)
+    f = StringIO(tabular)
+    return list(csv.reader(f, delimiter=delim))
 
 
 def rsync_process(fromPath, toPath, options=""):
