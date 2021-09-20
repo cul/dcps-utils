@@ -39,25 +39,6 @@ def main():
     Set GARBAGE_DAY to day of month on which to perform cleanup.
     """
 
-    FIXTURE_SHEET = dataSheet(
-        "1PLtSL1NHQ_PooSd2LkEDTHZMmhmrxPv4cv8STpmhknk", "fixture!A:Z"
-    )
-    FIXTURE_DATA = FIXTURE_SHEET.getData()
-    TEST_DATE = dateutil.parser.parse("2021-09-1")
-
-    l1 = len(FIXTURE_DATA)
-    l2 = len(prune_data(FIXTURE_DATA, 1, TEST_DATE))
-    print(l1)
-    print(l2)
-    print(l2 < l1 and l2 == 37)
-
-    new_digest = get_digest(FIXTURE_SHEET)
-    print(get_digest(FIXTURE_SHEET))
-    print(len(new_digest))
-
-    print(date_is_recent(TEST_DATE))
-    quit()
-
     if TODAY.day == GARBAGE_DAY:
         print("Cleaning up old digest entries...")
         x = cleanup_datasheet(digest_sheet)
