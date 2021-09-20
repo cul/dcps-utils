@@ -3,12 +3,12 @@
 # Call post_digest() from other scripts to add to log.
 # Call main() to generate report.
 
-from sheetFeeder import dataSheet  # test
+from sheetFeeder import dataSheet
 import datetime
+import dateutil.parser
 from itertools import groupby
 from pprint import pprint
 import os
-import dateutil.parser
 
 
 digest_sheet_id = "190p6gnhpakdYD72Eb1PLicdVlAtAxjQ7D_8oee7Tk1U"
@@ -16,24 +16,37 @@ digest_sheet_id2 = "1PLtSL1NHQ_PooSd2LkEDTHZMmhmrxPv4cv8STpmhknk"  # test
 digest_range = "Sheet1!A:Z"
 
 digest_sheet = dataSheet(digest_sheet_id, digest_range)
-# digest_sheet = dataSheet(digest_sheet_id2, digest_range)  # test
+digest_sheet2 = dataSheet(digest_sheet_id2, digest_range)  # test
+
+MY_NAME = __file__
+SCRIPT_NAME = os.path.basename(MY_NAME)
+# This makes sure the script can be run from any working directory and still find related files.
+
+NOW = str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
+TODAY = datetime.datetime.today()
+# GARBAGE_DAY = 1
+GARBAGE_DAY = 21  # test
+MONTH_OFFSET = 2
+DATE_COLUMN = 1
 
 
 def main():
     """Script to log results from other scripts to a sheet
     and report results based on date to email notification.
+    Relies on a Google Sheet with log data.
     Call post_digest() from other scripts to add to log.
-    Call main() to generate report.
+    Call main() to generate report, e.g., for daily digest email.
+    Set GARBAGE_DAY to day of month on which to perform cleanup.
     """
+
+    if TODAY.day == GARBAGE_DAY:
+        print("Cleaning up old digest entries...")
+        x = cleanup_datasheet(digest_sheet)
+        print(" ")
+
     icons = {
         "right-triangle": "\U000025B6",
     }
-
-    MY_NAME = __file__
-    SCRIPT_NAME = os.path.basename(MY_NAME)
-    # This makes sure the script can be run from any working directory and still find related files.
-
-    NOW = str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
 
     print(
         "This 24-hour digest composed at "
@@ -59,12 +72,28 @@ def main():
 
 
 def date_is_recent(_date, _offset=1):
-    # check if input date is within 24 hours (or other day offset value) of current time.
+    """Check if input date is within 24 hours (or other day offset value) of current time.
+
+    Args:
+        _date (datetime date): A date to compare  (datetime object)
+        _offset (int, optional): Number of days to consider recent. Defaults to 1.
+
+    Returns:
+        bool: Boolean
+    """
     d_compare = datetime.datetime.now() - datetime.timedelta(days=_offset)
     return _date > d_compare
 
 
 def get_digest(sheet=digest_sheet):
+    """Get digest-formatted output from log dataSheet.
+
+    Args:
+        sheet (dataSheet, optional): dataSheet with log data. Defaults to digest_sheet.
+
+    Returns:
+        list: List of log entries, aggregated daily by script name
+    """
     data = sheet.getData()
     # heads = data.pop(0)
     the_msg_data = []
@@ -100,11 +129,67 @@ def digest_clear(sheet=digest_sheet):
 
 
 def post_digest(script_name, log, sheet=digest_sheet, truncate=40000):
+    """Add a digest record to log sheet.
+
+    Args:
+        script_name (str): filename of generating script
+        log (str): Log text
+        sheet (dataSheet, optional): sheetFeeder dataSheet. Defaults to digest_sheet.
+        truncate (int, optional): Max length of log entry. Defaults to 40000.
+
+    Returns:
+        str: JSON response of POST to sheet.
+    """
     date = str(datetime.datetime.today())
     if len(log) > truncate:
         log = log[:truncate] + "[...]"
     data = [[script_name, date, log]]
     return sheet.appendData(data)
+
+
+def prune_data(array, date_column, compare_date, month_offset=2):
+    """Filter array (list of lists) to rows with recent dates.
+    By default, remove all rows except from current and previous month.
+
+    Args:
+        array (list): 2D array (list of lists)
+        date_column (int): Column index where date is found
+        compare_date (datetime date): Date from which to obtain current month
+        month_offset (int, optional): Number of months to include. Defaults to 2.
+
+    Returns:
+        list: 2D array (list of lists)
+    """
+    new_array = []
+    for row in array:
+        date = dateutil.parser.parse(row[date_column])
+        if date.month > (compare_date.month - month_offset):
+            new_array.append(row)
+    return new_array
+
+
+def cleanup_datasheet(data_sheet, date_column=DATE_COLUMN, month_offset=MONTH_OFFSET):
+    """Prune log sheet to recent entries (by month)
+
+    Args:
+        data_sheet (dataSheet): Sheet with log data to clean up
+        date_column (int, optional): Col index where date is found. Defaults to DATE_COLUMN.
+        month_offset (int, optional): Number of months to include. Defaults to MONTH_OFFSET.
+
+    Returns:
+        str: JSON response
+    """
+    data = data_sheet.getData()
+    new_data = prune_data(data, 1, TODAY)
+    if len(new_data) > 0:
+        print(
+            str(len(data) - len(new_data))
+            + " removed. "
+            + str(len(new_data))
+            + " recent entries retained."
+        )
+        data_sheet.clear()
+        return data_sheet.appendData(new_data)
 
 
 if __name__ == "__main__":
