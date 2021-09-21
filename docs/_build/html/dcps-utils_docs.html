@@ -41,6 +41,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Other Modules" href="other_docs.html" />
     <link rel="prev" title="ArchivesSpace Python Functions Documentation" href="asfunctions_docs.html" /> 
 </head>
 
@@ -94,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-dcps_utils">dcps_utils</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="other_docs.html">Other Modules</a></li>
 </ul>
 </li>
 </ul>
@@ -316,6 +318,28 @@ in string</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="dcps_utils.jing_process_batch">
+<span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">jing_process_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.jing_process_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a set of xml files within a directory against a schema (rng or schematron) using Jing. Relies on JING_PATH (path to jing-20091111 or comparable).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_folder</strong> (<em>str</em>) – path to directory to process</p></li>
+<li><p><strong>schema_path</strong> (<em>str</em>) – path to schema</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – matching expression for files (see ‘find’ command)</p></li>
+<li><p><strong>compact</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use “compact” RelaxNG schema format. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result stdout</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="dcps_utils.oai_harvest">
 <span class="sig-prename descclassname"><span class="pre">dcps_utils.</span></span><span class="sig-name descname"><span class="pre">oai_harvest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'oai_marc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Prod'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dcps_utils.oai_harvest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Harvest OAI-PMH records from ArchivesSpace and save to file. Relies on HARVESTER_PATH to pyoaiharvest.py. See <a class="reference external" href="https://github.com/vphill/pyoaiharvester">https://github.com/vphill/pyoaiharvester</a></p>
@@ -510,6 +534,7 @@ Requires XSLT that outputs delimited plain text.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="other_docs.html" class="btn btn-neutral float-right" title="Other Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="asfunctions_docs.html" class="btn btn-neutral float-left" title="ArchivesSpace Python Functions Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

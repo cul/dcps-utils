@@ -142,7 +142,6 @@ def jing_process(filePath, schemaPath, compact=False):
     Returns:
         str: Result stdout
     """
-    # Process an xml file against a schema (rng or schematron) using Jing.
     # Tested with jing-20091111.
     # https://code.google.com/archive/p/jing-trang/downloads
     # -d flag (undocumented!) = include diagnostics in output.
@@ -162,6 +161,32 @@ def jing_process(filePath, schemaPath, compact=False):
         return "SAXON ERROR: " + str(result[1].decode("utf-8"))
     else:
         return result[0].decode("utf-8")
+
+
+def jing_process_batch(data_folder, schema_path, pattern, compact=False):
+    """Process a set of xml files within a directory against a schema (rng or schematron) using Jing. Relies on JING_PATH (path to jing-20091111 or comparable).
+
+    Args:
+        data_folder (str): path to directory to process
+        schema_path (str): path to schema
+        pattern (str): matching expression for files (see 'find' command)
+        compact (bool, optional): Use "compact" RelaxNG schema format. Defaults to False.
+
+    Returns:
+        str: Result stdout
+    """
+    flags = " -cd " if compact is True else " -d "
+    return run_bash(
+        "find "
+        + data_folder
+        + ' -name "'
+        + pattern
+        + '" | xargs -L 128 java -jar '
+        + CONFIG["FILES"]["jingPath"]
+        + flags
+        + schema_path,
+        errorPrefix="JING",
+    )
 
 
 def xml_to_array(in_file, xslt_file, delim="|", params=" "):

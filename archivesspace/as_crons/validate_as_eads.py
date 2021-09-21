@@ -123,15 +123,17 @@ def main():
     # limit on arguments with thousands of files.
 
     # TODO: incorporate this use case into util.jing_process
-    x = util.run_bash(
-        "find "
-        + data_folder
-        + ' -name "as_ead*"  | xargs -L 128 java -jar '
-        + util.CONFIG["FILES"]["jingPath"]
-        + " -d "
-        + schema_path,
-        errorPrefix="JING",
-    )
+    # x = util.run_bash(
+    #     "find "
+    #     + data_folder
+    #     + ' -name "as_ead*"  | xargs -L 128 java -jar '
+    #     + util.CONFIG["FILES"]["jingPath"]
+    #     + " -d "
+    #     + schema_path,
+    #     errorPrefix="JING",
+    # )
+
+    x = util.jing_process_batch(data_folder, schema_path, "as_ead*")
 
     schema_errs = [
         msg_parse(l, icons["exclamation"]) for l in str(x).splitlines() if "as_ead" in l

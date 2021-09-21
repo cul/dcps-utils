@@ -24,10 +24,9 @@ SCRIPT_NAME = os.path.basename(MY_NAME)
 
 NOW = str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
 TODAY = datetime.datetime.today()
-# GARBAGE_DAY = 1
-GARBAGE_DAY = 21  # test
-MONTH_OFFSET = 2
-DATE_COLUMN = 1
+GARBAGE_DAY = 15  # Day of month to prune old entries from sheet.
+MONTH_OFFSET = 2  # Retain current and prev month
+DATE_COLUMN = 1  # Where to find dates in data
 
 
 def main():
