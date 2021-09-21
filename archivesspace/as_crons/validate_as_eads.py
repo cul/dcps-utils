@@ -122,11 +122,12 @@ def main():
     # Validate against schema. Xargs batches files so they won't exceed
     # limit on arguments with thousands of files.
 
+    # TODO: incorporate this use case into util.jing_process
     x = util.run_bash(
         "find "
         + data_folder
         + ' -name "as_ead*"  | xargs -L 128 java -jar '
-        + util.config["FILES"]["jingPath"]
+        + util.CONFIG["FILES"]["jingPath"]
         + " -d "
         + schema_path,
         errorPrefix="JING",
