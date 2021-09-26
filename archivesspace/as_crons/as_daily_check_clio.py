@@ -54,11 +54,15 @@ def is_after(cutoff_time_str):
     return now > cutoff_time
 
 
-def check_clio(date, filepath):
-
+def get_bibid_list(filepath, xslt_path=XSLT_PATH):
     # Get a list of BIBIDs from stylesheet
     x = util.saxon_process(filepath, XSLT_PATH, None)
-    the_deltas = [i for i in x.split(",") if i]  # if x is null, return null set
+    return [i for i in x.split(",") if i]  # if x is null, return null set
+
+
+def check_clio(date, filepath, retry_max=2):
+
+    the_deltas = get_bibid_list(filepath)
     print(the_deltas)
 
     if not the_deltas:
@@ -67,9 +71,9 @@ def check_clio(date, filepath):
 
     # Check to see if the datestamp in the 005 field matches the date from the delta update.
 
-    # Allow a couple of retries, as some MARC records are very large and
+    # Allow retries, as some MARC records are very large and
     # may not be loadable by http.
-    retry_max = 2
+    retry_max = retry_max
     retries = 0
     # Choose one random one to look up
     bibid = random.choice(the_deltas)
@@ -79,15 +83,14 @@ def check_clio(date, filepath):
 
         while bibid in the_bibids_tried:
             bibid = random.choice(the_deltas)
+            print("Trying " + str(bibid) + "...")
         the_bibids_tried.append(bibid)
-        # print(bibid)
-        # print(retries)
         try:
             datestamp = read_005(bibid)
             if datestamp >= date:
                 return True
             print(
-                "WARNING: 005 data for "
+                "*** WARNING: 005 data for "
                 + str(bibid)
                 + " ("
                 + datestamp
@@ -95,19 +98,23 @@ def check_clio(date, filepath):
                 + str(date)
             )
             return False
-            # retries = retry_max
-        except requests.exceptions.HTTPError as e:
-                raise Exception(
-                    "*** requests error: "
-                    + str(e)
 
-        except Exception as e:
-            if "request error" in str(e):
-                retries += 1
-                raise Exception(
-                    "*** CLIO error: Could not verify that datestamps have been updated! "
-                    + str(e)
-                )
+        except requests.exceptions.HTTPError as e:
+            # raise Exception("*** requests error: " + str(e))
+            retries += 1
+        # except Exception as e:
+        #     if "request error" in str(e):
+        #         retries += 1
+        #         raise Exception(
+        #             "*** CLIO error: Could not verify that datestamps have been updated! "
+        #             + str(e)
+        #         )
+    raise Exception(
+        "*** ERROR: After "
+        + str(retries)
+        + " retries all tried BIBIDs produced http errors. "
+        + str(the_bibids_tried)
+    )
 
 
 def check_clio2():
