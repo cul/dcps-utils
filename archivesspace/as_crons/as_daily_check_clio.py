@@ -5,6 +5,7 @@ import random
 from pymarc import MARCReader
 import os
 import datetime
+import requests
 
 
 MY_NAME = __file__
@@ -95,11 +96,16 @@ def check_clio(date, filepath):
             )
             return False
             # retries = retry_max
+        except requests.exceptions.HTTPError as e:
+                raise Exception(
+                    "*** requests error: "
+                    + str(e)
+
         except Exception as e:
             if "request error" in str(e):
                 retries += 1
                 raise Exception(
-                    "CLIO error: Could not verify that datestamps have been updated! "
+                    "*** CLIO error: Could not verify that datestamps have been updated! "
                     + str(e)
                 )
 

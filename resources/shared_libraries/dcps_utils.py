@@ -175,6 +175,7 @@ def jing_process_batch(data_folder, schema_path, pattern, compact=False):
     Returns:
         str: Result stdout
     """
+    # Xargs batches files so they won't exceed limit on arguments with thousands of files.
     flags = " -cd " if compact is True else " -d "
     return run_bash(
         "find "
