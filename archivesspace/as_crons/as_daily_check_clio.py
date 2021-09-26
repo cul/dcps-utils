@@ -100,17 +100,9 @@ def check_clio(date, filepath, retry_max=2):
             )
             return False
 
-        except requests.exceptions.HTTPError as e:
-            # raise Exception("*** requests error: " + str(e))
-            retries += 1
-            pass
-        # except Exception as e:
-        #     if "request error" in str(e):
-        #         retries += 1
-        #         raise Exception(
-        #             "*** CLIO error: Could not verify that datestamps have been updated! "
-        #             + str(e)
-        #         )
+        except Exception as e:
+            if "request error" in str(e):
+                retries += 1
     raise Exception(
         "*** ERROR: After "
         + str(retries)
