@@ -77,6 +77,7 @@ def check_clio(date, filepath, retry_max=2):
     retries = 0
     # Choose one random one to look up
     bibid = random.choice(the_deltas)
+    print("Trying " + str(bibid) + "...")
     the_bibids_tried = []
 
     while retries < retry_max:
@@ -102,6 +103,7 @@ def check_clio(date, filepath, retry_max=2):
         except requests.exceptions.HTTPError as e:
             # raise Exception("*** requests error: " + str(e))
             retries += 1
+            pass
         # except Exception as e:
         #     if "request error" in str(e):
         #         retries += 1
