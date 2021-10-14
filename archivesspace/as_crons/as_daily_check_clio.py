@@ -111,56 +111,6 @@ def check_clio(date, filepath, retry_max=2):
     )
 
 
-def check_clio2():
-
-    # Get a list of BIBIDs from stylesheet
-    x = util.saxon_process(SOURCE_PATH, XSLT_PATH, None)
-    the_deltas = x.split(",")
-
-    if len(the_deltas) < 1:
-        print("No bibids found in " + str(SOURCE_PATH) + ". Bypassing CLIO check.")
-        quit()
-
-    # Check to see if the datestamp in the 005 field matches the date from the delta update.
-
-    # Allow a couple of retries, as some MARC records are very large and
-    # may not be loadable by http.
-    retry_max = 2
-    retries = 0
-    # Choose one random one to look up
-    bibid = random.choice(the_deltas)
-    the_bibids_tried = []
-
-    while retries < retry_max:
-
-        while bibid in the_bibids_tried:
-            bibid = random.choice(the_deltas)
-        the_bibids_tried.append(bibid)
-        # print(bibid)
-        # print(retries)
-        try:
-            datestamp = read_005(bibid)
-            if datestamp == YESTERDAY:
-                return True
-            print(
-                "WARNING: 005 data for "
-                + str(bibid)
-                + " ("
-                + datestamp
-                + ") does not match "
-                + str(YESTERDAY)
-            )
-            return False
-            # retries = retry_max
-        except Exception as e:
-            if "request error" in str(e):
-                retries += 1
-                raise Exception(
-                    "CLIO error: Could not verify that datestamps have been updated! "
-                    + str(e)
-                )
-
-
 def read_005(bibid):
     marc = util.get_clio_marc(bibid)
     reader = MARCReader(marc)
