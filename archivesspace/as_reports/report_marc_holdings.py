@@ -17,21 +17,21 @@ def main():
 
     # sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
     # sheet_id = '1e43qKYvqGQFOMxA70U59yPKPs18y-k3ohRNdU-qrTH0'  # test
-    sheet_id = '1OhgJ4g-SWbmnms4b3ppe_0rBT7hz9jfQp6P8mADcatk'  # template doc
+    sheet_id = "1MQhLd9kvf0KzKtt5iWBf0aViyH9v_U2C7i13GRukJv8"
+    # sheet_id = '1XDZ-cTkuqcbp9FH5FgUezcbCNcQkvQeAuIZTQk7KY5Y'  # template doc
 
-    container_sheet = dataSheet(
-        sheet_id, 'containers!A:Z')
+    container_sheet = dataSheet(sheet_id, "containers!A:Z")
 
-    marc_sheet = dataSheet(
-        sheet_id, 'marc!A:Z')
+    marc_sheet = dataSheet(sheet_id, "marc!A:Z")
 
     the_bibids = []
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-single-holdings_TEST.csv' # test
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_8.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-batch_7.csv'
-    aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-missing-batch-2.csv'
+    # aCSV = "/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-missing-batch-2.csv"
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/acfa-206-mult-holdings_1.csv'
     # aCSV = '/Users/dwh2128/Documents/ACFA/TEST/ACFA-206-add-barcodes/biblist_test.csv'
+    aCSV = "/Users/dwh2128/Documents/ACFA/TEST/ACFA-327-granary/acfa-327.txt"
 
     the_bibs = open(aCSV)
     for row in csv.reader(the_bibs):
@@ -44,40 +44,42 @@ def main():
 
     # Read the MARC
 
-    the_heads = ['CONCAT', 'bibid',
-                 'display_string', '876$0', '876$a', '876$p']
+    the_heads = ["CONCAT", "bibid", "display_string", "876$0", "876$a", "876$p"]
     the_rows = [the_heads]
 
     row_cnt = 2
 
     for abib in the_bibids:
-        print('Getting MARC for ' + str(abib))
+        print("Getting MARC for " + str(abib))
 
-        marc_path = os.path.join(my_path, 'output/marc/' + str(abib) + '.marc')
+        marc_path = os.path.join(my_path, "output/marc/" + str(abib) + ".marc")
 
         if os.path.exists(marc_path):
 
-            with open(marc_path, 'rb') as fh:
+            with open(marc_path, "rb") as fh:
                 reader = MARCReader(fh)
                 for record in reader:
                     # Find out if there is more than one holding; if there is, we cannot use it to automatically match top containers by name and will skip.
-                    the_852s = record.get_fields('852')
+                    the_852s = record.get_fields("852")
                     if len(the_852s) > 1:
-                        print("More than one holding record (" +
-                              str(len(the_852s)) + "). Skipping.")
+                        print(
+                            "More than one holding record ("
+                            + str(len(the_852s))
+                            + "). Skipping."
+                        )
                     else:
-                        the_099 = record.get_fields('099')
-                        the_bibid = the_099[0].get_subfields('a')[0]
-                        the_876s = record.get_fields('876')
+                        the_099 = record.get_fields("099")
+                        the_bibid = the_099[0].get_subfields("a")[0]
+                        the_876s = record.get_fields("876")
 
                         print(len(the_876s))
                         for r in the_876s:
                             # Need to specify order of subfields explicitly
                             the_876_data = [
-                                r.get_subfields('3'),
-                                r.get_subfields('0'),
-                                r.get_subfields('a'),
-                                r.get_subfields('p')
+                                r.get_subfields("3"),
+                                r.get_subfields("0"),
+                                r.get_subfields("a"),
+                                r.get_subfields("p"),
                             ]
                             the_row = []
                             for d in the_876_data:
@@ -177,7 +179,7 @@ def main():
 
 
 def get_clio_marc(bibid):
-    url = 'https://clio.columbia.edu/catalog/' + str(bibid) + '.marc'
+    url = "https://clio.columbia.edu/catalog/" + str(bibid) + ".marc"
     response = requests.get(url)
     return response.content
 
