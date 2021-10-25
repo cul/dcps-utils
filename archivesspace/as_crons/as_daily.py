@@ -3,6 +3,7 @@
 import os
 import datetime
 import dcps_utils as util
+
 # from as_reports_param import time_offset
 import digester  # for generating composite digest of report info.
 
@@ -10,7 +11,7 @@ import digester  # for generating composite digest of report info.
 def main():
 
     # Set to True to harvest complete set; otherwise will select based on date.
-    HARVESTALL = False
+    HARVESTALL = True
 
     my_name = __file__
     my_path = os.path.dirname(__file__)
@@ -18,8 +19,7 @@ def main():
 
     # calculate dates in format yyyymmdd
     today = datetime.date.today().strftime("%Y%m%d")
-    yesterday = (datetime.date.today() -
-                 datetime.timedelta(days=1)).strftime("%Y%m%d")
+    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y%m%d")
 
     destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
     # destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
@@ -27,8 +27,7 @@ def main():
     xslt_path = os.path.join(my_path, "../xslt/cleanOAI.xsl")
 
     out_path_raw = os.path.join(destination_folder, today + ".asRaw.xml")
-    out_path_raw_all = os.path.join(
-        destination_folder, today + ".asAllRaw.xml")
+    out_path_raw_all = os.path.join(destination_folder, today + ".asAllRaw.xml")
     out_path_clean = os.path.join(destination_folder, today + ".asClean.xml")
 
     # Set server to Prod | Test | Dev
@@ -54,13 +53,14 @@ def main():
     # Process through XSLT
 
     # TODO: change xsl to not require this param, if we are doing it in the harvest!
-    time_offset = 'P800DT30H'
+    time_offset = "P900DT30H"
 
     saxon_params = " time_offset=" + time_offset
 
     print("Processing file with XSLT...")
-    x = util.saxon_process(out_path_raw,
-                           xslt_path, out_path_clean, theParams=saxon_params)
+    x = util.saxon_process(
+        out_path_raw, xslt_path, out_path_clean, theParams=saxon_params
+    )
     print(x)
     digester.post_digest(script_name, x)
 
@@ -71,8 +71,13 @@ def main():
     # Remove old OAI files
     util.file_cleanup(destination_folder, 30)
 
-    digester.post_digest(script_name, script_name + ' completed at ' +
-                         str(datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')) + '.')
+    digester.post_digest(
+        script_name,
+        script_name
+        + " completed at "
+        + str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
+        + ".",
+    )
 
 
 if __name__ == "__main__":
