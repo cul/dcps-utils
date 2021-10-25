@@ -11,7 +11,7 @@ import digester  # for generating composite digest of report info.
 def main():
 
     # Set to True to harvest complete set; otherwise will select based on date.
-    HARVESTALL = True
+    HARVESTALL = False
 
     my_name = __file__
     my_path = os.path.dirname(__file__)
@@ -35,27 +35,14 @@ def main():
 
     fromDate = yesterday
 
-    # # Not using date, get all records and then filter with the XSLT!
-    # date_params = ""
-
-    # Select date interval for harvest
-    # TODO: change this to be controlled by param file.
-
-    if HARVESTALL == True:
-        date_params = " "  # Use this to harvest all records.
-    else:
-        date_params = "-f " + yesterday
+    # Set 'from' date to yesterday unless harvesting all
+    date_params = " " if HARVESTALL else "-f " + yesterday
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
     util.oai_harvest(out_path_raw, server=server, date_params=date_params)
 
     # Process through XSLT
-
-    # TODO: change xsl to not require this param, if we are doing it in the harvest!
-    time_offset = "P900DT30H"
-
-    saxon_params = " time_offset=" + time_offset
 
     print("Processing file with XSLT...")
     x = util.saxon_process(
