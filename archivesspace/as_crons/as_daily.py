@@ -45,9 +45,7 @@ def main():
     # Process through XSLT
 
     print("Processing file with XSLT...")
-    x = util.saxon_process(
-        out_path_raw, xslt_path, out_path_clean, theParams=saxon_params
-    )
+    x = util.saxon_process(out_path_raw, xslt_path, out_path_clean)
     print(x)
     digester.post_digest(script_name, x)
 
