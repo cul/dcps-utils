@@ -67,8 +67,8 @@ function python_exec()
     local OUTPUT
     local RESULT
     # if RESULT=$(python $1 2>&1); then
-    # if RESULT=$(python $@ 2>&1); then
-    if RESULT=$(python $1 $2 2>&1); then
+    if RESULT=$(python $@ 2>&1); then
+    # if RESULT=$(python $1 $2 2>&1); then
         STDOUT="$RESULT"
     else
         rc=$?
@@ -85,7 +85,7 @@ SCRIPTNAME=`basename "$0"`
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # Python virtual environment to use
-py_env=$SCRIPTPATH/pyvenv_${USER}36
+py_env=$SCRIPTPATH/pyvenv_${USER}_test
 
 # Name of python script to run
 py_script=$@

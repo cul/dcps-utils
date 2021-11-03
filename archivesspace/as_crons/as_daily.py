@@ -1,17 +1,32 @@
-# Script to harvest OAI (all) and extract and clean up the deltas and via XSLT. Results are saved to /cul/cul0/ldpd/archivesspace/oai for Voyager nightly overlay.
+# Script to harvest collection-level data from AS via OAI-PMH feed, and transform into Voyager-format MARCXML for nightly overlay.
 
 import os
 import datetime
 import dcps_utils as util
-
-# from as_reports_param import time_offset
+import argparse
 import digester  # for generating composite digest of report info.
 
 
 def main():
+    """Script to harvest collection-level data from AS via OAI-PMH feed, and transform into Voyager-format MARCXML for nightly overlay.
+    Output is (a) asRaw.xml (deltas), (b) asAllRaw.xml (all records), and (c) asClean.xml,
+    transformed into Voyager MARCXML.
+    Options:
+    --HARVESTALL: ignore date params and get all records.
+    --TEST: output to test oai directory.
+    """
+    p = argparse.ArgumentParser(
+        description="Script to harvest collection-level data from AS via OAI-PMH feed, and transform into Voyager-format MARCXML for nightly overlay."
+    )
+    p.add_argument(
+        "--HARVESTALL", default=False, action="store_true", help="harvest all records?"
+    )
+    p.add_argument(
+        "--TEST", default=False, action="store_true", help="run in test mode?"
+    )
 
-    # Set to True to harvest complete set; otherwise will select based on date.
-    HARVESTALL = False
+    args = p.parse_args()
+    print(args)
 
     my_name = __file__
     my_path = os.path.dirname(__file__)
@@ -21,9 +36,12 @@ def main():
     today = datetime.date.today().strftime("%Y%m%d")
     yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y%m%d")
 
-    destination_folder = "/cul/cul0/ldpd/archivesspace/oai"
-    # destination_folder = "/cul/cul0/ldpd/archivesspace/test"  # test
-    # destination_folder = "./"  # test
+    destination_folder = (
+        "/cul/cul0/ldpd/archivesspace/test/oai"
+        if args.TEST
+        else "/cul/cul0/ldpd/archivesspace/oai"
+    )
+
     xslt_path = os.path.join(my_path, "../xslt/cleanOAI.xsl")
 
     out_path_raw = os.path.join(destination_folder, today + ".asRaw.xml")
@@ -36,7 +54,7 @@ def main():
     fromDate = yesterday
 
     # Set 'from' date to yesterday unless harvesting all
-    date_params = " " if HARVESTALL else "-f " + yesterday
+    date_params = " " if args.HARVESTALL else "-f " + yesterday
 
     # Harvest OAI-PMH data
     print("Harvesting data from OAI...")
@@ -47,7 +65,8 @@ def main():
     print("Processing file with XSLT...")
     x = util.saxon_process(out_path_raw, xslt_path, out_path_clean)
     print(x)
-    digester.post_digest(script_name, x)
+    if not args.TEST:
+        digester.post_digest(script_name, x)
 
     print("Harvesting all records for reporting ...")
     date_params = " "
@@ -56,13 +75,14 @@ def main():
     # Remove old OAI files
     util.file_cleanup(destination_folder, 30)
 
-    digester.post_digest(
-        script_name,
-        script_name
-        + " completed at "
-        + str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
-        + ".",
-    )
+    if not args.TEST:
+        digester.post_digest(
+            script_name,
+            script_name
+            + " completed at "
+            + str(datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
+            + ".",
+        )
 
 
 if __name__ == "__main__":
