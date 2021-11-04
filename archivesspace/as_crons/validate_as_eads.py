@@ -24,10 +24,6 @@ def main():
     validation_sheet = dataSheet(sheet_id, "schema!A:Z")  # Test
     eval_sheet = dataSheet(sheet_id, "eval!A:Z")  # Test
 
-    # This is a dupe for other reporting
-    # the_data_sheet2 = dataSheet(
-    #     "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
-
     now1 = datetime.datetime.now()
     start_time = str(now1)
     end_time = ""  # set later
@@ -41,7 +37,6 @@ def main():
     print("====== Syncing files from production cache... ======")
     print(" ")
 
-    # keyPath = "/home/ldpdserv/.ssh/id_dsa"
     fromPath = "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
     toPath = "/cul/cul0/ldpd/archivesspace/"
 
@@ -62,7 +57,7 @@ def main():
 
     csv_out_path = os.path.join(MY_PATH, "temp_out.txt")
 
-    xslt_path = os.path.join(MY_PATH, "../schemas/cul_as_ead2.xsl")  # test
+    xslt_path = os.path.join(MY_PATH, "../schemas/cul_as_ead.xsl")
 
     data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
     # data_folder = "/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_rsync_test"  # test
