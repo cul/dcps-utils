@@ -8,6 +8,7 @@ import time
 import re
 from io import StringIO
 import csv
+import sys
 
 MY_PATH = os.path.dirname(__file__)
 CONFIG_PATH = os.path.join(MY_PATH, "config.ini")
@@ -462,3 +463,18 @@ def fix_cr(_str):
         str: Output string
     """
     return re.sub(r"\x0D", "\n", _str, flags=re.DOTALL)
+
+
+def find_config(name="config.ini"):
+    """Get the abs path to config.ini file, based on sys.path
+
+    Args:
+        name (str, optional): config file name. Defaults to "config.ini".
+
+    Returns:
+        str: path to config file
+    """
+    for dirname in sys.path:
+        for root, dirs, files in os.walk(dirname):
+            if name in files:
+                return os.path.join(root, name)

@@ -7,39 +7,43 @@ import json
 from pprint import pprint
 import dpath.util
 from sheetFeeder import dataSheet
-import os.path
+import os
 from datetime import datetime, date, timedelta
 from shutil import make_archive, move, rmtree
 import digester  # for generating composite digest of report info.
+from configparser import ConfigParser
 
 
 def main():
 
     # set to True to use test sheet and test json folder location.
-    debug = False
+    DEBUG = False
 
     asf.setServer("Prod")
 
-    my_name = __file__
-    script_name = os.path.basename(my_name)
+    MY_NAME = __file__
+    SCRIPT_NAME = os.path.basename(MY_NAME)
 
-    # This makes sure the script can be run from any working directory and still find related files.
-    my_path = os.path.dirname(__file__)
+    CONFIG = ConfigParser()
+    CONFIG.read(util.find_config())
+
+    # read current list of repos from config
+    VALID_REPOS = CONFIG["REPOS"]["validRepos"]
 
     now1 = datetime.now()
     start_time = str(now1)
     end_time = ""  # set later
     today_str = str((date.today()).strftime("%Y%m%d"))
 
-    if debug:
+    if DEBUG:
         print("[Running script in debug mode...]")
         parent_folder = "/cul/cul0/ldpd/archivesspace/test/resources"  # test folder
         sheet_id = "1wFyLN_Ea7ExCZSMuksB8MTrS9DjsUkwsmaPBujL7x0U"  # test sheet
-        the_repos = [4]  # to test
+        the_repos = [4, 5]  # to test
     else:
         parent_folder = "/cul/cul0/ldpd/archivesspace/resources"
         sheet_id = "1T3EpIZmnh3Gk-VAIGtvavTQUIpS7AluyKQ8-sJsS8vg"
-        the_repos = [2, 3, 4, 5, 6]
+        the_repos = VALID_REPOS
 
     output_folder = parent_folder + "/" + today_str
 
@@ -246,13 +250,13 @@ def main():
     the_sheets["cm"].clear()
     the_sheets["cm"].appendData(the_cms)
     digester.post_digest(
-        script_name, "Total collection management records: " + str(len(the_cms) - 1)
+        SCRIPT_NAME, "Total collection management records: " + str(len(the_cms) - 1)
     )
 
     the_sheets["resources"].clear()
     the_sheets["resources"].appendData(the_output)
     digester.post_digest(
-        script_name, "Total number of resource records: " + str(len(the_output) - 1)
+        SCRIPT_NAME, "Total number of resource records: " + str(len(the_output) - 1)
     )
 
     ########################
@@ -266,7 +270,7 @@ def main():
 
     the_log = (
         "Data imported by "
-        + my_name
+        + MY_NAME
         + ". Start: "
         + start_time
         + ". Finished: "
@@ -284,7 +288,7 @@ def main():
 
     print(" ")
 
-    debug_msg = " [Debug mode]" if debug else ""
+    debug_msg = " [Debug mode]" if DEBUG else ""
     exit_msg = (
         "Script done"
         + debug_msg
@@ -292,7 +296,7 @@ def main():
         + the_sheets["resources"].url
     )
     print(exit_msg)
-    digester.post_digest(script_name, exit_msg)
+    digester.post_digest(SCRIPT_NAME, exit_msg)
 
 
 # Functions go here.

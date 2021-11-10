@@ -11,7 +11,7 @@ def main():
     See ACFA-298.
     """
 
-    SERVER = "Test"
+    SERVER = "Prod"
     asf.setServer(SERVER)
 
     sheet_id = "1LPn0WRngs7i3k07VpJ_52HDRdo7FyrzfcmJX1SVtjYE"
@@ -44,8 +44,10 @@ def main():
 
 
 def add_md_rights_stmt(repo, asid, md_rights_stmt):
-    print("Getting " + str(repo) + ":" + str(asid))
+    print(str(repo) + ":" + str(asid))
     res = json.loads(asf.getResource(repo, asid))
+    if "error" in res:
+        return str(res)
     if not res["metadata_rights_declarations"]:
         res["metadata_rights_declarations"].append(md_rights_stmt)
         return asf.postResource(repo, asid, json.dumps(res))
