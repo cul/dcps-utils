@@ -1,0 +1,33 @@
+[PROD]
+baseURL = https://aspace.library.columbia.edu/api/
+baseOAIURL = https://aspace.library.columbia.edu/public/oai
+oaiPrefix = oai:columbia
+user = <API_USERNAME>
+password = <API_PASSWORD>
+
+[DEV]
+baseURL = https://aspace-dev.library.columbia.edu/api/
+baseOAIURL = https://aspace-dev.library.columbia.edu/public/oai
+oaiPrefix = oai:columbia
+user = <API_USERNAME>
+password = <API_PASSWORD>
+
+# Rename this file to config.ini and update as needed
+[TEST]
+baseURL = https://aspace-test.library.columbia.edu/api/
+baseOAIURL = https://aspace-test.library.columbia.edu/public/oai
+oaiPrefix = oai:columbia
+user = <API_USERNAME>
+password = <API_PASSWORD>
+
+[REPOS]
+validRepos = [2,3,4,5,6]
+
+[FILES]
+keyPath = path/to/ssh/key
+saxonPath = path/to/saxon
+jingPath = path/to/jing
+
+[PROXIES]
+httpProxy = socks5://127.0.0.1:2345
+httpsProxy = socks5://127.0.0.1:2345
