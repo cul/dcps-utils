@@ -28,7 +28,7 @@ def main():
     CONFIG.read(util.find_config())
 
     # read current list of repos from config
-    VALID_REPOS = CONFIG["REPOS"]["validRepos"]
+    VALID_REPOS = json.loads(CONFIG["REPOS"]["validRepos"])
 
     now1 = datetime.now()
     start_time = str(now1)
