@@ -1,6 +1,6 @@
 # DCPS-UTILS
 
-This is a repo for DCPS scripts and utilities for archival data management and other things. Auto-generated Sphinx documentation is [availabile here](https://cul.github.io/dcps-utils/_build/html/). Contact dwh2128 for questions/info. 
+This is a repo for DCPS scripts and utilities for archival data management and other things. Auto-generated Sphinx documentation is [availabile here](https://cul.github.io/dcps-utils/_build/html/). Contact diag@library.columbia.edu for questions/info. 
 
 ## Use
 
