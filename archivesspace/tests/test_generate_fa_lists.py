@@ -18,7 +18,7 @@ STORAGE_DIR = "/cul/cul0/ldpd/archivesspace/"
 YAML_PATH = "/cul/cul0/ldpd/archival_data/bib_ids/valid_fa_bib_ids.yml"
 YEST_STR = str((date.today() - timedelta(days=1)).strftime("%Y%m%d"))
 TEST_BIBID = "12471376"  # Wright drawings in Avery
-XSL_PATH = os.path.join(MY_PATH, "../xslt/generate_browse_list2.xsl")
+XSL_PATH = os.path.join(MY_PATH, "../xslt/generate_browse_list.xsl")
 OAI_PATH = os.path.join(MY_PATH, STORAGE_DIR, "oai/" + YEST_STR + ".asAllRaw.xml")
 
 

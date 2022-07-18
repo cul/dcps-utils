@@ -29,7 +29,7 @@ def main():
     input_path = os.path.join(MY_PATH, storage_dir, "oai/" + yest_str + ".asAllRaw.xml")
 
     # XSLT for transformation. Accepts a path in param in which to save the html snippet files.
-    xsl_path = os.path.join(MY_PATH, "../xslt/generate_browse_list2.xsl")
+    xsl_path = os.path.join(MY_PATH, "../xslt/generate_browse_list.xsl")
 
     # The location to save output documents.
     # output_dir = os.path.join(MY_PATH, storage_dir + "fa_lists")

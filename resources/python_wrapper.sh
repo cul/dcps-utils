@@ -67,8 +67,8 @@ function python_exec()
     local OUTPUT
     local RESULT
     # if RESULT=$(python $1 2>&1); then
-    # if RESULT=$(python $@ 2>&1); then
-    if RESULT=$(python $1 $2 2>&1); then
+    if RESULT=$(python $@ 2>&1); then
+    # if RESULT=$(python $1 $2 2>&1); then
         STDOUT="$RESULT"
     else
         rc=$?

@@ -1,4 +1,5 @@
 import ASFunctions as asf
+
 # from pymarc import MARCReader
 # import requests
 import os
@@ -15,16 +16,14 @@ def main():
     # This makes sure the script can be run from any working directory and still find related files.
     my_path = os.path.dirname(__file__)
 
-    sheet_id = '13OakaS0KHtxcaV9HGWDP9Zfnz9TVJR_9zGUnKrb90jk'  # test
-    # sheet_id = '1tYOXSDFlkbX_revB_ULvhmCdvKkyzpipBTkYqYXcM38'
+    # sheet_id = '13OakaS0KHtxcaV9HGWDP9Zfnz9TVJR_9zGUnKrb90jk'  # test
+    sheet_id = "1lZT4rksgxsS0BiDH5DC1YfcynyJ2bTNG9BheHK4Cels"
     # sheet_id = '1e43qKYvqGQFOMxA70U59yPKPs18y-k3ohRNdU-qrTH0'  # test
-    # sheet_id = '1OhgJ4g-SWbmnms4b3ppe_0rBT7hz9jfQp6P8mADcatk'  # batch template doc
+    # sheet_id = '1XDZ-cTkuqcbp9FH5FgUezcbCNcQkvQeAuIZTQk7KY5Y'  # batch template doc
 
-    container_sheet = dataSheet(
-        sheet_id, 'containers!A:Z')
+    container_sheet = dataSheet(sheet_id, "containers!A:Z")
 
-    marc_sheet = dataSheet(
-        sheet_id, 'marc!A:Z')
+    marc_sheet = dataSheet(sheet_id, "marc!A:Z")
 
     # Get a list of bibids from the Marc tab.
     # the_bibids = marc_sheet.getDataColumns()[0]
@@ -35,20 +34,20 @@ def main():
 
     #### TOP CONTAINERS ####
 
-    the_heads = ['bibid', 'resource', 'uri',
-                 'type', 'display_string', 'concat']
+    the_heads = ["bibid", "resource", "uri", "type", "display_string", "concat"]
     the_rows = [the_heads]
 
-    lookup_csv = os.path.join(my_path, 'id_lookup_prod.csv')
+    lookup_csv = os.path.join(my_path, "id_lookup_prod.csv")
     for abib in the_bibids:
         print(abib)
         # Get repo and asid from bibid
         repo, asid = asf.lookupByBibID(abib, lookup_csv)
 
-        print('Getting top containers for ' + str(repo) + ':' + str(asid))
+        print("Getting top containers for " + str(repo) + ":" + str(asid))
 
-        the_query = '/repositories/' + \
-            str(repo) + '/resources/' + str(asid) + '/top_containers'
+        the_query = (
+            "/repositories/" + str(repo) + "/resources/" + str(asid) + "/top_containers"
+        )
 
         # list of top containers
         the_refs = json.loads(asf.getResponse(the_query))
@@ -58,38 +57,38 @@ def main():
             cnt += 1
             print(cnt)
             try:
-                tc = json.loads(asf.getResponse(r['ref']))
+                tc = json.loads(asf.getResponse(r["ref"]))
                 # print(tc)
 
                 try:
-                    bibid = tc['collection'][0]['identifier']
+                    bibid = tc["collection"][0]["identifier"]
                 except:
-                    bibid = ''
+                    bibid = ""
                 try:
-                    resource = tc['collection'][0]['ref']
+                    resource = tc["collection"][0]["ref"]
                 except:
-                    resource = ''
+                    resource = ""
                 try:
-                    uri = tc['uri']
+                    uri = tc["uri"]
                 except:
-                    uri = ''
+                    uri = ""
                 try:
-                    type = tc['type']
+                    type = tc["type"]
                 except:
-                    type = ''
+                    type = ""
                 try:
-                    display_string = tc['display_string']
+                    display_string = tc["display_string"]
                 except:
-                    display_string = ''
+                    display_string = ""
                 try:
-                    concat_str = str(
-                        tc['display_string'] + ' (' + uri.split('/')[4]) + ')'
+                    concat_str = (
+                        str(tc["display_string"] + " (" + uri.split("/")[4]) + ")"
+                    )
 
                 except:
-                    concat_str = 'x'
+                    concat_str = "x"
 
-                a_row = [bibid, resource, uri, type,
-                         display_string, concat_str]
+                a_row = [bibid, resource, uri, type, display_string, concat_str]
                 # print(a_row)
                 the_rows.append(a_row)
             except:

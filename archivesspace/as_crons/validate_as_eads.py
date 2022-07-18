@@ -24,10 +24,6 @@ def main():
     validation_sheet = dataSheet(sheet_id, "schema!A:Z")  # Test
     eval_sheet = dataSheet(sheet_id, "eval!A:Z")  # Test
 
-    # This is a dupe for other reporting
-    # the_data_sheet2 = dataSheet(
-    #     "198ON5qZ3MYBWPbSAopWkGE6hcUD8P-KMkWkq2qRooOY", "validation!A:Z")
-
     now1 = datetime.datetime.now()
     start_time = str(now1)
     end_time = ""  # set later
@@ -41,7 +37,6 @@ def main():
     print("====== Syncing files from production cache... ======")
     print(" ")
 
-    # keyPath = "/home/ldpdserv/.ssh/id_dsa"
     fromPath = "ldpdserv@ldpd-nginx-prod1:/opt/passenger/ldpd/findingaids_prod/caches/ead_cache"
     toPath = "/cul/cul0/ldpd/archivesspace/"
 
@@ -62,7 +57,7 @@ def main():
 
     csv_out_path = os.path.join(MY_PATH, "temp_out.txt")
 
-    xslt_path = os.path.join(MY_PATH, "../schemas/cul_as_ead2.xsl")  # test
+    xslt_path = os.path.join(MY_PATH, "../schemas/cul_as_ead.xsl")
 
     data_folder = "/cul/cul0/ldpd/archivesspace/ead_cache"
     # data_folder = "/Users/dwh2128/Documents/ACFA/exist-local/backups/cached_eads/ead_rsync_test"  # test
@@ -119,18 +114,8 @@ def main():
     print(" ")
     print("====== Validating files... ======")
 
-    # Validate against schema. Xargs batches files so they won't exceed
-    # limit on arguments with thousands of files.
-
-    x = util.run_bash(
-        "find "
-        + data_folder
-        + ' -name "as_ead*"  | xargs -L 128 java -jar '
-        + util.config["FILES"]["jingPath"]
-        + " -d "
-        + schema_path,
-        errorPrefix="JING",
-    )
+    # Batch validate against RNG schema.
+    x = util.jing_process_batch(data_folder, schema_path, "as_ead*")
 
     schema_errs = [
         msg_parse(l, icons["exclamation"]) for l in str(x).splitlines() if "as_ead" in l
@@ -139,9 +124,6 @@ def main():
     schema_err_cnt = get_unique_count(schema_errs)
 
     if schema_errs:
-        # for e in get_unique_bibids(schema_errs):
-        #     log_it(icons['exclamation'] + " " +
-        #            str(e) + " has validation errors.")
         for e in get_unique_bibid_all_errors(schema_errs):
             log_it(icons["exclamation"] + "VALIDATION ERROR: " + e)
     else:
