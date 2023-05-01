@@ -77,6 +77,9 @@
                 
                 <!-- RBMLBOOKS  -->
                 <!-- Some add-ins only for RBMLBOOKS -->
+			    <datafield ind1=" " ind2=" " tag="965">
+			       <subfield code="a">965noexportAUTH</subfield>
+			    </datafield>
                 <xsl:if test="$repo = '6'">
                     <datafield ind1=" " ind2=" " tag='336'>
                         <subfield code='a'>text</subfield>
@@ -393,6 +396,7 @@
     </xsl:template>
     
     <!-- END NON-RBMLBOOKS -->
+    
     
 
 <!--  add $3 "Finding aid" to 856 fields -->
