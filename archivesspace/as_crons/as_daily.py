@@ -45,13 +45,11 @@ def main():
     xslt_path = os.path.join(my_path, "../xslt/cleanOAI.xsl")
 
     out_path_raw = os.path.join(destination_folder, today + ".asRaw.xml")
-    out_path_raw_all = os.path.join(destination_folder, today + ".asAllRaw.xml")
+    # out_path_raw_all = os.path.join(destination_folder, today + ".asAllRaw.xml")
     out_path_clean = os.path.join(destination_folder, today + ".asClean.xml")
 
     # Set server to Prod | Test | Dev
     server = "Prod"
-
-    fromDate = yesterday
 
     # Set 'from' date to yesterday unless harvesting all
     date_params = " " if args.HARVESTALL else "-f " + yesterday
@@ -68,9 +66,9 @@ def main():
     if not args.TEST:
         digester.post_digest(script_name, x)
 
-    print("Harvesting all records for reporting ...")
-    date_params = " "
-    util.oai_harvest(out_path_raw_all, server=server, date_params=date_params)
+    # print("Harvesting all records for reporting ...")
+    # date_params = " "
+    # util.oai_harvest(out_path_raw_all, server=server, date_params=date_params)
 
     # Remove old OAI files
     util.file_cleanup(destination_folder, 30)
